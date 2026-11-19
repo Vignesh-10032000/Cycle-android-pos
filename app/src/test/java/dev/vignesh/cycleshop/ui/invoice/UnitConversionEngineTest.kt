@@ -58,7 +58,7 @@ class UnitConversionEngineTest {
 
     @Test
     fun `convert pc and unit aliases preserve 1 to 1 factor`() {
-        val aliases = listOf("PC", "PCS", "PIECE", "PIECES", "UNIT", "UNITS", "NOS", "NO", "SET", "SETS")
+        val aliases = listOf("PC", "PCS", "PIECE", "PIECES", "UNIT", "UNITS", "NOS", "NO")
         for (unit in aliases) {
             val result = UnitConversionEngine.convert(
                 rawUnit = unit,
@@ -101,7 +101,7 @@ class UnitConversionEngineTest {
     }
 
     @Test
-    fun `convert blank unit defaults to 1 to 1 and flags for review`() {
+    fun `blank unit remains unresolved`() {
         val result = UnitConversionEngine.convert(
             rawUnit = "   ",
             rawQuantity = 5.0,
@@ -110,13 +110,11 @@ class UnitConversionEngineTest {
 
         assertTrue(result is UnitConversionResult.RequiresReview)
         val review = result as UnitConversionResult.RequiresReview
-        assertEquals(1, review.conversionFactor)
-        assertEquals(5, review.effectiveBaseQuantity)
-        assertTrue(review.warningMessage.contains("blank"))
+        assertTrue(review.warningMessage.contains("missing"))
     }
 
     @Test
-    fun `convert unrecognized unit defaults to 1 to 1 and flags for review`() {
+    fun `unrecognized unit remains unresolved`() {
         val result = UnitConversionEngine.convert(
             rawUnit = "BAG",
             rawQuantity = 2.0,
@@ -125,9 +123,29 @@ class UnitConversionEngineTest {
 
         assertTrue(result is UnitConversionResult.RequiresReview)
         val review = result as UnitConversionResult.RequiresReview
-        assertEquals(1, review.conversionFactor)
-        assertEquals(2, review.effectiveBaseQuantity)
         assertTrue(review.warningMessage.contains("Unrecognized"))
+    }
+
+    @Test
+    fun `set requires a rule when stocking pieces and can count as a set`() {
+        assertTrue(UnitConversionEngine.convert("Sets", 3.0) is UnitConversionResult.RequiresReview)
+        val result = UnitConversionEngine.convert("Sets", 3.0, InventoryUnit.SET) as UnitConversionResult.Success
+        assertEquals(3, result.effectiveBaseQuantity)
+    }
+
+    @Test
+    fun `incompatible targets are never relabeled`() {
+        assertTrue(UnitConversionEngine.convert("PC", 3.0, InventoryUnit.GROSS) is UnitConversionResult.RequiresReview)
+        assertTrue(UnitConversionEngine.convert("Pair", 3.0, InventoryUnit.SET) is UnitConversionResult.RequiresReview)
+        assertTrue(UnitConversionEngine.convert("Dozen", 3.0, InventoryUnit.SET) is UnitConversionResult.RequiresReview)
+    }
+
+    @Test
+    fun `non-finite fractional and overflowing base quantities are rejected`() {
+        for (quantity in listOf(Double.NaN, Double.POSITIVE_INFINITY, 1.5, Int.MAX_VALUE.toDouble() + 1)) {
+            assertTrue(UnitConversionEngine.convert("PC", quantity) is UnitConversionResult.Invalid)
+        }
+        assertTrue(UnitConversionEngine.convert("Gross", Int.MAX_VALUE.toDouble()) is UnitConversionResult.Invalid)
     }
 
     @Test

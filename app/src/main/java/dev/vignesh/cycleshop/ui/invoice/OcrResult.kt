@@ -58,7 +58,15 @@ data class OcrTextBlock(
 data class OcrTextLine(
     val lineText: String,
     val elements: List<String>,
-    val boundingBox: OcrBoundingBox?
+    val boundingBox: OcrBoundingBox?,
+    val words: List<OcrWord> = emptyList()
+)
+
+/** Element geometry is needed when a single ML Kit line spans multiple invoice columns. */
+data class OcrWord(
+    val text: String,
+    val boundingBox: OcrBoundingBox,
+    val topEdgeSlope: Double? = null
 )
 
 /**

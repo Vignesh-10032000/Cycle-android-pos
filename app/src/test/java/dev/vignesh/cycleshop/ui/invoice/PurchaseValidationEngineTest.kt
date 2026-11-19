@@ -19,6 +19,24 @@ import org.junit.Test
 class PurchaseValidationEngineTest {
 
     @Test
+    fun `invalid numeric values are rejected and unresolved conversions require review`() {
+        for (quantity in listOf(Double.NaN, Double.POSITIVE_INFINITY, Int.MAX_VALUE.toDouble() + 1)) {
+            assertFalse(PurchaseValidationEngine.validateLine(1, "Tube", 1L, quantity, 30L).isValid)
+        }
+        assertFalse(PurchaseValidationEngine.validateLine(
+            1, "Tube", 1L, 1.5, 30L, conversion = UnitConversionEngine.convert("PC", 1.5)
+        ).isValid)
+        assertFalse(PurchaseValidationEngine.validateLine(
+            1, "Tube", 1L, 1.0, 30L, lineAmountPaise = -1
+        ).isValid)
+        val review = PurchaseValidationEngine.validateLine(
+            1, "Tube", 1L, 2.0, 30L, conversion = UnitConversionEngine.convert("Set", 2.0)
+        )
+        assertTrue(review.isValid)
+        assertEquals(LineReviewStatus.MANUAL_CORRECTED, review.reviewStatus)
+    }
+
+    @Test
     fun `line with valid variantId and clean OCR gets VERIFIED_MATCH`() {
         val result = PurchaseValidationEngine.validateLine(
             lineNumber = 1,

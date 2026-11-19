@@ -379,9 +379,14 @@ private fun InvoiceHeaderCard(invoice: ParsedInvoice) {
 
 @Composable
 private fun ReconciliationBanner(invoice: ParsedInvoice) {
-    val isReconciled = invoice.isQuantityReconciled
-    val sumQty = invoice.sumItemQuantities
-    val expectedQty = invoice.totalQuantityExtracted
+    val differences = invoice.quantityReconciliation == Reconciliation.DIFFERENCE ||
+        invoice.taxableReconciliation == Reconciliation.DIFFERENCE ||
+        invoice.items.any { it.amountReconciliation == Reconciliation.DIFFERENCE }
+    val isReconciled = !differences && invoice.quantityReconciliation == Reconciliation.MATCH &&
+        invoice.taxableReconciliation == Reconciliation.MATCH
+    val units = invoice.quantitiesByUnit.entries.joinToString(" + ") { (unit, qty) ->
+        "${qty.stripTrailingZeros().toPlainString()} ${unit.ifBlank { "(unit missing)" }}"
+    }.ifBlank { "Unavailable" }
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -403,13 +408,17 @@ private fun ReconciliationBanner(invoice: ParsedInvoice) {
             )
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = if (isReconciled) "Quantity Reconciled" else "Quantity Needs Verification",
+                    text = when {
+                        differences -> "Invoice totals need review"
+                        isReconciled -> "Invoice totals match"
+                        else -> "Reconciliation incomplete"
+                    },
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.Bold,
                     color = if (isReconciled) Color(0xFF1B5E20) else Color(0xFFBF360C)
                 )
                 Text(
-                    text = "Sum of Lines: ${"%.1f".format(sumQty)} Units • Document Total: ${expectedQty?.let { "%.1f".format(it) } ?: "N/A"}",
+                    text = "Read quantities: $units\nPrinted quantity total: ${invoice.totalQuantityExtracted ?: "Unavailable"}\nPrinted taxable total: ${invoice.totalAmountExtractedPaise?.let(::formatPaise) ?: "Unavailable"}",
                     style = MaterialTheme.typography.bodySmall,
                     color = if (isReconciled) Color(0xFF2E7D32) else Color(0xFFE65100)
                 )
@@ -426,8 +435,8 @@ private fun InvoiceItemCard(
 ) {
     var isEditing by remember { mutableStateOf(false) }
     var editedDescription by remember { mutableStateOf(item.description) }
-    var editedQty by remember { mutableStateOf(item.quantity?.toString() ?: "") }
-    var editedRate by remember { mutableStateOf(item.unitRatePaise?.let { (it / 100.0).toString() } ?: "") }
+    var editedQty by remember { mutableStateOf(InvoiceNumbers.quantityDecimal(item.quantity)?.toPlainString().orEmpty()) }
+    var editedRate by remember { mutableStateOf(item.unitRatePaise?.let { InvoiceNumbers.decimalRupees(it).toPlainString() }.orEmpty()) }
     var showAllCandidates by remember { mutableStateOf(false) }
 
     Card(
@@ -482,6 +491,8 @@ private fun InvoiceItemCard(
 
             // Description: View mode vs Edit mode
             if (isEditing) {
+                val quantity = InvoiceNumbers.quantity(editedQty)
+                val rate = InvoiceNumbers.paise(editedRate)
                 OutlinedTextField(
                     value = editedDescription,
                     onValueChange = { editedDescription = it },
@@ -494,28 +505,28 @@ private fun InvoiceItemCard(
                         value = editedQty,
                         onValueChange = { editedQty = it },
                         label = { Text("Qty") },
+                        isError = editedQty.isNotBlank() && quantity == null,
                         modifier = Modifier.weight(1f)
                     )
                     OutlinedTextField(
                         value = editedRate,
                         onValueChange = { editedRate = it },
                         label = { Text("Rate (₹)") },
+                        isError = editedRate.isNotBlank() && rate == null,
                         modifier = Modifier.weight(1f)
                     )
                 }
 
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
                     Button(
+                        enabled = (editedQty.isBlank() || quantity != null) &&
+                            (editedRate.isBlank() || rate != null),
                         onClick = {
-                            val newQty = editedQty.toDoubleOrNull()
-                            val newRatePaise = editedRate.toDoubleOrNull()?.let { (it * 100).toLong() }
-                            val newAmountPaise = if (newQty != null && newRatePaise != null) (newQty * newRatePaise).toLong() else item.lineAmountPaise
                             onItemUpdated(
                                 item.copy(
                                     description = editedDescription,
-                                    quantity = newQty,
-                                    unitRatePaise = newRatePaise,
-                                    lineAmountPaise = newAmountPaise,
+                                    quantity = quantity,
+                                    unitRatePaise = rate,
                                     isUserEdited = true
                                 )
                             )
@@ -540,7 +551,7 @@ private fun InvoiceItemCard(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
-                MetricChip(label = "Qty", value = "${item.quantity?.let { "%.0f".format(it) } ?: "N/A"} ${item.unit ?: ""}")
+                MetricChip(label = "Qty", value = "${InvoiceNumbers.quantityDecimal(item.quantity)?.stripTrailingZeros()?.toPlainString() ?: "N/A"} ${item.unit ?: ""}")
                 item.unitRatePaise?.let { rate ->
                     MetricChip(label = "Rate", value = formatPaise(rate))
                 }
@@ -553,6 +564,24 @@ private fun InvoiceItemCard(
                 item.lineAmountPaise?.let { amount ->
                     MetricChip(label = "Total", value = formatPaise(amount), isPrimary = true)
                 }
+            }
+
+            if (item.amountReconciliation == Reconciliation.DIFFERENCE) {
+                Text("Quantity × rate differs from the printed line amount.", color = MaterialTheme.colorScheme.error)
+            }
+            val unreadable = listOf("quantity" to "quantity", "unitRate" to "rate", "lineAmount" to "line amount")
+                .filter { (field, _) -> item.qualityFlags[field]?.let { it != FieldQuality.EXACT } == true }
+                .joinToString { it.second }
+            if (unreadable.isNotEmpty()) {
+                Text("Check OCR reading for $unreadable.", color = MaterialTheme.colorScheme.error)
+            }
+            if (item.quantity != null) {
+                val unitIssue = when (val conversion = UnitConversionEngine.convert(item.unit, item.quantity)) {
+                    is UnitConversionResult.RequiresReview -> conversion.warningMessage
+                    is UnitConversionResult.Invalid -> conversion.errorMessage
+                    is UnitConversionResult.Success -> null
+                }
+                unitIssue?.let { Text(it, color = MaterialTheme.colorScheme.error) }
             }
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
@@ -659,7 +688,7 @@ private fun MetricChip(label: String, value: String, isPrimary: Boolean = false)
 }
 
 private fun formatPaise(paise: Long): String {
-    val rupees = paise / 100.0
+    val rupees = InvoiceNumbers.decimalRupees(paise)
     val formatter = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("en-IN"))
     return formatter.format(rupees).replace("₹", "₹ ")
 }

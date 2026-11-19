@@ -206,29 +206,7 @@ class InvoiceScanViewModel : ViewModel() {
                 val processingMs = measureTimeMillis {
                     val mlKitText = recognizer.process(image).await()
 
-                    val blocks = mlKitText.textBlocks.map { block ->
-                        OcrTextBlock(
-                            blockText = block.text,
-                            lines = block.lines.map { line ->
-                                OcrTextLine(
-                                    lineText = line.text,
-                                    elements = line.elements.map { it.text },
-                                    boundingBox = line.boundingBox.toOcrBoundingBox()
-                                )
-                            },
-                            boundingBox = block.boundingBox.toOcrBoundingBox(),
-                            confidence = null
-                        )
-                    }
-
-                    ocrResult = OcrResult(
-                        rawText = mlKitText.text,
-                        blocks = blocks,
-                        processingMs = 0L, // placeholder; replaced after measureTimeMillis
-                        imageWidthPx = imageWidthPx,
-                        imageHeightPx = imageHeightPx,
-                        rotationDegrees = rotationDegrees
-                    )
+                    ocrResult = mlKitText.toInvoiceOcrResult(imageWidthPx, imageHeightPx, rotationDegrees)
                 }
 
                 val finalOcrResult = ocrResult.copy(processingMs = processingMs)
@@ -322,7 +300,10 @@ class InvoiceScanViewModel : ViewModel() {
                     )
 
                 // 1. Validation check
-                val lineValidationResults = invoice.items.map { item ->
+                // v2 has no variant stock-unit field. The current staging target is provisional.
+                val stagingUnit = InventoryUnit.PIECE
+                val conversions = invoice.items.map { UnitConversionEngine.convert(it.unit, it.quantity, stagingUnit) }
+                val lineValidationResults = invoice.items.mapIndexed { index, item ->
                     val variantId = item.selectedVariantId ?: item.bestCandidate?.variantId
                     PurchaseValidationEngine.validateLine(
                         lineNumber = item.lineNumber,
@@ -330,7 +311,9 @@ class InvoiceScanViewModel : ViewModel() {
                         variantId = variantId,
                         quantity = item.quantity,
                         unitRatePaise = item.unitRatePaise,
-                        qualityFlags = item.qualityFlags
+                        qualityFlags = item.qualityFlags,
+                        lineAmountPaise = item.lineAmountPaise,
+                        conversion = conversions[index]
                     )
                 }
 
@@ -341,7 +324,8 @@ class InvoiceScanViewModel : ViewModel() {
                 )
 
                 if (!validationSummary.canStage) {
-                    val issuesJoined = validationSummary.globalIssues.joinToString("; ")
+                    val issuesJoined = (validationSummary.globalIssues +
+                        lineValidationResults.filterNot { it.isValid }.flatMap { it.issues }).joinToString("\n")
                     onResult(Result.failure(IllegalArgumentException("Cannot stage invoice: $issuesJoined")))
                     return@launch
                 }
@@ -381,33 +365,7 @@ class InvoiceScanViewModel : ViewModel() {
                 val lineEntities = invoice.items.mapIndexed { idx, item ->
                     val lineValidation = lineValidationResults[idx]
                     val variantId = item.selectedVariantId ?: item.bestCandidate?.variantId
-                    val conversion = UnitConversionEngine.convert(
-                        rawUnit = item.unit,
-                        rawQuantity = item.quantity,
-                        targetInventoryUnit = InventoryUnit.PIECE
-                    )
-
-                    val factor: Int
-                    val baseQty: Int
-                    val targetUnit: InventoryUnit
-
-                    when (conversion) {
-                        is UnitConversionResult.Success -> {
-                            factor = conversion.conversionFactor
-                            baseQty = conversion.effectiveBaseQuantity
-                            targetUnit = conversion.targetUnit
-                        }
-                        is UnitConversionResult.RequiresReview -> {
-                            factor = conversion.conversionFactor
-                            baseQty = conversion.effectiveBaseQuantity
-                            targetUnit = conversion.targetUnit
-                        }
-                        is UnitConversionResult.Invalid -> {
-                            factor = 1
-                            baseQty = (item.quantity ?: 0.0).toInt()
-                            targetUnit = InventoryUnit.PIECE
-                        }
-                    }
+                    val conversion = conversions[idx] as? UnitConversionResult.Success
 
                     PurchaseLineEntity(
                         invoiceId = 0, // Assigned inside DAO transaction
@@ -417,12 +375,13 @@ class InvoiceScanViewModel : ViewModel() {
                         rawDescription = item.description,
                         correctedDescription = item.description,
                         hsnCode = item.hsnCode,
-                        rawQuantity = item.quantity ?: 0.0,
+                        rawQuantity = requireNotNull(item.quantity),
                         correctedQuantity = item.quantity,
-                        rawUnit = item.unit ?: "PC",
-                        inventoryUnit = targetUnit,
-                        unitConversionFactor = factor,
-                        effectiveQuantityBase = baseQty,
+                        rawUnit = item.unit.orEmpty(),
+                        inventoryUnit = conversion?.targetUnit ?: stagingUnit,
+                        // v2 requires integers. Zero records an unresolved conversion in a staged row.
+                        unitConversionFactor = conversion?.conversionFactor ?: 0,
+                        effectiveQuantityBase = conversion?.effectiveBaseQuantity ?: 0,
                         rawUnitPricePaise = item.unitRatePaise,
                         correctedUnitPricePaise = item.unitRatePaise,
                         rawLineAmountPaise = item.lineAmountPaise,

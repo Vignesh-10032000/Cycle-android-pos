@@ -1,143 +1,52 @@
 package dev.vignesh.cycleshop.ui.invoice
 
 import dev.vignesh.cycleshop.data.local.model.InventoryUnit
+import java.math.BigDecimal
 import java.util.Locale
 
-/**
- * Result of a unit conversion calculation.
- */
-sealed class UnitConversionResult {
+sealed interface UnitConversionResult {
     data class Success(
-        val rawUnit: String,
         val targetUnit: InventoryUnit,
         val conversionFactor: Int,
-        val effectiveBaseQuantity: Int,
-        val notes: String
-    ) : UnitConversionResult()
+        val effectiveBaseQuantity: Int
+    ) : UnitConversionResult
 
-    data class RequiresReview(
-        val rawUnit: String,
-        val targetUnit: InventoryUnit,
-        val conversionFactor: Int,
-        val effectiveBaseQuantity: Int,
-        val warningMessage: String
-    ) : UnitConversionResult()
-
-    data class Invalid(
-        val rawUnit: String,
-        val errorMessage: String
-    ) : UnitConversionResult()
+    data class RequiresReview(val warningMessage: String) : UnitConversionResult
+    data class Invalid(val errorMessage: String) : UnitConversionResult
 }
 
-/**
- * Deterministic unit conversion engine for supplier invoices.
- *
- * Rules:
- * - Gross: 1 Gross = 144 Pieces (standard bicycle spokes packaging). If inventory tracks Gross directly, factor = 1.
- * - PC / Pcs / Units / Nos / Sets: 1 to 1 conversion.
- * - Pair: 1 Pair = 2 Pieces.
- * - Dozen: 1 Dozen = 12 Pieces.
- * - Non-positive quantities are strictly rejected as [UnitConversionResult.Invalid].
- */
 object UnitConversionEngine {
+    private enum class PurchaseUnit { PIECE, GROSS, SET, PAIR, DOZEN }
 
     fun convert(
         rawUnit: String?,
         rawQuantity: Double?,
         targetInventoryUnit: InventoryUnit = InventoryUnit.PIECE
     ): UnitConversionResult {
-        if (rawQuantity == null || rawQuantity <= 0.0) {
-            return UnitConversionResult.Invalid(
-                rawUnit = rawUnit ?: "Unknown",
-                errorMessage = "Quantity must be greater than zero (found: $rawQuantity)."
+        val quantity = InvoiceNumbers.quantityDecimal(rawQuantity)
+            ?: return UnitConversionResult.Invalid("Quantity must be finite, positive and within the supported range.")
+        val source = when (rawUnit?.trim()?.uppercase(Locale.ROOT)) {
+            "PC", "PCS", "PIECE", "PIECES", "UNIT", "UNITS", "NOS", "NO" -> PurchaseUnit.PIECE
+            "GROSS", "GRS" -> PurchaseUnit.GROSS
+            "SET", "SETS" -> PurchaseUnit.SET
+            "PAIR", "PAIRS" -> PurchaseUnit.PAIR
+            "DOZEN", "DOZ", "DZ" -> PurchaseUnit.DOZEN
+            else -> return UnitConversionResult.RequiresReview(
+                if (rawUnit.isNullOrBlank()) "Invoice unit is missing."
+                else "Unrecognized invoice unit '$rawUnit'."
             )
         }
-
-        val norm = (rawUnit ?: "").trim().uppercase(Locale.ROOT)
-
-        return when {
-            norm == "GROSS" || norm == "GRS" -> {
-                when (targetInventoryUnit) {
-                    InventoryUnit.PIECE -> {
-                        val factor = 144
-                        val baseQty = (rawQuantity * factor).toInt()
-                        UnitConversionResult.Success(
-                            rawUnit = rawUnit ?: "Gross",
-                            targetUnit = InventoryUnit.PIECE,
-                            conversionFactor = factor,
-                            effectiveBaseQuantity = baseQty,
-                            notes = "$rawQuantity Gross = $baseQty Pieces (1 Gross = 144 Pieces)"
-                        )
-                    }
-                    InventoryUnit.GROSS -> {
-                        UnitConversionResult.Success(
-                            rawUnit = rawUnit ?: "Gross",
-                            targetUnit = InventoryUnit.GROSS,
-                            conversionFactor = 1,
-                            effectiveBaseQuantity = rawQuantity.toInt(),
-                            notes = "$rawQuantity Gross tracked as Gross units"
-                        )
-                    }
-                    else -> UnitConversionResult.Invalid(
-                        rawUnit = rawUnit ?: "Gross",
-                        errorMessage = "Cannot convert Gross to target unit $targetInventoryUnit"
-                    )
-                }
-            }
-
-            norm in listOf("PC", "PCS", "PIECE", "PIECES", "UNIT", "UNITS", "NOS", "NO", "SET", "SETS") -> {
-                UnitConversionResult.Success(
-                    rawUnit = rawUnit ?: "PC",
-                    targetUnit = targetInventoryUnit,
-                    conversionFactor = 1,
-                    effectiveBaseQuantity = rawQuantity.toInt(),
-                    notes = "$rawQuantity ${rawUnit ?: "PC"} = ${rawQuantity.toInt()} ${targetInventoryUnit.name}"
-                )
-            }
-
-            norm == "PAIR" || norm == "PAIRS" -> {
-                val factor = if (targetInventoryUnit == InventoryUnit.PIECE) 2 else 1
-                val baseQty = (rawQuantity * factor).toInt()
-                UnitConversionResult.Success(
-                    rawUnit = rawUnit ?: "Pair",
-                    targetUnit = targetInventoryUnit,
-                    conversionFactor = factor,
-                    effectiveBaseQuantity = baseQty,
-                    notes = "$rawQuantity Pairs = $baseQty Pieces (1 Pair = 2 Pieces)"
-                )
-            }
-
-            norm in listOf("DOZEN", "DOZ", "DZ") -> {
-                val factor = 12
-                val baseQty = (rawQuantity * factor).toInt()
-                UnitConversionResult.Success(
-                    rawUnit = rawUnit ?: "Dozen",
-                    targetUnit = InventoryUnit.PIECE,
-                    conversionFactor = factor,
-                    effectiveBaseQuantity = baseQty,
-                    notes = "$rawQuantity Dozen = $baseQty Pieces (1 Dozen = 12 Pieces)"
-                )
-            }
-
-            norm.isBlank() -> {
-                UnitConversionResult.RequiresReview(
-                    rawUnit = "UNSPECIFIED",
-                    targetUnit = targetInventoryUnit,
-                    conversionFactor = 1,
-                    effectiveBaseQuantity = rawQuantity.toInt(),
-                    warningMessage = "Invoice unit was blank; defaulted 1:1, requires owner verification"
-                )
-            }
-
-            else -> {
-                UnitConversionResult.RequiresReview(
-                    rawUnit = rawUnit ?: "Unknown",
-                    targetUnit = targetInventoryUnit,
-                    conversionFactor = 1,
-                    effectiveBaseQuantity = rawQuantity.toInt(),
-                    warningMessage = "Unrecognized unit '$rawUnit'; defaulted 1:1, requires owner verification"
-                )
-            }
+        val factor = when {
+            source.name == targetInventoryUnit.name -> 1
+            targetInventoryUnit == InventoryUnit.PIECE && source == PurchaseUnit.GROSS -> 144
+            targetInventoryUnit == InventoryUnit.PIECE && source == PurchaseUnit.DOZEN -> 12
+            targetInventoryUnit == InventoryUnit.PIECE && source == PurchaseUnit.PAIR -> 2
+            else -> return UnitConversionResult.RequiresReview(
+                "Confirm how '$rawUnit' converts to ${targetInventoryUnit.displayName} for this product."
+            )
         }
+        val effective = InvoiceNumbers.exactStockQuantity(quantity.multiply(BigDecimal.valueOf(factor.toLong())))
+            ?: return UnitConversionResult.Invalid("Converted stock quantity must be a whole number in the supported range.")
+        return UnitConversionResult.Success(targetInventoryUnit, factor, effective)
     }
 }

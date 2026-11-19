@@ -1,14 +1,19 @@
 package dev.vignesh.cycleshop.ui.invoice
 
+import java.math.BigDecimal
+import java.util.Locale
+
 /**
  * Quality status of an extracted invoice field.
  */
 enum class FieldQuality {
-    EXACT,       // Confidently extracted with matching checksum/regex/reconciliation
+    EXACT,       // Read directly from an unambiguous OCR cell
     PARTIAL,     // Substring or OCR noise present (e.g. slight character corruption)
     MISSING,     // Field was not found on the document
-    INCORRECT    // Mathematical mismatch (e.g., qty * rate != amount)
+    INCORRECT    // The supplied field is outside the accepted format or range
 }
+
+enum class Reconciliation { MATCH, DIFFERENCE, UNAVAILABLE }
 
 /**
  * Matching status between a parsed invoice line and local Room inventory.
@@ -86,16 +91,12 @@ data class ParsedInvoiceItem(
             else -> MatchConfidence.UNCERTAIN
         }
 
-    /**
-     * Checks if quantity * unitRate matches lineAmount within rounding tolerance.
-     */
-    val isMathReconciled: Boolean
+    val amountReconciliation: Reconciliation
         get() {
-            if (quantity == null || unitRatePaise == null || lineAmountPaise == null) return false
-            val expectedPaise = (quantity * unitRatePaise).toLong()
-            val diff = kotlin.math.abs(expectedPaise - lineAmountPaise)
-            // Allow up to ₹1.00 (100 paise) rounding discrepancy
-            return diff <= 100L
+            val qty = InvoiceNumbers.quantityDecimal(quantity) ?: return Reconciliation.UNAVAILABLE
+            val rate = unitRatePaise?.takeIf { it > 0 } ?: return Reconciliation.UNAVAILABLE
+            val amount = lineAmountPaise?.takeIf { it >= 0 } ?: return Reconciliation.UNAVAILABLE
+            return compareTotals(qty.multiply(BigDecimal.valueOf(rate)), BigDecimal.valueOf(amount))
         }
 }
 
@@ -116,24 +117,36 @@ data class ParsedInvoice(
     val rawText: String,
     val processingTimeMs: Long = 0L
 ) {
-    /**
-     * Sum of parsed item quantities.
-     */
-    val sumItemQuantities: Double
-        get() = items.mapNotNull { it.quantity }.sum()
+    /** Sum only observed quantities, and keep different purchase units separate. */
+    val quantitiesByUnit: Map<String, BigDecimal>
+        get() = items.mapNotNull { item ->
+            InvoiceNumbers.quantityDecimal(item.quantity)?.let {
+                (item.unit?.trim()?.uppercase(Locale.ROOT).orEmpty()) to it
+            }
+        }.groupBy({ it.first }, { it.second }).mapValues { (_, values) -> values.fold(BigDecimal.ZERO, BigDecimal::add) }
 
-    /**
-     * Sum of parsed item amounts in paise.
-     */
-    val sumItemAmountsPaise: Long
-        get() = items.mapNotNull { it.lineAmountPaise }.sum()
+    val quantityReconciliation: Reconciliation
+        get() {
+            val printedTotal = InvoiceNumbers.quantityDecimal(totalQuantityExtracted)
+                ?: return Reconciliation.UNAVAILABLE
+            val unit = quantitiesByUnit.entries.singleOrNull() ?: return Reconciliation.UNAVAILABLE
+            if (unit.key.isBlank() || items.any { InvoiceNumbers.quantityDecimal(it.quantity) == null }) {
+                return Reconciliation.UNAVAILABLE
+            }
+            return compareTotals(unit.value, printedTotal)
+        }
 
-    /**
-     * Validates whether parsed quantity total reconciles with document total.
-     */
-    val isQuantityReconciled: Boolean
-        get() = totalQuantityExtracted != null &&
-                kotlin.math.abs(sumItemQuantities - totalQuantityExtracted) < 0.01
+    val taxableReconciliation: Reconciliation
+        get() {
+            val total = totalAmountExtractedPaise ?: return Reconciliation.UNAVAILABLE
+            if (items.isEmpty()) return Reconciliation.UNAVAILABLE
+            var sum = BigDecimal.ZERO
+            for (item in items) {
+                val amount = item.lineAmountPaise?.takeIf { it >= 0 } ?: return Reconciliation.UNAVAILABLE
+                sum = sum.add(BigDecimal.valueOf(amount))
+            }
+            return compareTotals(sum, BigDecimal.valueOf(total))
+        }
 
     /**
      * Percentage of items with at least one high-confidence local inventory match.
@@ -145,3 +158,6 @@ data class ParsedInvoice(
             return ((matched.toDouble() / items.size) * 100).toInt()
         }
 }
+
+private fun compareTotals(observed: BigDecimal, printed: BigDecimal): Reconciliation =
+    if (observed.compareTo(printed) == 0) Reconciliation.MATCH else Reconciliation.DIFFERENCE

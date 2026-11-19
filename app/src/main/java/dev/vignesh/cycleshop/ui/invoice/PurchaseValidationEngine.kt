@@ -34,7 +34,9 @@ object PurchaseValidationEngine {
         variantId: Long?,
         quantity: Double?,
         unitRatePaise: Long?,
-        qualityFlags: Map<String, FieldQuality> = emptyMap()
+        qualityFlags: Map<String, FieldQuality> = emptyMap(),
+        lineAmountPaise: Long? = null,
+        conversion: UnitConversionResult? = null
     ): LineValidationResult {
         val issues = mutableListOf<String>()
 
@@ -42,31 +44,39 @@ object PurchaseValidationEngine {
             issues.add("Line $lineNumber has an empty product description.")
         }
 
-        if (quantity == null || quantity <= 0.0) {
+        val invalidQuantity = InvoiceNumbers.quantityDecimal(quantity) == null
+        val invalidRate = unitRatePaise == null || unitRatePaise <= 0L
+        val invalidAmount = lineAmountPaise != null && lineAmountPaise < 0
+        if (invalidQuantity) {
             issues.add("Line $lineNumber has invalid quantity ($quantity).")
         }
 
-        if (unitRatePaise == null || unitRatePaise <= 0L) {
+        if (invalidRate) {
             issues.add("Line $lineNumber has invalid or missing unit rate.")
         }
 
+        if (invalidAmount) issues.add("Line $lineNumber has a negative line amount.")
+        when (conversion) {
+            is UnitConversionResult.Invalid -> issues.add(conversion.errorMessage)
+            is UnitConversionResult.RequiresReview -> issues.add(conversion.warningMessage)
+            else -> Unit
+        }
         val hasOcrIssues = qualityFlags.values.any { it != FieldQuality.EXACT }
         if (hasOcrIssues) {
             issues.add("Line $lineNumber has uncertain or partial OCR fields requiring review.")
         }
 
+        val isValid = description.isNotBlank() && !invalidQuantity && !invalidRate && !invalidAmount &&
+            conversion !is UnitConversionResult.Invalid
         val reviewStatus = when {
-            issues.isNotEmpty() && (quantity == null || quantity <= 0.0 || unitRatePaise == null || unitRatePaise <= 0L) ->
-                LineReviewStatus.UNMATCHED_REJECTED
+            !isValid -> LineReviewStatus.UNMATCHED_REJECTED
             variantId == null -> {
                 issues.add("Line $lineNumber does not have a verified catalog product variant assigned.")
                 LineReviewStatus.PENDING_MATCH
             }
-            hasOcrIssues -> LineReviewStatus.MANUAL_CORRECTED
+            hasOcrIssues || conversion is UnitConversionResult.RequiresReview -> LineReviewStatus.MANUAL_CORRECTED
             else -> LineReviewStatus.VERIFIED_MATCH
         }
-
-        val isValid = issues.none { it.contains("invalid") || it.contains("empty") }
 
         return LineValidationResult(
             lineNumber = lineNumber,

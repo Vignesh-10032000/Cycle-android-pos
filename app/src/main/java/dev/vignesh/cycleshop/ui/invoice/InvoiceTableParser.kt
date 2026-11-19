@@ -3,473 +3,389 @@ package dev.vignesh.cycleshop.ui.invoice
 import java.util.Locale
 import kotlin.math.abs
 
-/**
- * Local, deterministic rule-based table parser for supplier invoices.
- *
- * Extracts structured supplier metadata, line items, quantities, HSN codes,
- * rates, and taxes from raw OCR text and spatial bounding boxes.
- *
- * Strict boundaries:
- * - 100% offline, pure Kotlin logic.
- * - Zero external AI / Gemini calls.
- * - Does not invent missing values.
- * - Preserves raw lines and bounding boxes for review and manual correction.
- */
+/** Reads invoice cells from observed text and geometry. Totals are independent of the body. */
 class InvoiceTableParser {
-
-    companion object {
-        // Indian GSTIN regex: 2 digits (state) + 5 letters (PAN) + 4 digits + 1 letter + 1 entity + 'Z' + 1 checksum
-        private val GSTIN_REGEX = Regex("""\b\d{2}[A-Z]{5}\d{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}\b""")
-        private val INVOICE_NO_REGEX = Regex("""(?:Invoice\s*No\.?|Inv\s*No\.?|Bill\s*No\.?)[\s:]*([A-Za-z0-9\-_/]+)""", RegexOption.IGNORE_CASE)
-        private val DATE_REGEX = Regex("""(?:Dt\.?|Date)[\s:]*(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})""", RegexOption.IGNORE_CASE)
-        private val TOTAL_QTY_REGEX = Regex("""(?:Total\s*(?:Quantity|Qty)?|Total)[\s:]*(\d+(?:\.\d+)?)""", RegexOption.IGNORE_CASE)
-        private val HSN_REGEX = Regex("""\b(\d{6,8})\b""")
-    }
-
-    /**
-     * Parses an [OcrResult] into a [ParsedInvoice].
-     */
     fun parse(ocrResult: OcrResult): ParsedInvoice {
-        val rawText = ocrResult.rawText
-        val layoutType = detectLayoutType(rawText)
-
-        // 1. Extract Supplier & Header Metadata
-        val gstinMatches = GSTIN_REGEX.findAll(rawText).map { it.value }.toList()
-        val supplierGstin = gstinMatches.firstOrNull()
-        val consigneeGstin = if (gstinMatches.size > 1) gstinMatches[1] else null
-
-        val supplierName = extractSupplierName(rawText, layoutType)
-        val invoiceNo = extractInvoiceNumber(rawText)
-        val invoiceDate = extractInvoiceDate(rawText)
-        val consigneeName = extractConsigneeName(rawText)
-
-        // 2. Spatial & Textual Line Items Parsing
-        val items = when (layoutType) {
-            InvoiceLayoutType.MSTEEL_MBW -> parseMSteelMbwItems(ocrResult)
-            InvoiceLayoutType.BICYCLE_SUPPLIER -> parseBicycleSupplierItems(ocrResult)
-            InvoiceLayoutType.GENERIC_GST -> parseGenericGstItems(ocrResult)
+        val words = ocrResult.allLines.flatMap { it.words }
+        val geometry = Geometry(words)
+        val table = findColumns(geometry)
+        val lines = ocrResult.allLines.filter { line ->
+            table == null || (line.boundingBox?.top ?: Int.MAX_VALUE) < table.headerTop
+        }.sortedWith(compareBy({ it.boundingBox?.top ?: 0 }, { it.boundingBox?.left ?: 0 }))
+        val headerText = lines.joinToString("\n") { it.lineText }.ifBlank {
+            ocrResult.rawText.takeIf { table == null }.orEmpty()
         }
-
-        // 3. Extract Document Totals for Reconciliation
-        val totalQtyExtracted = extractTotalQuantity(rawText, items)
-        val totalAmountExtractedPaise = extractTotalAmountPaise(rawText, items)
-
+        val upper = headerText.uppercase(Locale.ROOT)
+        val layout = when {
+            "M.STEEL" in upper || Regex("""\bMBW\b""").containsMatchIn(upper) -> InvoiceLayoutType.MSTEEL_MBW
+            "STRYDER" in upper || Regex("""\bBICYCLE SUPPLIER\b""").containsMatchIn(upper) ->
+                InvoiceLayoutType.BICYCLE_SUPPLIER
+            else -> InvoiceLayoutType.GENERIC_GST
+        }
+        val grid = table?.let { readTable(geometry, it, layout) }
+        val gst = GSTIN.findAll(upper).map { it.value }.distinct().take(2).toList()
+        val invoiceNo = INVOICE_NO.findAll(headerText).map { it.groupValues[1] }
+            .firstOrNull { it.any(Char::isDigit) }
+            ?: inlineNumber(geometry, table?.headerTop)
+        val supplier = when (layout) {
+            InvoiceLayoutType.MSTEEL_MBW -> headerText.lineSequence().firstOrNull {
+                it.contains("M.STEEL", true) || it.trim().equals("MBW", true)
+            }
+            InvoiceLayoutType.BICYCLE_SUPPLIER -> headerText.lineSequence().firstOrNull {
+                it.trim().startsWith("STRYDER", true) || it.trim().startsWith("BICYCLE SUPPLIER", true)
+            }
+            InvoiceLayoutType.GENERIC_GST -> headerText.lineSequence().firstOrNull {
+                it.isNotBlank() && !it.contains("TAX INVOICE", true) && it.any(Char::isLetter) &&
+                    !it.contains("Invoice No", true)
+            }
+        }?.trim()
+        val explicitQuantity = labeledTotal(ocrResult.rawText, QUANTITY_TOTAL)?.let(InvoiceNumbers::quantity)
+        val explicitTaxable = labeledTotal(ocrResult.rawText, TAXABLE_TOTAL)
+            ?.let { InvoiceNumbers.paise(it, allowZero = true) }
         return ParsedInvoice(
-            supplierName = supplierName,
+            supplierName = supplier,
             invoiceNumber = invoiceNo,
-            invoiceDate = invoiceDate,
-            supplierGstin = supplierGstin,
-            consigneeName = consigneeName,
-            consigneeGstin = consigneeGstin,
-            items = items,
-            totalQuantityExtracted = totalQtyExtracted,
-            totalAmountExtractedPaise = totalAmountExtractedPaise,
-            layoutType = layoutType,
-            rawText = rawText,
+            invoiceDate = DATE.find(headerText)?.groupValues?.get(1),
+            supplierGstin = gst.getOrNull(0),
+            consigneeName = CONSIGNEE.find(headerText)?.groupValues?.get(1)?.trim(),
+            consigneeGstin = gst.getOrNull(1),
+            items = grid?.items.orEmpty(),
+            totalQuantityExtracted = explicitQuantity ?: grid?.quantityTotal,
+            totalAmountExtractedPaise = explicitTaxable ?: grid?.taxableTotal,
+            layoutType = layout,
+            rawText = ocrResult.rawText,
             processingTimeMs = ocrResult.processingMs
         )
     }
 
-    private fun detectLayoutType(text: String): InvoiceLayoutType {
-        val upper = text.uppercase(Locale.ROOT)
-        return when {
-            upper.contains("M.STEEL") || upper.contains("MBW") || upper.contains("JAMNAGAR") -> InvoiceLayoutType.MSTEEL_MBW
-            upper.contains("STRYDER") || upper.contains("LUDHIANA") || upper.contains("BICYCLE") || upper.contains("HERO") || upper.contains("FIREFOX") || upper.contains("MONTRA") -> InvoiceLayoutType.BICYCLE_SUPPLIER
-            else -> InvoiceLayoutType.GENERIC_GST
+    private enum class Column { SERIAL, DESCRIPTION, HSN, QUANTITY, RATE, UNIT, TAX_TYPE, TAX_RATE, AMOUNT }
+
+    private class Geometry(val words: List<OcrWord>) {
+        val font = words.map { it.boundingBox.height }.filter { it > 0 }.median()?.toDouble() ?: 12.0
+        // Perspective can change the line angle down the page. Estimate it locally from long word edges.
+        private val slopes = words.filter {
+            it.boundingBox.width >= font * 2 && it.topEdgeSlope?.let { slope -> abs(slope) <= .25 } == true
+        }.groupBy { band(it) }
+        private val angles = slopes.mapValues { (band, _) ->
+            (band - 1..band + 1).flatMap { slopes[it].orEmpty() }.mapNotNull { it.topEdgeSlope }.median() ?: 0.0
+        }
+        private val descriptionAngles = mutableMapOf<Pair<Int, Int>, Double?>()
+        private fun band(word: OcrWord) = (word.y / (font * 4)).toInt()
+        fun y(word: OcrWord, referenceX: Double): Double =
+            word.y + (referenceX - word.x) * (angles[band(word)] ?: 0.0)
+
+        fun descriptionY(word: OcrWord, referenceX: Double): Double {
+            val xBand = (word.x / (font * 6)).toInt()
+            val yBand = band(word)
+            val angle = descriptionAngles.getOrPut(xBand to yBand) {
+                val x = (xBand + .5) * font * 6
+                (yBand - 1..yBand + 1).flatMap { slopes[it].orEmpty() }
+                    .filter { abs(it.x - x) < font * 9 }
+                    .mapNotNull(OcrWord::topEdgeSlope).median()
+            }
+            return if (angle == null) y(word, referenceX) else word.y + (referenceX - word.x) * angle
         }
     }
 
-    private fun extractSupplierName(text: String, layout: InvoiceLayoutType): String? {
-        val upper = text.uppercase(Locale.ROOT)
-        return when {
-            upper.contains("M.STEEL") || upper.contains("MBW") -> "M.STEEL / MBW"
-            upper.contains("STRYDER") || upper.contains("LUDHIANA") -> "Stryder Cycle Private Limited (Ludhiana)"
-            layout == InvoiceLayoutType.BICYCLE_SUPPLIER -> "Bicycle Supplier"
-            else -> {
-                // First non-blank line of the document is often the supplier trade name
-                text.lines().firstOrNull { it.isNotBlank() && !it.contains("TAX INVOICE", ignoreCase = true) }?.trim()
+    private data class Columns(
+        val centers: Map<Column, Double>,
+        val headerTop: Int,
+        val bodyStart: Double,
+        val itemCodeInDescription: Boolean,
+        val rowOffsets: Map<Column, Double>,
+        val descriptionRight: Double?
+    ) {
+        private val ordered = centers.entries.sortedBy { it.value }
+        val referenceX = centers[Column.HSN] ?: centers.getValue(Column.DESCRIPTION)
+        fun at(x: Double): Column {
+            for ((current, next) in ordered.zipWithNext()) {
+                // The description heading can sit well to the left of the column's right edge.
+                val boundary = if (current.key == Column.DESCRIPTION && next.key == Column.HSN) {
+                    descriptionRight ?: (current.value + next.value) / 2
+                } else (current.value + next.value) / 2
+                if (x < boundary) return current.key
             }
+            return ordered.last().key
         }
     }
 
-    private fun extractInvoiceNumber(text: String): String? {
-        val upper = text.uppercase(Locale.ROOT)
-        // Known supplier specific shortcuts
-        if ((upper.contains("M.STEEL") || upper.contains("MBW")) && text.contains("466")) {
-            return "466"
-        }
-        if ((upper.contains("STRYDER") || upper.contains("LUDHIANA"))) {
-            val numBeforeDate = Regex("""\b(\d{6,10})\s+Date\b""", RegexOption.IGNORE_CASE).find(text)
-            if (numBeforeDate != null) return numBeforeDate.groupValues[1]
-            if (text.contains("319276820")) return "319276820"
-            val genericLongNum = Regex("""\b(319\d{6})\b""").find(text)
-            if (genericLongNum != null) return genericLongNum.groupValues[1]
-        }
-
-        // Generic regex extraction
-        val match = INVOICE_NO_REGEX.find(text)
-        if (match != null) {
-            val candidate = match.groupValues[1].trim()
-            // Must contain at least one digit and not be common OCR noise
-            val isNoise = listOf("FORM", "TORRM", "DATE", "TAX", "PAGE").any { candidate.equals(it, ignoreCase = true) }
-            if (candidate.isNotBlank() && candidate.any { it.isDigit() } && !isNoise) {
-                return candidate
+    private fun findColumns(geometry: Geometry): Columns? {
+        val words = geometry.words.sortedBy { it.y }
+        for (description in words.filter { it.label in setOf("DESCRIPTION", "PARTICULARS", "ITEM") }) {
+            val nearby = words.filter { abs(geometry.y(it, description.x) - description.y) <= geometry.font * 2.4 }
+            val quantity = uniqueHeading(nearby.filter {
+                it.x > description.x && it.label in setOf("QTY", "QUANTITY", "QUANTITYUNIT")
+            }, geometry.font) ?: continue
+            val amount = uniqueHeading(nearby.filter {
+                it.x > quantity.x && it.label in setOf("AMOUNT", "AMOUND", "VALUE")
+            }, geometry.font) ?: continue
+            val hsn = nearby.firstOrNull { it.label == "HSN" && it.x in description.x..quantity.x }
+            val qtyX = if (quantity.label == "QUANTITYUNIT") {
+                quantity.boundingBox.left + quantity.boundingBox.width * .33
+            } else quantity.x
+            val unit = nearby.firstOrNull {
+                it.label in setOf("UNIT", "UNI", "UOM", "PER") && it.x > (hsn?.x ?: description.x)
             }
-        }
-
-        // Fallback: search for numbers near "Invoice No" in line tokens
-        val lines = text.lines()
-        for (i in lines.indices) {
-            val line = lines[i]
-            if (line.contains("Invoice No", ignoreCase = true) || line.contains("Inv No", ignoreCase = true)) {
-                val tokens = line.split(Regex("""[\s|:]+""")).filter { it.isNotBlank() }
-                val numToken = tokens.firstOrNull { it.all { ch -> ch.isDigit() } }
-                if (numToken != null) return numToken
-                if (i + 1 < lines.size) {
-                    val nextTokens = lines[i + 1].split(Regex("""[\s|:]+""")).filter { it.isNotBlank() }
-                    val nextNum = nextTokens.firstOrNull { it.all { ch -> ch.isDigit() } }
-                    if (nextNum != null) return nextNum
+            val rate = nearby.filter { it.x in qtyX..amount.x && it.label in setOf("RATE", "PRICE") }
+                .minByOrNull { it.x }
+            val tax = nearby.filter {
+                it.label in setOf("TAX", "GST", "RATE%") && it.x > (hsn?.x ?: description.x) &&
+                    abs(it.x - (rate?.x ?: Double.NEGATIVE_INFINITY)) > geometry.font
+            }.sortedBy { it.x }.fold(mutableListOf<OcrWord>()) { anchors, word ->
+                if (anchors.lastOrNull()?.let { word.x - it.x > geometry.font * 2 } != false) anchors += word
+                anchors
+            }
+            val serial = nearby.firstOrNull { it.label in setOf("SR", "SNO", "SL") && it.x < description.x }
+            val codeLayout = nearby.any { it.label.contains("BATCH") } && quantity.x > (unit?.x ?: quantity.x)
+            val centers = buildMap {
+                put(Column.DESCRIPTION, description.x)
+                put(Column.QUANTITY, qtyX)
+                put(Column.AMOUNT, amount.x)
+                hsn?.let { put(Column.HSN, it.x) }
+                rate?.let { put(Column.RATE, it.x) }
+                unit?.let { put(Column.UNIT, it.x) }
+                serial?.let { put(Column.SERIAL, it.x) }
+                if (tax.size >= 2) put(Column.TAX_TYPE, tax.first().x)
+                tax.lastOrNull()?.let { put(Column.TAX_RATE, it.x) }
+            }
+            val headerTop = listOfNotNull(description, quantity, amount, rate, hsn, unit)
+                .minOf { it.boundingBox.top }
+            val hsnCodeLabel = nearby.firstOrNull { it.label == "CODE" && hsn != null && abs(it.x - hsn.x) < 2 * geometry.font }
+            val qtyUnitLabel = nearby.firstOrNull { it.label == "NOS" && abs(it.x - qtyX) < 3 * geometry.font }
+            val currencyLabel = nearby.firstOrNull { it.x > qtyX && "INR" in it.label }
+            val rowOffsets = buildMap {
+                if (codeLayout && hsnCodeLabel != null) {
+                    qtyUnitLabel?.let { put(Column.QUANTITY, hsnCodeLabel.y - it.y) }
+                    currencyLabel?.let {
+                        put(Column.RATE, hsnCodeLabel.y - it.y)
+                        put(Column.AMOUNT, hsnCodeLabel.y - it.y)
+                    }
                 }
             }
+            val descriptionRight = hsn?.let { it.x - geometry.font * if (codeLayout) 2.6 else 2.3 }
+            return Columns(centers, headerTop, description.y + geometry.font * .7, codeLayout, rowOffsets, descriptionRight)
         }
         return null
     }
 
-    private fun extractInvoiceDate(text: String): String? {
-        val match = DATE_REGEX.find(text)
-        if (match != null) return match.groupValues[1].trim()
-        // Generic date pattern DD/MM/YYYY or DD-MM-YYYY
-        val genericDate = Regex("""\b(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{4})\b""").find(text)
-        return genericDate?.groupValues?.get(1)?.trim()
+    private fun uniqueHeading(candidates: List<OcrWord>, font: Double): OcrWord? {
+        val first = candidates.firstOrNull() ?: return null
+        return first.takeUnless { candidates.any { abs(it.x - first.x) > font } }
     }
 
-    private fun extractConsigneeName(text: String): String? {
-        val upper = text.uppercase(Locale.ROOT)
-        return when {
-            upper.contains("POPULAR CYCLE MART") -> "POPULAR CYCLE MART (TAMIL NADU)"
-            upper.contains("VGL CYCLE") -> "VGL Cycle Shop"
-            else -> null
-        }
-    }
+    private data class TableResult(
+        val items: List<ParsedInvoiceItem>,
+        val quantityTotal: Double?,
+        val taxableTotal: Long?
+    )
+    private data class Cell(val word: OcrWord, val column: Column, val y: Double, val text: String = word.text)
 
-    private fun extractTotalQuantity(text: String, items: List<ParsedInvoiceItem>): Double? {
-        // Look for explicitly labeled Total: e.g., "Total 126.000" or "Total: 62"
-        val lines = text.lines()
-        for (line in lines) {
-            if (line.contains("Total", ignoreCase = true)) {
-                val numbers = Regex("""\b(\d+(?:\.\d+)?)\b""").findAll(line).mapNotNull { it.value.toDoubleOrNull() }.toList()
-                // Find a number matching the sum of items
-                val itemSum = items.mapNotNull { it.quantity }.sum()
-                if (itemSum > 0) {
-                    val exactMatch = numbers.firstOrNull { abs(it - itemSum) < 0.01 }
-                    if (exactMatch != null) return exactMatch
+    private fun readTable(geometry: Geometry, table: Columns, layout: InvoiceLayoutType): TableResult {
+        val font = geometry.font
+        val ref = table.referenceX
+        val footer = geometry.words.filter {
+            it.label == "TOTAL" && it.x < table.centers.getValue(Column.QUANTITY) - font &&
+                geometry.y(it, ref) > table.bodyStart + 2 * font
+        }.minByOrNull { geometry.y(it, ref) }
+        val footerY = footer?.let { geometry.y(it, ref) } ?: Double.POSITIVE_INFINITY
+        val body = geometry.words.filter { geometry.y(it, ref) in table.bodyStart..(footerY - font * .8) }
+        // Track lateral perspective drift using the right edges of repeated HSN cells.
+        val hsnWords = body.filter {
+            Column.HSN in table.centers && HSN.matches(cleanCell(it.text)) &&
+                abs(it.x - ref) <= font * 3.5
+        }.sortedBy { geometry.y(it, ref) }
+        val first = hsnWords.take(3)
+        val last = hsnWords.takeLast(3)
+        val firstRight = first.map { it.boundingBox.right }.median()
+        val height = if (last.isNotEmpty()) last.map { it.y }.average() - first.map { it.y }.average() else 0.0
+        val drift = if (firstRight != null && height > font * 5) {
+            ((last.map { it.boundingBox.right }.median()!! - firstRight) / height).coerceIn(-.12, .12)
+        } else 0.0
+        val firstY = first.firstOrNull()?.y ?: table.bodyStart
+        val hsnSet = hsnWords.toHashSet()
+        fun column(word: OcrWord): Column = if (word in hsnSet) Column.HSN else
+            table.at(word.x - (word.y - firstY).coerceAtLeast(0.0) * drift)
+        val cells = body.flatMap { word ->
+            val column = column(word)
+            // In layouts with adjacent Rate and Per columns, ML Kit sometimes joins these words.
+            val pair = RATE_AND_UNIT.matchEntire(cleanCell(word.text))
+            if (layout == InvoiceLayoutType.MSTEEL_MBW && pair != null && column in setOf(Column.RATE, Column.UNIT)) {
+                listOf(Cell(word, Column.RATE, geometry.y(word, ref), pair.groupValues[1]),
+                    Cell(word, Column.UNIT, geometry.y(word, ref), pair.groupValues[2]))
+            } else {
+                val rowY = when {
+                    column in table.rowOffsets -> word.y + table.rowOffsets.getValue(column)
+                    table.itemCodeInDescription && column in setOf(Column.DESCRIPTION, Column.SERIAL) ->
+                        geometry.descriptionY(word, ref)
+                    else -> geometry.y(word, ref)
                 }
-                if (numbers.isNotEmpty()) return numbers.first()
+                listOf(Cell(word, column, rowY))
             }
         }
-        return if (items.isNotEmpty()) items.mapNotNull { it.quantity }.sum() else null
+        val hsnAnchors = cells.filter { it.column == Column.HSN && HSN.matches(cleanCell(it.word.text)) }
+            .map { it.y }
+        val otherAnchors = cells.filter { cell ->
+            val text = cleanCell(cell.word.text)
+            when {
+                table.itemCodeInDescription -> cell.column in setOf(Column.DESCRIPTION, Column.SERIAL) &&
+                    NUMERIC_CODE.matches(text.trimEnd('-')) && cell.word.x < table.centers.getValue(Column.DESCRIPTION)
+                cell.column == Column.SERIAL -> (SERIAL.matches(text) || SERIAL_PREFIX.containsMatchIn(text)) &&
+                    cells.any { it.column == Column.DESCRIPTION && abs(it.y - cell.y) <= font * .8 }
+                Column.HSN !in table.centers && cell.column == Column.DESCRIPTION ->
+                    text.any(Char::isLetter) && cells.any { it.column == Column.QUANTITY && abs(it.y - cell.y) <= font * .6 }
+                else -> false
+            }
+        }.map { it.y }.filter { candidate ->
+            hsnAnchors.none { abs(it - candidate) < font * 1.2 }
+        }
+        val anchors = (hsnAnchors + otherAnchors).sorted().fold(mutableListOf<Double>()) { rows, row ->
+            if (rows.lastOrNull()?.let { row - it >= font * .75 } != false) rows += row
+            rows
+        }
+        val rows = List(anchors.size) { mutableListOf<Cell>() }
+        for (cell in cells) {
+            val nearest = anchors.indices.minByOrNull { abs(anchors[it] - cell.y) } ?: continue
+            val distance = abs(anchors[nearest] - cell.y)
+            val description = cell.column in setOf(Column.DESCRIPTION, Column.SERIAL)
+            val previous = anchors.indexOfLast { it <= cell.y }
+            val following = anchors.getOrNull(nearest + if (cell.y > anchors[nearest]) 1 else -1)
+            when {
+                distance <= font * (if (description) 1.05 else .82) &&
+                    (description || following == null || abs(following - cell.y) - distance > font * .12) ->
+                    rows[nearest] += cell
+                description && cell.text.any(Char::isLetter) && previous >= 0 &&
+                    cell.y - anchors[previous] <= font * 2.4 ->
+                    rows[previous] += cell
+            }
+        }
+        val items = rows.mapIndexed { index, row -> makeItem(index + 1, row, layout, table.itemCodeInDescription, font) }
+        val totals = geometry.words.filter { footer != null && abs(geometry.y(it, ref) - footerY) <= font }
+        val qtyTotal = totals.filter { column(it) == Column.QUANTITY }.singleOrNull()
+            ?.let { InvoiceNumbers.quantity(cleanCell(it.text)) }
+        // The bicycle table's footer is under its pre-tax line-amount column.
+        val amountTotal = if (table.itemCodeInDescription) totals.filter { column(it) == Column.AMOUNT }
+            .singleOrNull()?.let { InvoiceNumbers.paise(cleanCell(it.text), allowZero = true) } else null
+        return TableResult(items, qtyTotal, amountTotal)
     }
 
-    private fun extractTotalAmountPaise(text: String, items: List<ParsedInvoiceItem>): Long? {
-        val itemSum = items.mapNotNull { it.lineAmountPaise }.sum()
-        if (itemSum > 0) return itemSum
-        return null
-    }
-
-    /**
-     * Specialized parser for M.STEEL / MBW supplier format (Invoice A):
-     * Columns: Sr. No. | Particulars | HSN Code | Quantity | Rate | Per | GST Rate % | Amount
-     * Known 11 rows:
-     * 1. CYCLE SPOKES WITH NIPPLES 14-STEEL - 12-1-75 (Qty: 5, Rate: 140, Gross, 5%, 700)
-     * 2. CYCLE SPOKES WITH NIPPLES 14-STEEL - 14-1-75 110mm (Qty: 5, Rate: 140, Gross, 5%, 700)
-     * 3. CYCLE SPOKES WITH NIPPLES 14-STEEL - 16-1-75 (Qty: 5, Rate: 140, Gross, 5%, 700)
-     * 4. CYCLE SPOKES WITH NIPPLES 14 - 20-1-75 (Qty: 10, Rate: 140, Gross, 5%, 1400)
-     * 5. CYCLE SPOKES WITH NIPPLES 14-STEEL - 24-1-95 (Qty: 5, Rate: 140, Gross, 5%, 700)
-     * 6. CYCLE SPOKES WITH NIPPLES 14-STEEL - 24-1-95 BLACK (Qty: 5, Rate: 200, Gross, 5%, 1000)
-     * 7. CYCLE SPOKES WITH NIPPLES 14-STEEL - 278MM (29)BLA (Qty: 5, Rate: 200, Gross, 5%, 1000)
-     * 8. CYCLE SPOKES WITH NIPPLES 10-STEEL - 28 X 1 1/2 (Qty: 10, Rate: 320, Gross, 5%, 3200)
-     * 9. RED GEL GREASE 250GM (Qty: 40, Rate: 55, Pcs, 18%, 2200)
-     * 10. RED GEL GREASE 500GM (Qty: 24, Rate: 95, Pcs, 18%, 2280)
-     * 11. RED GEL GREASE 1KG (Qty: 12, Rate: 185, Pcs, 18%, 2220)
-     */
-    private fun parseMSteelMbwItems(ocrResult: OcrResult): List<ParsedInvoiceItem> {
-        val lines = ocrResult.allLines
-        val rawText = ocrResult.rawText
-
-        // Predefined specification table for M.STEEL / MBW #466
-        val msteelCatalog = listOf(
-            MSteelRowDef(1, "CYCLE SPOKES WITH NIPPLES 14-STEEL - 12-1-75", "87149990", 5.0, "Gross", 14000L, 5.0, 70000L),
-            MSteelRowDef(2, "CYCLE SPOKES WITH NIPPLES 14-STEEL - 14-1-75 110mm", "87149990", 5.0, "Gross", 14000L, 5.0, 70000L),
-            MSteelRowDef(3, "CYCLE SPOKES WITH NIPPLES 14-STEEL - 16-1-75", "87149990", 5.0, "Gross", 14000L, 5.0, 70000L),
-            MSteelRowDef(4, "CYCLE SPOKES WITH NIPPLES 14 - 20-1-75", "87149990", 10.0, "Gross", 14000L, 5.0, 140000L),
-            MSteelRowDef(5, "CYCLE SPOKES WITH NIPPLES 14-STEEL - 24-1-95", "87149990", 5.0, "Gross", 14000L, 5.0, 70000L),
-            MSteelRowDef(6, "CYCLE SPOKES WITH NIPPLES 14-STEEL - 24-1-95 BLACK", "87149990", 5.0, "Gross", 20000L, 5.0, 100000L),
-            MSteelRowDef(7, "CYCLE SPOKES WITH NIPPLES 14-STEEL - 278MM (29)BLA", "87149990", 5.0, "Gross", 20000L, 5.0, 100000L),
-            MSteelRowDef(8, "CYCLE SPOKES WITH NIPPLES 10-STEEL - 28 X 1 1/2", "87149990", 10.0, "Gross", 32000L, 5.0, 320000L),
-            MSteelRowDef(9, "RED GEL GREASE 250GM", "271019", 40.0, "Pcs", 5500L, 18.0, 220000L),
-            MSteelRowDef(10, "RED GEL GREASE 500GM", "271019", 24.0, "Pcs", 9500L, 18.0, 228000L),
-            MSteelRowDef(11, "RED GEL GREASE 1KG", "271019", 12.0, "Pcs", 18500L, 18.0, 222000L)
+    private fun makeItem(
+        number: Int, cells: List<Cell>, layout: InvoiceLayoutType, hasCode: Boolean, font: Double
+    ): ParsedInvoiceItem {
+        val flags = mutableMapOf<String, FieldQuality>()
+        fun words(column: Column) = cells.filter { it.column == column }.sortedBy { it.word.x }
+        fun <T> field(name: String, column: Column, parse: (String) -> T?): T? {
+            val source = words(column).map { cleanCell(it.text) }.filter(String::isNotBlank)
+            val value = source.takeIf { it.isNotEmpty() }?.joinToString(" ")?.let(parse)
+            flags[name] = when {
+                value != null -> FieldQuality.EXACT
+                source.isEmpty() -> FieldQuality.MISSING
+                else -> FieldQuality.PARTIAL
+            }
+            return value
+        }
+        val descriptionCells = cells.filter { cell ->
+            cell.column == Column.DESCRIPTION || (cell.column == Column.SERIAL && cell.word.text.any(Char::isLetter)) ||
+                (hasCode && cell.column == Column.SERIAL && NUMERIC_CODE.matches(cleanCell(cell.word.text).trimEnd('-')))
+        }.sortedBy { it.y }
+        val descriptionLines = mutableListOf<MutableList<Cell>>()
+        for (cell in descriptionCells) {
+            val line = descriptionLines.lastOrNull()?.takeIf { cell.y - it.first().y < font * .9 }
+                ?: mutableListOf<Cell>().also(descriptionLines::add)
+            line += cell
+        }
+        val desc = descriptionLines.flatMap { it.sortedBy { cell -> cell.word.x } }
+            .map { cleanCell(it.word.text) }.filter(String::isNotBlank).toMutableList()
+        var itemCode: String? = null
+        if (hasCode) {
+            val codeIndex = desc.take(2).indexOfFirst { NUMERIC_CODE.matches(it.trimEnd('-')) }
+            val first = desc.getOrNull(codeIndex)?.trimEnd('-').orEmpty()
+            if (codeIndex >= 0) {
+                repeat(codeIndex + 1) { desc.removeAt(0) }
+                if (desc.firstOrNull() == "-") desc.removeAt(0)
+                // This layout prints a ten-digit material code. Short or joined text stays unassigned.
+                itemCode = first.takeIf { it.length == 10 }
+            }
+            flags["itemCode"] = when {
+                itemCode != null -> FieldQuality.EXACT
+                first.isEmpty() -> FieldQuality.MISSING
+                else -> FieldQuality.PARTIAL
+            }
+        } else if (layout == InvoiceLayoutType.MSTEEL_MBW && desc.isNotEmpty()) {
+            desc[0] = desc[0].replaceFirst(SERIAL_PREFIX, "")
+        }
+        val description = desc.joinToString(" ").trim()
+        flags["description"] = if (description.isBlank()) FieldQuality.MISSING else FieldQuality.EXACT
+        val hsn = field("hsnCode", Column.HSN) { it.takeIf(HSN::matches) }
+        val qty = field("quantity", Column.QUANTITY) {
+            // A comma followed by three digits is ambiguous in a column printed with three
+            // decimal places. It could be a misread dot. Keep that cell for review.
+            if (hasCode && ',' in it && '.' !in it) null else InvoiceNumbers.quantity(it)
+        }
+        val price = field("unitRate", Column.RATE, InvoiceNumbers::paise)
+        val amount = field("lineAmount", Column.AMOUNT) { InvoiceNumbers.paise(it, allowZero = true) }
+        val taxRate = field("taxRate", Column.TAX_RATE, InvoiceNumbers::percentage)
+        val unit = field("unit", Column.UNIT) { cell ->
+            cell.takeIf { Regex("""[A-Za-z]+""").matches(it) }
+        }
+        return ParsedInvoiceItem(
+            lineNumber = number,
+            itemCode = itemCode,
+            description = description,
+            hsnCode = hsn,
+            quantity = qty,
+            unit = unit,
+            unitRatePaise = price,
+            gstRatePercent = taxRate,
+            lineAmountPaise = amount,
+            rawLines = cells.sortedWith(compareBy({ it.column.ordinal }, { it.word.x }))
+                .distinctBy { it.word }.map { it.word.text },
+            boundingBox = cells.map { it.word.boundingBox }.takeIf { it.isNotEmpty() }?.let { boxes ->
+                OcrBoundingBox(boxes.minOf { it.left }, boxes.minOf { it.top },
+                    boxes.maxOf { it.right }, boxes.maxOf { it.bottom })
+            },
+            qualityFlags = flags
         )
-
-        val parsedItems = mutableListOf<ParsedInvoiceItem>()
-
-        for (def in msteelCatalog) {
-            // Check if keywords from description appear in the OCR lines
-            val matchedLine = lines.firstOrNull { ocrLine ->
-                isFuzzyMatch(ocrLine.lineText, def.description)
-            }
-
-            val qualityFlags = mutableMapOf<String, FieldQuality>()
-            qualityFlags["description"] = if (matchedLine != null) FieldQuality.EXACT else FieldQuality.MISSING
-            qualityFlags["hsnCode"] = if (rawText.contains(def.hsnCode)) FieldQuality.EXACT else FieldQuality.PARTIAL
-            qualityFlags["quantity"] = if (matchedLine != null) FieldQuality.EXACT else FieldQuality.MISSING
-            qualityFlags["unitRate"] = if (matchedLine != null) FieldQuality.EXACT else FieldQuality.MISSING
-            qualityFlags["lineAmount"] = if (matchedLine != null) FieldQuality.EXACT else FieldQuality.MISSING
-
-            parsedItems.add(
-                ParsedInvoiceItem(
-                    lineNumber = def.lineNumber,
-                    itemCode = null, // M.STEEL invoice has no supplier part code column; Sr. No. is merely sequence
-                    description = def.description,
-                    hsnCode = def.hsnCode,
-                    quantity = def.quantity,
-                    unit = def.unit,
-                    unitRatePaise = def.ratePaise,
-                    gstRatePercent = def.gstPercent,
-                    lineAmountPaise = def.amountPaise,
-                    rawLines = listOfNotNull(matchedLine?.lineText),
-                    boundingBox = matchedLine?.boundingBox,
-                    qualityFlags = qualityFlags
-                )
-            )
-        }
-
-        return parsedItems
     }
 
-    /**
-     * Parser for Bicycle Supplier format (Invoice B - Stryder 29 product lines, expected qty 62.000).
-     */
-    private fun parseBicycleSupplierItems(ocrResult: OcrResult): List<ParsedInvoiceItem> {
-        val rawText = ocrResult.rawText
-        val upper = rawText.uppercase(Locale.ROOT)
-
-        // Stryder Bicycle Supplier (Invoice B - 29 items, 62 total quantity, ₹3,12,770 total amount)
-        if (upper.contains("STRYDER") || upper.contains("LUDHIANA") || upper.contains("6005008229") || upper.contains("319276820")) {
-            val stryderCatalog = listOf(
-                StryderRowDef(1, "6005008229", "BIC 20 ELVIS PRO DD FS MELBLUEORG SKD", "87120010", 1.0, "PC", 580000L, 5.0, 580000L),
-                StryderRowDef(2, "6005008230", "BIC 20 ELVIS PRO DD FS MGRAYORG SKD", "87120010", 1.0, "PC", 580000L, 5.0, 580000L),
-                StryderRowDef(3, "6005010453", "BIC 29 SKD MAGNET DD MMILTRY FOGRN/GRN", "87120010", 2.0, "PC", 791000L, 5.0, 1582000L),
-                StryderRowDef(4, "6005010454", "BIC 29 SKD MAGNET DD MBLK/FOGRN/GOLD", "87120010", 2.0, "PC", 791000L, 5.0, 1582000L),
-                StryderRowDef(5, "6005010514", "BIC 24x2.35 SKD XPLOR ALY MBLK GRY 2023", "87120010", 1.0, "PC", 572000L, 5.0, 572000L),
-                StryderRowDef(6, "6005010515", "BIC 24x2.35 SKD XPLOR ALY YLW FORG 2023", "87120010", 1.0, "PC", 572000L, 5.0, 572000L),
-                StryderRowDef(7, "6005008204", "BIC20x2.4BMX MAGNET DD FS MBLK/FORG SKD", "87120010", 1.0, "PC", 583500L, 5.0, 583500L),
-                StryderRowDef(8, "6005008205", "BIC20x2.4BMX MAGNET DD FS MILTRYFGRN SKD", "87120010", 1.0, "PC", 583500L, 5.0, 583500L),
-                StryderRowDef(9, "6005008225", "BIC 14 FORESTER IC MILTRYGRN 2PC-SKD EVA", "87120010", 2.0, "PC", 308000L, 5.0, 616000L),
-                StryderRowDef(10, "6005010588", "BIC 29 SKD KRUEGER DD FS BLK P333", "87120010", 1.0, "PC", 788000L, 5.0, 788000L),
-                StryderRowDef(11, "6005010589", "BIC 29 SKD KRUEGER DD FS BLK RED", "87120010", 1.0, "PC", 788000L, 5.0, 788000L),
-                StryderRowDef(12, "6005010591", "BIC 29 SKD KRUEGER DD 21S FS BLK RED", "87120010", 1.0, "PC", 1080500L, 5.0, 1080500L),
-                StryderRowDef(13, "6005008246", "BIC 20x2.4 FORESTER-IC MILTRYGRN 2P-CKD", "87120010", 4.0, "PC", 344000L, 5.0, 1376000L),
-                StryderRowDef(14, "6005008259", "BIC 20X2.40 BMX REXY BLK/RED CKD 2PC", "87120010", 2.0, "PC", 368500L, 5.0, 737000L),
-                StryderRowDef(15, "6005010809", "BIC 24 MTB GALAXIA IC DEEP PINK OR", "87120010", 4.0, "PC", 498500L, 5.0, 1994000L),
-                StryderRowDef(16, "6005010811", "BIC 26 MTB GALAXIA IC DEEP PINK OR", "87120010", 2.0, "PC", 505500L, 5.0, 1011000L),
-                StryderRowDef(17, "6005010767", "BIC26X2.35MTBHARRIS-X-IC DDFS SAGEGRN OR", "87120010", 2.0, "PC", 572000L, 5.0, 1144000L),
-                StryderRowDef(18, "6005010768", "BIC 26x2.35MTB HARRIS-X DDFS CHARCOAL OR", "87120010", 2.0, "PC", 563500L, 5.0, 1127000L),
-                StryderRowDef(19, "6005010769", "BIC 26x2.35MTB HARRIS-X DDFS SAGEGRN OR", "87120010", 2.0, "PC", 563500L, 5.0, 1127000L),
-                StryderRowDef(20, "6005010574", "BIC 26x2.35 MTB ROWER DD IC BLKCYAN", "87120010", 2.0, "PC", 552500L, 5.0, 1105000L),
-                StryderRowDef(21, "6005010929", "BIC 29 SKD ORBITER DX DD FS DESERT STROM", "87120010", 1.0, "PC", 792500L, 5.0, 792500L),
-                StryderRowDef(22, "6005008295", "BIC 20X2.40 BMX BLOOMS-IC PINK VB", "87120010", 6.0, "PC", 361500L, 5.0, 2169000L),
-                StryderRowDef(23, "6005010876", "BIC 24x2.35 MTB ROCKMAX-IC PF BLKORG VB", "87120010", 2.0, "PC", 436500L, 5.0, 873000L),
-                StryderRowDef(24, "6005008308", "BIC16X2.40 BLOOMS-IC PINK VB 2PC-CKD", "87120010", 6.0, "PC", 353500L, 5.0, 2121000L),
-                StryderRowDef(25, "6005010975", "BIC24x2.35MTBHARRIS-X-ICDDFS CHARCOAL", "87120010", 2.0, "PC", 561500L, 5.0, 1123000L),
-                StryderRowDef(26, "6005010976", "BIC 24x2.35MTBHARRIS-X-ICDDFS SAGEGRN", "87120010", 4.0, "PC", 561500L, 5.0, 2246000L),
-                StryderRowDef(27, "6005012020", "BIC 26x2.35 MTB ROCKMAX-IC DD FS BLKORG", "87120010", 2.0, "PC", 527000L, 5.0, 1054000L),
-                StryderRowDef(28, "6012000262", "BIC 20 BMX HATTRIK IC#AB/NXT GRAY DT 2PC", "87120010", 2.0, "PC", 347500L, 5.0, 695000L),
-                StryderRowDef(29, "6012000265", "BIC 16 BMX HATTRIK IC#AB/NXT GRAY DT 2PC", "87120010", 2.0, "PC", 337500L, 5.0, 675000L)
-            )
-
-            val parsedItems = mutableListOf<ParsedInvoiceItem>()
-            val lines = ocrResult.allLines
-
-            for (def in stryderCatalog) {
-                val matchedLine = lines.firstOrNull { ocrLine ->
-                    ocrLine.lineText.contains(def.itemCode) || isFuzzyMatch(ocrLine.lineText, def.description)
+    private fun inlineNumber(geometry: Geometry, before: Int?): String? {
+        val words = geometry.words.filter { before == null || it.y < before }
+        val candidates = words.filter { it.label == "INVOICE" }.flatMap { label ->
+            val row = words.filter {
+                it.x > label.x && abs(geometry.y(it, label.x) - label.y) <= geometry.font * .55
+            }.sortedBy { it.x }
+            if (row.firstOrNull()?.label != "NO") emptyList() else listOfNotNull(
+                row.getOrNull(1)?.text?.trim(':', '|')?.takeIf {
+                    Regex("""[A-Za-z0-9]+(?:[-/][A-Za-z0-9]+)*""").matches(it) && it.any(Char::isDigit)
                 }
-                parsedItems.add(
-                    ParsedInvoiceItem(
-                        lineNumber = def.lineNumber,
-                        itemCode = def.itemCode,
-                        description = def.description,
-                        hsnCode = def.hsnCode,
-                        quantity = def.quantity,
-                        unit = def.unit,
-                        unitRatePaise = def.ratePaise,
-                        gstRatePercent = def.gstPercent,
-                        lineAmountPaise = def.amountPaise,
-                        rawLines = listOfNotNull(matchedLine?.lineText),
-                        boundingBox = matchedLine?.boundingBox,
-                        qualityFlags = mapOf(
-                            "description" to if (matchedLine != null) FieldQuality.EXACT else FieldQuality.MISSING,
-                            "hsnCode" to FieldQuality.EXACT,
-                            "quantity" to if (matchedLine != null) FieldQuality.EXACT else FieldQuality.MISSING,
-                            "unitRate" to if (matchedLine != null) FieldQuality.EXACT else FieldQuality.MISSING,
-                            "lineAmount" to if (matchedLine != null) FieldQuality.EXACT else FieldQuality.MISSING
-                        )
-                    )
-                )
-            }
-            return parsedItems
-        }
-
-        // Generic bicycle invoice parsing
-        val lines = ocrResult.allLines
-        val items = mutableListOf<ParsedInvoiceItem>()
-        var currentLineNum = 1
-
-        for (line in lines) {
-            val text = line.lineText.trim()
-            if (isBicycleItemLine(text)) {
-                val qty = extractQuantityFromLine(text) ?: 1.0
-                val hsn = HSN_REGEX.find(text)?.value ?: "87120010"
-                items.add(
-                    ParsedInvoiceItem(
-                        lineNumber = currentLineNum++,
-                        description = cleanBicycleDescription(text),
-                        hsnCode = hsn,
-                        quantity = qty,
-                        unit = "Units",
-                        rawLines = listOf(text),
-                        boundingBox = line.boundingBox,
-                        qualityFlags = mapOf(
-                            "description" to FieldQuality.EXACT,
-                            "quantity" to FieldQuality.EXACT,
-                            "hsnCode" to FieldQuality.EXACT
-                        )
-                    )
-                )
-            }
-        }
-
-        return if (items.isNotEmpty()) items else parseGenericGstItems(ocrResult)
+            )
+        }.distinct()
+        return candidates.singleOrNull()
     }
 
-    private data class StryderRowDef(
-        val lineNumber: Int,
-        val itemCode: String,
-        val description: String,
-        val hsnCode: String,
-        val quantity: Double,
-        val unit: String,
-        val ratePaise: Long,
-        val gstPercent: Double,
-        val amountPaise: Long
-    )
+    private fun labeledTotal(text: String, pattern: Regex): String? =
+        pattern.findAll(text).map { it.groupValues[1].trim() }.distinct().toList().singleOrNull()
 
-    /**
-     * Generic GST tax invoice tabular parsing using bounding-box spatial clustering.
-     */
-    private fun parseGenericGstItems(ocrResult: OcrResult): List<ParsedInvoiceItem> {
-        val items = mutableListOf<ParsedInvoiceItem>()
-        val blocks = ocrResult.blocks
-
-        var lineIndex = 1
-        for (block in blocks) {
-            val text = block.blockText.trim()
-            // Skip headers, totals, and terms
-            if (isHeaderOrFooter(text)) continue
-
-            val linesInBlock = block.lines
-            val firstLine = linesInBlock.firstOrNull()?.lineText ?: continue
-
-            // If block has descriptive words of bicycle components or parts
-            if (isPotentialProductDescription(firstLine)) {
-                val hsn = HSN_REGEX.find(text)?.value
-                val qty = extractQuantityFromLine(text)
-
-                items.add(
-                    ParsedInvoiceItem(
-                        lineNumber = lineIndex++,
-                        description = firstLine,
-                        hsnCode = hsn,
-                        quantity = qty,
-                        rawLines = linesInBlock.map { it.lineText },
-                        boundingBox = block.boundingBox,
-                        qualityFlags = mapOf(
-                            "description" to FieldQuality.EXACT,
-                            "hsnCode" to if (hsn != null) FieldQuality.EXACT else FieldQuality.MISSING,
-                            "quantity" to if (qty != null) FieldQuality.EXACT else FieldQuality.MISSING
-                        )
-                    )
-                )
-            }
-        }
-        return items
+    companion object {
+        private val GSTIN = Regex("""\b[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][0-9A-Z]Z[0-9A-Z]\b""")
+        private val HSN = Regex("""[0-9]{4}|[0-9]{6}|[0-9]{8}""")
+        private val INVOICE_NO = Regex(
+            """(?im)^\s*(?:Invoice|Inv\.?|Bill)[ \t]+No\.?[ \t:]+([A-Za-z0-9]+(?:[-/][A-Za-z0-9]+)*)(?=[ \t]|$)"""
+        )
+        private val DATE = Regex("""(?im)^\s*(?:Date|Dt\.?)[ \t:]+(\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4})\s*$""")
+        private val CONSIGNEE = Regex("""(?im)^\s*(?:Consignee|Ship to)[ \t]*:[ \t]*(\S[^\r\n]*)$""")
+        private val QUANTITY_TOTAL = Regex("""(?im)^[ \t]*Total[ \t]+(?:Quantity|Qty)[ \t:]+([^\r\n]+)$""")
+        private val TAXABLE_TOTAL = Regex("""(?im)^[ \t]*(?:Total[ \t]+)?Taxable[ \t]+(?:Value|Amount)[ \t:]+([^\r\n]+)$""")
+        private val RATE_AND_UNIT = Regex(
+            """([0-9][0-9.,]*)(?:[|\]/ ])?(Gross|Grs|Pcs?|Doz|Pair|Sets?)""", RegexOption.IGNORE_CASE
+        )
+        private val SERIAL = Regex("""[0-9]{1,3}\.?""")
+        private val SERIAL_PREFIX = Regex("""^[0-9]{1,3}(?=[A-Z])""", RegexOption.IGNORE_CASE)
+        private val NUMERIC_CODE = Regex("""[0-9]{5,13}""")
     }
-
-    private fun isFuzzyMatch(ocrText: String, target: String): Boolean {
-        val ocrNorm = ocrText.uppercase(Locale.ROOT).replace(Regex("""[^A-Z0-9]"""), "")
-        val targetNorm = target.uppercase(Locale.ROOT).replace(Regex("""[^A-Z0-9]"""), "")
-        if (ocrNorm.contains(targetNorm) || targetNorm.contains(ocrNorm)) return true
-
-        // Keyword overlap
-        val targetTokens = target.uppercase(Locale.ROOT).split(Regex("""[\s\-_/]+""")).filter { it.length > 2 }
-        val matchingTokens = targetTokens.count { ocrText.contains(it, ignoreCase = true) }
-        return matchingTokens >= 2
-    }
-
-    private fun isBicycleItemLine(line: String): Boolean {
-        if (isHeaderOrFooter(line)) return false
-        val upper = line.uppercase(Locale.ROOT)
-        if (upper.contains("SUPPLIER") || upper.contains("LOGISTICS") || upper.contains("TAX INVOICE")) return false
-        val bikeKeywords = listOf("HERO", "FIREFOX", "MONTRA", "HERCULES", "BSA", "ROAทEO", "LADYBIRD", "CYCLE", "BIKE", "29T", "27.5T", "26T")
-        return bikeKeywords.any { upper.contains(it) }
-    }
-
-    private fun cleanBicycleDescription(line: String): String {
-        return line.replace(Regex("""^\d+[\s\.\-]+"""), "").trim()
-    }
-
-    private fun extractQuantityFromLine(line: String): Double? {
-        // 1. Look for explicit unit-qualified quantity e.g. "2 Units", "5 Gross", "10 Pcs", "Qty: 4"
-        val unitMatch = Regex("""\b(\d+(?:\.\d+)?)\s*(?:Units?|Pcs|Gross|Nos|Sets|Qty)\b""", RegexOption.IGNORE_CASE).find(line)
-        if (unitMatch != null) {
-            return unitMatch.groupValues[1].toDoubleOrNull()
-        }
-
-        // 2. Strip leading line number e.g. "1. " or "1 - "
-        val cleaned = line.replace(Regex("""^\s*\d+[\s\.\-]+"""), "")
-
-        // 3. Ignore wheel sizes (29T, 27.5T, 26T, 24T, 20T), speed indicators (21SPD, 7SPD), and HSN codes
-        val withoutSpecs = cleaned
-            .replace(Regex("""\b\d+(?:\.\d+)?\s*T\b""", RegexOption.IGNORE_CASE), " ")
-            .replace(Regex("""\b\d+\s*SPD\b""", RegexOption.IGNORE_CASE), " ")
-            .replace(Regex("""\b\d{6,8}\b"""), " ")
-
-        val numbers = Regex("""\b(\d+(?:\.\d+)?)\b""").findAll(withoutSpecs).mapNotNull { it.value.toDoubleOrNull() }.toList()
-        return numbers.firstOrNull { it in 1.0..500.0 }
-    }
-
-    private fun isHeaderOrFooter(text: String): Boolean {
-        val upper = text.uppercase(Locale.ROOT)
-        val blacklist = listOf("TAX INVOICE", "CONSIGNEE", "DISPATCH THROUGH", "NO OF PACKAGES", "TERMS & CONDITIONS", "AUTHORIZED SIGNATORY", "TOTAL", "GST NO", "PAN NO", "STATE CODE")
-        return blacklist.any { upper.contains(it) }
-    }
-
-    private fun isPotentialProductDescription(line: String): Boolean {
-        val upper = line.uppercase(Locale.ROOT)
-        if (isHeaderOrFooter(upper)) return false
-        val words = listOf("CYCLE", "SPOKES", "GREASE", "CHAIN", "BRAKE", "DERAILLEUR", "HERO", "FIREFOX", "MONTRA", "SHIMANO", "BSA", "HERCULES", "STEEL")
-        return words.any { upper.contains(it) }
-    }
-
-    private data class MSteelRowDef(
-        val lineNumber: Int,
-        val description: String,
-        val hsnCode: String,
-        val quantity: Double,
-        val unit: String,
-        val ratePaise: Long,
-        val gstPercent: Double,
-        val amountPaise: Long
-    )
 }
+
+private val OcrWord.x: Double get() = (boundingBox.left + boundingBox.right) / 2.0
+private val OcrWord.y: Double get() = (boundingBox.top + boundingBox.bottom) / 2.0
+private val OcrWord.label: String get() = text.uppercase(Locale.ROOT).filter { it.isLetterOrDigit() || it == '%' }
+private fun cleanCell(text: String): String = text.trim().trim('|', '[', ']').trim()
+private fun <T : Comparable<T>> List<T>.median(): T? = sorted().getOrNull(size / 2)
