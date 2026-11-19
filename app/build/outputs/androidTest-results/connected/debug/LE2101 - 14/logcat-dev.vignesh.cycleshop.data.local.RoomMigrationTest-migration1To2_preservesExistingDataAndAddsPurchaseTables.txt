@@ -1,0 +1,10 @@
+11-19 15:59:56.926 20445 20471 I TestRunner: started: migration1To2_preservesExistingDataAndAddsPurchaseTables(dev.vignesh.cycleshop.data.local.RoomMigrationTest)
+11-19 15:59:56.957 30414 20463 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 15:59:56.958 30414 20463 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 15:59:56.960   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:56.960   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:56.961   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:56.961   734   734 E lowmemorykiller: adj:1001 file_cache:1383644 free:44815
+11-19 15:59:56.961   734   734 E lowmemorykiller: device has enough memory 5889828Kib, and freeMemory 179552Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:56.975 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 15:59:57.003 20445 20471 I TestRunner: finished: migration1To2_preservesExistingDataAndAddsPurchaseTables(dev.vignesh.cycleshop.data.local.RoomMigrationTest)

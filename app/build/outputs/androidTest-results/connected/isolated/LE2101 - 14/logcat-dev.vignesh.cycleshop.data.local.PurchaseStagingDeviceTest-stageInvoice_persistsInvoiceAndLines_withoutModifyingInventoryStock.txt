@@ -1,0 +1,5 @@
+11-19 17:10:37.448 17067 17086 I TestRunner: started: stageInvoice_persistsInvoiceAndLines_withoutModifyingInventoryStock(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)
+11-19 17:10:37.588 30414 17092 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 17:10:37.588 30414 17092 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 17:10:37.605 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 17:10:37.701 17067 17086 I TestRunner: finished: stageInvoice_persistsInvoiceAndLines_withoutModifyingInventoryStock(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-19T10:28:52.021Z" hostname="GOKILA2" time="0.073">
+  <properties/>
+  <testcase name="parse MSteel MBW invoice extracts header metadata and 11 line items correctly" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.041"/>
+  <testcase name="handles missing invoice number and dates without throwing exceptions" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.001"/>
+  <testcase name="detects Bicycle Supplier layout and extracts bicycle model lines" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.002"/>
+  <testcase name="stryder row 1 regression - extracts exact quantity 1 and amount 5800 without inflation" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.011"/>
+  <testcase name="parse Stryder Bicycle invoice extracts 29 line items and reconciles 62 total quantity" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.015"/>
+  <testcase name="reconciliation flags quantity mismatch when extracted items differ from total" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

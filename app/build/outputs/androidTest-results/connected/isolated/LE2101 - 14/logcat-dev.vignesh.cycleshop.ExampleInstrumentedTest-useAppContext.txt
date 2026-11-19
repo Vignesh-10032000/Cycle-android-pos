@@ -1,0 +1,3 @@
+11-19 17:10:36.734 17067 17086 I TestRunner: started: useAppContext(dev.vignesh.cycleshop.ExampleInstrumentedTest)
+11-19 17:10:36.737  2326  4105 I OplusHansManager : uid=10267, pkg=com.q4u.vewdeletedmessage can not transition from M to F. reason: AsyncBinder
+11-19 17:10:36.738 17067 17086 I TestRunner: finished: useAppContext(dev.vignesh.cycleshop.ExampleInstrumentedTest)

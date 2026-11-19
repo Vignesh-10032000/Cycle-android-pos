@@ -1,0 +1,6 @@
+11-19 17:10:38.075 17067 17086 I TestRunner: started: stockMovement_integerOverflow_rollsBackTransaction(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:38.088 12682 26222 D ShellSubscriberWorkerThread: the first 8 bytes empty, and RestData length > 8 
+11-19 17:10:38.159  1599  1705 D vendor.oplus.hardware.charger-V3-service: read content:,312,298,3803,3803,847,2000,1100,42,42,0,0,-1,0,42,1,0,1,1,0,0,4395,0,0,0,4,0,0,0,-2740,0,3,1,0,0,0,0,0,0x28,0x2d,0x0a,0x6d,0x26,0x16,0x00,0x00,0x00
+11-19 17:10:38.159  1599  1705 D vendor.oplus.hardware.charger-V3-service: , ret_value:149
+11-19 17:10:38.159  1599  1705 D vendor.oplus.hardware.charger-V3-service: gmtime: 2026-11-19-17-10-38
+11-19 17:10:38.171 17067 17086 I TestRunner: finished: stockMovement_integerOverflow_rollsBackTransaction(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

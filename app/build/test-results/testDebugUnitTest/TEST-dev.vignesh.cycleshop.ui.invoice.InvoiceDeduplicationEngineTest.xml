@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.ui.invoice.InvoiceDeduplicationEngineTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-19T10:28:52.005Z" hostname="GOKILA2" time="0.01">
+  <properties/>
+  <testcase name="allows new invoice number from same supplier" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceDeduplicationEngineTest" time="0.003"/>
+  <testcase name="flags potential duplicate on matching supporting document reference" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceDeduplicationEngineTest" time="0.003"/>
+  <testcase name="allows distinct supplier with identical invoice number" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceDeduplicationEngineTest" time="0.0"/>
+  <testcase name="detects exact duplicate by GSTIN and invoice number" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceDeduplicationEngineTest" time="0.003"/>
+  <testcase name="detects duplicate by normalized supplier name when GSTIN is missing" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceDeduplicationEngineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

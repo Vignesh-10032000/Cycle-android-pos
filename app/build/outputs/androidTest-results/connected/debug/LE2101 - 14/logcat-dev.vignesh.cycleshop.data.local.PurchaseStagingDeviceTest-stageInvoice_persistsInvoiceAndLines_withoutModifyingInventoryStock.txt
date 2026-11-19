@@ -1,0 +1,16 @@
+11-19 15:59:56.737 20445 20471 I TestRunner: started: stageInvoice_persistsInvoiceAndLines_withoutModifyingInventoryStock(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)
+11-19 15:59:56.759   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:56.760   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:56.833 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10060, pkgCmd = PKG_CMD_MAX
+11-19 15:59:56.834 10270 15716 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10426, pkgCmd = PKG_CMD_MAX
+11-19 15:59:56.842 24051 24051 D NotificationCenterService: onDestroy: 
+11-19 15:59:56.852 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10218, pkgCmd = PKG_CMD_MAX
+11-19 15:59:56.854 24141 24200 I MMKV    : <MMKV.cpp:1170::sync> MMKV::sync, SyncFlag = 0
+11-19 15:59:56.854 24141 24200 I MMKV    : <MMKV.cpp:1170::sync> MMKV::sync, SyncFlag = 0
+11-19 15:59:56.859   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:56.859   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:56.867  2326  4105 I OplusHansManager : uid=10296, pkg=com.google.android.verifier F enter(), M stay=5
+11-19 15:59:56.870  2326  4105 I OplusHansManager : freeze uid: 10296 com.google.android.verifier pids: [15662] scene: LcdOn
+11-19 15:59:56.871 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10296, pkgCmd = ADD_ONE_UID
+11-19 15:59:56.895 24141 24179 E FileStrategy: java.io.IOException: Read-only file system
+11-19 15:59:56.921 20445 20471 I TestRunner: finished: stageInvoice_persistsInvoiceAndLines_withoutModifyingInventoryStock(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)

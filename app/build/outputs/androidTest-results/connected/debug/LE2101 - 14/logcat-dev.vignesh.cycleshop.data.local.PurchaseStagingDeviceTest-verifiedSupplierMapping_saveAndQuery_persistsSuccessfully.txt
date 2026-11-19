@@ -1,0 +1,5 @@
+11-19 15:59:56.629 20445 20471 I TestRunner: started: verifiedSupplierMapping_saveAndQuery_persistsSuccessfully(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)
+11-19 15:59:56.639  1491 29524 I WifiHAL : event received NL80211_CMD_VENDOR, vendor_id = 0x1374, subcmd = 0xd
+11-19 15:59:56.658   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:56.658   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:56.675 20445 20471 I TestRunner: finished: verifiedSupplierMapping_saveAndQuery_persistsSuccessfully(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)

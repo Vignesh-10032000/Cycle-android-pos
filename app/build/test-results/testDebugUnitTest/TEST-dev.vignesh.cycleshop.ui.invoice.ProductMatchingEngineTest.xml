@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.ui.invoice.ProductMatchingEngineTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-11-19T10:28:52.108Z" hostname="GOKILA2" time="0.008">
+  <properties/>
+  <testcase name="Tier 1 - exact real manufacturer supplier code match yields 1_0 confidence" classname="dev.vignesh.cycleshop.ui.invoice.ProductMatchingEngineTest" time="0.003"/>
+  <testcase name="Tier 1 - exact SKU in description yields 0_98 confidence" classname="dev.vignesh.cycleshop.ui.invoice.ProductMatchingEngineTest" time="0.003"/>
+  <testcase name="candidates are ranked by confidence score in descending order" classname="dev.vignesh.cycleshop.ui.invoice.ProductMatchingEngineTest" time="0.0"/>
+  <testcase name="unrelated product description returns empty candidates list" classname="dev.vignesh.cycleshop.ui.invoice.ProductMatchingEngineTest" time="0.001"/>
+  <testcase name="MSteel invoice without supplier code matches via Tier 2 and 3 description heuristics rather than synthetic supplier code" classname="dev.vignesh.cycleshop.ui.invoice.ProductMatchingEngineTest" time="0.0"/>
+  <testcase name="Tier 2 and 3 - normalized brand, description, size and color match accurately" classname="dev.vignesh.cycleshop.ui.invoice.ProductMatchingEngineTest" time="0.0"/>
+  <testcase name="Tier 2 - grease description matches Red Gel Grease variant" classname="dev.vignesh.cycleshop.ui.invoice.ProductMatchingEngineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

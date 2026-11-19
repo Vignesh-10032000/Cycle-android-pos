@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-11-19T10:28:52.127Z" hostname="GOKILA2" time="0.011">
+  <properties/>
+  <testcase name="non-positive quantity is strictly rejected as invalid" classname="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" time="0.002"/>
+  <testcase name="convert gross with target unit gross maintains factor 1" classname="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" time="0.001"/>
+  <testcase name="convert fractional gross to pieces calculates exact integer base quantity" classname="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" time="0.001"/>
+  <testcase name="convert pc and unit aliases preserve 1 to 1 factor" classname="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" time="0.002"/>
+  <testcase name="convert blank unit defaults to 1 to 1 and flags for review" classname="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" time="0.001"/>
+  <testcase name="convert gross to pieces multiplies by 144" classname="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" time="0.001"/>
+  <testcase name="convert pair to pieces multiplies by 2" classname="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" time="0.0"/>
+  <testcase name="convert unrecognized unit defaults to 1 to 1 and flags for review" classname="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" time="0.001"/>
+  <testcase name="convert dozen to pieces multiplies by 12" classname="dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

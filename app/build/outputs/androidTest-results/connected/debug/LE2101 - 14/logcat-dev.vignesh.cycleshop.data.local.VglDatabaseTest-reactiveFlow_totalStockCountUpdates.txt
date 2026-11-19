@@ -1,0 +1,4 @@
+11-19 15:59:58.199 20445 20471 I TestRunner: started: reactiveFlow_totalStockCountUpdates(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 15:59:58.299  4249  4378 W libc    : Access denied finding property "vendor.gsm.serial"
+11-19 15:59:58.309  4249  7386 W libc    : Access denied finding property "vendor.gsm.serial"
+11-19 15:59:58.310 20445 20471 I TestRunner: finished: reactiveFlow_totalStockCountUpdates(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

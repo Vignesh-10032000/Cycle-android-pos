@@ -1,0 +1,8 @@
+11-19 17:10:38.174 17067 17086 I TestRunner: started: stockMovement_atomicSuccess_updatesBalanceAndRecordsLedger(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:38.244  2326  4105 I OplusHansManager : uid=10267, pkg=com.q4u.vewdeletedmessage F enter(), M stay=3
+11-19 17:10:38.252  2326  4105 I OplusHansManager : freeze uid: 10267 com.q4u.vewdeletedmessage pids: [12694, 13200] IsolatedUid: [99055] scene: LcdOn
+11-19 17:10:38.253 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10267, pkgCmd = ADD_ONE_UID
+11-19 17:10:38.255  2326  4105 I OplusHansManager : uid=10281, pkg=com.instagram.barcelona F enter(), M stay=3
+11-19 17:10:38.258  2326  4105 I OplusHansManager : freeze uid: 10281 com.instagram.barcelona pids: [19992] scene: LcdOn
+11-19 17:10:38.259 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10281, pkgCmd = ADD_ONE_UID
+11-19 17:10:38.259 17067 17086 I TestRunner: finished: stockMovement_atomicSuccess_updatesBalanceAndRecordsLedger(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

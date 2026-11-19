@@ -1,0 +1,14 @@
+11-19 17:10:37.707 17067 17086 I TestRunner: started: migration1To2_preservesExistingDataAndAddsPurchaseTables(dev.vignesh.cycleshop.data.local.RoomMigrationTest)
+11-19 17:10:37.710 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10305, pkgCmd = PKG_CMD_MAX
+11-19 17:10:37.740  2326  3516 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+11-19 17:10:37.763 25378 25394 I AIUnit-SystemFeatureCompat: isSaleMode false
+11-19 17:10:37.763 25378 25394 I AIUnit-LocalUnitStore: getLastRunAppRecord AppRecord(version=1405048, protocol=144)
+11-19 17:10:37.763 25378 25394 I AIUnit-UpdateUnitStore: check update interval fail, you need wait 39 minutes
+11-19 17:10:37.764 25378 25394 I AIUnit-Update.UnitConfigUpdater: updateUnitConfig notSkipConfigUpdate:false, overwrite:false
+11-19 17:10:37.765  4108  4364 D CommonScenarios-114-10408: transportLayerQosChange TransportLayerData{link_index=27, uid=10408, uplink_srtt=0, uplink_packets=0, uplink_retrans_packets=0, uplink_retrans_rate=0, downlink_srtt=0, downlink_packets=0, downlink_retrans_packets=0, downlink_retrans_rate=0, downlink_rate=0, uplink_udp_packets=0, downlink_udp_packets=0, uplink_tcp_rate=0, uplink_udp_rate=0, downlink_tcp_rate=0, downlink_udp_rate=0}
+11-19 17:10:37.766  4108  4364 D CommonScenarios-114-10408: ActiveState process message 2
+11-19 17:10:37.766  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE
+11-19 17:10:37.766  4108  4364 D CommonScenarios-114-10408: transport layer data is invalid
+11-19 17:10:37.766  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE score is invalid
+11-19 17:10:37.766 25378 25394 W AIUnit-Update.UnitConfigUpdater: updateUnitConfig no need download
+11-19 17:10:37.770 17067 17086 I TestRunner: finished: migration1To2_preservesExistingDataAndAddsPurchaseTables(dev.vignesh.cycleshop.data.local.RoomMigrationTest)

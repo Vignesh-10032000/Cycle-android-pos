@@ -1,0 +1,188 @@
+11-19 15:59:58.380 20445 20471 I TestRunner: started: testRealInvoiceA_MSteelMbw_OnDevice(dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest)
+11-19 15:59:58.424 20445 20492 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 15:59:58.425 20445 20497 D DecoupledTextDelegate: Start loading thick OCR module.
+11-19 15:59:58.425 20445 20497 I DynamiteModule: Considering local module com.google.mlkit.dynamite.text.latin:10000 and remote module com.google.mlkit.dynamite.text.latin:0
+11-19 15:59:58.425 20445 20497 I DynamiteModule: Selected local version of com.google.mlkit.dynamite.text.latin
+11-19 15:59:58.461 20445 20492 D TransportRuntime.SQLiteEventStore: Storing event with priority=DEFAULT, name=FIREBASE_ML_SDK for destination cct
+11-19 15:59:58.464 20445 20492 D TransportRuntime.JobInfoScheduler: Scheduling upload for context TransportContext(cct, DEFAULT, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) with jobId=-2038028865 in 30000ms(Backend next call timestamp 1795083397467). Attempt 1
+11-19 15:59:58.465 20445 20492 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10406; state: ENABLED
+11-19 15:59:58.465 20445 20492 D CompatibilityChangeReporter: Compat change id reported: 253665015; UID 10406; state: ENABLED
+11-19 15:59:58.469 20445 20492 D TransportRuntime.SQLiteEventStore: Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-19 15:59:58.470 20445 20500 D nativeloader: Load /data/app/~~_FFgw4pD_983rMzeEJP5Pg==/dev.vignesh.cycleshop-nMt7FXhB_q2--AmT2sT-Eg==/base.apk!/lib/arm64-v8a/libmlkit_google_ocr_pipeline.so using class loader ns clns-6 (caller=/data/app/~~_FFgw4pD_983rMzeEJP5Pg==/dev.vignesh.cycleshop-nMt7FXhB_q2--AmT2sT-Eg==/base.apk!classes15.dex): ok
+11-19 15:59:58.472 20445 20492 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 15:59:58.473 20445 20500 I native  : I0000 00:00:1795084198.473210   20500 asset_manager_util.cc:61] Created global reference to asset manager.
+11-19 15:59:58.478  4835  4835 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService mCallingUid=10218 }
+11-19 15:59:58.483 20445 20492 D TransportRuntime.SQLiteEventStore: Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-19 15:59:58.485 20445 20492 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 15:59:58.492 20445 20500 I Manager : DeviceManager::DeviceManager
+11-19 15:59:58.492 20445 20500 W ServerFlag: Failed to parse result of GetServerConfigurableFlag, errno=34
+11-19 15:59:58.492 20445 20500 I Manager : findAvailableDevices
+11-19 15:59:58.502 20445 20500 I Manager : Found interface qti-default (version = 1.3-23:build_kona)
+11-19 15:59:58.502 20445 20500 I Manager : Found interface qti-dsp (version = 1.3-23:build_kona)
+11-19 15:59:58.502 20445 20500 I Manager : Found interface qti-gpu (version = 1.3-23:build_kona)
+11-19 15:59:58.502 20445 20500 I Manager : Found interface qti-hta (version = 1.3-23:build_kona)
+11-19 15:59:58.507 20445 20505 W libc    : Access denied finding property "ro.hardware.chipname"
+11-19 15:59:58.518 20445 20505 I native  : I0000 00:00:1795084198.518877   20505 resource_manager.cc:23] Number of optimal threads: 4
+11-19 15:59:58.519 20445 20505 I native  : I0000 00:00:1795084198.519414   20505 text_detector_thread_pool_context.cc:38] Compute manager max in flight region detector overwrite: 1
+11-19 15:59:58.519 20445 20506 I native  : I0000 00:00:1795084198.519469   20506 text_classifier.cc:32] Creating classifier TfliteTextClassifier
+11-19 15:59:58.520 20445 20506 I native  : I0000 00:00:1795084198.520097   20506 common_util.h:41] Resizing Thread Pool: ocr_segm to 3
+11-19 15:59:58.520 20445 20505 I native  : I0000 00:00:1795084198.520102   20505 common_util.h:41] Resizing Thread Pool: ocr_det_0 to 3
+11-19 15:59:58.521 20445 20505 I native  : I0000 00:00:1795084198.521050   20505 tflite_detector_client_with_shape_cache.cc:76] Interpreter threads: 4
+11-19 15:59:58.521 20445 20505 I tflite  : Initialized TensorFlow Lite runtime.
+11-19 15:59:58.523 20445 20505 I tflite  : Created TensorFlow Lite XNNPACK delegate for CPU.
+11-19 15:59:58.523 20445 20505 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 15:59:58.524 20445 20505 I native  : I0000 00:00:1795084198.524393   20505 tflite_detector_client_with_shape_cache.cc:105] Caching size: 10
+11-19 15:59:58.524 20445 20505 I native  : I0000 00:00:1795084198.524800   20505 multi_pass_line_recognition_mutator.cc:342] Preloading recognizers.
+11-19 15:59:58.525 20445 20506 I native  : I0000 00:00:1795084198.524847   20506 tflite_lstm_client_base.cc:371] Resizing interpreter pool to 4
+11-19 15:59:58.526 20445 20518 I native  : I0000 00:00:1795084198.526514   20518 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/conv_model.fb
+11-19 15:59:58.528 20445 20518 I native  : I0000 00:00:1795084198.528008   20518 tflite_model_pooled_runner.cc:636] Loading mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb
+11-19 15:59:58.531 20445 20506 I native  : I0000 00:00:1795084198.531072   20506 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite
+11-19 15:59:58.531 20445 20506 I native  : I0000 00:00:1795084198.531625   20506 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 1
+11-19 15:59:58.532 20445 20506 I native  : I0000 00:00:1795084198.532429   20506 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite
+11-19 15:59:58.533 20445 20506 I native  : I0000 00:00:1795084198.533017   20506 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 1
+11-19 15:59:58.534 20445 20518 I native  : I0000 00:00:1795084198.534057   20518 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 4
+11-19 15:59:58.538 20445 20518 I native  : I0000 00:00:1795084198.537973   20518 mobile_langid_v2.cc:58] MobileLangID V2 initialized.
+11-19 15:59:58.538 20445 20518 I native  : I0000 00:00:1795084198.538074   20518 multi_pass_line_recognition_mutator.cc:364] Finished preloading a recognizer for "Latn"
+11-19 15:59:58.538 20445 20505 I native  : I0000 00:00:1795084198.538143   20505 multi_pass_line_recognition_mutator.cc:398] Finished preloading recognizers.
+11-19 15:59:58.540 20445 20500 D PipelineManager: Start process bitmap
+11-19 15:59:58.540 20445 20500 I native  : I0000 00:00:1795084198.540522   20500 scheduler.cc:693] ImageMetadata: 900x1600
+11-19 15:59:58.554 20445 20505 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 15:59:58.557  7178 20269 W yAF.TPLog.FrameworkUpdateListener: [dev.vignesh.cycleshop] removed. Stop sending intent
+11-19 15:59:58.564 20445 20505 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 15:59:58.573 20445 20505 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 15:59:58.602 20445 20505 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 15:59:58.605 20445 20505 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 15:59:58.644  1491 29524 I WifiHAL : event received NL80211_CMD_VENDOR, vendor_id = 0x1374, subcmd = 0xd
+11-19 15:59:58.663  2326  2711 D Theia.TransparentWindow: handleMessage CHECK_TRANS_WINDOW_ERROR_MSG
+11-19 15:59:58.670  2326  4105 I OplusHansManager : uid=10329, pkg=com.jio.myjio F enter(), M stay=5
+11-19 15:59:58.672  2326  4105 I OplusHansManager : freeze uid: 10329 com.jio.myjio pids: [21017] scene: LcdOn
+11-19 15:59:58.673 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10329, pkgCmd = ADD_ONE_UID
+11-19 15:59:58.711  2326  3841 I Osense-PsiDetector: 5678,101,2246,5631,61,299,209,2271,5935,3681,1723,0,12,9944
+11-19 15:59:58.712  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_NORMAL, bundle: Bundle[{memLevel=3}]
+11-19 15:59:58.748 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10267, pkgCmd = PKG_CMD_MAX
+11-19 15:59:58.752 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10281, pkgCmd = PKG_CMD_MAX
+11-19 15:59:58.755 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10326, pkgCmd = PKG_CMD_MAX
+11-19 15:59:58.759 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10277, pkgCmd = PKG_CMD_MAX
+11-19 15:59:58.827  1599  1705 D vendor.oplus.hardware.charger-V3-service: read content:,309,298,3844,3840,223,2000,1100,51,51,0,0,-1,0,51,1,0,1,1,0,0,4395,0,0,0,4,0,0,0,-2740,0,3,1,0,0,0,0,0,0x28,0x2d,0x0a,0x6d,0x26,0x16,0x00,0x00,0x00
+11-19 15:59:58.827  1599  1705 D vendor.oplus.hardware.charger-V3-service: , ret_value:149
+11-19 15:59:58.827  1599  1705 D vendor.oplus.hardware.charger-V3-service: gmtime: 2026-11-19-15-59-58
+11-19 15:59:58.919  2326  3841 I Osense-PsiDetector: 5668,99,2224,5631,61,299,209,2272,5931,3676,1723,0,12,9941
+11-19 15:59:58.920  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_NORMAL, bundle: Bundle[{memLevel=4}]
+11-19 15:59:58.931  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_LEAK, bundle: Bundle[{memLevel=4}]
+11-19 15:59:59.000 30414 20489 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 15:59:59.001 30414 20489 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 15:59:59.023   734   734 D lowmemorykiller: medium pressure event triggered
+11-19 15:59:59.023  2326  3841 I Osense-PsiDetector: 5668,105,2214,5631,61,299,209,2269,5926,3671,1723,0,12,9941
+11-19 15:59:59.024   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.024   734   734 E lowmemorykiller: adj:1001 file_cache:1381307 free:26940
+11-19 15:59:59.024   734   734 E lowmemorykiller: device has enough memory 5804160Kib, and freeMemory 107804Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.039 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 15:59:59.125   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:59.125   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.126   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.126   734   734 E lowmemorykiller: adj:1001 file_cache:1381225 free:28987
+11-19 15:59:59.126   734   734 E lowmemorykiller: device has enough memory 5811480Kib, and freeMemory 115948Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.126   734   734 D lowmemorykiller: super critical pressure event triggered
+11-19 15:59:59.127   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.127   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.128   734   734 E lowmemorykiller: adj:1001 file_cache:1381225 free:28987
+11-19 15:59:59.128   734   734 E lowmemorykiller: device has enough memory 5811480Kib, and freeMemory 115948Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.128   734   734 D lowmemorykiller: critical pressure event triggered
+11-19 15:59:59.128   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.129   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.129   734   734 E lowmemorykiller: adj:1001 file_cache:1381225 free:28987
+11-19 15:59:59.129   734   734 E lowmemorykiller: device has enough memory 5811480Kib, and freeMemory 115948Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.182 20445 20500 D PipelineManager: OCR process succeeded via visionkit pipeline.
+11-19 15:59:59.225   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.226   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.226   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.227   734   734 E lowmemorykiller: adj:1001 file_cache:1378746 free:32999
+11-19 15:59:59.227   734   734 E lowmemorykiller: device has enough memory 5815168Kib, and freeMemory 131996Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.239   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.239   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.240   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.240   734   734 E lowmemorykiller: adj:1001 file_cache:1376991 free:34826
+11-19 15:59:59.240   734   734 E lowmemorykiller: device has enough memory 5817536Kib, and freeMemory 139304Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.250   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.251   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.251   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.252   734   734 E lowmemorykiller: adj:1001 file_cache:1374535 free:37846
+11-19 15:59:59.252   734   734 E lowmemorykiller: device has enough memory 5817668Kib, and freeMemory 151384Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.264   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.264   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.265   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.265   734   734 E lowmemorykiller: adj:1001 file_cache:1374535 free:37972
+11-19 15:59:59.265   734   734 E lowmemorykiller: device has enough memory 5818172Kib, and freeMemory 151888Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.275   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.276   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.276   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.276   734   734 E lowmemorykiller: adj:1001 file_cache:1374535 free:38602
+11-19 15:59:59.276   734   734 E lowmemorykiller: device has enough memory 5819392Kib, and freeMemory 154408Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.287   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.287   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.288   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.288   734   734 E lowmemorykiller: adj:1001 file_cache:1374535 free:39234
+11-19 15:59:59.288   734   734 E lowmemorykiller: device has enough memory 5820316Kib, and freeMemory 156936Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.300   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.301   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.301   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.301   734   734 E lowmemorykiller: adj:1001 file_cache:1374535 free:39225
+11-19 15:59:59.301   734   734 E lowmemorykiller: device has enough memory 5820116Kib, and freeMemory 156900Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.306 20445 20471 I REAL_INVOICE_TEST: === INVOICE A (M.STEEL) OCR COMPLETE in 854ms ===
+11-19 15:59:59.307 20445 20471 I REAL_INVOICE_TEST: Blocks recognized: 120
+11-19 15:59:59.307 20445 20492 D TransportRuntime.SQLiteEventStore: Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-19 15:59:59.309 20445 20492 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 15:59:59.312   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.312 20445 20492 D TransportRuntime.SQLiteEventStore: Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-19 15:59:59.312   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.312   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.312   734   734 E lowmemorykiller: adj:1001 file_cache:1374535 free:39477
+11-19 15:59:59.312   734   734 E lowmemorykiller: device has enough memory 5821124Kib, and freeMemory 157908Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.314 20445 20492 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 15:59:59.323   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.323   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.324   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.324   734   734 E lowmemorykiller: adj:1001 file_cache:1374537 free:39666
+11-19 15:59:59.324   734   734 E lowmemorykiller: device has enough memory 5821888Kib, and freeMemory 158664Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.334   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.335   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.335   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.336   734   734 E lowmemorykiller: adj:1001 file_cache:1374537 free:39906
+11-19 15:59:59.336   734   734 E lowmemorykiller: device has enough memory 5822848Kib, and freeMemory 159624Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.348   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.349   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.349   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.349   734   734 E lowmemorykiller: adj:1001 file_cache:1374537 free:40150
+11-19 15:59:59.349   734   734 E lowmemorykiller: device has enough memory 5823824Kib, and freeMemory 160600Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.359   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.360   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.360   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.361   734   734 E lowmemorykiller: adj:1001 file_cache:1374537 free:40268
+11-19 15:59:59.361   734   734 E lowmemorykiller: device has enough memory 5824296Kib, and freeMemory 161072Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.371   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.371   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.372   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.372   734   734 E lowmemorykiller: adj:1001 file_cache:1374537 free:40205
+11-19 15:59:59.372   734   734 E lowmemorykiller: device has enough memory 5824044Kib, and freeMemory 160820Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.383   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.383   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.383   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.384   734   734 E lowmemorykiller: adj:1001 file_cache:1374537 free:40109
+11-19 15:59:59.384   734   734 E lowmemorykiller: device has enough memory 5823696Kib, and freeMemory 160472Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.396   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.397   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.397   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.397   734   734 E lowmemorykiller: adj:1001 file_cache:1374537 free:40109
+11-19 15:59:59.397   734   734 E lowmemorykiller: device has enough memory 5823696Kib, and freeMemory 160472Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.408   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.408   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:59.408   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:59.409   734   734 E lowmemorykiller: adj:1001 file_cache:1371843 free:42825
+11-19 15:59:59.409   734   734 E lowmemorykiller: device has enough memory 5823780Kib, and freeMemory 171340Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:59.412 20445 20471 I REAL_INVOICE_TEST: Supplier: M.STEEL / MBW
+11-19 15:59:59.412 20445 20471 I REAL_INVOICE_TEST: Invoice No: 466, Date: null
+11-19 15:59:59.412 20445 20471 I REAL_INVOICE_TEST: Supplier GSTIN: 24AFTPC9666C1Z8
+11-19 15:59:59.412 20445 20471 I REAL_INVOICE_TEST: Items Extracted: 11
+11-19 15:59:59.412 20445 20471 I REAL_INVOICE_TEST: Total Quantity: 126.0, Reconciled: true
+11-19 15:59:59.412 20445 20471 I REAL_INVOICE_TEST: Table Parsing time: 94ms
+11-19 15:59:59.412 20445 20471 I TestRunner: finished: testRealInvoiceA_MSteelMbw_OnDevice(dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest)

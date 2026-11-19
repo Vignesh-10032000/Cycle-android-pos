@@ -1,0 +1,1041 @@
+11-19 17:10:41.019 17067 17086 I TestRunner: started: realStryderScanLeavesAllSevenMissingQuantitiesUnverified(dev.vignesh.cycleshop.ui.invoice.InvoiceReviewUiTest)
+11-19 17:10:41.040   734   734 D lowmemorykiller: medium pressure event triggered
+11-19 17:10:41.041 17067 17086 I Tracing : Tracer added: class androidx.test.platform.tracing.AndroidXTracer
+11-19 17:10:41.042   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 17:10:41.042   734   734 E lowmemorykiller: adj:1001 file_cache:1339312 free:58063
+11-19 17:10:41.042   734   734 E lowmemorykiller: device has enough memory 5709808Kib, and freeMemory 232464Kib, disable killing(limit_killing:1024000Kib)
+11-19 17:10:41.041  2326  3841 I Osense-PsiDetector: 5575,227,2146,5631,62,278,243,2333,5772,3550,1681,0,12,10032
+11-19 17:10:41.043  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_NORMAL, bundle: Bundle[{memLevel=4}]
+11-19 17:10:41.046  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_LEAK, bundle: Bundle[{memLevel=4}]
+11-19 17:10:41.053   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.054   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 17:10:41.054   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 17:10:41.054   734   734 E lowmemorykiller: adj:1001 file_cache:1339312 free:58315
+11-19 17:10:41.054   734   734 E lowmemorykiller: device has enough memory 5710808Kib, and freeMemory 233464Kib, disable killing(limit_killing:1024000Kib)
+11-19 17:10:41.063 17067 17067 I leshop.isolated: hiddenapi: Accessing hidden method Landroid/os/MessageQueue;->next()Landroid/os/Message; (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/test/espresso/base/TestLooperManagerCompat; (domain=app, TargetSdkVersion=37) using reflection: allowed
+11-19 17:10:41.063 17067 17067 I leshop.isolated: hiddenapi: Accessing hidden field Landroid/os/MessageQueue;->mMessages:Landroid/os/Message; (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/test/espresso/base/TestLooperManagerCompat; (domain=app, TargetSdkVersion=37) using reflection: allowed
+11-19 17:10:41.064 17067 17067 I leshop.isolated: hiddenapi: Accessing hidden method Landroid/os/Message;->recycleUnchecked()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/test/espresso/base/TestLooperManagerCompat; (domain=app, TargetSdkVersion=37) using reflection: allowed
+11-19 17:10:41.066 17067 17086 D IdlingRegistry: Registering idling resources: [androidx.compose.ui.test.EspressoLink@425d115]
+11-19 17:10:41.074 17067 17086 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+11-19 17:10:41.079  2326  3642 E UAH_JNI : uah_event_acquire ! cmdId: 2 ,strPkg: , strIdent: com.android.server.wm, timeout: 500
+11-19 17:10:41.079  2326  3642 I [UAH_CLIENT]: UahEventAcquire, cmdid:2, pkg:none, identity:com.android.server.wm
+11-19 17:10:41.092  1514  1514 I [UAH_CLIENT]: UahPlatformResAcquire
+11-19 17:10:41.092  1514  1514 I [UAH_CLIENT]: UahEventAcquire, cmdid:-3, pkg:2326 4312, identity:qcom-perfd
+11-19 17:10:41.093  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:41.093  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:41.093  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:41.093  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:41.093  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:41.093  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:41.093  1514  1646 E ANDR-PERF-LM: MetaMeter: handleAsync() 166: AdaptLaunch Invalid Async
+11-19 17:10:41.093  1514  1646 E ANDR-PERF-LM: MetaMeter: handleAsync() 166: AdaptLaunch Invalid Async
+11-19 17:10:41.093  1514  1514 I [UAH_CLIENT]: UahPlatformResAcquire
+11-19 17:10:41.093  1514  1514 I [UAH_CLIENT]: UahEventAcquire, cmdid:-3, pkg:2326 4312, identity:qcom-perfd
+11-19 17:10:41.093  1514  1646 E ANDR-PERF-LM: MetaMeter: handleAsync() 166: AdaptLaunch Invalid Async
+11-19 17:10:41.094  1514  1645 E ANDR-PERF-UTIL: Failed to read /sys/class/mmc_host/mmc0/clk_scaling/enable
+11-19 17:10:41.094  1514  1645 E ANDR-PERF-OPTSHANDLER: Failed to read /sys/class/mmc_host/mmc0/clk_scaling/enable
+11-19 17:10:41.094  1514  1645 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [11, 4]
+11-19 17:10:41.094   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:41.094  2326  4312 D RemoteTaskHandlerManager: activateRemoteTaskIfNeeded
+11-19 17:10:41.098  8502  8502 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:41.099  2326  4312 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+11-19 17:10:41.100  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=22 not supported
+11-19 17:10:41.100  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=21 not supported
+11-19 17:10:41.102  8502  8502 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:41.103  8502  8502 D ScrollOptim [SceneManager]: updateCurrentActivity: mCurrentActivityName=null, isOptEnable=true, isAnimAheadEnable=true, isFrameInsertEnable=true, InsertNum=1, isEnabledForScrollChanged=false
+11-19 17:10:41.103  1722  1875 I SurfaceFlinger: [SF client] NEW(0xb400007e13d67100) for (3774:com.android.systemui)
+11-19 17:10:41.104  2326  2695 I TheiaLaunchMonitor: [checkAndRecovery] the function is disable.
+11-19 17:10:41.104  3774  3774 I SystemUi--Notification: OplusNotificationShadeWindowControllerExImpl-->SHADE_FOCUSABLE-->mNotificationShadeFocusable= false, mPanelExpanded= false, mBouncerShowing= false, mKeyguardShowing= false, mKeyguardOccluded= false, mKeyguardNeedsInput= false, ENABLE_REMOTE_INPUT= true, mRemoteInputActive= false, layoutFlags= -2130444216
+11-19 17:10:41.105  3774  4031 D WindowManager: Add to mViews: android.widget.FrameLayout{879e83e V.E...... ......I. 0,0-0,0 viewInfo = },pkg= dev.vignesh.cycleshop.isolated
+11-19 17:10:41.105  1514  1514 I [UAH_CLIENT]: UahPlatformResAcquire
+11-19 17:10:41.105  1514  1514 I [UAH_CLIENT]: UahEventAcquire, cmdid:-3, pkg:2326 4508, identity:qcom-perfd
+11-19 17:10:41.106  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:41.106  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:41.106  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:41.106  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:41.106  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:41.106  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:41.106  2326  4508 V SensorManager: call sensorServiceCommonInterface name: setScreenShotDisable
+11-19 17:10:41.106  2326  4508 D SensorServiceExtImpl: sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+11-19 17:10:41.106  2326  4508 I OplusHansManager : front pkg: dev.vignesh.cycleshop.isolated, uid: 10431, prev pkg: dev.vignesh.cycleshop, prev uid: 10408
+11-19 17:10:41.107  3774  3995 D ZoomController: onTaskMovedToFront, task id:385
+11-19 17:10:41.107  3774  3995 I ZoomUiController: FloatHandle-isFloatHandleShow mPackageName = null
+11-19 17:10:41.107  2326  4139 I OplusResourcePreloadManager: resume pkg: dev.vignesh.cycleshop.isolated, uid:10431, prev pkg: dev.vignesh.cycleshop, prev uid: 10408
+11-19 17:10:41.107  2326  4105 I OplusHansManager : uid=10431, pkg=dev.vignesh.cycleshop.isolated R exit SM
+11-19 17:10:41.107  2326  4105 I OplusHansManager : uid=10431, pkg=dev.vignesh.cycleshop.isolated R exit(), R stay=5
+11-19 17:10:41.107  2326  4105 I OplusHansManager : uid=10408, pkg=dev.vignesh.cycleshop enter SM
+11-19 17:10:41.107  2326  4105 I OplusHansManager : uid=10408, pkg=dev.vignesh.cycleshop R enter(), D stay=58
+11-19 17:10:41.108  2326  3837 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_APP_SWITCH, bundle: Bundle[{prevPkgName=dev.vignesh.cycleshop, curUid=10431, curPkgName=dev.vignesh.cycleshop.isolated, prevUid=10408}]
+11-19 17:10:41.108  2326  3837 I Osense-BaseDecisionMaker: scene: SCENE_APP_SWITCH, excutingPolicy: freezer
+11-19 17:10:41.108  2326  3837 D Osense-BaseDecisionMaker: invoke freezer policy,type: fast
+11-19 17:10:41.109  1514  1646 W ANDR-PERF-LM: MetaMeter: handlePrimaryAsync() 118: AdaptLaunch MetaMeter. No MeterMgr Available to handle this Primary Async. !!!!
+11-19 17:10:41.109  1514  1646 W ANDR-PERF-LM: MetaMeter: handlePrimaryAsync() 118: AdaptLaunch MetaMeter. No MeterMgr Available to handle this Primary Async. !!!!
+11-19 17:10:41.109  1514  1646 E ANDR-PERF-LM: MetaMeter: handleAsync() 166: AdaptLaunch Invalid Async
+11-19 17:10:41.109  3774  3774 D UXUtils : notifyUiSwitched: 1; stack: com.oplus.systemui.shade.OplusNotificationShadeWindowControllerExImpl.notifyUiSwitched:70
+11-19 17:10:41.109  3774  3774 D UXUtils : set ux flag--> setFlag = 400, old flag = 0, open = true, cal = 400
+11-19 17:10:41.109  3774  3774 D UXUtils : set process top-ui: pid=3774 value=130
+11-19 17:10:41.111  2326  4508 I InputDispatcher: setFocusedApplication displayId=0 ActivityRecord{eca254a u0 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity t385}
+11-19 17:10:41.111  3774  4404 D UXUtils : setHasTopUi: true; stack: com.android.systemui.shade.NotificationShadeWindowControllerImpl.lambda$apply$0:631
+11-19 17:10:41.111 17067 17083 D ColorModeChangeItem: preExecute mColorMode=0,token=android.os.BinderProxy@2b050f6
+11-19 17:10:41.111  2326  4508 D Theia.NoFocusWindow: FocusWindowErrorScene CheckFreezeScreen
+11-19 17:10:41.111  2326  3642 E UAH_JNI : uah_event_acquire ! cmdId: 0 ,strPkg: dev.vignesh.cycleshop.isolated, strIdent: com.android.server.wm, timeout: 600
+11-19 17:10:41.111  2326  3642 I [UAH_CLIENT]: UahEventAcquire, cmdid:0, pkg:dev.vignesh.cycleshop.isolated, identity:com.android.server.wm
+11-19 17:10:41.112 17067 17067 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:41.113  2326  4510 E UAH_JNI : uah_event_acquire ! cmdId: 2 ,strPkg: , strIdent: OplusActivityManagerServiceEnhance, timeout: 600
+11-19 17:10:41.113  2326  4510 I [UAH_CLIENT]: UahEventAcquire, cmdid:2, pkg:none, identity:OplusActivityManagerServiceEnhance
+11-19 17:10:41.114  3707 30609 V DCSEX-AppSwitchManager: OnAppSwitchObserver: onAppExit, resuming = dev.vignesh.cycleshop.isolated, target = dev.vignesh.cycleshop, is ResumingFirstStart =  false, is ResumingMultiApp =  false, extensionInfo =  Bundle[mParcelledData.dataSize=84]
+11-19 17:10:41.114  3707 12171 D DCSEX-AppLaunchEventRecorder: onAppSwitch from = dev.vignesh.cycleshop to = dev.vignesh.cycleshop.isolated
+11-19 17:10:41.114  3707 12171 D DCSEX-AppLaunchEventRecorder: recordExitApp = dev.vignesh.cycleshop
+11-19 17:10:41.115  2326  4414 D OplusLatencyOptimizerManager: enter pkg: dev.vignesh.cycleshop.isolated isPrevBlackAppTop: false mIsBlackAppTop: false
+11-19 17:10:41.116  6969 19569 W Battery : ThermalControlUtils: mForegroundPkg=dev.vignesh.cycleshop.isolated
+11-19 17:10:41.116  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:382
+11-19 17:10:41.117  1722  4624 I VRR [FRTC]: setFrameRateTarget with [0, dev.vignesh.cycleshop, 0, com.oplus.battery, 1, 0, 1000]
+11-19 17:10:41.117  4174  6663 I Athena  : AthenaDynamicReceiver: pre_app:dev.vignesh.cycleshop, next_app:dev.vignesh.cycleshop.isolated(10431|17067)
+11-19 17:10:41.117  2326  3219 I Athena  : RecordAppChangeAction: updateRecentlyUsedApp bgAppRecord=packageName:dev.vignesh.cycleshop, uid:10408, userId:0, isTop=false, fgElapsedTime=107207784, bgElapsedTime=108382049, fgElapsedDur=1174265, bgElapsedDur=0
+11-19 17:10:41.117  3774  4031 D InputEventReceiver: Input log is disabled in InputEventReceiver.
+11-19 17:10:41.118  3774  4031 E OplusBracketLog: [OplusViewMirrorManager] updateHostViewRootIfNeeded, not support android.view.ViewRootImpl@5065dbb
+11-19 17:10:41.119  3774  4031 D ViewRootImplExtImpl: wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=424, relayoutAsync=false, newFlags=27787264, title=Splash Screen dev.vignesh.cycleshop.isolated
+11-19 17:10:41.119  3707 30609 V DCSEX-AppSwitchManager: OnAppSwitchObserver: onAppEnter, launchedFrom =  dev.vignesh.cycleshop.isolated, target =  dev.vignesh.cycleshop.isolated, is firstStart =  false, is multiApp =  false, extensionInfo =  Bundle[mParcelledData.dataSize=140]
+11-19 17:10:41.119 32760   370 D ZoomAppController: ignore onAppEnter: mCurrentZoomInfo is null
+11-19 17:10:41.120  5495  5523 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_foreground_activities_changed info:pid:17067,uid:10431,hasForegroundActivities:1
+11-19 17:10:41.120  2326  3219 I Athena  : RecordAppChangeAction: updateRecentlyUsedApp fgAppRecord=packageName:dev.vignesh.cycleshop.isolated, uid:10431, userId:0, isTop=true, fgElapsedTime=108382049, bgElapsedTime=0, fgElapsedDur=108382049, bgElapsedDur=0
+11-19 17:10:41.121  1722  4624 D OplusLayer: setProcInfo (3396,Splash Screen dev.vignesh.cycleshop.isolated#3396,com.android.systemui)
+11-19 17:10:41.121  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=0 obj=com.oplus.atlas.OplusAtlasEvent@45eae37 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:41.121  5495  7257 D OplusAtlas.OplusAudioScene: callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:17067,uid:10431,hasForegroundActivities:1
+11-19 17:10:41.121  5495  7640 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=2 obj=com.oplus.atlas.OplusAtlasEvent@45eae37 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:41.121  1718  5807 D AudioFlingerExtImpl: AudioFlingerExtImpl oplusSetParameters: keyvalue onForegroundActivitiesChanged=dev.vignesh.cycleshop.isolated:foreground:1
+11-19 17:10:41.122  1718  5807 D AudioFlingerExtImpl: updateForegroundInfo mForegroundMap(2)|[dev.vignesh.cycleshop.isolated]=1|[dev.vignesh.cycleshop]=1
+11-19 17:10:41.122  6969 19569 W Battery : ThermalControllHandler: tempLevel=3,userMode=2,gameUserMode=-1,appType=-1,envTempType=0,appStates=[],appSwitchSafetyMode=true
+11-19 17:10:41.122  6969 19569 W Battery : ThermalControllerCenter: mSafetyState=00000
+11-19 17:10:41.122  1722  1722 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-19 17:10:41.124  8678 20441 D SceneSDK.1.0.4-SNAPSHOT.8678.DeepThinkerAppSwitchAbility: onAppSwitchEvent: AppSwitchEvent(timeStamp=1795088441121, eventType=2, targetName=dev.vignesh.cycleshop, firstStart=false, multiApp=false, windowMode=0, resumingPackageName=dev.vignesh.cycleshop.isolated, resumingActivityName=androidx.activity.ComponentActivity, isResumingMultiApp=false, isResumingFirstStart=false)
+11-19 17:10:41.125  8678 20441 I metis_v2_AppSwitchDataCollector: AppExitEvent =  dev.vignesh.cycleshop, NextAppName = dev.vignesh.cycleshop.isolated [Metis|com.oplus.metis|1.4.30-7ec9ae5]
+11-19 17:10:41.126  8678  9665 W metis_v2_OifaceBindUtils: bindTask
+11-19 17:10:41.127  1491 29524 I WifiHAL : event received NL80211_CMD_VENDOR, vendor_id = 0x1374, subcmd = 0xd
+11-19 17:10:41.129  6969 19569 W Battery : ThermalControllHandler: tempGear=3,configItemName=common_config
+11-19 17:10:41.129  6969  7990 W Battery : ThermalControllHandler: MSG_THERMAL_CONTROL_CATEGORY_CHANGED
+11-19 17:10:41.129  6969  7990 E Battery : ThermalControlConfig: TsensorPolicy featureConfig is null
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Find Focus windowName=<null>, notVisible=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: Task=368#2452 isHiddenByPolicy s.flags&layer_state_t::eLayerHidden=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: isHiddenByPolicy parent Task=368#2452 is hidden cause not visible
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Focus inVisible Reason:isVisibleForInput(){hasInputInfo()?canReceiveInput():isVisible()}=0 has=1 can{!isHiddenByPolicy()&&(mBuffer==nullptr||getAlpha()>0.0f)}=0 Hidden=1 Buf=1 getA=1
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Find Focus windowName=<null>, notVisible=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: Task=368#2452 isHiddenByPolicy s.flags&layer_state_t::eLayerHidden=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: isHiddenByPolicy parent Task=368#2452 is hidden cause not visible
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Focus inVisible Reason:isVisibleForInput(){hasInputInfo()?canReceiveInput():isVisible()}=0 has=1 can{!isHiddenByPolicy()&&(mBuffer==nullptr||getAlpha()>0.0f)}=0 Hidden=1 Buf=1 getA=1
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Find Focus windowName=<null>, notVisible=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: Task=367#2432 isHiddenByPolicy s.flags&layer_state_t::eLayerHidden=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: isHiddenByPolicy parent Task=367#2432 is hidden cause not visible
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Focus inVisible Reason:isVisibleForInput(){hasInputInfo()?canReceiveInput():isVisible()}=0 has=1 can{!isHiddenByPolicy()&&(mBuffer==nullptr||getAlpha()>0.0f)}=0 Hidden=1 Buf=1 getA=1
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Find Focus windowName=<null>, notVisible=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: Task=1#48 isHiddenByPolicy s.flags&layer_state_t::eLayerHidden=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: isHiddenByPolicy parent Task=1#48 is hidden cause not visible
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Focus inVisible Reason:isVisibleForInput(){hasInputInfo()?canReceiveInput():isVisible()}=0 has=1 can{!isHiddenByPolicy()&&(mBuffer==nullptr||getAlpha()>0.0f)}=0 Hidden=1 Buf=1 getA=1
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Find Focus windowName=<null>, notVisible=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: com.android.systemui.wallpapers.ImageWallpaper#82 isHiddenByPolicy s.flags&layer_state_t::eLayerHidden=1
+11-19 17:10:41.131  1722  1722 D Layer   : Focus: isHiddenByPolicy parent com.android.systemui.wallpapers.ImageWallpaper#82 is hidden cause not visible
+11-19 17:10:41.131  1722  1722 D SurfaceFlinger: Focus inVisible Reason:isVisibleForInput(){hasInputInfo()?canReceiveInput():isVisible()}=0 has=1 can{!isHiddenByPolicy()&&(mBuffer==nullptr||getAlpha()>0.0f)}=0 Hidden=1 Buf=0 getA=1
+11-19 17:10:41.131  1722  2687 D SurfaceFlinger: updateWinowInfo=1, setFocusedWindow timestamp=40856313826079, windowName=<null>
+11-19 17:10:41.131  2326  4510 I InputDispatcher: updateFocusedWindow,  on display 0, reason: NO_WINDOW, result:   FocusedWindows: <none>
+11-19 17:10:41.132  2326  3549 I InputDispatcher: NFW_setFocusedWindow, <null> on display 0, same as the previous:1
+11-19 17:10:41.132  2326  3549 D InputDispatcher: setFocusedWindow <null> on display 0 ignored, reason: already focused
+11-19 17:10:41.132  8502  8502 D VRI[MainActivity]: onFocusEvent false
+11-19 17:10:41.134  3774  4031 D BufferQueueConsumer: [](id:ebe000002dd,api:0,p:-1,c:3774) connect: controlledByApp=false
+11-19 17:10:41.137 17067 17204 E leshop.isolated: Loaded layer handle (4246532841882142275) for layer /my_product/lib64/libcolorx-loader.so
+11-19 17:10:41.138 17067 17204 E leshop.isolated: Looking for entrypoint ColorX_Check
+11-19 17:10:41.138 17067 17204 E leshop.isolated: Found ColorX_Check for /my_product/lib64/libcolorx-loader.so
+11-19 17:10:41.138 17067 17204 E leshop.isolated: Check failed
+11-19 17:10:41.138 17067 17067 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@f5e2985 in: PRE_ON_CREATE
+11-19 17:10:41.138 17067 17067 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+11-19 17:10:41.142  4249  4378 W libc    : Access denied finding property "vendor.gsm.serial"
+11-19 17:10:41.142 17067 17067 I oplus.android.OplusFrameworkFactoryImpl: Unknow feature:IOplusTextViewRTLUtilForUG
+11-19 17:10:41.143  3774  4135 D BufferQueueProducer: [VRI[isolated]#719(BLAST Consumer)719](id:ebe000002dd,api:1,p:3774,c:3774) connect: api=1 producerControlledByApp=true
+11-19 17:10:41.143  3774  4135 E OpenGLRenderer: Unable to match the desired swap behavior.
+11-19 17:10:41.144 17067 17067 D nativeloader: Load liboplushwui_jni.so using system ns (caller=/system/framework/oplus-framework.jar): ok
+11-19 17:10:41.146  3774  4031 I SurfaceControl:  setExtendedRangeBrightness sc=Surface(name=Splash Screen dev.vignesh.cycleshop.isolated)/@0xe310631,currentBufferRatio=1.0,desiredRatio=1.0
+11-19 17:10:41.146  8678 20441 D SceneSDK.1.0.4-SNAPSHOT.8678.DeepThinkerAppSwitchAbility: onAppSwitchEvent: AppSwitchEvent(timeStamp=1795088441142, eventType=1, targetName=dev.vignesh.cycleshop.isolated, firstStart=false, multiApp=false, windowMode=1, resumingPackageName=, resumingActivityName=, isResumingMultiApp=false, isResumingFirstStart=false)
+11-19 17:10:41.146  8678 20441 I metis_v2_AppSwitchDataCollector: AppEnterEvent =  dev.vignesh.cycleshop.isolated, windowMode = 1,firstStart = false
+11-19 17:10:41.146  8678 20441 I metis_v2_AppSwitchDataCollector:  set isNotifiedTVCast
+11-19 17:10:41.148  3774  4135 D BLASTBufferQueue: [VRI[isolated]#719](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=40856343666183(auto) mPendingTransactions.size=0 graphicBufferId=16209206579129 transform=0
+11-19 17:10:41.148  3774  4135 D VRI[isolated]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+11-19 17:10:41.149  3774  4031 D VRI[isolated]: draw finished.
+11-19 17:10:41.149  3774  4031 D VRI[isolated]: reportDrawFinished
+11-19 17:10:41.149  3774  4031 D ViewRootImplExtImpl: setMaxDequeuedBufferCount: 2
+11-19 17:10:41.152   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.153 17067 17067 D OplusWindowManager: get WMS extension: android.os.BinderProxy@66ce3a6
+11-19 17:10:41.153   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 17:10:41.153  2326  4695 W OplusNavigationBarUtil: color navigation bar util isn't init.
+11-19 17:10:41.153   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 17:10:41.153   734   734 E lowmemorykiller: adj:1001 file_cache:1338689 free:58811
+11-19 17:10:41.153   734   734 E lowmemorykiller: device has enough memory 5670072Kib, and freeMemory 235444Kib, disable killing(limit_killing:1024000Kib)
+11-19 17:10:41.155  4249  4378 W libc    : Access denied finding property "vendor.gsm.serial"
+11-19 17:10:41.157  1722  1875 D SurfaceFlinger: captureLayers from pid 2326 uid -1
+11-19 17:10:41.159  2326  2489 W SurfaceFlingerPuller: Failed to pull atom 150134 from surfaceflinger. Success is 0, binder status is EX_NONE
+11-19 17:10:41.159 17067 17067 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@f5e2985 in: CREATED
+11-19 17:10:41.160 17067 17067 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=androidx.activity.ComponentActivity@f5e2985
+11-19 17:10:41.160 17067 17067 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@f5e2985 in: STARTED
+11-19 17:10:41.160 17067 17067 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=androidx.activity.ComponentActivity@f5e2985
+11-19 17:10:41.161  1328  1353 E statsd  : Gauge Stats puller failed for tag: 150134 at 108382064766804
+11-19 17:10:41.161  8678 20441 E metis_v2_FactManager: There is no subModel: com.oplus.linker
+11-19 17:10:41.161  8678 20441 I metis_v2_AppSwitchDataCollector: Skip call fire
+11-19 17:10:41.163 17067 17067 D ScrollOptim [SceneManager]: updateCurrentActivity: mCurrentActivityName=androidx.activity.ComponentActivity, isOptEnable=true, isAnimAheadEnable=true, isFrameInsertEnable=true, InsertNum=1, isEnabledForScrollChanged=false
+11-19 17:10:41.163 17067 17067 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@f5e2985 in: RESUMED
+11-19 17:10:41.163 17067 17067 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=androidx.activity.ComponentActivity@f5e2985
+11-19 17:10:41.165  3774  3995 D FSS_OplusFoldSwitchStateObserver: getDeviceFolding: mDeviceFolding = false
+11-19 17:10:41.166  3774  3995 D OnePuttTransitionHandler:  startAnimation= android.os.BinderProxy@95d1beb startTransaction= android.view.SurfaceControl$Transaction@a8fd9fa finishTransaction= android.view.SurfaceControl$Transaction@5062bab finishCallback= com.android.wm.shell.transition.Transitions$$ExternalSyntheticLambda7@630e208 TransitionInfo ={id=162 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@dc964f0} m=OPEN f=NONE leash=Surface(name=Task=385)/@0xcded46d sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@d214a69} m=TO_BACK f=NONE leash=Surface(name=Task=382)/@0x8e7d8a2 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+11-19 17:10:41.166  3774  3995 E OplusShellTransition: couldn't get animation style packageName, android.window.OplusTransitionExtendedInfo.getAnimationStylePackageName []
+11-19 17:10:41.166  3774  3995 W OplusShellTransition: no system app in targets, skip loading oplus animation
+11-19 17:10:41.168  3774  3995 E OplusShellTransition: couldn't get animation style packageName, android.window.OplusTransitionExtendedInfo.getAnimationStylePackageName []
+11-19 17:10:41.168  3774  3995 W OplusShellTransition: no system app in targets, skip loading oplus animation
+11-19 17:10:41.168 17067 17067 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+11-19 17:10:41.168 17067 17067 D ExtensionsLoader: Opened libguiextimpl.so
+11-19 17:10:41.168 17067 17067 D nativeloader: Load liboplusgui_jni.so using system ns (caller=/system/framework/oplus-framework.jar): ok
+11-19 17:10:41.168  1722  4624 I SurfaceFlinger: [SF client] NEW(0xb400007e13d67f80) for (17067:dev.vignesh.cycleshop.isolated)
+11-19 17:10:41.169  3774  3995 D OplusShellTransition: dispatchTransition, animated mHandler: com.android.wm.shell.transition.DefaultTransitionHandler@31a6e9a
+11-19 17:10:41.169  3774  4003 D FSS_OplusFoldSwitchStateObserver: onAnimationStart reset mPendingFoldAnimationTrigger
+11-19 17:10:41.169  2326  2696 D TaskOrganizerController: TaskOrganizerCallbacks.onTaskAppeared
+11-19 17:10:41.170 17067 17067 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10431; state: DISABLED
+11-19 17:10:41.170  3774  4003 D FSS_OplusFoldSwitchStateObserver: onAnimationStart reset mPendingFoldAnimationTrigger
+11-19 17:10:41.170  3774  3995 V ShellTaskOrganizer: Task appeared taskId=385, parentTaskId=-1, taskVisibility=true
+11-19 17:10:41.171  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:385
+11-19 17:10:41.171 17067 17067 D WindowManager: Add to mViews: DecorView@cdf3f2c[ComponentActivity],pkg= dev.vignesh.cycleshop.isolated
+11-19 17:10:41.172  1722  1722 D OplusLayer: setGameMode dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity#3358, gameMode 0, parentLayer fe156ac dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity#3282.
+11-19 17:10:41.173 17067 17200 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+11-19 17:10:41.174 17067 17200 D ExtensionsLoader: Opened libhwuiextimpl.so
+11-19 17:10:41.174 17067 17067 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+11-19 17:10:41.175 17067 17067 D ExtensionsLoader: Opened libSchedAssistExtImpl.so
+11-19 17:10:41.178  1722  1874 I SurfaceFlinger: [SF client] NEW(0xb400007e4f67d800) for (2326:system_server)
+11-19 17:10:41.182 17067 17067 D InputEventReceiver: Input log is disabled in InputEventReceiver.
+11-19 17:10:41.183 17067 17067 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:41.184 17067 17067 E OplusBracketLog: [OplusViewMirrorManager] updateHostViewRootIfNeeded, not support android.view.ViewRootImpl@38b8256
+11-19 17:10:41.186 17067 17067 D ViewRootImplExtImpl: wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=424, relayoutAsync=false, newFlags=27787264, title=dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity
+11-19 17:10:41.187  1722  1874 D OplusLayer: setProcInfo (3401,dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity#3401,dev.vignesh.cycleshop.isolated)
+11-19 17:10:41.191  2326  4320 D Theia.NoFocusWindow: FocusWindowErrorScene cancelCheckFreezeScreen
+11-19 17:10:41.191  2326  4320 W TheiaWindowMonitor: [check] focusedWindow is null or enable is false
+11-19 17:10:41.197  1722  1722 D Layer   : reparent to null sequence=3389, seq[63], name=Surface(name=7881365 NavigationBar_displayId_0)/@0xe1eeba1 - animation-leash of insets_animation#3389
+11-19 17:10:41.197  1722  1722 D OplusLayer: setGameMode a7c83b3 StatusBar#77, gameMode 0, parentLayer Surface(name=a7c83b3 StatusBar)/@0xe7b91c6 - animation-leash of insets_animation#3403.
+11-19 17:10:41.197  1722  1722 D Layer   : reparent to null sequence=3392, seq[1], name=Surface(name=a7c83b3 StatusBar)/@0xe7b91c6 - animation-leash of insets_animation#3392
+11-19 17:10:41.197  1722  1722 D Layer   : reparent to null sequence=3402, seq[2], name=Surface(name=7881365 NavigationBar_displayId_0)/@0xe1eeba1 - animation-leash of insets_animation#3402
+11-19 17:10:41.197  1722  1722 D OplusLayer: setGameMode StatusBar#87, gameMode 0, parentLayer a7c83b3 StatusBar#77.
+11-19 17:10:41.197  1722  1722 D Layer   : reparent to null sequence=3403, seq[1], name=Surface(name=a7c83b3 StatusBar)/@0xe7b91c6 - animation-leash of insets_animation#3403
+11-19 17:10:41.202 17067 17067 D BufferQueueConsumer: [](id:42ab00000000,api:0,p:-1,c:17067) connect: controlledByApp=false
+11-19 17:10:41.203 17067 17067 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+11-19 17:10:41.203 17067 17067 D ExtensionsLoader: Opened libSchedAssistExtImpl.so
+11-19 17:10:41.204  1722  4624 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10431 pid=0
+11-19 17:10:41.204  1722  4624 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10431 => denied (695 us)
+11-19 17:10:41.204  1722  4624 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10431 pid=0
+11-19 17:10:41.204  1722  4624 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10431 => denied (314 us)
+11-19 17:10:41.204  1722  4624 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10431 pid=0
+11-19 17:10:41.204  1722  4624 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10431 => denied (201 us)
+11-19 17:10:41.206 17067 17200 I AdrenoGLES-0: QUALCOMM build                   : c677465575, I69baa82c37
+11-19 17:10:41.206 17067 17200 I AdrenoGLES-0: Build Date                       : 06/17/25
+11-19 17:10:41.206 17067 17200 I AdrenoGLES-0: OpenGL ES Shader Compiler Version: EV031.32.02.17
+11-19 17:10:41.206 17067 17200 I AdrenoGLES-0: Local Branch                     : 
+11-19 17:10:41.206 17067 17200 I AdrenoGLES-0: Remote Branch                    : refs/tags/AU_LINUX_ANDROID_LA.UM.9.12.11.00.00.582.697
+11-19 17:10:41.206 17067 17200 I AdrenoGLES-0: Remote Branch                    : NONE
+11-19 17:10:41.206 17067 17200 I AdrenoGLES-0: Reconstruct Branch               : NOTHING
+11-19 17:10:41.206 17067 17200 I AdrenoGLES-0: Build Config                     : S P 10.0.7 AArch64
+11-19 17:10:41.206 17067 17200 I AdrenoGLES-0: Driver Path                      : /vendor/lib64/egl/libGLESv2_adreno.so
+11-19 17:10:41.206  1722  1722 D SurfaceFlinger: Find Focus windowName=2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity, notVisible=1
+11-19 17:10:41.206  1722  1722 D Layer   : Focus: dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity#3401 isHiddenByPolicy s.flags&layer_state_t::eLayerHidden=1
+11-19 17:10:41.206  1722  1722 D SurfaceFlinger: Focus inVisible Reason:isVisibleForInput(){hasInputInfo()?canReceiveInput():isVisible()}=0 has=1 can{!isHiddenByPolicy()&&(mBuffer==nullptr||getAlpha()>0.0f)}=0 Hidden=1 Buf=1 getA=1
+11-19 17:10:41.207  1722  2687 D SurfaceFlinger: updateWinowInfo=1, setFocusedWindow timestamp=40856391141027, windowName=2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity
+11-19 17:10:41.208  2326  4320 I InputDispatcher: NFW_setFocusedWindow, 2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity on display 0, same as the previous:0
+11-19 17:10:41.210 17067 17200 I AdrenoGLES-0: PFP: 0x016dd093, ME: 0x00000000
+11-19 17:10:41.222 17067 17200 D BufferQueueProducer: [VRI[ComponentActivity]#0(BLAST Consumer)0](id:42ab00000000,api:1,p:17067,c:17067) connect: api=1 producerControlledByApp=true
+11-19 17:10:41.222 17067 17200 E OpenGLRenderer: Unable to match the desired swap behavior.
+11-19 17:10:41.223 17067 17067 I SurfaceControl:  setExtendedRangeBrightness sc=Surface(name=dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity)/@0x5c76ad,currentBufferRatio=1.0,desiredRatio=1.0
+11-19 17:10:41.240 17067 17200 D BLASTBufferQueue: [VRI[ComponentActivity]#0](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=40856434937173(auto) mPendingTransactions.size=0 graphicBufferId=73302206840832 transform=0
+11-19 17:10:41.240 17067 17200 D VRI[ComponentActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+11-19 17:10:41.240  1722  4624 I ClientCache: add: Cache owner=0xb400007e119fa6e0
+11-19 17:10:41.240 17067 17067 D VRI[ComponentActivity]: draw finished.
+11-19 17:10:41.240 17067 17067 D VRI[ComponentActivity]: reportDrawFinished
+11-19 17:10:41.240 17067 17067 D ViewRootImplExtImpl: setMaxDequeuedBufferCount: 2
+11-19 17:10:41.241  2326  4320 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10431 pid=0
+11-19 17:10:41.241  2326  4320 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10431 => denied (126 us)
+11-19 17:10:41.241  2326  4320 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10431 pid=0
+11-19 17:10:41.241  2326  4320 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10431 => denied (58 us)
+11-19 17:10:41.241  2326  4320 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10431 pid=0
+11-19 17:10:41.241  2326  4320 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10431 => denied (92 us)
+11-19 17:10:41.243 17067 17200 D VRI[ComponentActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=2 didProduceBuffer=false syncBuffer=false
+11-19 17:10:41.243 17067 17067 D VRI[ComponentActivity]: draw finished.
+11-19 17:10:41.243 17067 17067 D VRI[ComponentActivity]: reportDrawFinished
+11-19 17:10:41.250  2326  2695 I TheiaLaunchMonitor: [checkAndRecovery] the function is disable.
+11-19 17:10:41.253  2326  2692 I ActivityTaskManager: Displayed dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity for user 0: +171ms
+11-19 17:10:41.254  2326  4510 W SurfaceFlingerPuller: Failed to pull atom 150119 from surfaceflinger. Success is 0, binder status is EX_NONE
+11-19 17:10:41.255   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:41.255  1328  1353 E statsd  : Gauge Stats puller failed for tag: 150119 at 108382184235710
+11-19 17:10:41.256  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_ACTIVITY_IDLE, bundle: Bundle[{scene=SCENE_ACTIVITY_IDLE}]
+11-19 17:10:41.256  2326  3834 I Osense-BaseDecisionMaker: OSense not supported scene! SCENE_ACTIVITY_IDLE
+11-19 17:10:41.256   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:41.256   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.257   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 17:10:41.257   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 17:10:41.257  2326  4320 I InputDispatcher: updateFocusedWindow, 2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity on display 0, reason: Window became focusable. Previous reason: NOT_VISIBLE, result:   FocusedWindows:
+11-19 17:10:41.257  2326  4320 I InputDispatcher:     displayId=0, name='2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity'
+11-19 17:10:41.257   734   734 E lowmemorykiller: adj:1001 file_cache:1338753 free:53011
+11-19 17:10:41.257   734   734 E lowmemorykiller: device has enough memory 5609636Kib, and freeMemory 212244Kib, disable killing(limit_killing:1024000Kib)
+11-19 17:10:41.258 17067 17067 D VRI[ComponentActivity]: onFocusEvent true
+11-19 17:10:41.260  2326  4320 I ImeTracker: dev.vignesh.cycleshop.isolated:7d92a04: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-19 17:10:41.260  2326  4320 I ImeTracker: dev.vignesh.cycleshop.isolated:7d92a04: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-19 17:10:41.261 30498 30498 I SubtypeOperator: SubtypeOperator$1.onUnbindInput():64 
+11-19 17:10:41.270 30498 30498 D InputEventReceiver: Input log is disabled in InputEventReceiver.
+11-19 17:10:41.273 30498 30498 I SubtypeOperator: SubtypeOperator$1.onBindInput():53 
+11-19 17:10:41.274 30498 30498 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2477 
+11-19 17:10:41.275 30498 30498 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1614 onStartInput(EditorInfo{EditorInfo{packageName=dev.vignesh.cycleshop.isolated, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=Bundle[{com.oplus.im.SCENES=0}], hintText=null, hintLocales=[], initialToolType=0}}, false)
+11-19 17:10:41.275 30498 15007 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():119 repeatCheckTimes = 0, locked = false
+11-19 17:10:41.275 30498 30498 I LatinInputMethodServiceBase: LatinInputMethodServiceBase.updateInputViewCoverNavigation():364 Update input view padding, isNavbarOverInputWindow=false, bottom inset=112
+11-19 17:10:41.277 30498 14978 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():119 repeatCheckTimes = 1, locked = false
+11-19 17:10:41.280  1722  1722 D OplusLayer: setGameMode b4863a4 InputMethod#2417, gameMode 0, parentLayer Surface(name=b4863a4 InputMethod)/@0x6459cc2 - animation-leash of insets_animation#3407.
+11-19 17:10:41.281  1722  1722 D Layer   : reparent to null sequence=3359, seq[4], name=Surface(name=b4863a4 InputMethod)/@0x6459cc2 - animation-leash of insets_animation#3359
+11-19 17:10:41.357   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.358   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:41.427 17067 17074 I leshop.isolated: Compiler allocated 6197KB to compile void android.view.ViewRootImpl.performTraversals()
+11-19 17:10:41.458   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.459   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:41.506  1514 17197 I [UAH_CLIENT]: UahRelease, handle:4809
+11-19 17:10:41.519  3774  3774 I SystemUi--Notification: OplusNotificationShadeWindowControllerExImpl-->SHADE_FOCUSABLE-->mNotificationShadeFocusable= false, mPanelExpanded= false, mBouncerShowing= false, mKeyguardShowing= false, mKeyguardOccluded= false, mKeyguardNeedsInput= false, ENABLE_REMOTE_INPUT= true, mRemoteInputActive= false, layoutFlags= -2130444216
+11-19 17:10:41.520  3774  3774 D UXUtils : notifyUiSwitched: 0; stack: com.oplus.systemui.shade.OplusNotificationShadeWindowControllerExImpl.notifyUiSwitched:73
+11-19 17:10:41.520  3774  4031 D OpenGLRenderer: RenderProxy::destroy: this=0xb400006f96415500, mContext=0xb400006f8d95b5c0
+11-19 17:10:41.520  3774  4135 D OpenGLRenderer: SkiaOpenGLPipeline::setSurface: this=0xb400006fddc396c0, surface=NULL
+11-19 17:10:41.521  3774  4135 D BufferQueueProducer: [VRI[isolated]#719(BLAST Consumer)719](id:ebe000002dd,api:1,p:3774,c:3774) disconnect: api 1
+11-19 17:10:41.522  3774  4031 D ViewRootImplExtImpl: wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=424, relayoutAsync=false, newFlags=27787264, title=Splash Screen dev.vignesh.cycleshop.isolated
+11-19 17:10:41.526  3774  4031 D OplusScrollToTopManager: Splash Screen dev.vignesh.cycleshop.isolated,window dying
+11-19 17:10:41.526  3774  4031 D OplusScrollToTopManager: Splash Screen dev.vignesh.cycleshop.isolated,unregisterSystemUIBroadcastReceiver 
+11-19 17:10:41.526  3774  4031 D OplusScrollToTopManager: Splash Screen dev.vignesh.cycleshop.isolated, unregisterSystemUIBroadcastReceiver failed java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@3a30d4d
+11-19 17:10:41.526  3774  4031 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@de712d8
+11-19 17:10:41.527  3774 22649 D BLASTBufferQueue: [VRI[isolated]#719](f:0,a:1) destructor()
+11-19 17:10:41.527  3774 22649 D BufferQueueConsumer: [VRI[isolated]#719(BLAST Consumer)719](id:ebe000002dd,api:0,p:-1,c:3774) disconnect
+11-19 17:10:41.527  2326  4510 W InputManager-JNI: Input channel object '811e833 Splash Screen dev.vignesh.cycleshop.isolated (client)' was disposed without first being removed with the input manager!
+11-19 17:10:41.530  2326  2697 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:41.533  3774  4404 D UXUtils : setHasTopUi: false; stack: com.android.systemui.shade.NotificationShadeWindowControllerImpl.lambda$apply$0:631
+11-19 17:10:41.538  1722  1722 D Layer   : reparent to null sequence=3406, seq[33], name=Surface(name=2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity)/@0x2494026 - animation-leash of starting_reveal#3406
+11-19 17:10:41.559   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.559   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:41.660   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.660   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:41.676  4835  4854 I FontLog : (REDACTED) Received query %s, URI %s
+11-19 17:10:41.676  4835  4854 I FontLog : (REDACTED) Query [%s] resolved to %s
+11-19 17:10:41.677  4835  4854 I FontLog : (REDACTED) Fetch %s end status %s
+11-19 17:10:41.678  4835  4854 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+11-19 17:10:41.680  2326  2697 D callGcDesupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:41.681  4835  4854 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+11-19 17:10:41.687 30414 17183 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 17:10:41.687 30414 17183 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 17:10:41.688  1722  1722 D Layer   : reparent to null sequence=3396, seq[4], name=Splash Screen dev.vignesh.cycleshop.isolated#3396
+11-19 17:10:41.688  1722  1722 D Layer   : reparent to null sequence=3395, seq[4], name=811e833 Splash Screen dev.vignesh.cycleshop.isolated#3395
+11-19 17:10:41.688  1722  1722 D Layer   : reparent to null sequence=3408, seq[19], name=Surface(name=811e833 Splash Screen dev.vignesh.cycleshop.isolated)/@0x23e2dfe - animation-leash of window_animation#3408
+11-19 17:10:41.705 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 17:10:41.759   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.759   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:41.793  8502  8520 D VRI[MainActivity]: dispatchAppVisibility visible:false
+11-19 17:10:41.797  1722  1722 D OplusLayer: setGameMode WindowToken{5ba7688 type=2011 android.os.Binder@21f422b}#2416, gameMode 0, parentLayer ImeContainer#13.
+11-19 17:10:41.797  1722  1722 D Layer   : reparent to null sequence=3397, seq[2], name=Transition Root: Task=385#3397
+11-19 17:10:41.797  1722  1722 D OplusLayer: setGameMode ImeContainer#13, gameMode 0, parentLayer ActivityRecord{eca254a u0 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity t385}#3394.
+11-19 17:10:41.797  1722  1722 D OplusLayer: setGameMode fe156ac dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity#3282, gameMode 0, parentLayer ActivityRecord{12b3e0b u0 dev.vignesh.cycleshop/.MainActivity t382}#3273.
+11-19 17:10:41.798  1722  1722 D Layer   : reparent to null sequence=3397, seq[2], name=Transition Root: Task=385#3397
+11-19 17:10:41.805  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:382
+11-19 17:10:41.810  8502  8502 D OpenGLRenderer: RenderProxy::destroy: this=0xb4000070759bea00, mContext=0xb4000070677dcf80
+11-19 17:10:41.810  8502  8567 D OpenGLRenderer: SkiaOpenGLPipeline::setSurface: this=0xb40000708fef55c0, surface=NULL
+11-19 17:10:41.811  8502  8567 D BufferQueueProducer: [VRI[MainActivity]#2(BLAST Consumer)2](id:213600000002,api:1,p:8502,c:8502) disconnect: api 1
+11-19 17:10:41.814  8502  8502 D ViewRootImplExtImpl: wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=424, relayoutAsync=false, newFlags=27787264, title=dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity
+11-19 17:10:41.823 17067 17224 D DecoupledTextDelegate: Start loading thick OCR module.
+11-19 17:10:41.824 17067 17224 I DynamiteModule: Considering local module com.google.mlkit.dynamite.text.latin:10000 and remote module com.google.mlkit.dynamite.text.latin:0
+11-19 17:10:41.824 17067 17224 I DynamiteModule: Selected local version of com.google.mlkit.dynamite.text.latin
+11-19 17:10:41.825 17067 17224 I native  : I0000 00:00:1795088441.824950   17224 asset_manager_util.cc:61] Created global reference to asset manager.
+11-19 17:10:41.825 17067 17105 D TransportRuntime.SQLiteEventStore: Storing event with priority=DEFAULT, name=FIREBASE_ML_SDK for destination cct
+11-19 17:10:41.828 17067 17105 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, DEFAULT, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 17:10:41.828  2326  3690 V ListServiceUtils: checkInListByUid start module:custom-icc uid:1000  time 40857024240us
+11-19 17:10:41.829  2326  3690 V ListServiceUtils: checkInListByUid end module:custom-icc uid:1000  time 40857024501us
+11-19 17:10:41.829  2326  3690 D ListServiceUtils: checkInListByUid module:custom-icc uid:1000 cost 260us return 0
+11-19 17:10:41.829  2122  9594 D MMListService: getListValueByUid module:image-processing, uid:1000
+11-19 17:10:41.829  2326  3690 V ListServiceUtils: getListValueByUid module:image-processing uid:1000 cost 128us return 0
+11-19 17:10:41.829  2326  3690 V JpegEncoderExtImpl: Resolution: 1080 x 2400,support: 0;
+11-19 17:10:41.832  8502  8502 D BLASTBufferQueue: [VRI[MainActivity]#2](f:0,a:1) destructor()
+11-19 17:10:41.832  8502  8502 D BufferQueueConsumer: [VRI[MainActivity]#2(BLAST Consumer)2](id:213600000002,api:0,p:-1,c:8502) disconnect
+11-19 17:10:41.833 17067 17226 I native  : I0000 00:00:1795088441.833430   17226 resource_manager.cc:23] Number of optimal threads: 4
+11-19 17:10:41.833 17067 17226 I native  : I0000 00:00:1795088441.833716   17226 text_detector_thread_pool_context.cc:38] Compute manager max in flight region detector overwrite: 1
+11-19 17:10:41.833 17067 17225 I native  : I0000 00:00:1795088441.833769   17225 text_classifier.cc:32] Creating classifier TfliteTextClassifier
+11-19 17:10:41.834 17067 17226 I native  : I0000 00:00:1795088441.834064   17226 common_util.h:41] Resizing Thread Pool: ocr_det_0 to 3
+11-19 17:10:41.834 17067 17225 I native  : I0000 00:00:1795088441.834188   17225 common_util.h:41] Resizing Thread Pool: ocr_segm to 3
+11-19 17:10:41.834 17067 17226 I native  : I0000 00:00:1795088441.834658   17226 tflite_detector_client_with_shape_cache.cc:76] Interpreter threads: 4
+11-19 17:10:41.835 17067 17225 I native  : I0000 00:00:1795088441.835913   17225 tflite_lstm_client_base.cc:371] Resizing interpreter pool to 4
+11-19 17:10:41.836  8502  8502 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:41.836 17067 17226 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:41.837 17067 17225 I native  : I0000 00:00:1795088441.837018   17225 multi_pass_line_recognition_mutator.cc:342] Preloading recognizers.
+11-19 17:10:41.837 17067 17226 I native  : I0000 00:00:1795088441.837134   17226 tflite_detector_client_with_shape_cache.cc:105] Caching size: 10
+11-19 17:10:41.837 17067 17127 I native  : I0000 00:00:1795088441.837189   17127 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/conv_model.fb
+11-19 17:10:41.838 17067 17127 I native  : I0000 00:00:1795088441.838128   17127 tflite_model_pooled_runner.cc:636] Loading mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb
+11-19 17:10:41.840 17067 17127 I native  : I0000 00:00:1795088441.840153   17127 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 4
+11-19 17:10:41.840 17067 17226 I native  : I0000 00:00:1795088441.840780   17226 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite
+11-19 17:10:41.841 17067 17226 I native  : I0000 00:00:1795088441.841028   17226 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 1
+11-19 17:10:41.841 17067 17226 I native  : I0000 00:00:1795088441.841298   17226 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite
+11-19 17:10:41.841 17067 17226 I native  : I0000 00:00:1795088441.841606   17226 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 1
+11-19 17:10:41.841 17067 17127 I native  : I0000 00:00:1795088441.841623   17127 mobile_langid_v2.cc:58] MobileLangID V2 initialized.
+11-19 17:10:41.841 17067 17127 I native  : I0000 00:00:1795088441.841673   17127 multi_pass_line_recognition_mutator.cc:364] Finished preloading a recognizer for "Latn"
+11-19 17:10:41.841 17067 17225 I native  : I0000 00:00:1795088441.841721   17225 multi_pass_line_recognition_mutator.cc:398] Finished preloading recognizers.
+11-19 17:10:41.842 17067 17224 D PipelineManager: Start process bitmap
+11-19 17:10:41.844  8502  8502 D VRI[MainActivity]: setWindowStopped stopped:true
+11-19 17:10:41.849  2326  3690 W Bitmap  : Called getWidth() on a recycle()'d bitmap! This is undefined behavior!
+11-19 17:10:41.849  2326  3690 W Bitmap  : Called getHeight() on a recycle()'d bitmap! This is undefined behavior!
+11-19 17:10:41.850 17067 17226 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:41.855  2326  3690 V ListServiceUtils: checkInListByUid start module:custom-icc uid:1000  time 40857050537us
+11-19 17:10:41.855  2326  3690 V ListServiceUtils: checkInListByUid end module:custom-icc uid:1000  time 40857050676us
+11-19 17:10:41.855  2326  3690 D ListServiceUtils: checkInListByUid module:custom-icc uid:1000 cost 138us return 0
+11-19 17:10:41.855  2122  9594 D MMListService: getListValueByUid module:image-processing, uid:1000
+11-19 17:10:41.855  2326  3690 V ListServiceUtils: getListValueByUid module:image-processing uid:1000 cost 51us return 0
+11-19 17:10:41.855  2326  3690 V JpegEncoderExtImpl: Resolution: 540 x 1200,support: 0;
+11-19 17:10:41.857   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.857   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:41.859 17067 17239 D ProfileInstaller: Installing profile for dev.vignesh.cycleshop.isolated
+11-19 17:10:41.860 17067 17226 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:41.862  4108  4364 D CommonScenarios-114-10408: transportLayerQosChange TransportLayerData{link_index=27, uid=10408, uplink_srtt=0, uplink_packets=0, uplink_retrans_packets=0, uplink_retrans_rate=0, downlink_srtt=0, downlink_packets=0, downlink_retrans_packets=0, downlink_retrans_rate=0, downlink_rate=0, uplink_udp_packets=0, downlink_udp_packets=0, uplink_tcp_rate=0, uplink_udp_rate=0, downlink_tcp_rate=0, downlink_udp_rate=0}
+11-19 17:10:41.862  4108  4364 D CommonScenarios-114-10408: ActiveState process message 2
+11-19 17:10:41.862  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE
+11-19 17:10:41.862  4108  4364 D CommonScenarios-114-10408: transport layer data is invalid
+11-19 17:10:41.862  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE score is invalid
+11-19 17:10:41.868 17067 17226 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:41.871  1722  1722 D Layer   : reparent to null sequence=3358, seq[8], name=dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity#3358
+11-19 17:10:41.874  5495  5523 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_foreground_activities_changed info:pid:8502,uid:10408,hasForegroundActivities:0
+11-19 17:10:41.876  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=0 obj=com.oplus.atlas.OplusAtlasEvent@aef1fa4 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:41.876  5495  7257 D OplusAtlas.OplusAudioScene: callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:8502,uid:10408,hasForegroundActivities:0
+11-19 17:10:41.876  1718  1851 D AudioFlingerExtImpl: AudioFlingerExtImpl oplusSetParameters: keyvalue onForegroundActivitiesChanged=dev.vignesh.cycleshop:foreground:0
+11-19 17:10:41.877  1718  1851 D AudioFlingerExtImpl: updateForegroundInfo mForegroundMap(1)|[dev.vignesh.cycleshop.isolated]=1
+11-19 17:10:41.880  5495  7640 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=-4ms what=2 obj=com.oplus.atlas.OplusAtlasEvent@aef1fa4 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:41.886   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:41.903  2326  2720 I libprocessgroup: Successfully killed process cgroup uid 99058 pid 32740 in 18ms
+11-19 17:10:41.947  3935  3935 I Zygote  : Process 32740 exited due to signal 9 (Killed)
+11-19 17:10:41.948 18035 13605 W cr_ChildProcessConn: onServiceDisconnected (crash or killed by oom): pid=32740 bindings:W   
+11-19 17:10:41.949   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:41.950  2326  2720 I libprocessgroup: Successfully killed process cgroup uid 10245 pid 12661 in 0ms
+11-19 17:10:41.950  1330  1330 I Zygote  : Process 12661 exited due to signal 9 (Killed)
+11-19 17:10:41.951  5495  5523 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_process_died info:pid:32740,uid:10304
+11-19 17:10:41.951  3774  6832 I SeedlingSdk.SeedlingSdkInterface: (SeedingBg) 8 gainSeedlingManager no callback begin isInitialed:2,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:41.951  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Start gain seedling manager.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:41.951  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Seedling manager is already exist,step1.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:41.952  3774  6832 I SDP.SysUi.SeedlingManager:  sendKilledPid, entrance:status_bar[8,20][ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d] [SeedlingSdk|com.android.systemui|2.0.40-ebe132d]
+11-19 17:10:41.952  3774  6832 W SDP.SysUi.PidHelper:  sendKilledPidToUms error, pidInfo from entrance isEmpty, don't send to ums, from entrance, pidInfo:PidInfo(hostPidMap={com.oplus.phonemanager=[], com.oneplus.deskclock=[], net.oneplus.weather=[], com.coloros.assistantscreen=[], com.oneplus.membership=[]}, umsPidSet=[], extras=null)[ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 17:10:41.953  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=1 obj=com.oplus.atlas.OplusAtlasEvent@4ca10d target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:41.954 30414 30414 I adbd    : Remote process closed the socket (on MSG_PEEK)
+11-19 17:10:41.959 17067 17226 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:41.959   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:41.960   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:41.960  2326  2727 E system_server: updateValue is called with a value 25955, which is lower than the previous value 25964
+11-19 17:10:41.964 17067 17226 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:41.965   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:41.967  5495  5523 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_process_died info:pid:12661,uid:10245
+11-19 17:10:41.967  3774  6832 I SeedlingSdk.SeedlingSdkInterface: (SeedingBg) 8 gainSeedlingManager no callback begin isInitialed:2,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:41.967  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Start gain seedling manager.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:41.967  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Seedling manager is already exist,step1.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:41.967  3774  6832 I SDP.SysUi.SeedlingManager:  sendKilledPid, entrance:status_bar[8,20][ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 17:10:41.968  3774  6832 W SDP.SysUi.PidHelper:  sendKilledPidToUms error, pidInfo from entrance isEmpty, don't send to ums, from entrance, pidInfo:PidInfo(hostPidMap={com.oplus.phonemanager=[], com.oneplus.deskclock=[], net.oneplus.weather=[], com.coloros.assistantscreen=[], com.oneplus.membership=[]}, umsPidSet=[], extras=null)[ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 17:10:41.968  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=1 obj=com.oplus.atlas.OplusAtlasEvent@6c0b8c2 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:41.979 18035 18035 E chromium: [ERROR:android_webview/browser/aw_browser_terminator.cc:176] Renderer process (32740) crash detected (code -1).
+11-19 17:10:42.003   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:42.016   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:42.016  2326  2720 I libprocessgroup: Successfully killed process cgroup uid 99070 pid 15302 in 13ms
+11-19 17:10:42.059   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:42.062   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:42.087  3935  3935 I Zygote  : Process 15302 exited due to signal 9 (Killed)
+11-19 17:10:42.090  2326  2720 I libprocessgroup: Successfully killed process cgroup uid 10234 pid 12478 in 0ms
+11-19 17:10:42.090  2326  3841 I Osense-PsiDetector: 5567,219,2200,5631,61,298,237,2327,5773,3548,1681,0,12,9943
+11-19 17:10:42.097   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:42.099 11091 27093 W cr_ChildProcessConn: onServiceDisconnected (crash or killed by oom): pid=15302 bindings:W   
+11-19 17:10:42.102  1514 17191 I [UAH_CLIENT]: UahRelease, handle:4807
+11-19 17:10:42.111  1514  6515 E ANDR-PERF-LM: VmRssMeter:: start() 447: Could not find pid, can not collect vmrss data
+11-19 17:10:42.111  1514  6515 E ANDR-PERF-LM: AdaptiveLaunch: writeToDataBase() 64: Meter aborted or could not get meter data for this run
+11-19 17:10:42.112  5495  5523 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_process_died info:pid:15302,uid:10122
+11-19 17:10:42.118  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_NORMAL, bundle: Bundle[{memLevel=3}]
+11-19 17:10:42.120  3774  6832 I SeedlingSdk.SeedlingSdkInterface: (SeedingBg) 8 gainSeedlingManager no callback begin isInitialed:2,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:42.120  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Start gain seedling manager.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:42.120  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Seedling manager is already exist,step1.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:42.120  3774  6832 I SDP.SysUi.SeedlingManager:  sendKilledPid, entrance:status_bar[8,20][ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d] [SeedlingSdk|com.android.systemui|2.0.40-ebe132d]
+11-19 17:10:42.120  3774  6832 W SDP.SysUi.PidHelper:  sendKilledPidToUms error, pidInfo from entrance isEmpty, don't send to ums, from entrance, pidInfo:PidInfo(hostPidMap={com.oplus.phonemanager=[], com.oneplus.deskclock=[], net.oneplus.weather=[], com.coloros.assistantscreen=[], com.oneplus.membership=[]}, umsPidSet=[], extras=null)[ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 17:10:42.120  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=-3ms what=1 obj=com.oplus.atlas.OplusAtlasEvent@65f6d3 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:42.121  1514  6514 E ANDR-PERF-LM: VmRssMeter:: start() 447: Could not find pid, can not collect vmrss data
+11-19 17:10:42.137  8502  8706 D OplusScrollToTopManager: dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity,This DecorView@c86d6a2[MainActivity] change focus to false
+11-19 17:10:42.139  1330  1330 I Zygote  : Process 12478 exited due to signal 9 (Killed)
+11-19 17:10:42.141 30414 30414 I adbd    : Remote process closed the socket (on MSG_PEEK)
+11-19 17:10:42.141  2326  3530 D ConnectivityService: releasing NetworkRequest [ REQUEST id=6046, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10234 RequestorUid: 10234 RequestorPkg: com.google.android.dialer UnderlyingNetworks: Null] ] (release request)
+11-19 17:10:42.142  2326  3530 D ConnectivityService: releasing NetworkRequest [ REQUEST id=6044, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10234 RequestorUid: 10234 RequestorPkg: com.google.android.dialer UnderlyingNetworks: Null] ] (release request)
+11-19 17:10:42.144  2326  2326 W ServiceConnector.Impl: mayInterruptIfRunning not supported - ignoring
+11-19 17:10:42.145  2326  3530 D ConnectivityService: releasing NetworkRequest [ REQUEST id=6042, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10234 RequestorUid: 10234 RequestorPkg: com.google.android.dialer UnderlyingNetworks: Null] ] (release request)
+11-19 17:10:42.145   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:42.149  5495  5523 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_process_died info:pid:12478,uid:10234
+11-19 17:10:42.149  3774  6832 I SeedlingSdk.SeedlingSdkInterface: (SeedingBg) 8 gainSeedlingManager no callback begin isInitialed:2,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:42.149  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Start gain seedling manager.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:42.149  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Seedling manager is already exist,step1.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:42.149  3774  6832 I SDP.SysUi.SeedlingManager:  sendKilledPid, entrance:status_bar[8,20][ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 17:10:42.149  3774  6832 W SDP.SysUi.PidHelper:  sendKilledPidToUms error, pidInfo from entrance isEmpty, don't send to ums, from entrance, pidInfo:PidInfo(hostPidMap={com.oplus.phonemanager=[], com.oneplus.deskclock=[], net.oneplus.weather=[], com.coloros.assistantscreen=[], com.oneplus.membership=[]}, umsPidSet=[], extras=null)[ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 17:10:42.153  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=-1ms what=1 obj=com.oplus.atlas.OplusAtlasEvent@6d09210 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:42.183  9561  9561 I GoogleTtsServicePeer: onUnbind() called for Google TTS service.
+11-19 17:10:42.264 17067 17220 D OplusScrollToTopManager: dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity,This DecorView@cdf3f2c[ComponentActivity] change focus to true
+11-19 17:10:42.354  3774  4985 D OplusMemUtil: Regular memory logging  --  total-pss: 248,  dalvik-pss: 28,  native-pss: 48,  swap-pss: 63 -- total-rss: 339
+11-19 17:10:42.418  2326  4105 I OplusHansManager : uid=10296, pkg=com.google.android.verifier F enter(), M stay=3
+11-19 17:10:42.420  2326  4105 I OplusHansManager : freeze uid: 10296 com.google.android.verifier pids: [15662] scene: LcdOn
+11-19 17:10:42.421 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10296, pkgCmd = ADD_ONE_UID
+11-19 17:10:42.428  2326  4105 I OplusHansManager : uid=10423, pkg=com.spotify.music F enter(), M stay=3
+11-19 17:10:42.433  2326  4105 I OplusHansManager : freeze uid: 10423 com.spotify.music pids: [31102, 31529] IsolatedUid: [99040] scene: LcdOn
+11-19 17:10:42.434 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10423, pkgCmd = ADD_ONE_UID
+11-19 17:10:42.436  2326  4105 I OplusHansManager : uid=10267, pkg=com.q4u.vewdeletedmessage F enter(), M stay=3
+11-19 17:10:42.442  2326  4105 I OplusHansManager : freeze uid: 10267 com.q4u.vewdeletedmessage pids: [12694, 13200] IsolatedUid: [99055] scene: LcdOn
+11-19 17:10:42.442 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10267, pkgCmd = ADD_ONE_UID
+11-19 17:10:42.473 17067 17224 D PipelineManager: OCR process succeeded via visionkit pipeline.
+11-19 17:10:42.707 30414 17223 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 17:10:42.708 30414 17223 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 17:10:42.725 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 17:10:42.780 17067 17067 I leshop.isolated: hiddenapi: Accessing hidden method Landroid/os/SystemProperties;->addChangeCallback(Ljava/lang/Runnable;)V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/compose/ui/platform/AndroidComposeView$Companion; (domain=app, TargetSdkVersion=37) using reflection: allowed
+11-19 17:10:42.780 17067 17067 D CompatibilityChangeReporter: Compat change id reported: 193247900; UID 10431; state: ENABLED
+11-19 17:10:42.828 12682 26222 D ShellSubscriberWorkerThread: the first 8 bytes empty, and RestData length > 8 
+11-19 17:10:42.885  4108  4364 D CommonScenarios-114-10408: transportLayerQosChange TransportLayerData{link_index=27, uid=10408, uplink_srtt=0, uplink_packets=0, uplink_retrans_packets=0, uplink_retrans_rate=0, downlink_srtt=0, downlink_packets=0, downlink_retrans_packets=0, downlink_retrans_rate=0, downlink_rate=0, uplink_udp_packets=0, downlink_udp_packets=0, uplink_tcp_rate=0, uplink_udp_rate=0, downlink_tcp_rate=0, downlink_udp_rate=0}
+11-19 17:10:42.885  4108  4364 D CommonScenarios-114-10408: ActiveState process message 2
+11-19 17:10:42.885  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE
+11-19 17:10:42.885  4108  4364 D CommonScenarios-114-10408: transport layer data is invalid
+11-19 17:10:42.885  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE score is invalid
+11-19 17:10:42.976   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:42.984  2326  4112 I OplusHansManager : unfreeze uid: 10296 com.google.android.verifier pids: [15662] reason: AsyncBinder scene: LcdOn
+11-19 17:10:42.989  2326  4105 I OplusHansManager : uid=10296, pkg=com.google.android.verifier F exit(), F stay=0, reason=AsyncBinder
+11-19 17:10:43.009  2326  2720 I libprocessgroup: Successfully killed process cgroup uid 10269 pid 16345 in 33ms
+11-19 17:10:43.023  1330  1330 I Zygote  : Process 16345 exited due to signal 9 (Killed)
+11-19 17:10:43.026   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:43.027  5495  5523 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_process_died info:pid:16345,uid:10269
+11-19 17:10:43.027  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=1 obj=com.oplus.atlas.OplusAtlasEvent@baf4109 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:43.027  3774  6832 I SeedlingSdk.SeedlingSdkInterface: (SeedingBg) 8 gainSeedlingManager no callback begin isInitialed:2,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:43.028  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Start gain seedling manager.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:43.028  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Seedling manager is already exist,step1.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:43.028  3774  6832 I SDP.SysUi.SeedlingManager:  sendKilledPid, entrance:status_bar[8,20][ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d] [SeedlingSdk|com.android.systemui|2.0.40-ebe132d]
+11-19 17:10:43.028  3774  6832 W SDP.SysUi.PidHelper:  sendKilledPidToUms error, pidInfo from entrance isEmpty, don't send to ums, from entrance, pidInfo:PidInfo(hostPidMap={com.oplus.phonemanager=[], com.oneplus.deskclock=[], net.oneplus.weather=[], com.coloros.assistantscreen=[], com.oneplus.membership=[]}, umsPidSet=[], extras=null)[ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 17:10:43.083  1722  1722 I OplusPerfCount: The num of client composition of  in last 60131 ms is: 155
+11-19 17:10:43.083  1722  1722 I OplusPerfCount: The num of blur fliter in last 60131 ms is: 161
+11-19 17:10:43.083  1722  1722 I OplusPerfCount: The layer number in last 60131ms is: 3 layer, 5 time, 5 layer, 156 time, 6 layer, 76 time, 7 layer, 108 time, 8 layer, 19 time, 
+11-19 17:10:43.088  2326  4275 I OplusHansManager : FastFreeze enter, freeze uids: [10269, 10289, 10291, 10295, 10296, 10304, 10331, 10422, 10464]
+11-19 17:10:43.089  2326  4275 I OplusHansManager : enter FastFreezer, frontApp: 10431, frozen uids: [10269, 10289, 10291, 10295, 10296, 10304, 10331, 10422, 10464], important uids: {10408=prev}, reason: skip-frame
+11-19 17:10:43.105  4108  4364 D CommonScenarios-114-10408: destory
+11-19 17:10:43.105  4108  4364 D CommonScenarios-114-10408: stopDataCollection
+11-19 17:10:43.105  4108  4364 D CommonScenarios-114-10408: current network isn't cellular,not need disable modem report
+11-19 17:10:43.108  4108  4364 D CommonScenarios-114-10431: mKernelVersion 4.19
+11-19 17:10:43.108  2326  3837 D Osense-BaseDecisionMaker: notifyDelayedSceneToPolicy
+11-19 17:10:43.113  4108  4364 D CommonScenarios-114-10431: initState
+11-19 17:10:43.114  4108  4364 D AppStateRecord: handleMessage: EVENT_FOREGROUND_APP_CHANGE
+11-19 17:10:43.114  4108  4364 D AppStateRecord: isFgAppInStuckList
+11-19 17:10:43.114  4108  4364 D AppStateRecord: getFgAppInStuckList: fgApp dev.vignesh.cycleshop.isolated
+11-19 17:10:43.114  4108  4364 D AppStateRecord: handleMessage: dataScoreCalc == null
+11-19 17:10:43.114  4108  4364 D CommonScenarios-114-10431: ActiveState process message 46
+11-19 17:10:43.114  4108  4364 D CommonScenarios-114-10431: DefaultState EVENT_INIT_STATE_COMPLETE
+11-19 17:10:43.114  4108  4364 D CommonScenarios-114-10431: startDataCollection
+11-19 17:10:43.114  4108  4364 D CommonScenarios-114-10431: current network isn't cellular,not need enable modem report
+11-19 17:10:43.129  3774  4416 I SystemUi--Statusbar: PrivacyDotViewController-->scheduleUpdate: 
+11-19 17:10:43.130  1491 29524 I WifiHAL : event received NL80211_CMD_VENDOR, vendor_id = 0x1374, subcmd = 0xd
+11-19 17:10:43.160  1599  1705 D vendor.oplus.hardware.charger-V3-service: read content:,313,298,3773,3772,694,2000,1100,42,42,0,0,-1,0,42,1,0,1,1,0,0,4395,0,0,0,4,0,0,0,-2740,0,3,1,0,0,0,0,0,0x28,0x2d,0x0a,0x6d,0x26,0x16,0x00,0x00,0x00
+11-19 17:10:43.160  1599  1705 D vendor.oplus.hardware.charger-V3-service: , ret_value:149
+11-19 17:10:43.161  1599  1705 D vendor.oplus.hardware.charger-V3-service: gmtime: 2026-11-19-17-10-43
+11-19 17:10:43.230  3774  4416 I SystemUi--Statusbar: PrivacyDotViewController-->processNextViewState: 
+11-19 17:10:43.231  3774  4416 I SystemUi--Statusbar: PrivacyDotViewController-->resolveState ViewState(viewInitialized=true, systemPrivacyEventIsActive=false, shadeExpanded=false, qsExpanded=false, portraitRect=Rect(165, 0 - 1080, 103), landscapeRect=Rect(103, 0 - 2400, 103), upsideDownRect=Rect(0, 0 - 1080, 103), seascapeRect=Rect(0, 0 - 2287, 103), layoutRtl=false, rotation=0, paddingTop=35, paddingBottom=1, cornerIndex=1, designatedCorner=android.widget.FrameLayout{e529b72 I.E...... .......D 1021,0-1080,103 #7f0a085e app:id/privacy_dot_top_right_container viewInfo = }, contentDescription=Applications are using your camera., dotMargin=56)
+11-19 17:10:43.309  2326  5497 I OplusCpuLoadTrack: [total] totaltime or idletime is zero or negtive value
+11-19 17:10:43.422 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10296, pkgCmd = PKG_CMD_MAX
+11-19 17:10:43.435 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10423, pkgCmd = PKG_CMD_MAX
+11-19 17:10:43.442 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10267, pkgCmd = PKG_CMD_MAX
+11-19 17:10:43.728 30414 17253 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 17:10:43.728 30414 17253 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 17:10:43.741 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 17:10:43.764  2326  3516 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+11-19 17:10:43.775  3774  4211 D WifiStatusTracker: mNetworkCallback onCapabilitiesChanged network:114 mPrimaryNetworkId:114
+11-19 17:10:43.777  3774  4211 D WifiStatusTracker: mNetworkCallback onCapabilitiesChanged network:114 mPrimaryNetworkId:114
+11-19 17:10:43.780  3774  4211 I SystemUi--Statusbar: NetworkController.WifiSignalController-->handleStatusUpdated state=3 enabled=true connected=true isDefaultNetwork=true rssi=-50 level=4 wifiStandard=5 statusLabel=null isDirty=false
+11-19 17:10:43.781  3774  4211 I SystemUi--Statusbar: NetworkController.WifiSignalController-->handleStatusUpdated state=3 enabled=true connected=true isDefaultNetwork=true rssi=-50 level=4 wifiStandard=5 statusLabel=null isDirty=false
+11-19 17:10:43.781  3774  4211 I SystemUi--Statusbar: NetworkController.WifiSignalController-->handleStatusUpdated state=3 enabled=true connected=true isDefaultNetwork=true rssi=-50 level=4 wifiStandard=5 statusLabel=null isDirty=false
+11-19 17:10:43.782  2326  3654 D SystemNetworkObserver: wifi network 114 nc changed, primary=true
+11-19 17:10:43.782  2326  3654 D SystemNetworkObserver: default network nc changed 114
+11-19 17:10:43.785  2326  4948 D OplusSlaNetworkManager: isPrimaryWifi:true network:114
+11-19 17:10:43.786  7068  7580 I ONet.Lan_LanConnectManager: (LanConnectivityReceiver.java:10)onRssiChanged, but do not need sync to remote!
+11-19 17:10:43.788 15850 15906 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+11-19 17:10:43.788 11535 11699 I CardConfig.RxNetworkMonitor: onNetworkStateChange, current:true, last:true
+11-19 17:10:43.792  2326  4112 I OplusHansManager : unfreeze uid: 10277 com.dreamplug.androidapp pids: [12251] reason: AsyncBinder scene: LcdOn|FastFreezer
+11-19 17:10:43.792  2326  4105 I OplusHansManager : uid=10277, pkg=com.dreamplug.androidapp F exit(), F stay=9, reason=AsyncBinder
+11-19 17:10:43.792 12251 12321 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=36945Kbps LinkDnBandwidth>=81894Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.0.9, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ac, RSSI: -50, Link speed: 650Mbps, Tx Link speed: 650Mbps, Max Supported Tx Link speed: 866Mbps, Calculated Tx : 276Mbps, Rx Link speed: 585Mbps, Max Supported Rx Link speed: 866Mbps, Calculated Rx : 397Mbps, Frequency: 5180MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -50 UnderlyingNetworks: Null]
+11-19 17:10:43.795 25378 25399 I AIUnit-NetworkPublisher: onNetworkChanged [onCapabilitiesChanged, 114]
+11-19 17:10:43.799  2326  4112 I OplusHansManager : unfreeze uid: 10326 com.azure.authenticator pids: [26829, 5272] reason: AsyncBinder scene: LcdOn|FastFreezer
+11-19 17:10:43.800  2326  4105 I OplusHansManager : uid=10326, pkg=com.azure.authenticator F exit(), F stay=9, reason=AsyncBinder
+11-19 17:10:43.800 25378 25399 D Track.TrackUpload: onCapabilitiesChanged is calling.
+11-19 17:10:43.801  2326  4112 I OplusHansManager : unfreeze uid: 10281 com.instagram.barcelona pids: [19992] reason: AsyncBinder scene: LcdOn|FastFreezer
+11-19 17:10:43.802  2326  4112 I OplusHansManager : unfreeze uid: 10329 com.jio.myjio pids: [21017] reason: AsyncBinder scene: LcdOn|FastFreezer
+11-19 17:10:43.803  2326  4105 I OplusHansManager : uid=10281, pkg=com.instagram.barcelona F exit(), F stay=5, reason=AsyncBinder
+11-19 17:10:43.803  2326  4105 I OplusHansManager : uid=10329, pkg=com.jio.myjio F exit(), F stay=9, reason=AsyncBinder
+11-19 17:10:43.805  2326  4112 I OplusHansManager : unfreeze uid: 10423 com.spotify.music pids: [31102, 31529] reason: AsyncBinder scene: LcdOn|FastFreezer
+11-19 17:10:43.805  2326  4105 I OplusHansManager : uid=10423, pkg=com.spotify.music F exit(), F stay=1, reason=AsyncBinder
+11-19 17:10:43.805  8273  8334 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+11-19 17:10:43.808  2326  4112 I OplusHansManager : unfreeze uid: 10267 com.q4u.vewdeletedmessage pids: [12694, 13200] reason: AsyncBinder scene: LcdOn|FastFreezer
+11-19 17:10:43.809  2326  4105 I OplusHansManager : uid=10267, pkg=com.q4u.vewdeletedmessage F exit(), F stay=1, reason=AsyncBinder
+11-19 17:10:43.809  8273  8324 I ebpt    : Connection state change: onCapabilitiesChanged, data connection: WIFI, manual connection eligibility: false, ntn roaming: false
+11-19 17:10:43.809  8273  8324 I ebpt    : New default data network: wifi
+11-19 17:10:43.811 25378 25394 I AIUnit-SystemFeatureCompat: isSaleMode false
+11-19 17:10:43.811 25378 25394 I AIUnit-LocalUnitStore: getLastRunAppRecord AppRecord(version=1405048, protocol=144)
+11-19 17:10:43.811 25378 25394 I AIUnit-UpdateUnitStore: check update interval fail, you need wait 39 minutes
+11-19 17:10:43.811 25378 25394 I AIUnit-Update.UnitConfigUpdater: updateUnitConfig notSkipConfigUpdate:false, overwrite:false
+11-19 17:10:43.811  2326  3530 D ConnectivityService: NetReassign [no changes] [c 0] [a 0] [i 1]
+11-19 17:10:43.813  4835  2752 I NearbyMediums: Wifi changed new SSID: <unknown ssid>
+11-19 17:10:43.813  4835  2752 I NearbyMediums: WifiLanConnectivityInfo is not changed, skip notify.
+11-19 17:10:43.816 25378 25394 W AIUnit-Update.UnitConfigUpdater: updateUnitConfig no need download
+11-19 17:10:43.909  4108  4364 D CommonScenarios-114-10431: transportLayerQosChange TransportLayerData{link_index=27, uid=10431, uplink_srtt=0, uplink_packets=0, uplink_retrans_packets=0, uplink_retrans_rate=0, downlink_srtt=0, downlink_packets=0, downlink_retrans_packets=0, downlink_retrans_rate=0, downlink_rate=0, uplink_udp_packets=0, downlink_udp_packets=0, uplink_tcp_rate=0, uplink_udp_rate=0, downlink_tcp_rate=0, downlink_udp_rate=0}
+11-19 17:10:43.910  4108  4364 D CommonScenarios-114-10431: ActiveState process message 2
+11-19 17:10:43.910  4108  4364 D CommonScenarios-114-10431: ActiveState EVENT_NETWORK_KPI_CHANGE
+11-19 17:10:43.910  4108  4364 D CommonScenarios-114-10431: transport layer data is invalid
+11-19 17:10:43.910  4108  4364 D CommonScenarios-114-10431: ActiveState EVENT_NETWORK_KPI_CHANGE score is invalid
+11-19 17:10:44.147  2326  3642 E UAH_JNI : uah_event_acquire ! cmdId: 2 ,strPkg: , strIdent: com.android.server.wm, timeout: 500
+11-19 17:10:44.147  2326  3642 I [UAH_CLIENT]: UahEventAcquire, cmdid:2, pkg:none, identity:com.android.server.wm
+11-19 17:10:44.154  1514  1514 I [UAH_CLIENT]: UahPlatformResAcquire
+11-19 17:10:44.155  1514  1514 I [UAH_CLIENT]: UahEventAcquire, cmdid:-3, pkg:2326 4712, identity:qcom-perfd
+11-19 17:10:44.155  2326  4452 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-19 17:10:44.155  2326  4452 W Binder  : java.lang.Throwable
+11-19 17:10:44.155  2326  4452 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:618)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at android.content.ContentProviderProxy.insert(ContentProviderNative.java:587)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at android.content.ContentProviderClient.insert(ContentProviderClient.java:347)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at android.content.ContentProviderClient.insert(ContentProviderClient.java:336)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at com.oplus.util.OplusStatisticsImpl.insert(OplusStatisticsImpl.java:294)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at com.oplus.util.OplusStatisticsImpl.sendDataToDCS(OplusStatisticsImpl.java:274)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at com.oplus.util.OplusStatisticsImpl.flushInternal(OplusStatisticsImpl.java:251)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at com.oplus.util.OplusStatisticsImpl.lambda$setDelayFlushJobIfNeed$4(OplusStatisticsImpl.java:209)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at com.oplus.util.OplusStatisticsImpl.$r8$lambda$YMxNrIA8Zpo461RJ9pONFn4wbVU(OplusStatisticsImpl.java:0)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at com.oplus.util.OplusStatisticsImpl$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:4)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-19 17:10:44.155  2326  4452 W Binder  : 	at java.lang.Thread.run(Thread.java:1571)
+11-19 17:10:44.155  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:44.155  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:44.155  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:44.155  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:44.155  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:44.155  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:44.156  1514  1646 E ANDR-PERF-LM: MetaMeter: handleAsync() 166: AdaptLaunch Invalid Async
+11-19 17:10:44.156  1514  1645 E ANDR-PERF-UTIL: Failed to read /sys/class/mmc_host/mmc0/clk_scaling/enable
+11-19 17:10:44.156  1514  1645 E ANDR-PERF-OPTSHANDLER: Failed to read /sys/class/mmc_host/mmc0/clk_scaling/enable
+11-19 17:10:44.156  1514  1645 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [11, 4]
+11-19 17:10:44.156  1514  1514 I [UAH_CLIENT]: UahPlatformResAcquire
+11-19 17:10:44.156  1514  1514 I [UAH_CLIENT]: UahEventAcquire, cmdid:-3, pkg:2326 4712, identity:qcom-perfd
+11-19 17:10:44.157  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=22 not supported
+11-19 17:10:44.157  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=21 not supported
+11-19 17:10:44.157  1514  1646 E ANDR-PERF-LM: MetaMeter: handleAsync() 166: AdaptLaunch Invalid Async
+11-19 17:10:44.157   736   736 I hwservicemanager: getTransport: Cannot find entry vendor.qti.hardware.iop@2.0::IIop/default in either framework or device VINTF manifest.
+11-19 17:10:44.157  2326  4712 D RemoteTaskHandlerManager: activateRemoteTaskIfNeeded
+11-19 17:10:44.162 17067 17067 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.163  2326  4712 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+11-19 17:10:44.164  2326  3642 E UAH_JNI : uah_event_acquire ! cmdId: 1 ,strPkg: dev.vignesh.cycleshop.isolated.test, strIdent: com.android.server.wm, timeout: 2000
+11-19 17:10:44.164  2326  3642 I [UAH_CLIENT]: UahEventAcquire, cmdid:1, pkg:dev.vignesh.cycleshop.isolated.test, identity:com.android.server.wm
+11-19 17:10:44.167  3774  3774 I SystemUi--Notification: OplusNotificationShadeWindowControllerExImpl-->SHADE_FOCUSABLE-->mNotificationShadeFocusable= false, mPanelExpanded= false, mBouncerShowing= false, mKeyguardShowing= false, mKeyguardOccluded= false, mKeyguardNeedsInput= false, ENABLE_REMOTE_INPUT= true, mRemoteInputActive= false, layoutFlags= -2130444216
+11-19 17:10:44.167  3774  3774 D UXUtils : notifyUiSwitched: 1; stack: com.oplus.systemui.shade.OplusNotificationShadeWindowControllerExImpl.notifyUiSwitched:70
+11-19 17:10:44.167  3774  3774 D UXUtils : set ux flag--> setFlag = 400, old flag = 400, open = true, cal = 400
+11-19 17:10:44.167  3774  3774 D UXUtils : set process top-ui: pid=3774 value=130
+11-19 17:10:44.167  1722  2705 I SurfaceFlinger: [SF client] NEW(0xb400007e4aa6d280) for (3774:com.android.systemui)
+11-19 17:10:44.168 17067 17067 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.168 17067 17067 D ScrollOptim [SceneManager]: updateCurrentActivity: mCurrentActivityName=null, isOptEnable=true, isAnimAheadEnable=true, isFrameInsertEnable=true, InsertNum=1, isEnabledForScrollChanged=false
+11-19 17:10:44.169 17067 17067 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@f5e2985 in: PAUSED
+11-19 17:10:44.169 17067 17067 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=androidx.activity.ComponentActivity@f5e2985
+11-19 17:10:44.169  3774  4031 D WindowManager: Add to mViews: android.widget.FrameLayout{baa7526 V.E...... ......I. 0,0-0,0 viewInfo = },pkg= dev.vignesh.cycleshop.isolated.test
+11-19 17:10:44.171  1514  1646 W ANDR-PERF-LM: MetaMeter: handlePrimaryAsync() 118: AdaptLaunch MetaMeter. No MeterMgr Available to handle this Primary Async. !!!!
+11-19 17:10:44.171  1514  1646 W ANDR-PERF-LM: MetaMeter: handlePrimaryAsync() 118: AdaptLaunch MetaMeter. No MeterMgr Available to handle this Primary Async. !!!!
+11-19 17:10:44.172  1514  1514 I [UAH_CLIENT]: UahPlatformResAcquire
+11-19 17:10:44.172  1514  1514 I [UAH_CLIENT]: UahEventAcquire, cmdid:-3, pkg:2326 4712, identity:qcom-perfd
+11-19 17:10:44.172  3774  4404 D UXUtils : setHasTopUi: true; stack: com.android.systemui.shade.NotificationShadeWindowControllerImpl.lambda$apply$0:631
+11-19 17:10:44.172  2326  4712 V SensorManager: call sensorServiceCommonInterface name: setScreenShotDisable
+11-19 17:10:44.173  2326  4712 D SensorServiceExtImpl: sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+11-19 17:10:44.173  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:44.173  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:44.173  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:44.173  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:44.173  2326  4712 I OplusHansManager : front pkg: dev.vignesh.cycleshop.isolated.test, uid: 10432, prev pkg: dev.vignesh.cycleshop.isolated, prev uid: 10431
+11-19 17:10:44.173  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:44.173  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:44.173  2326  4712 V SensorManager: call sensorServiceCommonInterface name: setScreenShotDisable
+11-19 17:10:44.173  2326  4105 I OplusHansManager : uid=10431, pkg=dev.vignesh.cycleshop.isolated enter SM
+11-19 17:10:44.173  2326  4712 D SensorServiceExtImpl: sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+11-19 17:10:44.174  2326  4105 I OplusHansManager : uid=10431, pkg=dev.vignesh.cycleshop.isolated R enter(), D stay=3
+11-19 17:10:44.174  2326  3837 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_APP_SWITCH, bundle: Bundle[{prevPkgName=dev.vignesh.cycleshop.isolated, curUid=10432, curPkgName=dev.vignesh.cycleshop.isolated.test, prevUid=10431}]
+11-19 17:10:44.174  2326  3837 I Osense-BaseDecisionMaker: scene: SCENE_APP_SWITCH, excutingPolicy: freezer
+11-19 17:10:44.174  2326  4139 I OplusResourcePreloadManager: resume pkg: dev.vignesh.cycleshop.isolated.test, uid:10432, prev pkg: dev.vignesh.cycleshop.isolated, prev uid: 10431
+11-19 17:10:44.174  2326  3837 D Osense-BaseDecisionMaker: invoke freezer policy,type: fast
+11-19 17:10:44.174  2326  4712 V SensorManager: call sensorServiceCommonInterface name: setScreenShotDisable
+11-19 17:10:44.174  2326  4712 D SensorServiceExtImpl: sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+11-19 17:10:44.179  3774  4031 D InputEventReceiver: Input log is disabled in InputEventReceiver.
+11-19 17:10:44.179  3774  4031 E OplusBracketLog: [OplusViewMirrorManager] updateHostViewRootIfNeeded, not support android.view.ViewRootImpl@81ee3bd
+11-19 17:10:44.180  3774  4031 D ViewRootImplExtImpl: wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=424, relayoutAsync=false, newFlags=27787264, title=Splash Screen dev.vignesh.cycleshop.isolated.test
+11-19 17:10:44.181  1722  2705 D OplusLayer: setProcInfo (3412,Splash Screen dev.vignesh.cycleshop.isolated.test#3412,com.android.systemui)
+11-19 17:10:44.183  2326  2695 I TheiaLaunchMonitor: [checkAndRecovery] the function is disable.
+11-19 17:10:44.185  2326  2489 D Theia.NoFocusWindow: FocusWindowErrorScene CheckFreezeScreen
+11-19 17:10:44.185  2326  2489 D Theia.TransparentWindow: TransparentWindow cancelCheckFreezeScreen
+11-19 17:10:44.185  2326  4712 I InputDispatcher: updateFocusedWindow,  on display 0, reason: NO_WINDOW, result:   FocusedWindows: <none>
+11-19 17:10:44.186 17067 17067 D VRI[ComponentActivity]: onFocusEvent false
+11-19 17:10:44.187  3774  4031 D BufferQueueConsumer: [](id:ebe000002de,api:0,p:-1,c:3774) connect: controlledByApp=false
+11-19 17:10:44.189  3774  3995 D ZoomController: onTaskMovedToFront, task id:386
+11-19 17:10:44.189  3774  3995 I ZoomUiController: FloatHandle-isFloatHandleShow mPackageName = null
+11-19 17:10:44.190  3774  4135 D BufferQueueProducer: [VRI[test]#720(BLAST Consumer)720](id:ebe000002de,api:1,p:3774,c:3774) connect: api=1 producerControlledByApp=true
+11-19 17:10:44.190  3774  4135 E OpenGLRenderer: Unable to match the desired swap behavior.
+11-19 17:10:44.192  1330  1330 D Zygote  : Forked child process 17299
+11-19 17:10:44.193  3774  4031 I SurfaceControl:  setExtendedRangeBrightness sc=Surface(name=Splash Screen dev.vignesh.cycleshop.isolated.test)/@0x5213103,currentBufferRatio=1.0,desiredRatio=1.0
+11-19 17:10:44.193  1722  1722 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-19 17:10:44.194  3774  4135 D BLASTBufferQueue: [VRI[test]#720](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=40859389781338(auto) mPendingTransactions.size=0 graphicBufferId=16209206579136 transform=0
+11-19 17:10:44.194  1514  1646 E ANDR-PERF-LM: MetaMeter: handleAsync() 166: AdaptLaunch Invalid Async
+11-19 17:10:44.194  3774  4135 D VRI[test]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+11-19 17:10:44.194  3774  4031 D VRI[test]: draw finished.
+11-19 17:10:44.194  3774  4031 D VRI[test]: reportDrawFinished
+11-19 17:10:44.195  2326  4275 I OplusHansManager : onUidActive() update stay time, uid=10432, pkgName=dev.vignesh.cycleshop.isolated.test, U stay=8
+11-19 17:10:44.195  3774  4031 D ViewRootImplExtImpl: setMaxDequeuedBufferCount: 2
+11-19 17:10:44.200  1722  4624 D SurfaceFlinger: captureLayers from pid 2326 uid -1
+11-19 17:10:44.201  3774  3774 I SystemUi--Keyguard: KeyguardUtils-->density is 0 sInitialDisplayDensity:480
+11-19 17:10:44.209  3774  3995 D FSS_OplusFoldSwitchStateObserver: getDeviceFolding: mDeviceFolding = false
+11-19 17:10:44.209  3774  3995 D OnePuttTransitionHandler:  startAnimation= android.os.BinderProxy@c319905 startTransaction= android.view.SurfaceControl$Transaction@5f7f762 finishTransaction= android.view.SurfaceControl$Transaction@fc060f3 finishCallback= com.android.wm.shell.transition.Transitions$$ExternalSyntheticLambda7@16581b0 TransitionInfo ={id=163 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@dd75798} m=OPEN f=NONE leash=Surface(name=Task=386)/@0x3f1cac sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@8f0cbf1} m=TO_BACK f=NONE leash=Surface(name=Task=385)/@0xea3cd75 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+11-19 17:10:44.210  3774  3995 E OplusShellTransition: couldn't get animation style packageName, android.window.OplusTransitionExtendedInfo.getAnimationStylePackageName []
+11-19 17:10:44.210  3774  3995 W OplusShellTransition: no system app in targets, skip loading oplus animation
+11-19 17:10:44.211  3774  3995 E OplusShellTransition: couldn't get animation style packageName, android.window.OplusTransitionExtendedInfo.getAnimationStylePackageName []
+11-19 17:10:44.211  3774  3995 W OplusShellTransition: no system app in targets, skip loading oplus animation
+11-19 17:10:44.212 17299 17299 I p.isolated.test: Late-enabling -Xcheck:jni
+11-19 17:10:44.213  3774  3995 D OplusShellTransition: dispatchTransition, animated mHandler: com.android.wm.shell.transition.DefaultTransitionHandler@31a6e9a
+11-19 17:10:44.213  3774  4003 D FSS_OplusFoldSwitchStateObserver: onAnimationStart reset mPendingFoldAnimationTrigger
+11-19 17:10:44.213  3774  4003 D FSS_OplusFoldSwitchStateObserver: onAnimationStart reset mPendingFoldAnimationTrigger
+11-19 17:10:44.214  2326  2696 D TaskOrganizerController: TaskOrganizerCallbacks.onTaskAppeared
+11-19 17:10:44.214  3774  3995 V ShellTaskOrganizer: Task appeared taskId=386, parentTaskId=-1, taskVisibility=true
+11-19 17:10:44.214  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:386
+11-19 17:10:44.217  1722  1722 D OplusLayer: setGameMode 2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity#3400, gameMode 0, parentLayer ActivityRecord{eca254a u0 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity t385}#3394.
+11-19 17:10:44.217  1722  1722 D OplusLayer: setGameMode dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity#3401, gameMode 0, parentLayer 2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity#3400.
+11-19 17:10:44.218  1722  1722 D Layer   : reparent to null sequence=3404, seq[2], name=Surface(name=7881365 NavigationBar_displayId_0)/@0xe1eeba1 - animation-leash of insets_animation#3404
+11-19 17:10:44.218  1722  1722 D Layer   : reparent to null sequence=3405, seq[1], name=Surface(name=a7c83b3 StatusBar)/@0xe7b91c6 - animation-leash of insets_animation#3405
+11-19 17:10:44.231 17299 17299 E p.isolated.test: Unknown bits set in runtime_flags: 0x40000000
+11-19 17:10:44.231 17299 17299 I p.isolated.test: Using generational CollectorTypeCC GC.
+11-19 17:10:44.233 30414 30456 I adbd    : jdwp connection from 17299
+11-19 17:10:44.236 17299 17299 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-19 17:10:44.239 17299 17299 D OplusActivityThreadExtImpl: java.lang.NoSuchMethodException: dalvik.system.VMRuntime.SupressionGC [int, int]
+11-19 17:10:44.239 17299 17299 W libc    : Access denied finding property "persist.vendor.sys.activitylog"
+11-19 17:10:44.239 17299 17299 I OneTrace: Mark active for pid=17299? true
+11-19 17:10:44.239 17299 17299 D cutils-dev: otrace_set_tracing_enabled? true tag:0
+11-19 17:10:44.239 17299 17306 D cutils-dev: properties changed in otrace_seq_number_changed!
+11-19 17:10:44.243  1514  1646 E ANDR-PERF-LM: MetaMeter: handleAsync() 166: AdaptLaunch Invalid Async
+11-19 17:10:44.245  2326  4281 D RGBNormalizeServer: OplusRGBNormalize feature enabled ? false
+11-19 17:10:44.245  2326  4281 D ResourcesManagerCache: For package dev.vignesh.cycleshop.isolated.test we got cacheList [null] appInfoExt is null ? false hasFeature ? false
+11-19 17:10:44.249  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:386
+11-19 17:10:44.252 17299 17312 D OplusAppHeapManager: java.lang.NoSuchMethodException: dalvik.system.VMRuntime.updateProcessValue [int, int, int]
+11-19 17:10:44.252 17299 17312 D CompatibilityInfo: setOverrideInvertedScale  1.0 to 1.0
+11-19 17:10:44.253  2326  4281 I InputDispatcher: setFocusedApplication displayId=0 ActivityRecord{7080ad u0 dev.vignesh.cycleshop.isolated.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t386}
+11-19 17:10:44.254  2326  3642 E UAH_JNI : uah_event_acquire ! cmdId: 0 ,strPkg: dev.vignesh.cycleshop.isolated.test, strIdent: com.android.server.wm, timeout: 600
+11-19 17:10:44.254  2326  3642 I [UAH_CLIENT]: UahEventAcquire, cmdid:0, pkg:dev.vignesh.cycleshop.isolated.test, identity:com.android.server.wm
+11-19 17:10:44.255 17299 17299 D OplusActivityManager: get AMS extension: android.os.BinderProxy@bde7ed9
+11-19 17:10:44.257 17299 17299 D nativeloader: Load libsigprotector_jni.so using system ns (caller=/system/framework/oplus-framework.jar): ok
+11-19 17:10:44.259 17299 17299 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.260 17299 17299 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10432; state: ENABLED
+11-19 17:10:44.261 17299 17311 D ColorModeChangeItem: preExecute mColorMode=0,token=android.os.BinderProxy@d38509e
+11-19 17:10:44.263  2326  3219 I Athena  : RecordAppChangeAction: updateRecentlyUsedApp bgAppRecord=packageName:dev.vignesh.cycleshop.isolated, uid:10431, userId:0, isTop=false, fgElapsedTime=108382049, bgElapsedTime=108385194, fgElapsedDur=3145, bgElapsedDur=0
+11-19 17:10:44.263  2326  3219 I Athena  : RecordAppChangeAction: updateRecentlyUsedApp fgAppRecord=packageName:dev.vignesh.cycleshop.isolated.test, uid:10432, userId:0, isTop=true, fgElapsedTime=108385194, bgElapsedTime=0, fgElapsedDur=108385194, bgElapsedDur=0
+11-19 17:10:44.263  5495  5521 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_foreground_activities_changed info:pid:17299,uid:10432,hasForegroundActivities:1
+11-19 17:10:44.263  2326  4414 D OplusLatencyOptimizerManager: enter pkg: dev.vignesh.cycleshop.isolated.test isPrevBlackAppTop: false mIsBlackAppTop: false
+11-19 17:10:44.263  5495  7257 D OplusAtlas.OplusAudioScene: callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:17299,uid:10432,hasForegroundActivities:1
+11-19 17:10:44.264  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=0 obj=com.oplus.atlas.OplusAtlasEvent@5659f0e target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:44.264  5495  7640 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=2 obj=com.oplus.atlas.OplusAtlasEvent@5659f0e target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:44.264 32760   370 D ZoomAppController: ignore onAppEnter: mCurrentZoomInfo is null
+11-19 17:10:44.264  4174  4212 I Athena  : AthenaDynamicReceiver: pre_app:dev.vignesh.cycleshop.isolated, next_app:dev.vignesh.cycleshop.isolated.test(10432|17299)
+11-19 17:10:44.265  6969  7017 W Battery : ThermalControlUtils: mForegroundPkg=dev.vignesh.cycleshop.isolated.test
+11-19 17:10:44.262  3707 30609 V DCSEX-AppSwitchManager: OnAppSwitchObserver: onAppExit, resuming = dev.vignesh.cycleshop.isolated.test, target = dev.vignesh.cycleshop.isolated, is ResumingFirstStart =  true, is ResumingMultiApp =  false, extensionInfo =  Bundle[mParcelledData.dataSize=84]
+11-19 17:10:44.265  3707 30609 V DCSEX-AppSwitchManager: OnAppSwitchObserver: onAppEnter, launchedFrom =  dev.vignesh.cycleshop.isolated, target =  dev.vignesh.cycleshop.isolated.test, is firstStart =  true, is multiApp =  false, extensionInfo =  Bundle[mParcelledData.dataSize=140]
+11-19 17:10:44.265  3707 12171 D DCSEX-AppLaunchEventRecorder: onAppSwitch from = dev.vignesh.cycleshop.isolated to = dev.vignesh.cycleshop.isolated.test
+11-19 17:10:44.265  3707 12171 D DCSEX-AppLaunchEventRecorder: recordExitApp = dev.vignesh.cycleshop.isolated
+11-19 17:10:44.265  1722  1874 I VRR [FRTC]: setFrameRateTarget with [0, dev.vignesh.cycleshop.isolated, 0, com.oplus.battery, 1, 0, 1000]
+11-19 17:10:44.265  1718  1851 D AudioFlingerExtImpl: AudioFlingerExtImpl oplusSetParameters: keyvalue onForegroundActivitiesChanged=dev.vignesh.cycleshop.isolated.test:foreground:1
+11-19 17:10:44.266  1718  1851 D AudioFlingerExtImpl: updateForegroundInfo mForegroundMap(2)|[dev.vignesh.cycleshop.isolated.test]=1|[dev.vignesh.cycleshop.isolated]=1
+11-19 17:10:44.266  8502  8567 D OpenGLRenderer: RenderThread::destroyRenderingContext: this=0xb4000070676a4980
+11-19 17:10:44.266  8502  8567 D OpenGLRenderer: SkiaOpenGLPipeline::onContextDestroyed: this=0xb40000708fef55c0
+11-19 17:10:44.267  6969  7017 W Battery : ThermalControllHandler: tempLevel=3,userMode=2,gameUserMode=-1,appType=-1,envTempType=0,appStates=[],appSwitchSafetyMode=true
+11-19 17:10:44.267  8502  8567 D OpenGLRenderer: EglManager::destroy: mEglDisplay=0xb40000708fef3f40, mEglContext=0xb40000707589fb80, mCurrentSurface=0x0
+11-19 17:10:44.267  8678 20441 D SceneSDK.1.0.4-SNAPSHOT.8678.DeepThinkerAppSwitchAbility: onAppSwitchEvent: AppSwitchEvent(timeStamp=1795088444266, eventType=2, targetName=dev.vignesh.cycleshop.isolated, firstStart=false, multiApp=false, windowMode=0, resumingPackageName=dev.vignesh.cycleshop.isolated.test, resumingActivityName=androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity, isResumingMultiApp=false, isResumingFirstStart=true)
+11-19 17:10:44.268  8678 20441 I metis_v2_AppSwitchDataCollector: AppExitEvent =  dev.vignesh.cycleshop.isolated, NextAppName = dev.vignesh.cycleshop.isolated.test [Metis|com.oplus.metis|1.4.30-7ec9ae5]
+11-19 17:10:44.268  6969  7017 W Battery : ThermalControllerCenter: mSafetyState=00000
+11-19 17:10:44.269  7520  8673 I DeepThinkerSDK: [APP] ClientConnection: getDeepThinkerBridge start
+11-19 17:10:44.269  7520  8673 I DeepThinkerSDK: [APP] ClientConnection: getDeepThinkerBridge end
+11-19 17:10:44.270  6969  7017 W Battery : ThermalControllHandler: tempGear=3,configItemName=common_config
+11-19 17:10:44.270  6969  7990 W Battery : ThermalControllHandler: MSG_THERMAL_CONTROL_CATEGORY_CHANGED
+11-19 17:10:44.270  6969  7990 E Battery : ThermalControlConfig: TsensorPolicy featureConfig is null
+11-19 17:10:44.273  4249  4378 W libc    : Access denied finding property "vendor.gsm.serial"
+11-19 17:10:44.278  4249  4378 W libc    : Access denied finding property "vendor.gsm.serial"
+11-19 17:10:44.279  4108  4380 D OplusDdsSwitchStrategy: Mc,OplusCheckSims,RETURN_TO_CUR
+11-19 17:10:44.287  2326  2489 W SurfaceFlingerPuller: Failed to pull atom 150134 from surfaceflinger. Success is 0, binder status is EX_NONE
+11-19 17:10:44.287  1328  1353 E statsd  : Gauge Stats puller failed for tag: 150134 at 108385188333157
+11-19 17:10:44.288  4835  2752 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+11-19 17:10:44.290 17299 17299 I OplusFeatureCache: Milliseconds spent on init(): 30
+11-19 17:10:44.291 17299 17299 D CompactWindowAppManager: initCompactApplicationInfo CompactMode: , NormalMode: 
+11-19 17:10:44.295 17299 17299 D OplusScrollToTopManager: setIsInWhiteList false
+11-19 17:10:44.295 17299 17299 D OplusViewDebugManager: OplusViewDebugManager Constructor android.view.debug.OplusViewDebugManager@ed4d8aa [mHasViewDebugProperty true] [mHasMsgDebugProperty false] [DEBUG false] [EXTRAINFOENABLE false] [LIGHT_OS false]
+11-19 17:10:44.297 17299 17299 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10432; state: ENABLED
+11-19 17:10:44.299  2326  4275 I OplusHansManager : FastFreeze exit, unfreeze uids: [10269, 10289, 10291, 10295, 10296, 10304, 10331, 10422, 10464]
+11-19 17:10:44.299  2326  4275 I OplusHansManager : exit FastFreezer, unfreeze uids: [10464, 10422, 10331, 10304, 10296, 10295, 10291, 10289, 10269] thaw: [], reason: exitFF
+11-19 17:10:44.300  2326  4275 I OplusHansManager : notify state machine event=FF_EXIT to uids=[10432, 10267, 10277, 10281, 10296, 10326, 10329, 10408, 10423, 10431]
+11-19 17:10:44.301 17299 17299 W libc    : Access denied finding property "ro.odm.prev.product.name"
+11-19 17:10:44.302  8678 20441 D SceneSDK.1.0.4-SNAPSHOT.8678.DeepThinkerAppSwitchAbility: onAppSwitchEvent: AppSwitchEvent(timeStamp=1795088444282, eventType=1, targetName=dev.vignesh.cycleshop.isolated.test, firstStart=true, multiApp=false, windowMode=1, resumingPackageName=, resumingActivityName=, isResumingMultiApp=false, isResumingFirstStart=false)
+11-19 17:10:44.302 17598 17687 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=36945Kbps LinkDnBandwidth>=81894Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.0.9, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ac, RSSI: -50, Link speed: 650Mbps, Tx Link speed: 650Mbps, Max Supported Tx Link speed: 866Mbps, Calculated Tx : 276Mbps, Rx Link speed: 585Mbps, Max Supported Rx Link speed: 866Mbps, Calculated Rx : 397Mbps, Frequency: 5180MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -50 UnderlyingNetworks: Null]
+11-19 17:10:44.302  8678 20441 I metis_v2_AppSwitchDataCollector: AppEnterEvent =  dev.vignesh.cycleshop.isolated.test, windowMode = 1,firstStart = true
+11-19 17:10:44.302  8678 20441 I metis_v2_AppSwitchDataCollector:  set isNotifiedTVCast
+11-19 17:10:44.304  8678 20441 E metis_v2_FactManager: There is no subModel: com.oplus.linker
+11-19 17:10:44.304  8678 20441 I metis_v2_AppSwitchDataCollector: Skip call fire
+11-19 17:10:44.310 17299 17299 D nativeloader: Configuring clns-4 for other apk /data/app/~~b03dwatbw0jRxVVg7Z6Iig==/dev.vignesh.cycleshop.isolated.test-l-FJllpgmsgcK96gJ0KtWA==/base.apk. target_sdk_version=37, uses_libraries=, library_path=/data/app/~~b03dwatbw0jRxVVg7Z6Iig==/dev.vignesh.cycleshop.isolated.test-l-FJllpgmsgcK96gJ0KtWA==/lib/arm64, permitted_path=/data:/mnt/expand:/data/user/0/dev.vignesh.cycleshop.isolated.test
+11-19 17:10:44.315 17299 17299 D nativeloader: Load libframework-connectivity-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity.jar: ok
+11-19 17:10:44.319 17299 17299 V GraphicsEnvironment: Currently set values for:
+11-19 17:10:44.319 17299 17299 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-19 17:10:44.319 17299 17299 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-19 17:10:44.319 17299 17299 V GraphicsEnvironment: ANGLE GameManagerService for dev.vignesh.cycleshop.isolated.test: false
+11-19 17:10:44.319 17299 17299 V GraphicsEnvironment: dev.vignesh.cycleshop.isolated.test is not listed in per-application setting
+11-19 17:10:44.319 17299 17299 V GraphicsEnvironment: App is not on the allowlist for updatable production driver.
+11-19 17:10:44.323 17299 17299 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.324  2326  4281 E UAH_JNI : uah_event_acquire ! cmdId: 2 ,strPkg: , strIdent: OplusActivityManagerServiceEnhance, timeout: 600
+11-19 17:10:44.324  2326  4281 I [UAH_CLIENT]: UahEventAcquire, cmdid:2, pkg:none, identity:OplusActivityManagerServiceEnhance
+11-19 17:10:44.327 17299 17327 D OplusGraphicsEvent: OplusGraphicsEventListener create now!
+11-19 17:10:44.328 17299 17327 D OplusGraphicsEvent: addEventListener success!
+11-19 17:10:44.330 17299 17330 E p.isolated.test: Loaded layer handle (12666039694607447487) for layer /my_product/lib64/libcolorx-loader.so
+11-19 17:10:44.330 17299 17330 E p.isolated.test: Looking for entrypoint ColorX_Check
+11-19 17:10:44.330 17299 17330 E p.isolated.test: Found ColorX_Check for /my_product/lib64/libcolorx-loader.so
+11-19 17:10:44.330 17299 17330 E p.isolated.test: Check failed
+11-19 17:10:44.342 17299 17299 I oplus.android.OplusFrameworkFactoryImpl: Unknow feature:IOplusTextViewRTLUtilForUG
+11-19 17:10:44.344 17299 17299 D nativeloader: Load liboplushwui_jni.so using system ns (caller=/system/framework/oplus-framework.jar): ok
+11-19 17:10:44.349 17299 17299 D OplusWindowManager: get WMS extension: android.os.BinderProxy@e166e6f
+11-19 17:10:44.349  2326  4898 W OplusNavigationBarUtil: color navigation bar util isn't init.
+11-19 17:10:44.356  2326  2489 E ScrollOptim [OplusPerfService]: isScrollOptimEnable: mSoptBean = ScrollOptimBean, mOptEnable=true, mPreAnimStrategy=1, mPreAnimBlacklist=[com.shopify.arrive, com.quark.browser, com.kyk.world, com.android.launcher], mPreAnimWhitelist=[], mInsertNum=1, mFrameInsertList={com.shopify.arrive={}, com.sankuai.meituan={com.sankuai.waimai.business.page.kingkong.KingKongActivity=0, com.sankuai.waimai.business.page.homepage.TakeoutActivity=3}, com.xueqiu.android={com.xueqiu.android.common.imagebrowse.inner.ui.ImageBrowseActivity=0}, com.sina.weibo={com.sina.weibo.VisitorMainTabActivity=3}, com.tencent.mm={com.tencent.mm.ui.AlbumUI=3, com.tencent.mm.plugin.sns.ui.SnsTimeLineUI=3, com.tencent.mm.plugin.sns.ui.improve.ImproveSnsTimelineUI=3}, com.netease.newsreader.activity={com.netease.newsreader.article.framework.view.NewsPageActivity=0}, com.taobao.idlefish={}, com.kyk.world={}, com.android.launcher={}}, mSCEnableList={com.ss.android.ugc.aweme=[com.ss.android.ugc.aweme.splash.SplashActivity], com.sankuai.meituan=[com.meituan.android.pt.homepage.activity.MainActivity, com.sankuai.waimai.business.restaurant.poicontainer.WMRestaurantActivity, com.sankuai.waimai.business.page.homepage.TakeoutActivity], com.dragon.read=[com.dragon.read.pages.main.MainFragmentActivity], com.sina.weibo=[com.sina.weibo.VisitorMainTabActivity], com.xunmeng.pinduoduo=[com.xunmeng.pinduoduo.activity.NewPageActivity], com.tencent.qqmusic=[com.tencent.qqmusic.activity.AppStarterActivity], com.tencent.mobileqq=[com.qzone.feed.ui.activity.QZoneFriendFeedActivity], com.tencent.qqlive=[com.tencent.qqlive.ona.activity.SplashHomeActivity], com.ct.client=[com.ct.client.activity.MainActivity]}
+11-19 17:10:44.356  2326  2489 E ScrollOptim [OplusPerfService]: isScrollOptimEnable: pkgName = dev.vignesh.cycleshop.isolated.test, output = Bundle[{pre_anim_enable=true, frame_insert_list=null, frame_insert_default_num=1, scroll_changed_enable_list=null}]
+11-19 17:10:44.356 17299 17299 D ScrollOptim [ConfigManager]: initOptConfig: pkg= dev.vignesh.cycleshop.isolated.test, mOptEnable= true, mAnimAheadEnable= true, mInsertDefaultNum= 1, mFrameInsertEnableList= {}, mSCEnableList= []
+11-19 17:10:44.356 17299 17299 D ScrollOptim [SceneManager]: updateCurrentActivity: mCurrentActivityName=androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity, isOptEnable=true, isAnimAheadEnable=true, isFrameInsertEnable=true, InsertNum=1, isEnabledForScrollChanged=false
+11-19 17:10:44.358 17299 17299 D nativeloader: Load libSchedAssistJni.so using system ns (caller=/system/framework/oplus-framework.jar): ok
+11-19 17:10:44.358 17299 17299 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+11-19 17:10:44.358 17299 17299 D ExtensionsLoader: Opened libSchedAssistExtImpl.so
+11-19 17:10:44.358 17299 17299 E SchedAssist: sysOpen failed with error=Permission denied
+11-19 17:10:44.358 17299 17299 E SchedAssist: sharedImFd failed with error=Permission denied
+11-19 17:10:44.362 17299 17299 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+11-19 17:10:44.363 17299 17299 D ExtensionsLoader: Opened libguiextimpl.so
+11-19 17:10:44.363 17299 17299 D nativeloader: Load liboplusgui_jni.so using system ns (caller=/system/framework/oplus-framework.jar): ok
+11-19 17:10:44.363  1722  1874 I SurfaceFlinger: [SF client] NEW(0xb400007e4f723880) for (17299:dev.vignesh.cycleshop.isolated.test)
+11-19 17:10:44.364 17299 17299 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10432; state: DISABLED
+11-19 17:10:44.368 17299 17299 I DynamicFramerate [FRTCConfigManager]: initFrameRateConfig: 
+11-19 17:10:44.368 17299 17299 I DynamicFramerate [FRTCConfigManager]: 	levels: [120, 60]
+11-19 17:10:44.368 17299 17299 I DynamicFramerate [FRTCConfigManager]: 	thresholds: [200]
+11-19 17:10:44.368 17299 17299 I DynamicFramerate [FRTCConfigManager]: 	scrollbar fade frame rate: 0
+11-19 17:10:44.368 17299 17299 I DynamicFramerate [FRTCConfigManager]: FRTCConfigManager: FRTC_CAPABILITY = 120, package name = dev.vignesh.cycleshop.isolated.test, WINDOW_ANIMATION_SPEED_RATE = 10, SCROLL_ANIMATION_SPEED_RATE = 20, MuitiWindowIdleFramerate = 60, PACKAGE_ENABLE = false
+11-19 17:10:44.368 17299 17299 I DynamicFramerate [DynamicFrameRateController]: init info: mPackageName = dev.vignesh.cycleshop.isolated.test, mIsEnabled = false
+11-19 17:10:44.368 17299 17299 D WindowManager: Add to mViews: DecorView@e11f68[InstrumentationActivityInvoker$EmptyActivity],pkg= dev.vignesh.cycleshop.isolated.test
+11-19 17:10:44.369 17299 17327 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+11-19 17:10:44.370 17299 17327 D ExtensionsLoader: Opened libhwuiextimpl.so
+11-19 17:10:44.370 17299 17299 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+11-19 17:10:44.370 17299 17299 D ExtensionsLoader: Opened libSchedAssistExtImpl.so
+11-19 17:10:44.380  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:385
+11-19 17:10:44.381  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:386
+11-19 17:10:44.382  1722  1874 I SurfaceFlinger: [SF client] NEW(0xb400007e4f713d80) for (2326:system_server)
+11-19 17:10:44.387 17299 17299 D InputEventReceiver: Input log is disabled in InputEventReceiver.
+11-19 17:10:44.388 17299 17299 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.390  2326  3642 E UAH_JNI : uah_event_acquire ! cmdId: 0 ,strPkg: dev.vignesh.cycleshop.isolated.test, strIdent: com.android.server.wm, timeout: 600
+11-19 17:10:44.390  2326  3642 I [UAH_CLIENT]: UahEventAcquire, cmdid:0, pkg:dev.vignesh.cycleshop.isolated.test, identity:com.android.server.wm
+11-19 17:10:44.392  2326  4898 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+11-19 17:10:44.400 17299 17299 E OplusBracketLog: [OplusViewMirrorManager] updateHostViewRootIfNeeded, not support android.view.ViewRootImpl@42300b2
+11-19 17:10:44.401  2326  2695 I TheiaLaunchMonitor: [checkAndRecovery] the function is disable.
+11-19 17:10:44.402  3774  3995 D ZoomController: onTaskMovedToFront, task id:382
+11-19 17:10:44.402  3774  3995 I ZoomUiController: FloatHandle-isFloatHandleShow mPackageName = null
+11-19 17:10:44.403 17299 17299 D ViewRootImplExtImpl: wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=424, relayoutAsync=false, newFlags=27787264, title=dev.vignesh.cycleshop.isolated.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity
+11-19 17:10:44.404  1722  2705 D OplusLayer: setProcInfo (3419,dev.vignesh.cycleshop.isolated.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity#3419,dev.vignesh.cycleshop.isolated.test)
+11-19 17:10:44.416 17299 17299 D BufferQueueConsumer: [](id:439300000000,api:0,p:-1,c:17299) connect: controlledByApp=false
+11-19 17:10:44.416 17299 17299 D ExtensionsLoader: createInstance(64bit) : createExtendedFactory
+11-19 17:10:44.417 17299 17299 D ExtensionsLoader: Opened libSchedAssistExtImpl.so
+11-19 17:10:44.417  1722  2705 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10432 pid=0
+11-19 17:10:44.417  1722  2705 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10432 => denied (339 us)
+11-19 17:10:44.417  1722  2705 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10432 pid=0
+11-19 17:10:44.417  1722  2705 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10432 => denied (150 us)
+11-19 17:10:44.417  1722  2705 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10432 pid=0
+11-19 17:10:44.417  1722  2705 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10432 => denied (136 us)
+11-19 17:10:44.418 17299 17327 I AdrenoGLES-0: QUALCOMM build                   : c677465575, I69baa82c37
+11-19 17:10:44.418 17299 17327 I AdrenoGLES-0: Build Date                       : 06/17/25
+11-19 17:10:44.418 17299 17327 I AdrenoGLES-0: OpenGL ES Shader Compiler Version: EV031.32.02.17
+11-19 17:10:44.418 17299 17327 I AdrenoGLES-0: Local Branch                     : 
+11-19 17:10:44.418 17299 17327 I AdrenoGLES-0: Remote Branch                    : refs/tags/AU_LINUX_ANDROID_LA.UM.9.12.11.00.00.582.697
+11-19 17:10:44.418 17299 17327 I AdrenoGLES-0: Remote Branch                    : NONE
+11-19 17:10:44.418 17299 17327 I AdrenoGLES-0: Reconstruct Branch               : NOTHING
+11-19 17:10:44.418 17299 17327 I AdrenoGLES-0: Build Config                     : S P 10.0.7 AArch64
+11-19 17:10:44.418 17299 17327 I AdrenoGLES-0: Driver Path                      : /vendor/lib64/egl/libGLESv2_adreno.so
+11-19 17:10:44.421 17299 17327 I AdrenoGLES-0: PFP: 0x016dd093, ME: 0x00000000
+11-19 17:10:44.430 17299 17327 D BufferQueueProducer: [VRI[InstrumentationActivityInvoker$EmptyActivity]#0(BLAST Consumer)0](id:439300000000,api:1,p:17299,c:17299) connect: api=1 producerControlledByApp=true
+11-19 17:10:44.430 17299 17327 E OpenGLRenderer: Unable to match the desired swap behavior.
+11-19 17:10:44.431 17299 17299 I SurfaceControl:  setExtendedRangeBrightness sc=Surface(name=dev.vignesh.cycleshop.isolated.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity)/@0xf305db9,currentBufferRatio=1.0,desiredRatio=1.0
+11-19 17:10:44.444 17299 17327 D BLASTBufferQueue: [VRI[InstrumentationActivityInvoker$EmptyActivity]#0](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=40859639498838(auto) mPendingTransactions.size=0 graphicBufferId=74298639253504 transform=0
+11-19 17:10:44.444 17299 17327 D VRI[InstrumentationActivityInvoker$EmptyActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+11-19 17:10:44.444  1722  1874 I ClientCache: add: Cache owner=0xb400007e198d7040
+11-19 17:10:44.444 17299 17299 D VRI[InstrumentationActivityInvoker$EmptyActivity]: draw finished.
+11-19 17:10:44.444 17299 17299 D VRI[InstrumentationActivityInvoker$EmptyActivity]: reportDrawFinished
+11-19 17:10:44.445 17299 17299 D ViewRootImplExtImpl: setMaxDequeuedBufferCount: 2
+11-19 17:10:44.445  2326  3549 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10432 pid=0
+11-19 17:10:44.445  2326  3549 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10432 => denied (108 us)
+11-19 17:10:44.445  2326  3549 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10432 pid=0
+11-19 17:10:44.445  2326  3549 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10432 => denied (60 us)
+11-19 17:10:44.445  2326  3549 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10432 pid=0
+11-19 17:10:44.445  2326  3549 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10432 => denied (52 us)
+11-19 17:10:44.445 17299 17299 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.446 17299 17299 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.446 17299 17299 D ScrollOptim [SceneManager]: updateCurrentActivity: mCurrentActivityName=null, isOptEnable=true, isAnimAheadEnable=true, isFrameInsertEnable=true, InsertNum=1, isEnabledForScrollChanged=false
+11-19 17:10:44.449  1514  1646 W ANDR-PERF-LM: MetaMeter: handlePrimaryAsync() 118: AdaptLaunch MetaMeter. No MeterMgr Available to handle this Primary Async. !!!!
+11-19 17:10:44.449  1514  1646 W ANDR-PERF-LM: MetaMeter: handlePrimaryAsync() 118: AdaptLaunch MetaMeter. No MeterMgr Available to handle this Primary Async. !!!!
+11-19 17:10:44.450  1514  1514 I [UAH_CLIENT]: UahPlatformResAcquire
+11-19 17:10:44.450  1514  1514 I [UAH_CLIENT]: UahEventAcquire, cmdid:-3, pkg:2326 2489, identity:qcom-perfd
+11-19 17:10:44.451  2326  2489 V SensorManager: call sensorServiceCommonInterface name: setScreenShotDisable
+11-19 17:10:44.451  2326  2489 D SensorServiceExtImpl: sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+11-19 17:10:44.451  2326  2489 I OplusHansManager : front pkg: dev.vignesh.cycleshop, uid: 10408, prev pkg: dev.vignesh.cycleshop.isolated.test, prev uid: 10432
+11-19 17:10:44.451  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:44.451  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:44.451  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=1 not supported
+11-19 17:10:44.451  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:44.451  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:44.451  1514  1645 E ANDR-PERF-RESOURCEQS: Resource with major=15, minor=0 not supported
+11-19 17:10:44.452  2326  4105 I OplusHansManager : uid=10408, pkg=dev.vignesh.cycleshop R exit SM
+11-19 17:10:44.452  2326  4105 I OplusHansManager : uid=10408, pkg=dev.vignesh.cycleshop R exit(), R stay=3
+11-19 17:10:44.452  2326  4105 I OplusHansManager : uid=10432, pkg=dev.vignesh.cycleshop.isolated.test enter SM
+11-19 17:10:44.452  2326  4105 I OplusHansManager : uid=10432, pkg=dev.vignesh.cycleshop.isolated.test R enter(), D stay=0
+11-19 17:10:44.452  8502  8520 D VRI[MainActivity]: dispatchAppVisibility visible:true
+11-19 17:10:44.453  2326  2489 I InputDispatcher: setFocusedApplication displayId=0 ActivityRecord{12b3e0b u0 dev.vignesh.cycleshop/.MainActivity t382}
+11-19 17:10:44.454  2326  3642 E UAH_JNI : uah_event_acquire ! cmdId: 0 ,strPkg: dev.vignesh.cycleshop, strIdent: com.android.server.wm, timeout: 600
+11-19 17:10:44.454  2326  3642 I [UAH_CLIENT]: UahEventAcquire, cmdid:0, pkg:dev.vignesh.cycleshop, identity:com.android.server.wm
+11-19 17:10:44.454  2326  3837 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_APP_SWITCH, bundle: Bundle[{prevPkgName=dev.vignesh.cycleshop.isolated.test, curUid=10408, curPkgName=dev.vignesh.cycleshop, prevUid=10432}]
+11-19 17:10:44.455  2326  3837 I Osense-BaseDecisionMaker: scene: SCENE_APP_SWITCH, excutingPolicy: freezer
+11-19 17:10:44.455  2326  3837 D Osense-BaseDecisionMaker: invoke freezer policy,type: fast
+11-19 17:10:44.455  2326  4139 I OplusResourcePreloadManager: resume pkg: dev.vignesh.cycleshop, uid:10408, prev pkg: dev.vignesh.cycleshop.isolated.test, prev uid: 10432
+11-19 17:10:44.455  3707  3718 V DCSEX-AppSwitchManager: OnAppSwitchObserver: onAppExit, resuming = dev.vignesh.cycleshop, target = dev.vignesh.cycleshop.isolated.test, is ResumingFirstStart =  false, is ResumingMultiApp =  false, extensionInfo =  Bundle[mParcelledData.dataSize=84]
+11-19 17:10:44.455  3707 12171 D DCSEX-AppLaunchEventRecorder: onAppSwitch from = dev.vignesh.cycleshop.isolated.test to = dev.vignesh.cycleshop
+11-19 17:10:44.456  8502  8502 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.456  8502 16196 D ColorModeChangeItem: preExecute mColorMode=0,token=android.os.BinderProxy@70334c
+11-19 17:10:44.457  2326  4414 D OplusLatencyOptimizerManager: enter pkg: dev.vignesh.cycleshop isPrevBlackAppTop: false mIsBlackAppTop: false
+11-19 17:10:44.457  3707  3718 V DCSEX-AppSwitchManager: OnAppSwitchObserver: onAppEnter, launchedFrom =  com.android.launcher, target =  dev.vignesh.cycleshop, is firstStart =  false, is multiApp =  false, extensionInfo =  Bundle[mParcelledData.dataSize=140]
+11-19 17:10:44.457  2326  3219 I Athena  : RecordAppChangeAction: updateRecentlyUsedApp bgAppRecord=packageName:dev.vignesh.cycleshop.isolated.test, uid:10432, userId:0, isTop=false, fgElapsedTime=108385194, bgElapsedTime=108385389, fgElapsedDur=195, bgElapsedDur=0
+11-19 17:10:44.457  2326  3219 I Athena  : RecordAppChangeAction: updateRecentlyUsedApp fgAppRecord=packageName:dev.vignesh.cycleshop, uid:10408, userId:0, isTop=true, fgElapsedTime=108385389, bgElapsedTime=0, fgElapsedDur=108385389, bgElapsedDur=0
+11-19 17:10:44.458 32760   392 D ZoomAppController: ignore onAppEnter: mCurrentZoomInfo is null
+11-19 17:10:44.458  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:386
+11-19 17:10:44.458  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:382
+11-19 17:10:44.460  4174  4212 I Athena  : AthenaDynamicReceiver: pre_app:dev.vignesh.cycleshop.isolated.test, next_app:dev.vignesh.cycleshop(10408|8502)
+11-19 17:10:44.461  8502  8502 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.461  8502  8502 D VRI[MainActivity]: setWindowStopped stopped:false
+11-19 17:10:44.462  6969  7017 W Battery : ThermalControlUtils: mForegroundPkg=dev.vignesh.cycleshop
+11-19 17:10:44.463  8502  8502 D ScrollOptim [SceneManager]: updateCurrentActivity: mCurrentActivityName=dev.vignesh.cycleshop.MainActivity, isOptEnable=true, isAnimAheadEnable=true, isFrameInsertEnable=true, InsertNum=1, isEnabledForScrollChanged=false
+11-19 17:10:44.463  8678 20441 D SceneSDK.1.0.4-SNAPSHOT.8678.DeepThinkerAppSwitchAbility: onAppSwitchEvent: AppSwitchEvent(timeStamp=1795088444458, eventType=2, targetName=dev.vignesh.cycleshop.isolated.test, firstStart=false, multiApp=false, windowMode=0, resumingPackageName=dev.vignesh.cycleshop, resumingActivityName=dev.vignesh.cycleshop.MainActivity, isResumingMultiApp=false, isResumingFirstStart=false)
+11-19 17:10:44.463  8678 20441 I metis_v2_AppSwitchDataCollector: AppExitEvent =  dev.vignesh.cycleshop.isolated.test, NextAppName = dev.vignesh.cycleshop
+11-19 17:10:44.463  1722  1874 I VRR [FRTC]: setFrameRateTarget with [0, dev.vignesh.cycleshop.isolated.test, 0, com.oplus.battery, 1, 0, 1000]
+11-19 17:10:44.465  5495  5523 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_foreground_activities_changed info:pid:8502,uid:10408,hasForegroundActivities:1
+11-19 17:10:44.465  6969  7017 W Battery : ThermalControllHandler: tempLevel=3,userMode=2,gameUserMode=-1,appType=-1,envTempType=0,appStates=[],appSwitchSafetyMode=true
+11-19 17:10:44.465  8502  8502 D ViewRootImplExtImpl: wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=424, relayoutAsync=false, newFlags=27787264, title=dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity
+11-19 17:10:44.465  5495  7257 D OplusAtlas.OplusAudioScene: callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:8502,uid:10408,hasForegroundActivities:1
+11-19 17:10:44.465  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=0 obj=com.oplus.atlas.OplusAtlasEvent@58f2d2f target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:44.465  5495  7640 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=2 obj=com.oplus.atlas.OplusAtlasEvent@58f2d2f target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:44.466  1718 23542 D AudioFlingerExtImpl: AudioFlingerExtImpl oplusSetParameters: keyvalue onForegroundActivitiesChanged=dev.vignesh.cycleshop:foreground:1
+11-19 17:10:44.466  1718 23542 D AudioFlingerExtImpl: updateForegroundInfo mForegroundMap(3)|[dev.vignesh.cycleshop]=1|[dev.vignesh.cycleshop.isolated.test]=1|[dev.vignesh.cycleshop.isolated]=1
+11-19 17:10:44.466  6969  7017 W Battery : ThermalControllerCenter: mSafetyState=00000
+11-19 17:10:44.466  1722  1874 D OplusLayer: setProcInfo (3420,dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity#3420,dev.vignesh.cycleshop)
+11-19 17:10:44.468  6969  7017 W Battery : ThermalControllHandler: tempGear=3,configItemName=common_config
+11-19 17:10:44.469  6969  7990 W Battery : ThermalControllHandler: MSG_THERMAL_CONTROL_CATEGORY_CHANGED
+11-19 17:10:44.469  6969  7990 E Battery : ThermalControlConfig: TsensorPolicy featureConfig is null
+11-19 17:10:44.471  2326  4712 D Theia.NoFocusWindow: FocusWindowErrorScene cancelCheckFreezeScreen
+11-19 17:10:44.471  2326  4712 W TheiaWindowMonitor: [check] focusedWindow is null or enable is false
+11-19 17:10:44.472  1328  1353 E statsd  : Gauge Stats puller failed for tag: 150134 at 108385394097011
+11-19 17:10:44.473  8502  8502 D BufferQueueConsumer: [](id:213600000003,api:0,p:-1,c:8502) connect: controlledByApp=false
+11-19 17:10:44.474  8502  8567 I AdrenoGLES-0: QUALCOMM build                   : c677465575, I69baa82c37
+11-19 17:10:44.474  8502  8567 I AdrenoGLES-0: Build Date                       : 06/17/25
+11-19 17:10:44.474  8502  8567 I AdrenoGLES-0: OpenGL ES Shader Compiler Version: EV031.32.02.17
+11-19 17:10:44.474  8502  8567 I AdrenoGLES-0: Local Branch                     : 
+11-19 17:10:44.474  8502  8567 I AdrenoGLES-0: Remote Branch                    : refs/tags/AU_LINUX_ANDROID_LA.UM.9.12.11.00.00.582.697
+11-19 17:10:44.474  8502  8567 I AdrenoGLES-0: Remote Branch                    : NONE
+11-19 17:10:44.474  8502  8567 I AdrenoGLES-0: Reconstruct Branch               : NOTHING
+11-19 17:10:44.474  8502  8567 I AdrenoGLES-0: Build Config                     : S P 10.0.7 AArch64
+11-19 17:10:44.474  8502  8567 I AdrenoGLES-0: Driver Path                      : /vendor/lib64/egl/libGLESv2_adreno.so
+11-19 17:10:44.477  8502  8567 I AdrenoGLES-0: PFP: 0x016dd093, ME: 0x00000000
+11-19 17:10:44.480  8678 20441 D SceneSDK.1.0.4-SNAPSHOT.8678.DeepThinkerAppSwitchAbility: onAppSwitchEvent: AppSwitchEvent(timeStamp=1795088444461, eventType=1, targetName=dev.vignesh.cycleshop, firstStart=false, multiApp=false, windowMode=1, resumingPackageName=, resumingActivityName=, isResumingMultiApp=false, isResumingFirstStart=false)
+11-19 17:10:44.480  8678 20441 I metis_v2_AppSwitchDataCollector: AppEnterEvent =  dev.vignesh.cycleshop, windowMode = 1,firstStart = false
+11-19 17:10:44.480  8678 20441 I metis_v2_AppSwitchDataCollector:  set isNotifiedTVCast
+11-19 17:10:44.482  8678 20441 E metis_v2_FactManager: There is no subModel: com.oplus.linker
+11-19 17:10:44.482  8678 20441 I metis_v2_AppSwitchDataCollector: Skip call fire
+11-19 17:10:44.484  1722  1722 D OplusLayer: setGameMode 7881365 NavigationBar_displayId_0#65, gameMode 0, parentLayer .
+11-19 17:10:44.484  1722  1722 D OplusLayer: setGameMode NavigationBar_displayId_0#81, gameMode 0, parentLayer 7881365 NavigationBar_displayId_0#65.
+11-19 17:10:44.484  1722  1722 D Layer   : reparent to null sequence=3415, seq[2], name=Surface(name=7881365 NavigationBar_displayId_0)/@0xe1eeba1 - animation-leash of insets_animation#3415
+11-19 17:10:44.484  1722  1722 D Layer   : reparent to null sequence=3416, seq[1], name=Surface(name=a7c83b3 StatusBar)/@0xe7b91c6 - animation-leash of insets_animation#3416
+11-19 17:10:44.484  1722  1722 D SurfaceFlinger: Find Focus windowName=fe156ac dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity, notVisible=1
+11-19 17:10:44.484  1722  1722 D Layer   : Focus: Task=382#3272 isHiddenByPolicy s.flags&layer_state_t::eLayerHidden=1
+11-19 17:10:44.484  1722  1722 D Layer   : Focus: isHiddenByPolicy parent Task=382#3272 is hidden cause not visible
+11-19 17:10:44.484  1722  1722 D SurfaceFlinger: Focus inVisible Reason:isVisibleForInput(){hasInputInfo()?canReceiveInput():isVisible()}=0 has=1 can{!isHiddenByPolicy()&&(mBuffer==nullptr||getAlpha()>0.0f)}=0 Hidden=1 Buf=1 getA=1
+11-19 17:10:44.485  1722  2687 D SurfaceFlinger: updateWinowInfo=1, setFocusedWindow timestamp=40859667992015, windowName=fe156ac dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity
+11-19 17:10:44.485  2326  3549 I InputDispatcher: NFW_setFocusedWindow, fe156ac dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity on display 0, same as the previous:0
+11-19 17:10:44.488  8502  8567 D BufferQueueProducer: [VRI[MainActivity]#3(BLAST Consumer)3](id:213600000003,api:1,p:8502,c:8502) connect: api=1 producerControlledByApp=true
+11-19 17:10:44.488  8502  8567 E OpenGLRenderer: Unable to match the desired swap behavior.
+11-19 17:10:44.488  8502  8502 I SurfaceControl:  setExtendedRangeBrightness sc=Surface(name=dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity)/@0xc8994cd,currentBufferRatio=1.0,desiredRatio=1.0
+11-19 17:10:44.494  2326  4105 I OplusHansManager : uid=10296, pkg=com.google.android.verifier can not transition from M to F. reason: AsyncBinder
+11-19 17:10:44.518  8502  8567 D BLASTBufferQueue: [VRI[MainActivity]#3](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=40859713849151(auto) mPendingTransactions.size=0 graphicBufferId=36515811950607 transform=0
+11-19 17:10:44.519  8502  8567 D VRI[MainActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+11-19 17:10:44.519  8502  8502 D VRI[MainActivity]: draw finished.
+11-19 17:10:44.519  8502  8502 D VRI[MainActivity]: reportDrawFinished
+11-19 17:10:44.519  8502  8502 D ViewRootImplExtImpl: setMaxDequeuedBufferCount: 2
+11-19 17:10:44.523  1722  4624 D SurfaceFlinger: captureLayers from pid 2326 uid -1
+11-19 17:10:44.529  3774  3995 D FSS_OplusFoldSwitchStateObserver: getDeviceFolding: mDeviceFolding = false
+11-19 17:10:44.532  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_ACTIVITY_IDLE, bundle: Bundle[{scene=SCENE_ACTIVITY_IDLE}]
+11-19 17:10:44.532  2326  3834 I Osense-BaseDecisionMaker: OSense not supported scene! SCENE_ACTIVITY_IDLE
+11-19 17:10:44.532 17067 17082 D VRI[ComponentActivity]: dispatchAppVisibility visible:false
+11-19 17:10:44.533  3774  3995 D OnePuttTransitionHandler:  startAnimation= android.os.BinderProxy@f9f955b startTransaction= android.view.SurfaceControl$Transaction@482253c finishTransaction= android.view.SurfaceControl$Transaction@b2a52c5 finishCallback= com.android.wm.shell.transition.Transitions$$ExternalSyntheticLambda7@f9b741a TransitionInfo ={id=164 t=CLOSE f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@85954d3} m=TO_FRONT f=NONE leash=Surface(name=Task=382)/@0xfedc5a4 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@4139810} m=CLOSE f=NONE leash=Surface(name=Task=386)/@0xb4d4f0d sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+11-19 17:10:44.534  1722  1722 D Layer   : reparent to null sequence=3413, seq[2], name=Transition Root: Task=386#3413
+11-19 17:10:44.534  1722  1722 D OplusLayer: setGameMode Task=385#3393, gameMode 0, parentLayer .
+11-19 17:10:44.534  1722  1722 D OplusLayer: setGameMode ActivityRecord{eca254a u0 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity t385}#3394, gameMode 0, parentLayer Task=385#3393.
+11-19 17:10:44.534  1722  1722 D OplusLayer: setGameMode 4aa9cbb ActivityRecordInputSink dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity#3399, gameMode 0, parentLayer ActivityRecord{eca254a u0 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity t385}#3394.
+11-19 17:10:44.534  1722  1722 D OplusLayer: setGameMode Surface(name=b4863a4 InputMethod)/@0x6459cc2 - animation-leash of insets_animation#3407, gameMode 0, parentLayer WindowToken{5ba7688 type=2011 android.os.Binder@21f422b}#2416.
+11-19 17:10:44.534  1722  1722 D Layer   : reparent to null sequence=3413, seq[2], name=Transition Root: Task=386#3413
+11-19 17:10:44.534  3774  3995 E OplusShellTransition: couldn't get animation style packageName, android.window.OplusTransitionExtendedInfo.getAnimationStylePackageName []
+11-19 17:10:44.534  3774  3995 W OplusShellTransition: no system app in targets, skip loading oplus animation
+11-19 17:10:44.535  3774  3995 E OplusShellTransition: couldn't get animation style packageName, android.window.OplusTransitionExtendedInfo.getAnimationStylePackageName []
+11-19 17:10:44.535  3774  3995 W OplusShellTransition: no system app in targets, skip loading oplus animation
+11-19 17:10:44.536  5495  5523 D OplusAtlas.OplusAtlasEventDispatch: setEvent:atlas_event_on_foreground_activities_changed info:pid:17067,uid:10431,hasForegroundActivities:0
+11-19 17:10:44.537  5495  7645 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=0 what=0 obj=com.oplus.atlas.OplusAtlasEvent@f14bf3c target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:44.537  5495  7257 D OplusAtlas.OplusAudioScene: callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:17067,uid:10431,hasForegroundActivities:0
+11-19 17:10:44.537  3774  3995 D OplusShellTransition: dispatchTransition, animated mHandler: com.android.wm.shell.transition.DefaultTransitionHandler@31a6e9a
+11-19 17:10:44.537  5495  7640 D OplusAtlas.OplusMessageHandler: handleMessage: Msg { when=-1ms what=2 obj=com.oplus.atlas.OplusAtlasEvent@f14bf3c target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+11-19 17:10:44.538  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:382
+11-19 17:10:44.538  3774  3995 D ShellTaskOrganizerExt: visibleFlexibleTaskInfos delete:385
+11-19 17:10:44.539  1718 23542 D AudioFlingerExtImpl: AudioFlingerExtImpl oplusSetParameters: keyvalue onForegroundActivitiesChanged=dev.vignesh.cycleshop.isolated:foreground:0
+11-19 17:10:44.539  1718 23542 D AudioFlingerExtImpl: updateForegroundInfo mForegroundMap(2)|[dev.vignesh.cycleshop]=1|[dev.vignesh.cycleshop.isolated.test]=1
+11-19 17:10:44.539  3774  4003 D FSS_OplusFoldSwitchStateObserver: onAnimationStart reset mPendingFoldAnimationTrigger
+11-19 17:10:44.539  3774  4003 D FSS_OplusFoldSwitchStateObserver: onAnimationStart reset mPendingFoldAnimationTrigger
+11-19 17:10:44.540 17067 17067 D OpenGLRenderer: RenderProxy::destroy: this=0xb40000707584f300, mContext=0xb40000700d6ffe80
+11-19 17:10:44.540 17067 17200 D OpenGLRenderer: SkiaOpenGLPipeline::setSurface: this=0xb40000708fef4940, surface=NULL
+11-19 17:10:44.540 17067 17200 D BufferQueueProducer: [VRI[ComponentActivity]#0(BLAST Consumer)0](id:42ab00000000,api:1,p:17067,c:17067) disconnect: api 1
+11-19 17:10:44.542 17067 17067 D ViewRootImplExtImpl: wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=424, relayoutAsync=false, newFlags=27787264, title=dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity
+11-19 17:10:44.542  1722  1722 D OplusLayer: setGameMode Task=382#3272, gameMode 0, parentLayer .
+11-19 17:10:44.542  1722  1722 D OplusLayer: setGameMode ActivityRecord{12b3e0b u0 dev.vignesh.cycleshop/.MainActivity t382}#3273, gameMode 0, parentLayer Task=382#3272.
+11-19 17:10:44.543  2326  2489 I InputDispatcher: updateFocusedWindow, fe156ac dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity on display 0, reason: Window became focusable. Previous reason: NOT_VISIBLE, result:   FocusedWindows:
+11-19 17:10:44.543  2326  2489 I InputDispatcher:     displayId=0, name='fe156ac dev.vignesh.cycleshop/dev.vignesh.cycleshop.MainActivity'
+11-19 17:10:44.543  8502  8502 D VRI[MainActivity]: onFocusEvent true
+11-19 17:10:44.547  2326  2489 I ImeTracker: dev.vignesh.cycleshop:67cca601: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-19 17:10:44.547  2326  2489 I ImeTracker: dev.vignesh.cycleshop:67cca601: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-19 17:10:44.548 30498 30498 I SubtypeOperator: SubtypeOperator$1.onUnbindInput():64 
+11-19 17:10:44.550 30498 30498 I SubtypeOperator: SubtypeOperator$1.onBindInput():53 
+11-19 17:10:44.552 17067 17067 D BLASTBufferQueue: [VRI[ComponentActivity]#0](f:0,a:1) destructor()
+11-19 17:10:44.552 17067 17067 D BufferQueueConsumer: [VRI[ComponentActivity]#0(BLAST Consumer)0](id:42ab00000000,api:0,p:-1,c:17067) disconnect
+11-19 17:10:44.553 17067 17067 D callGcSupression: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+11-19 17:10:44.553 30498 30498 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2477 
+11-19 17:10:44.553 17067 17067 D VRI[ComponentActivity]: setWindowStopped stopped:true
+11-19 17:10:44.554 30498 30498 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1614 onStartInput(EditorInfo{EditorInfo{packageName=dev.vignesh.cycleshop, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=Bundle[{com.oplus.im.SCENES=0}], hintText=null, hintLocales=[], initialToolType=1}}, false)
+11-19 17:10:44.554 17067 17067 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@f5e2985 in: STOPPED
+11-19 17:10:44.554 30498 30498 I LatinInputMethodServiceBase: LatinInputMethodServiceBase.updateInputViewCoverNavigation():364 Update input view padding, isNavbarOverInputWindow=false, bottom inset=112
+11-19 17:10:44.554 17067 17067 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=androidx.activity.ComponentActivity@f5e2985
+11-19 17:10:44.555 30498 15029 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():119 repeatCheckTimes = 0, locked = false
+11-19 17:10:44.555 30498 15029 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():119 repeatCheckTimes = 1, locked = false
+11-19 17:10:44.559  1722  1722 D OplusLayer: setGameMode b4863a4 InputMethod#2417, gameMode 0, parentLayer Surface(name=b4863a4 InputMethod)/@0x6459cc2 - animation-leash of insets_animation#3407.
+11-19 17:10:44.559  1722  1722 D Layer   : reparent to null sequence=3407, seq[4], name=Surface(name=b4863a4 InputMethod)/@0x6459cc2 - animation-leash of insets_animation#3407
+11-19 17:10:44.573  1514 17294 I [UAH_CLIENT]: UahRelease, handle:4819
+11-19 17:10:44.606 17067 17067 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@f5e2985 in: DESTROYED
+11-19 17:10:44.606 17067 17067 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
+11-19 17:10:44.606 17067 17067 D OplusScrollToTopManager: dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity,window dying
+11-19 17:10:44.606 17067 17067 D OplusScrollToTopManager: dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity,unregisterSystemUIBroadcastReceiver 
+11-19 17:10:44.606 17067 17067 D OplusScrollToTopManager: dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity, unregisterSystemUIBroadcastReceiver failed java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@c56b6c3
+11-19 17:10:44.607 17067 17067 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@8a0e2d7
+11-19 17:10:44.609 17067 17086 D IdlingRegistry: Unregistering idling resources: [androidx.compose.ui.test.EspressoLink@425d115]
+11-19 17:10:44.614 17067 17067 D OpenGLRenderer: RenderProxy::destroy: this=0xb40000707584f300, mContext=0xb40000700d6ffe80
+11-19 17:10:44.614 17067 17200 D OpenGLRenderer: SkiaOpenGLPipeline::setSurface: this=0xb40000708fef4940, surface=NULL
+11-19 17:10:44.614  2326  4898 W InputManager-JNI: Input channel object '2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity (client)' was disposed without first being removed with the input manager!
+11-19 17:10:44.624  4835 16631 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+11-19 17:10:44.625  2326  4898 D OplusAlwaysAliveManager: removing: 385, ComponentInfo{dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity}
+11-19 17:10:44.625  1722  1722 D Layer   : reparent to null sequence=3401, seq[6], name=dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity#3401
+11-19 17:10:44.625  1722  1722 D Layer   : reparent to null sequence=3400, seq[6], name=2640b02 dev.vignesh.cycleshop.isolated/androidx.activity.ComponentActivity#3400
+11-19 17:10:44.628  4213  2101 D TaskStackChangeListeners: onTaskRemoved(), old=-1, cur=385
+11-19 17:10:44.629  3774  3995 D ZoomController: onTaskRemoved
+11-19 17:10:44.630  4213  2101 D TaskStackChangeListeners: onTaskRemoved(), old=-1, cur=385
+11-19 17:10:44.631  4835 16807 I PlayGamesServices[GamesSyncAdapter]: Starting sync for 2c042130
+11-19 17:10:44.631 17067 17086 I TestRunner: finished: realStryderScanLeavesAllSevenMissingQuantitiesUnverified(dev.vignesh.cycleshop.ui.invoice.InvoiceReviewUiTest)

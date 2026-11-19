@@ -1,0 +1,4 @@
+11-19 17:10:37.147 17067 17086 I TestRunner: started: verifiedSupplierMapping_saveAndQuery_persistsSuccessfully(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)
+11-19 17:10:37.161   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:37.161   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:37.254 17067 17086 I TestRunner: finished: verifiedSupplierMapping_saveAndQuery_persistsSuccessfully(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)

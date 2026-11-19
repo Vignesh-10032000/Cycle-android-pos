@@ -1,0 +1,6 @@
+11-19 17:10:38.517 17067 17086 I TestRunner: started: stockMovement_insufficientStock_rollsBackTransaction(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:38.603 15907 16275 E msys    : E[N mns:DGWClient]_LogError(274)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+11-19 17:10:38.605 15907 16275 E msys    : E[N mns:DGWClient]_LogError(274)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+11-19 17:10:38.609 30414 17098 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 17:10:38.609 30414 17098 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 17:10:38.611 17067 17086 I TestRunner: finished: stockMovement_insufficientStock_rollsBackTransaction(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

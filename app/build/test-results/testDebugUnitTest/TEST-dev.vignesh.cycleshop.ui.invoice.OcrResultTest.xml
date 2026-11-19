@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-11-19T10:28:52.098Z" hostname="GOKILA2" time="0.007">
+  <properties/>
+  <testcase name="OcrTextLine preserves individual elements" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.001"/>
+  <testcase name="OcrTextBlock can have null bounding box" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.0"/>
+  <testcase name="blockCount returns correct count" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.001"/>
+  <testcase name="image dimensions are stored and retrievable" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.0"/>
+  <testcase name="hasContent is false for empty rawText" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.0"/>
+  <testcase name="hasContent is false when rawText is blank" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.001"/>
+  <testcase name="rotationDegrees is preserved correctly for each valid rotation" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.001"/>
+  <testcase name="processingMs is preserved via copy" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.0"/>
+  <testcase name="lineCount sums lines across all blocks" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.001"/>
+  <testcase name="hasContent is true when rawText is non-blank" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.0"/>
+  <testcase name="OcrTextBlock preserves bounding box coordinates" classname="dev.vignesh.cycleshop.ui.invoice.OcrResultTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

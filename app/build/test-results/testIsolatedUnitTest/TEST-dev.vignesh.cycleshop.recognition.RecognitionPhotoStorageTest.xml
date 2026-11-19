@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.recognition.RecognitionPhotoStorageTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-19T12:15:27.153Z" hostname="GOKILA2" time="0.024">
+  <properties/>
+  <testcase name="cleanupIsRestrictedToGeneratedRecognitionFiles" classname="dev.vignesh.cycleshop.recognition.RecognitionPhotoStorageTest" time="0.023"/>
+  <testcase name="samplesBeforeDecodingInsteadOfAllocatingFullResolution" classname="dev.vignesh.cycleshop.recognition.RecognitionPhotoStorageTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

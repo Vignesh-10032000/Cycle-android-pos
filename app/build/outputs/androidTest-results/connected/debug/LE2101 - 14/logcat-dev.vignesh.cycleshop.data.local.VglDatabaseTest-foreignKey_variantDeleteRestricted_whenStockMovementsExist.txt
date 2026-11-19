@@ -1,0 +1,2 @@
+11-19 15:59:57.760 20445 20471 I TestRunner: started: foreignKey_variantDeleteRestricted_whenStockMovementsExist(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 15:59:57.814 20445 20471 I TestRunner: finished: foreignKey_variantDeleteRestricted_whenStockMovementsExist(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

@@ -1,0 +1,5 @@
+11-19 15:59:57.890 20445 20471 I TestRunner: started: stockMovement_concurrentDeductions_strictlyGuardsInventory(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 15:59:57.979 30414 20487 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 15:59:57.979 30414 20487 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 15:59:57.996 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 15:59:58.006 20445 20471 I TestRunner: finished: stockMovement_concurrentDeductions_strictlyGuardsInventory(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

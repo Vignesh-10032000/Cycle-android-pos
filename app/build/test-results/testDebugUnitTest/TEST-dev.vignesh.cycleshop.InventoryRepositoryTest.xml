@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.InventoryRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-19T10:28:51.829Z" hostname="GOKILA2" time="0.143">
+  <properties/>
+  <testcase name="testRegisterNewProductAndStock" classname="dev.vignesh.cycleshop.InventoryRepositoryTest" time="0.078"/>
+  <testcase name="testDuplicatePreventionBySupplierCode" classname="dev.vignesh.cycleshop.InventoryRepositoryTest" time="0.002"/>
+  <testcase name="testStockSaleAndDeduction" classname="dev.vignesh.cycleshop.InventoryRepositoryTest" time="0.004"/>
+  <testcase name="testLedgerReconciliation_matchesStockBalance" classname="dev.vignesh.cycleshop.InventoryRepositoryTest" time="0.002"/>
+  <testcase name="testSearchCatalog_matchesBrandProductSkuSizeColor" classname="dev.vignesh.cycleshop.InventoryRepositoryTest" time="0.056"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

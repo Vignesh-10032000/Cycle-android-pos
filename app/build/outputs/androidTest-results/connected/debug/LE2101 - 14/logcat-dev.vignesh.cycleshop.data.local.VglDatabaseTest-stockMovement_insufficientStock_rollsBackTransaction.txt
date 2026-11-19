@@ -1,0 +1,4 @@
+11-19 15:59:57.617 20445 20471 I TestRunner: started: stockMovement_insufficientStock_rollsBackTransaction(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 15:59:57.641  6969  7536 D AppSwitchObserverHelper: packageName: com.android.launcher,dev.vignesh.cycleshop
+11-19 15:59:57.676  2326  4297 E system_server: updateValue is called with a value 24210, which is lower than the previous value 24229
+11-19 15:59:57.691 20445 20471 I TestRunner: finished: stockMovement_insufficientStock_rollsBackTransaction(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

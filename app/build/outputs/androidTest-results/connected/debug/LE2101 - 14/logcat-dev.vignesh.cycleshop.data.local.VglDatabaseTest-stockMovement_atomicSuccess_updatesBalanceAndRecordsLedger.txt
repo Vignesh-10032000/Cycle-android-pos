@@ -1,0 +1,4 @@
+11-19 15:59:57.363 20445 20471 I TestRunner: started: stockMovement_atomicSuccess_updatesBalanceAndRecordsLedger(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 15:59:57.364   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:57.364   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:57.435 20445 20471 I TestRunner: finished: stockMovement_atomicSuccess_updatesBalanceAndRecordsLedger(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

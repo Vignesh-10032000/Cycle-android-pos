@@ -1,0 +1,223 @@
+11-19 15:59:59.421 20445 20471 I TestRunner: started: testRealInvoiceB_StryderBicycles_OnDevice(dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest)
+11-19 15:59:59.426 20445 20492 D TransportRuntime.SQLiteEventStore: Storing event with priority=DEFAULT, name=FIREBASE_ML_SDK for destination cct
+11-19 15:59:59.428 20445 20492 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, DEFAULT, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 15:59:59.432   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.432   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.443   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.443   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.447 20445 20541 D PipelineManager: Start process bitmap
+11-19 15:59:59.455   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.456   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.466   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.467   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.479   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.479   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.491   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.492   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.504   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.505   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.515   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.516   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.528   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.529   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.539   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.539   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.552   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.552   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.564   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.564   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.575   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.575   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.586  2326  3516 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+11-19 15:59:59.587   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.587   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.592  3774  4211 D WifiStatusTracker: mNetworkCallback onCapabilitiesChanged network:114 mPrimaryNetworkId:114
+11-19 15:59:59.594  3774  4211 I SystemUi--Statusbar: NetworkController.WifiSignalController-->handleStatusUpdated state=3 enabled=true connected=true isDefaultNetwork=true rssi=-58 level=4 wifiStandard=5 statusLabel=null isDirty=false
+11-19 15:59:59.595  3774  4211 D WifiStatusTracker: mNetworkCallback onCapabilitiesChanged network:114 mPrimaryNetworkId:114
+11-19 15:59:59.599   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.600   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.602  2326  3068 D OplusSlaNetworkManager: isPrimaryWifi:true network:114
+11-19 15:59:59.602  7068  7580 I ONet.Lan_LanConnectManager: (LanConnectivityReceiver.java:10)onRssiChanged, but do not need sync to remote!
+11-19 15:59:59.603  2326  3654 D SystemNetworkObserver: wifi network 114 nc changed, primary=true
+11-19 15:59:59.603  2326  3654 D SystemNetworkObserver: default network nc changed 114
+11-19 15:59:59.604  3774  4211 I SystemUi--Statusbar: NetworkController.WifiSignalController-->handleStatusUpdated state=3 enabled=true connected=true isDefaultNetwork=true rssi=-58 level=4 wifiStandard=5 statusLabel=null isDirty=false
+11-19 15:59:59.604 15850 15906 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+11-19 15:59:59.604  3774  4211 I SystemUi--Statusbar: NetworkController.WifiSignalController-->handleStatusUpdated state=3 enabled=true connected=true isDefaultNetwork=true rssi=-58 level=4 wifiStandard=5 statusLabel=null isDirty=false
+11-19 15:59:59.605 11535 11699 I CardConfig.RxNetworkMonitor: onNetworkStateChange, current:true, last:true
+11-19 15:59:59.606  2326  4112 I OplusHansManager : unfreeze uid: 10277 com.dreamplug.androidapp pids: [12251] reason: AsyncBinder scene: LcdOn
+11-19 15:59:59.607 17598 17687 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=8438Kbps LinkDnBandwidth>=79240Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.0.9, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ac, RSSI: -58, Link speed: 351Mbps, Tx Link speed: 351Mbps, Max Supported Tx Link speed: 866Mbps, Calculated Tx : 164Mbps, Rx Link speed: 585Mbps, Max Supported Rx Link speed: 866Mbps, Calculated Rx : 203Mbps, Frequency: 5180MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -58 UnderlyingNetworks: Null]
+11-19 15:59:59.607  2326  4105 I OplusHansManager : uid=10423, pkg=com.spotify.music F enter(), M stay=3
+11-19 15:59:59.607 12251 12321 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=8438Kbps LinkDnBandwidth>=79240Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.0.9, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ac, RSSI: -58, Link speed: 351Mbps, Tx Link speed: 351Mbps, Max Supported Tx Link speed: 866Mbps, Calculated Tx : 164Mbps, Rx Link speed: 585Mbps, Max Supported Rx Link speed: 866Mbps, Calculated Rx : 203Mbps, Frequency: 5180MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -58 UnderlyingNetworks: Null]
+11-19 15:59:59.609  2326  4105 I OplusHansManager : freeze uid: 10423 com.spotify.music pids: [31102, 31529] IsolatedUid: [99040] scene: LcdOn
+11-19 15:59:59.610 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10423, pkgCmd = ADD_ONE_UID
+11-19 15:59:59.610  2326  4105 I OplusHansManager : uid=10277, pkg=com.dreamplug.androidapp F exit(), F stay=1, reason=AsyncBinder
+11-19 15:59:59.612   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.612   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.613 12478 12587 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+11-19 15:59:59.615  8273  8324 I ebpt    : Connection state change: onCapabilitiesChanged, data connection: WIFI, manual connection eligibility: false, ntn roaming: false
+11-19 15:59:59.615  8273  8324 I ebpt    : New default data network: wifi
+11-19 15:59:59.615  2326  4112 I OplusHansManager : unfreeze uid: 10326 com.azure.authenticator pids: [26829, 5272] reason: AsyncBinder scene: LcdOn
+11-19 15:59:59.616  2326  4112 I OplusHansManager : unfreeze uid: 10281 com.instagram.barcelona pids: [19992] reason: AsyncBinder scene: LcdOn
+11-19 15:59:59.617  2326  4112 I OplusHansManager : unfreeze uid: 10329 com.jio.myjio pids: [21017] reason: AsyncBinder scene: LcdOn
+11-19 15:59:59.619  2326  4105 I OplusHansManager : uid=10326, pkg=com.azure.authenticator F exit(), F stay=1, reason=AsyncBinder
+11-19 15:59:59.619  2326  4105 I OplusHansManager : uid=10281, pkg=com.instagram.barcelona F exit(), F stay=1, reason=AsyncBinder
+11-19 15:59:59.619  2326  4105 I OplusHansManager : uid=10329, pkg=com.jio.myjio F exit(), F stay=0, reason=AsyncBinder
+11-19 15:59:59.619  2326  4112 I OplusHansManager : unfreeze uid: 10423 com.spotify.music pids: [31102, 31529] reason: AsyncBinder scene: LcdOn
+11-19 15:59:59.620  2326  4105 I OplusHansManager : uid=10423, pkg=com.spotify.music F exit(), F stay=0, reason=AsyncBinder
+11-19 15:59:59.622  2326  4112 I OplusHansManager : unfreeze uid: 10267 com.q4u.vewdeletedmessage pids: [12694, 13200] reason: AsyncBinder scene: LcdOn
+11-19 15:59:59.622  2326  4105 I OplusHansManager : uid=10267, pkg=com.q4u.vewdeletedmessage F exit(), F stay=1, reason=AsyncBinder
+11-19 15:59:59.623  2326  3530 D ConnectivityService: NetReassign [no changes] [c 1] [a 0] [i 1]
+11-19 15:59:59.624  4835  2752 I NearbyMediums: Wifi changed new SSID: <unknown ssid>
+11-19 15:59:59.624  4835  2752 I NearbyMediums: WifiLanConnectivityInfo is not changed, skip notify.
+11-19 15:59:59.624   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.624   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.625 25378 25399 I AIUnit-NetworkPublisher: onNetworkChanged [onCapabilitiesChanged, 114]
+11-19 15:59:59.625  8273  8334 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+11-19 15:59:59.631 25378 25399 D Track.TrackUpload: onCapabilitiesChanged is calling.
+11-19 15:59:59.632 25378 25400 W AIUnit-Update.UnitConfigUpdater: updateUnitConfig skip UpdateEvent(NETWORK) by running
+11-19 15:59:59.632 25378 25394 I AIUnit-SystemFeatureCompat: isSaleMode false
+11-19 15:59:59.632 25378 25394 I AIUnit-LocalUnitStore: getLastRunAppRecord AppRecord(version=1405048, protocol=144)
+11-19 15:59:59.632 25378 25394 I AIUnit-UpdateUnitStore: check update interval fail, you need wait 110 minutes
+11-19 15:59:59.632 25378 25394 I AIUnit-Update.UnitConfigUpdater: updateUnitConfig notSkipConfigUpdate:false, overwrite:false
+11-19 15:59:59.635   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.635   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.636 25378 25394 W AIUnit-Update.UnitConfigUpdater: updateUnitConfig no need download
+11-19 15:59:59.647   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.647   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.660   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.660   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.670   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.671   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.673 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10329, pkgCmd = PKG_CMD_MAX
+11-19 15:59:59.682   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.683   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.695   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.695   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.707   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.708   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.720   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.720   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.740   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.741   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.751   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.751   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.764   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.764   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.774   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.775   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.787   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.787   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.800   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.800   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.812   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.813   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.823   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.823   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.829 12682 26222 D ShellSubscriberWorkerThread: the first 8 bytes empty, and RestData length > 8 
+11-19 15:59:59.836   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.836   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.846   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.847   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.859   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.859   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.871   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.872   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.882   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.883   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.885 20081 20081 I Process : Sending signal. PID: 20081 SIG: 9
+11-19 15:59:59.896   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.898   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.909   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.910   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.920   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.920   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.926  1330  1330 I Zygote  : Process 20081 exited due to signal 9 (Killed)
+11-19 15:59:59.927  2326  3530 D ConnectivityService: releasing NetworkRequest [ REQUEST id=6654, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1000 RequestorUid: 1000 RequestorPkg: com.heytap.mcs UnderlyingNetworks: Null] ] (release request)
+11-19 15:59:59.927  2326  2720 I libprocessgroup: Successfully killed process cgroup uid 1000 pid 20081 in 0ms
+11-19 15:59:59.930   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.931   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.933  3774  6832 I SeedlingSdk.SeedlingSdkInterface: (SeedingBg) 8 gainSeedlingManager no callback begin isInitialed:2,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 15:59:59.933  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Start gain seedling manager.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 15:59:59.933  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Seedling manager is already exist,step1.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 15:59:59.933  3774  6832 I SDP.SysUi.SeedlingManager:  sendKilledPid, entrance:status_bar[8,20][ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d] [SeedlingSdk|com.android.systemui|2.0.40-ebe132d]
+11-19 15:59:59.933  3774  6832 W SDP.SysUi.PidHelper:  sendKilledPidToUms error, pidInfo from entrance isEmpty, don't send to ums, from entrance, pidInfo:PidInfo(hostPidMap={com.oplus.phonemanager=[], com.oneplus.deskclock=[], net.oneplus.weather=[], com.coloros.assistantscreen=[], com.oneplus.membership=[]}, umsPidSet=[], extras=null)[ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 15:59:59.943   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.943   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.955   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.956   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.968   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.968   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.979 20113 20113 I Process : Sending signal. PID: 20113 SIG: 9
+11-19 15:59:59.979   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.980   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:59.992   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 15:59:59.993   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.003   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.003   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.011 16551 16551 D SubsysBroadcastManager: onReceive action:android.intent.action.TIME_TICK
+11-19 16:00:00.012  6969  7484 D PhoneScreenOnTime: affairType:231
+11-19 16:00:00.015   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.016   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.017  3774  3774 I SystemUi--Keyguard: KeyguardUtils-->density is 0 sInitialDisplayDensity:480
+11-19 16:00:00.018  6969  7484 D PhoneUsageTime: affairType:231
+11-19 16:00:00.019  1330  1330 I Zygote  : Process 20113 exited due to signal 9 (Killed)
+11-19 16:00:00.021  2326  2720 I libprocessgroup: Successfully killed process cgroup uid 1000 pid 20113 in 0ms
+11-19 16:00:00.023  3774  6832 I SeedlingSdk.SeedlingSdkInterface: (SeedingBg) 8 gainSeedlingManager no callback begin isInitialed:2,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 16:00:00.023  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Start gain seedling manager.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 16:00:00.023  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Seedling manager is already exist,step1.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 16:00:00.023  3774  6832 I SDP.SysUi.SeedlingManager:  sendKilledPid, entrance:status_bar[8,20][ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d] [SeedlingSdk|com.android.systemui|2.0.40-ebe132d]
+11-19 16:00:00.023  3774  6832 W SDP.SysUi.PidHelper:  sendKilledPidToUms error, pidInfo from entrance isEmpty, don't send to ums, from entrance, pidInfo:PidInfo(hostPidMap={com.oplus.phonemanager=[], com.oneplus.deskclock=[], net.oneplus.weather=[], com.coloros.assistantscreen=[], com.oneplus.membership=[]}, umsPidSet=[], extras=null)[ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 16:00:00.026   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.027   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.028  3774  3774 I SystemUi--Keyguard: KeyguardUtils-->density is 0 sInitialDisplayDensity:480
+11-19 16:00:00.032  3774  3774 I SystemUi--Keyguard: KeyguardUtils-->density is 0 sInitialDisplayDensity:480
+11-19 16:00:00.039   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.039   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.043 30414 20539 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 16:00:00.043 30414 20539 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 16:00:00.051   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.052   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.052  6969 20545 W Battery : SaveBatteryStats: saveBatteryStats
+11-19 16:00:00.059 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 16:00:00.062   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.063   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.063   734   734 D lowmemorykiller: medium pressure event triggered
+11-19 16:00:00.063  2326  3841 I Osense-PsiDetector: 5657,141,2191,5631,62,299,209,2278,5889,3644,1714,0,12,9895
+11-19 16:00:00.063  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_NORMAL, bundle: Bundle[{memLevel=4}]
+11-19 16:00:00.063   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.075  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_LEAK, bundle: Bundle[{memLevel=4}]
+11-19 16:00:00.103  4835  2752 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+11-19 16:00:00.166   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.166   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.166   734   734 D lowmemorykiller: super critical pressure event triggered
+11-19 16:00:00.166   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.166   734   734 D lowmemorykiller: critical pressure event triggered
+11-19 16:00:00.167   734   734 D lowmemorykiller: Ignoring critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.168 20445 20541 D PipelineManager: OCR process succeeded via visionkit pipeline.
+11-19 16:00:00.228 12863 13148 D AudioManagerExtImpl: getStreamVolume normal, volume index=6
+11-19 16:00:00.230  5495  8641 D OplusAtlasService: getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.facebook.katana
+11-19 16:00:00.265   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.266   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.276   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.276   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.286   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.287   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.299   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.300   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.312   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.312   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.319 20445 20471 I REAL_INVOICE_TEST: === INVOICE B (STRYDER) OCR COMPLETE in 874ms ===
+11-19 16:00:00.320 20445 20471 I REAL_INVOICE_TEST: Blocks recognized: 212
+11-19 16:00:00.323   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.323   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.335   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.336   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.348   734   734 D lowmemorykiller: super critical pressure event polling check
+11-19 16:00:00.349   734   734 D lowmemorykiller: Ignoring super critical pressure event; system is not in reclaim or compaction and no refaults
+11-19 16:00:00.355 20445 20471 I REAL_INVOICE_TEST: Supplier: Stryder Cycle Private Limited (Ludhiana)
+11-19 16:00:00.355 20445 20471 I REAL_INVOICE_TEST: Invoice No: 201124120, Date: 25.09.2026
+11-19 16:00:00.355 20445 20471 I REAL_INVOICE_TEST: Supplier GSTIN: 03ABBCS9377H1Z3
+11-19 16:00:00.355 20445 20471 I REAL_INVOICE_TEST: Items Extracted: 29
+11-19 16:00:00.355 20445 20471 I REAL_INVOICE_TEST: Total Quantity: 62.0, Reconciled: true
+11-19 16:00:00.355 20445 20471 I REAL_INVOICE_TEST: Table Parsing time: 28ms
+11-19 16:00:00.355 20445 20471 I TestRunner: finished: testRealInvoiceB_StryderBicycles_OnDevice(dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest)

@@ -1,0 +1,2 @@
+11-19 15:59:56.493 20445 20471 I TestRunner: started: useAppContext(dev.vignesh.cycleshop.ExampleInstrumentedTest)
+11-19 15:59:56.495 20445 20471 I TestRunner: finished: useAppContext(dev.vignesh.cycleshop.ExampleInstrumentedTest)

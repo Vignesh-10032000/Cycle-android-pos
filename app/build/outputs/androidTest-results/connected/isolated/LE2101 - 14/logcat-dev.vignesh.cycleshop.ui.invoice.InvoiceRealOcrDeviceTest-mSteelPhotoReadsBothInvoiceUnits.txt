@@ -1,0 +1,89 @@
+11-19 17:10:39.291 17067 17086 I TestRunner: started: mSteelPhotoReadsBothInvoiceUnits(dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest)
+11-19 17:10:39.293 24051 24076 D ConfigStatisticManager: batch statistic size:8
+11-19 17:10:39.314  7178 16907 W yAF.TPLog.FrameworkUpdateListener: [dev.vignesh.cycleshop.isolated] removed. Stop sending intent
+11-19 17:10:39.324 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10423, pkgCmd = PKG_CMD_MAX
+11-19 17:10:39.363 17067 17110 D DecoupledTextDelegate: Start loading thick OCR module.
+11-19 17:10:39.363 17067 17110 I DynamiteModule: Considering local module com.google.mlkit.dynamite.text.latin:10000 and remote module com.google.mlkit.dynamite.text.latin:0
+11-19 17:10:39.363 17067 17110 I DynamiteModule: Selected local version of com.google.mlkit.dynamite.text.latin
+11-19 17:10:39.373  2326  3841 I Osense-PsiDetector: 5592,240,2171,5631,62,278,243,2329,5772,3551,1681,0,12,10073
+11-19 17:10:39.373  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_NORMAL, bundle: Bundle[{memLevel=3}]
+11-19 17:10:39.387 17067 17110 D nativeloader: Load /data/app/~~__5DAqgAoRvsfGjAyM1aMg==/dev.vignesh.cycleshop.isolated-x45oK5TE4QjVj-V4UeRH7A==/base.apk!/lib/arm64-v8a/libmlkit_google_ocr_pipeline.so using class loader ns clns-6 (caller=/data/app/~~__5DAqgAoRvsfGjAyM1aMg==/dev.vignesh.cycleshop.isolated-x45oK5TE4QjVj-V4UeRH7A==/base.apk!classes15.dex): ok
+11-19 17:10:39.390 17067 17110 I native  : I0000 00:00:1795088439.390205   17110 asset_manager_util.cc:61] Created global reference to asset manager.
+11-19 17:10:39.400  2326  4112 I OplusHansManager : unfreeze uid: 10296 com.google.android.verifier pids: [15662] reason: AsyncBinder scene: LcdOn
+11-19 17:10:39.401  2326  4105 I OplusHansManager : uid=10296, pkg=com.google.android.verifier F exit(), F stay=1, reason=AsyncBinder
+11-19 17:10:39.402  4835  4835 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService mCallingUid=10218 }
+11-19 17:10:39.406  5428  5530 I BtGatt.ScanManager: msg.what = 6
+11-19 17:10:39.407  5428  5428 I OplusCustomScanStrategy: msg.what = 6
+11-19 17:10:39.411 17067 17110 I Manager : DeviceManager::DeviceManager
+11-19 17:10:39.411 17067 17110 W ServerFlag: Failed to parse result of GetServerConfigurableFlag, errno=34
+11-19 17:10:39.411 17067 17110 I Manager : findAvailableDevices
+11-19 17:10:39.412  2326  4112 I OplusHansManager : unfreeze uid: 10423 com.spotify.music pids: [31102, 31529] reason: AsyncBinder scene: LcdOn
+11-19 17:10:39.413  2326  4105 I OplusHansManager : uid=10423, pkg=com.spotify.music F exit(), F stay=1, reason=AsyncBinder
+11-19 17:10:39.416 17067 17105 D TransportRuntime.SQLiteEventStore: Storing event with priority=DEFAULT, name=FIREBASE_ML_SDK for destination cct
+11-19 17:10:39.418  2326  4112 I OplusHansManager : unfreeze uid: 10267 com.q4u.vewdeletedmessage pids: [12694, 13200] reason: AsyncBinder scene: LcdOn
+11-19 17:10:39.418  2326  4105 I OplusHansManager : uid=10267, pkg=com.q4u.vewdeletedmessage F exit(), F stay=1, reason=AsyncBinder
+11-19 17:10:39.421 17067 17105 D TransportRuntime.JobInfoScheduler: Scheduling upload for context TransportContext(cct, DEFAULT, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) with jobId=43198786 in 30000ms(Backend next call timestamp 0). Attempt 1
+11-19 17:10:39.421 17067 17105 D CompatibilityChangeReporter: Compat change id reported: 194532703; UID 10431; state: ENABLED
+11-19 17:10:39.421 17067 17105 D CompatibilityChangeReporter: Compat change id reported: 253665015; UID 10431; state: ENABLED
+11-19 17:10:39.422  2326  4508 D ConnectivityService: requestNetwork for uid/pid:1000/2326 asUid: 10431 activeRequest: null callbackRequest: 7221 [NetworkRequest [ REQUEST id=7222, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10431 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|BLK
+11-19 17:10:39.424 17067 17110 I Manager : Found interface qti-default (version = 1.3-23:build_kona)
+11-19 17:10:39.424 17067 17110 I Manager : Found interface qti-dsp (version = 1.3-23:build_kona)
+11-19 17:10:39.424 17067 17110 I Manager : Found interface qti-gpu (version = 1.3-23:build_kona)
+11-19 17:10:39.424 17067 17110 I Manager : Found interface qti-hta (version = 1.3-23:build_kona)
+11-19 17:10:39.425 17067 17105 D TransportRuntime.SQLiteEventStore: Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-19 17:10:39.426  2326  3516 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=7222, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10431 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]
+11-19 17:10:39.426  2326  3516 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=7222, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10431 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]
+11-19 17:10:39.427  2326  3516 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=7222, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10431 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]
+11-19 17:10:39.427  2326  3516 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=7222, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10431 RequestorUid: 1000 RequestorPkg: android UnderlyingNetworks: Null] ]
+11-19 17:10:39.428 17067 17105 D TransportRuntime.JobInfoScheduler: Scheduling upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) with jobId=48179523 in 86400000ms(Backend next call timestamp 0). Attempt 1
+11-19 17:10:39.428  2326  3530 D ConnectivityService: NetReassign [7222 : null → 114] [c 1] [a 1] [i 3]
+11-19 17:10:39.429 17067 17116 W libc    : Access denied finding property "ro.hardware.chipname"
+11-19 17:10:39.430 17067 17105 D TransportRuntime.SQLiteEventStore: Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-19 17:10:39.432 17067 17105 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 17:10:39.436 17067 17116 I native  : I0000 00:00:1795088439.436545   17116 resource_manager.cc:23] Number of optimal threads: 4
+11-19 17:10:39.437 17067 17116 I native  : I0000 00:00:1795088439.437294   17116 text_detector_thread_pool_context.cc:38] Compute manager max in flight region detector overwrite: 1
+11-19 17:10:39.437 17067 17113 I native  : I0000 00:00:1795088439.437336   17113 text_classifier.cc:32] Creating classifier TfliteTextClassifier
+11-19 17:10:39.437 17067 17116 I native  : I0000 00:00:1795088439.437878   17116 common_util.h:41] Resizing Thread Pool: ocr_det_0 to 3
+11-19 17:10:39.438 17067 17113 I native  : I0000 00:00:1795088439.438083   17113 common_util.h:41] Resizing Thread Pool: ocr_segm to 3
+11-19 17:10:39.439 17067 17116 I native  : I0000 00:00:1795088439.439205   17116 tflite_detector_client_with_shape_cache.cc:76] Interpreter threads: 4
+11-19 17:10:39.439 17067 17116 I tflite  : Initialized TensorFlow Lite runtime.
+11-19 17:10:39.441 17067 17113 I native  : I0000 00:00:1795088439.441676   17113 tflite_lstm_client_base.cc:371] Resizing interpreter pool to 4
+11-19 17:10:39.441 17067 17116 I tflite  : Created TensorFlow Lite XNNPACK delegate for CPU.
+11-19 17:10:39.442 17067 17116 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:39.445 17067 17113 I native  : I0000 00:00:1795088439.445031   17113 multi_pass_line_recognition_mutator.cc:342] Preloading recognizers.
+11-19 17:10:39.445 17067 17116 I native  : I0000 00:00:1795088439.445727   17116 tflite_detector_client_with_shape_cache.cc:105] Caching size: 10
+11-19 17:10:39.447 17067 17116 I native  : I0000 00:00:1795088439.447351   17116 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite
+11-19 17:10:39.447 17067 17127 I native  : I0000 00:00:1795088439.447629   17127 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/conv_model.fb
+11-19 17:10:39.448 17067 17116 I native  : I0000 00:00:1795088439.447978   17116 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 1
+11-19 17:10:39.448 17067 17127 I native  : I0000 00:00:1795088439.448377   17127 tflite_model_pooled_runner.cc:636] Loading mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb
+11-19 17:10:39.448 17067 17116 I native  : I0000 00:00:1795088439.448911   17116 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite
+11-19 17:10:39.449 17067 17116 I native  : I0000 00:00:1795088439.449185   17116 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 1
+11-19 17:10:39.452 17067 17127 I native  : I0000 00:00:1795088439.452835   17127 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 4
+11-19 17:10:39.456 17067 17127 I native  : I0000 00:00:1795088439.456547   17127 mobile_langid_v2.cc:58] MobileLangID V2 initialized.
+11-19 17:10:39.456 17067 17127 I native  : I0000 00:00:1795088439.456628   17127 multi_pass_line_recognition_mutator.cc:364] Finished preloading a recognizer for "Latn"
+11-19 17:10:39.457 17067 17113 I native  : I0000 00:00:1795088439.456949   17113 multi_pass_line_recognition_mutator.cc:398] Finished preloading recognizers.
+11-19 17:10:39.460 17067 17110 D PipelineManager: Start process bitmap
+11-19 17:10:39.460 17067 17110 I native  : I0000 00:00:1795088439.460720   17110 scheduler.cc:693] ImageMetadata: 900x1600
+11-19 17:10:39.483 17067 17113 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:39.497 17067 17113 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:39.505 17067 17113 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:39.527 17067 17113 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:39.532 17067 17113 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:39.642 30414 17101 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 17:10:39.642 30414 17101 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 17:10:39.665 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 17:10:39.747 24225 24225 D ServiceLifeManager: release: DiagnosticProcessController sActiveService:2
+11-19 17:10:39.747 24225 24225 D ServiceLifeManager: sActiveService:1 sIsActive:false
+11-19 17:10:39.747 24225 24225 D ServiceLifeManager: final sActiveService:1 sIsActive:false
+11-19 17:10:39.813  4108  4364 D CommonScenarios-114-10408: transportLayerQosChange TransportLayerData{link_index=27, uid=10408, uplink_srtt=0, uplink_packets=0, uplink_retrans_packets=0, uplink_retrans_rate=0, downlink_srtt=0, downlink_packets=0, downlink_retrans_packets=0, downlink_retrans_rate=0, downlink_rate=0, uplink_udp_packets=0, downlink_udp_packets=0, uplink_tcp_rate=0, uplink_udp_rate=0, downlink_tcp_rate=0, downlink_udp_rate=0}
+11-19 17:10:39.814  4108  4364 D CommonScenarios-114-10408: ActiveState process message 2
+11-19 17:10:39.814  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE
+11-19 17:10:39.814  4108  4364 D CommonScenarios-114-10408: transport layer data is invalid
+11-19 17:10:39.814  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE score is invalid
+11-19 17:10:39.965 17067 17110 D PipelineManager: OCR process succeeded via visionkit pipeline.
+11-19 17:10:40.059 17067 17105 D TransportRuntime.SQLiteEventStore: Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-19 17:10:40.060 17067 17105 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 17:10:40.063 17067 17105 D TransportRuntime.SQLiteEventStore: Storing event with priority=VERY_LOW, name=FIREBASE_ML_SDK for destination cct
+11-19 17:10:40.065 17067 17105 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, VERY_LOW, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 17:10:40.124 17067 17086 I InvoiceParsingR2: Photo A: rows=11, valid quantities=11
+11-19 17:10:40.125 17067 17086 I TestRunner: finished: mSteelPhotoReadsBothInvoiceUnits(dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest)

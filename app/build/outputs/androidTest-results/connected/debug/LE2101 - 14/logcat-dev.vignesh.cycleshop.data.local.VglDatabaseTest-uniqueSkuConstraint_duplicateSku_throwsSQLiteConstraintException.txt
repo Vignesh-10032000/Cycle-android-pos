@@ -1,0 +1,4 @@
+11-19 15:59:57.246 20445 20471 I TestRunner: started: uniqueSkuConstraint_duplicateSku_throwsSQLiteConstraintException(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 15:59:57.263   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:57.264   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:57.303 20445 20471 I TestRunner: finished: uniqueSkuConstraint_duplicateSku_throwsSQLiteConstraintException(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

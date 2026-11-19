@@ -1,0 +1,2 @@
+11-19 17:10:39.142 17067 17086 I TestRunner: started: reactiveFlow_totalStockCountUpdates(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:39.233 17067 17086 I TestRunner: finished: reactiveFlow_totalStockCountUpdates(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

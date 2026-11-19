@@ -1,0 +1,4 @@
+11-19 15:59:57.437 20445 20471 I TestRunner: started: inventoryRepository_searchAndTransactions_onDevice(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 15:59:57.464   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:57.465   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 15:59:57.538 20445 20471 I TestRunner: finished: inventoryRepository_searchAndTransactions_onDevice(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

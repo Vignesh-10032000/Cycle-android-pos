@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.ui.invoice.InvoiceNumbersTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-19T12:15:27.261Z" hostname="GOKILA2" time="0.004">
+  <properties/>
+  <testcase name="line reconciliation compares without multiplication overflow or rounding" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceNumbersTest" time="0.002"/>
+  <testcase name="invalid prices reject partial matches and fractional paise" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceNumbersTest" time="0.0"/>
+  <testcase name="price conversion keeps every paise and supports Indian and western grouping" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceNumbersTest" time="0.001"/>
+  <testcase name="quantities reject non-finite negative or lossy values" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceNumbersTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

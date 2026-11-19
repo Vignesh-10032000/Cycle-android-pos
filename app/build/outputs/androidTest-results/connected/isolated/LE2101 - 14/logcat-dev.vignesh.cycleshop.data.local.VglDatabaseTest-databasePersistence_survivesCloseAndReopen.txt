@@ -1,0 +1,2 @@
+11-19 17:10:37.903 17067 17086 I TestRunner: started: databasePersistence_survivesCloseAndReopen(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:38.029 17067 17086 I TestRunner: finished: databasePersistence_survivesCloseAndReopen(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

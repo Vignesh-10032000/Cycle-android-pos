@@ -1,0 +1,8 @@
+11-19 15:59:57.005 20445 20471 I TestRunner: started: stockMovement_ledgerReconciliation_matchesVariantBalance(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 15:59:57.061   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:57.062   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:57.062   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:57.063   734   734 E lowmemorykiller: adj:1001 file_cache:1383680 free:44746
+11-19 15:59:57.063   734   734 E lowmemorykiller: device has enough memory 5889132Kib, and freeMemory 178984Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:57.095  4835  2752 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+11-19 15:59:57.134 20445 20471 I TestRunner: finished: stockMovement_ledgerReconciliation_matchesVariantBalance(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

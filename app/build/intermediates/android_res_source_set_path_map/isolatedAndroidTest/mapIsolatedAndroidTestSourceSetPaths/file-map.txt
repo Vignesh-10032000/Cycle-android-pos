@@ -1,0 +1,5 @@
+dev.vignesh.cycleshop.test.app-updated_navigation_xml-0 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\generated\updated_navigation_xml\isolatedAndroidTest
+dev.vignesh.cycleshop.test.app-packageIsolatedAndroidTestResources-1 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\intermediates\incremental\isolatedAndroidTest\packageIsolatedAndroidTestResources\merged.dir
+dev.vignesh.cycleshop.test.app-packageIsolatedAndroidTestResources-2 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\intermediates\incremental\isolatedAndroidTest\packageIsolatedAndroidTestResources\stripped.dir
+dev.vignesh.cycleshop.test.app-isolatedAndroidTest-3 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\intermediates\merged_res\isolatedAndroidTest\mergeIsolatedAndroidTestResources
+gradleHome-0 C:\Users\ramas\.gradle

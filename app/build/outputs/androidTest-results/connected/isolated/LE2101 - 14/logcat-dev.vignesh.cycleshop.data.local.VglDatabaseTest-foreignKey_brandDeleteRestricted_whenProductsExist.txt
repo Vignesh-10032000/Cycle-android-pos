@@ -1,0 +1,2 @@
+11-19 17:10:38.464 17067 17086 I TestRunner: started: foreignKey_brandDeleteRestricted_whenProductsExist(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:38.513 17067 17086 I TestRunner: finished: foreignKey_brandDeleteRestricted_whenProductsExist(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

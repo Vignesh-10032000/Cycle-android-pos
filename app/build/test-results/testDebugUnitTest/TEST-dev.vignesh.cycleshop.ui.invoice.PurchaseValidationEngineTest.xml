@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.ui.invoice.PurchaseValidationEngineTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-11-19T10:28:52.119Z" hostname="GOKILA2" time="0.006">
+  <properties/>
+  <testcase name="invoice validation passes with valid headers and line items" classname="dev.vignesh.cycleshop.ui.invoice.PurchaseValidationEngineTest" time="0.003"/>
+  <testcase name="line without variantId gets PENDING_MATCH and requires review" classname="dev.vignesh.cycleshop.ui.invoice.PurchaseValidationEngineTest" time="0.0"/>
+  <testcase name="line with zero or negative quantity is marked UNMATCHED_REJECTED and invalid" classname="dev.vignesh.cycleshop.ui.invoice.PurchaseValidationEngineTest" time="0.002"/>
+  <testcase name="line with valid variantId and clean OCR gets VERIFIED_MATCH" classname="dev.vignesh.cycleshop.ui.invoice.PurchaseValidationEngineTest" time="0.0"/>
+  <testcase name="invoice validation fails if supplier name or invoice number is missing" classname="dev.vignesh.cycleshop.ui.invoice.PurchaseValidationEngineTest" time="0.0"/>
+  <testcase name="line with partial or obscured OCR quality flags is marked MANUAL_CORRECTED" classname="dev.vignesh.cycleshop.ui.invoice.PurchaseValidationEngineTest" time="0.0"/>
+  <testcase name="line with zero or missing price is marked UNMATCHED_REJECTED and invalid" classname="dev.vignesh.cycleshop.ui.invoice.PurchaseValidationEngineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

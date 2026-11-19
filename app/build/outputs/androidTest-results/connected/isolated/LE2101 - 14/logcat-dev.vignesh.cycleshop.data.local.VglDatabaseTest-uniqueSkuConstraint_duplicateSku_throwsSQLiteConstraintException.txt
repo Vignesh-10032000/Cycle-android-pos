@@ -1,0 +1,2 @@
+11-19 17:10:38.031 17067 17086 I TestRunner: started: uniqueSkuConstraint_duplicateSku_throwsSQLiteConstraintException(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:38.071 17067 17086 I TestRunner: finished: uniqueSkuConstraint_duplicateSku_throwsSQLiteConstraintException(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

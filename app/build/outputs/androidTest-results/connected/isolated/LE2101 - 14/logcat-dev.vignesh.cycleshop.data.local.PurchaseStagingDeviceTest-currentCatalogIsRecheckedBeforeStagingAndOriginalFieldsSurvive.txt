@@ -1,0 +1,28 @@
+11-19 17:10:36.743 17067 17086 I TestRunner: started: currentCatalogIsRecheckedBeforeStagingAndOriginalFieldsSurvive(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)
+11-19 17:10:36.757   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:36.757   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 17:10:36.757   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 17:10:36.758   734   734 E lowmemorykiller: adj:1001 file_cache:1344463 free:57986
+11-19 17:10:36.758   734   734 E lowmemorykiller: device has enough memory 5731700Kib, and freeMemory 231944Kib, disable killing(limit_killing:1024000Kib)
+11-19 17:10:36.776 11535 11595 I SG::UmsScanner: queryAccessPackages list.size 108,localApkSet = [com.android.incallui, com.oplus.linker, com.oplus.wirelesssettings, com.coloros.soundrecorder, com.coloros.oshare, com.oplus.ipemanager, com.coloros.accessibilityassistant, com.oplus.screenrecorder, com.nearme.instant.platform, com.coloros.weather2, com.oplus.secondaryhome, com.oplus.melody, com.heytap.health, com.oplus.dialer, com.coloros.alarmclock, com.oplus.padconnect, com.oneplus.soundrecorder, com.oneplus.deskclock, com.snapchat.android, com.grabtaxi.passenger, com.android.systemui, com.oplus.seedling.media, com.oplus.battery, com.oplus.gesture, com.coloros.sceneservice, com.oplus.mediacontroller, com.heytap.accessory, com.oplus.safecenter, com.coloros.securepay, com.oplus.securepay, com.oneplus.oshare, com.coloros.floatassistant, net.oneplus.weather, com.oplus.securitypermission, com.oplus.eyeprotect, com.coloros.gallery3d, com.oplus.remotecontrol, com.oneplus.gallery, com.coloros.note, com.oneplus.note, com.oplus.exsystemservice, com.oplus.calendar, com.coloros.filemanager, com.oneplus.filemanager, com.oplus.ambient.livealert, com.coloros.colordirectservice, com.coloros.phonemanager, com.oplus.wallpapers, com.oplus.metis, com.oplus.aimemory, com.oplus.rom, com.oplus.camera, com.oplus.gleanerservice, com.oplus.aipaint, com.oplus.ebadge]
+11-19 17:10:36.776 11535 11595 I SG::UmsScanner: accessPackageInfos size:0
+11-19 17:10:36.778 11535 16910 I SG::StaticManager[RepositoryManager]: getCardInfoModifyTime.
+11-19 17:10:36.801  4249  4378 W libc    : Access denied finding property "vendor.gsm.serial"
+11-19 17:10:36.808  2326  4105 I OplusHansManager : uid=10423, pkg=com.spotify.music can not transition from M to F. reason: AsyncBinder
+11-19 17:10:36.811  4249  7386 W libc    : Access denied finding property "vendor.gsm.serial"
+11-19 17:10:36.821  4249  4336 I .statistics.rom: Waiting for a blocking GC ProfileSaver
+11-19 17:10:36.826  4249  4336 I .statistics.rom: WaitForGcToComplete blocked ProfileSaver on Background for 5.607ms
+11-19 17:10:36.827  4249  4269 W System  : A resource failed to call ContentProviderClient.close. 
+11-19 17:10:36.858   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:36.858   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 17:10:36.858   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 17:10:36.858   734   734 E lowmemorykiller: adj:1001 file_cache:1340370 free:63863
+11-19 17:10:36.858   734   734 E lowmemorykiller: device has enough memory 5739340Kib, and freeMemory 255452Kib, disable killing(limit_killing:1024000Kib)
+11-19 17:10:36.865 17067 17093 I leshop.isolated: hiddenapi: Accessing hidden method Landroid/database/sqlite/SQLiteDatabase;->getThreadSession()Landroid/database/sqlite/SQLiteSession; (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/sqlite/db/framework/FrameworkSQLiteDatabase; (domain=app, TargetSdkVersion=37) using reflection: allowed
+11-19 17:10:36.865 17067 17093 I leshop.isolated: hiddenapi: Accessing hidden method Landroid/database/sqlite/SQLiteSession;->beginTransaction(ILandroid/database/sqlite/SQLiteTransactionListener;ILandroid/os/CancellationSignal;)V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/sqlite/db/framework/FrameworkSQLiteDatabase; (domain=app, TargetSdkVersion=37) using reflection: allowed
+11-19 17:10:36.897 17067 17096 D CompatibilityChangeReporter: Compat change id reported: 247079863; UID 10431; state: ENABLED
+11-19 17:10:36.959   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:36.959   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:36.968  7520  8374 I DeepThinkerSDK: [APP] ClientConnection: getDeepThinkerBridge start
+11-19 17:10:36.969  7520  8374 I DeepThinkerSDK: [APP] ClientConnection: getDeepThinkerBridge end
+11-19 17:10:36.992 17067 17086 I TestRunner: finished: currentCatalogIsRecheckedBeforeStagingAndOriginalFieldsSurvive(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)

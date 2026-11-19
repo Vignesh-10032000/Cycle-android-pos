@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="26" failures="0" errors="0" skipped="0" time="0.000" timestamp="2026-11-19T11:40:47" hostname="localhost">
+  <testsuite name="dev.vignesh.cycleshop.ExampleInstrumentedTest" tests="1" failures="0" errors="0" skipped="0" time="0.000" timestamp="2026-11-19T11:40:47" hostname="localhost">
+    <properties>
+      <property name="device" value="adb-7816fa26-S4GFEO._adb-tls-connect._tcp" />
+    </properties>
+    <testcase name="useAppContext" classname="dev.vignesh.cycleshop.ExampleInstrumentedTest" time="0.000" />
+  </testsuite>
+  <testsuite name="dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest" tests="5" failures="0" errors="0" skipped="0" time="0.904" timestamp="2026-11-19T11:40:47" hostname="localhost">
+    <properties>
+      <property name="device" value="adb-7816fa26-S4GFEO._adb-tls-connect._tcp" />
+    </properties>
+    <testcase name="currentCatalogIsRecheckedBeforeStagingAndOriginalFieldsSurvive" classname="dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest" time="0.205" />
+    <testcase name="stageInvoice_duplicateCheck_preventsDuplicateStaging" classname="dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest" time="0.149" />
+    <testcase name="verifiedSupplierMapping_saveAndQuery_persistsSuccessfully" classname="dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest" time="0.111" />
+    <testcase name="foreignKeyCascade_deletingInvoice_cascadesToLines" classname="dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest" time="0.185" />
+    <testcase name="stageInvoice_persistsInvoiceAndLines_withoutModifyingInventoryStock" classname="dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest" time="0.254" />
+  </testsuite>
+  <testsuite name="dev.vignesh.cycleshop.data.local.RoomMigrationTest" tests="1" failures="0" errors="0" skipped="0" time="0.063" timestamp="2026-11-19T11:40:47" hostname="localhost">
+    <properties>
+      <property name="device" value="adb-7816fa26-S4GFEO._adb-tls-connect._tcp" />
+    </properties>
+    <testcase name="migration1To2_preservesExistingDataAndAddsPurchaseTables" classname="dev.vignesh.cycleshop.data.local.RoomMigrationTest" time="0.063" />
+  </testsuite>
+  <testsuite name="dev.vignesh.cycleshop.data.local.VglDatabaseTest" tests="15" failures="0" errors="0" skipped="0" time="1.473" timestamp="2026-11-19T11:40:47" hostname="localhost">
+    <properties>
+      <property name="device" value="adb-7816fa26-S4GFEO._adb-tls-connect._tcp" />
+    </properties>
+    <testcase name="stockMovement_ledgerReconciliation_matchesVariantBalance" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.129" />
+    <testcase name="databasePersistence_survivesCloseAndReopen" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.123" />
+    <testcase name="uniqueSkuConstraint_duplicateSku_throwsSQLiteConstraintException" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.044" />
+    <testcase name="stockMovement_integerOverflow_rollsBackTransaction" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.091" />
+    <testcase name="stockMovement_atomicSuccess_updatesBalanceAndRecordsLedger" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.087" />
+    <testcase name="inventoryRepository_searchAndTransactions_onDevice" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.199" />
+    <testcase name="foreignKey_brandDeleteRestricted_whenProductsExist" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.050" />
+    <testcase name="stockMovement_insufficientStock_rollsBackTransaction" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.118" />
+    <testcase name="stockMovement_zeroDelta_rejectedWithoutDatabaseChange" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.035" />
+    <testcase name="foreignKey_variantDeleteRestricted_whenStockMovementsExist" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.064" />
+    <testcase name="stockMovement_mismatchedDirection_rejected" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.057" />
+    <testcase name="stockMovement_concurrentDeductions_strictlyGuardsInventory" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.143" />
+    <testcase name="databaseSeeder_seedsDemoInventory_exactLedgerParity" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.199" />
+    <testcase name="reactiveFlow_totalStockCountUpdates" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.085" />
+    <testcase name="foreignKey_productDeleteRestricted_whenVariantsExist" classname="dev.vignesh.cycleshop.data.local.VglDatabaseTest" time="0.049" />
+  </testsuite>
+  <testsuite name="dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest" tests="2" failures="0" errors="0" skipped="0" time="1.716" timestamp="2026-11-19T11:40:47" hostname="localhost">
+    <properties>
+      <property name="device" value="adb-7816fa26-S4GFEO._adb-tls-connect._tcp" />
+    </properties>
+    <testcase name="mSteelPhotoReadsBothInvoiceUnits" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest" time="0.831" />
+    <testcase name="stryderPhotoReadsPrintedTotalsAndLeavesAmbiguousCellsUnresolved" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest" time="0.885" />
+  </testsuite>
+  <testsuite name="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewUiTest" tests="2" failures="0" errors="0" skipped="0" time="6.395" timestamp="2026-11-19T11:40:47" hostname="localhost">
+    <properties>
+      <property name="device" value="adb-7816fa26-S4GFEO._adb-tls-connect._tcp" />
+    </properties>
+    <testcase name="realStryderScanLeavesAllSevenMissingQuantitiesUnverified" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewUiTest" time="3.608" />
+    <testcase name="choosingThenVerifyingAndEditingUpdatesProgressAndApproval" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewUiTest" time="2.787" />
+  </testsuite>
+</testsuites>

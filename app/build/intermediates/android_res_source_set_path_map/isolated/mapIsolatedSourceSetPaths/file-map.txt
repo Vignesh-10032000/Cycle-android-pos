@@ -1,0 +1,9 @@
+dev.vignesh.cycleshop.app-pngs-0 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\generated\res\pngs\isolated
+dev.vignesh.cycleshop.app-res-1 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\generated\res\processIsolatedGoogleServices
+dev.vignesh.cycleshop.app-updated_navigation_xml-2 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\generated\updated_navigation_xml\isolated
+dev.vignesh.cycleshop.app-packageIsolatedResources-3 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\intermediates\incremental\isolated\packageIsolatedResources\merged.dir
+dev.vignesh.cycleshop.app-packageIsolatedResources-4 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\intermediates\incremental\isolated\packageIsolatedResources\stripped.dir
+dev.vignesh.cycleshop.app-isolated-5 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\build\intermediates\merged_res\isolated\mergeIsolatedResources
+dev.vignesh.cycleshop.app-isolated-6 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\src\isolated\res
+dev.vignesh.cycleshop.app-main-7 C:\Users\ramas\AndroidStudioProjects\class68\MyApplication2\app\src\main\res
+gradleHome-0 C:\Users\ramas\.gradle

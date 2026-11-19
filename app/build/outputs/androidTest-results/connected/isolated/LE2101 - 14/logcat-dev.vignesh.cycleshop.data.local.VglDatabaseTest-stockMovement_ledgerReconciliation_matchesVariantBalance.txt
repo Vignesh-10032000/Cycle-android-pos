@@ -1,0 +1,5 @@
+11-19 17:10:37.773 17067 17086 I TestRunner: started: stockMovement_ledgerReconciliation_matchesVariantBalance(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:37.834  2326  4105 I OplusHansManager : uid=10296, pkg=com.google.android.verifier F enter(), M stay=5
+11-19 17:10:37.837  2326  4105 I OplusHansManager : freeze uid: 10296 com.google.android.verifier pids: [15662] scene: LcdOn
+11-19 17:10:37.838 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10296, pkgCmd = ADD_ONE_UID
+11-19 17:10:37.899 17067 17086 I TestRunner: finished: stockMovement_ledgerReconciliation_matchesVariantBalance(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-11-19T12:15:27.133Z" hostname="GOKILA2" time="0.015">
+  <properties/>
+  <testcase name="productVariantEntity_negativeStock_throwsException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="purchaseInvoiceEntity_validFields_succeeds" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.001"/>
+  <testcase name="stockMovementEntity_positiveSaleDelta_throwsException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="productSpecs_malformedJson_throwsIllegalArgumentException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.006"/>
+  <testcase name="stockMovementEntity_validMovements_succeed" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="purchaseLineEntity_validFields_succeeds" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.001"/>
+  <testcase name="brandEntity_validName_succeeds" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="productVariantEntity_validFields_succeeds" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="productSpecs_missingSchemaVersion_throwsIllegalArgumentException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="productVariantEntity_negativePrice_throwsException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="supplierProductMappingEntity_validFields_succeeds" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.001"/>
+  <testcase name="productSpecs_unsupportedSchemaVersion_throwsIllegalArgumentException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="brandEntity_blankName_throwsException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.001"/>
+  <testcase name="typeConverters_roundTrip_succeeds" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.002"/>
+  <testcase name="stockMovementEntity_negativePurchaseDelta_throwsException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="productVariantEntity_specsAccessor_returnsParsedSpecs" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="productVariantEntity_blankSku_throwsException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="productSpecs_serializationRoundTrip_succeeds" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.001"/>
+  <testcase name="stockMovementEntity_zeroDelta_throwsException" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <testcase name="productSpecs_nullOrEmptyJson_returnsDefault" classname="dev.vignesh.cycleshop.data.local.EntityAndConverterTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

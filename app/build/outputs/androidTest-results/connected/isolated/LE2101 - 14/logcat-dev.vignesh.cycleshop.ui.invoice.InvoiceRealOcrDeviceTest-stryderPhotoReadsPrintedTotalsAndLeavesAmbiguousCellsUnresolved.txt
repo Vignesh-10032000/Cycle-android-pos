@@ -1,0 +1,90 @@
+11-19 17:10:40.132 17067 17086 I TestRunner: started: stryderPhotoReadsPrintedTotalsAndLeavesAmbiguousCellsUnresolved(dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest)
+11-19 17:10:40.150 17067 17151 D DecoupledTextDelegate: Start loading thick OCR module.
+11-19 17:10:40.151 17067 17151 I DynamiteModule: Considering local module com.google.mlkit.dynamite.text.latin:10000 and remote module com.google.mlkit.dynamite.text.latin:0
+11-19 17:10:40.151 17067 17151 I DynamiteModule: Selected local version of com.google.mlkit.dynamite.text.latin
+11-19 17:10:40.152 17067 17105 D TransportRuntime.SQLiteEventStore: Storing event with priority=DEFAULT, name=FIREBASE_ML_SDK for destination cct
+11-19 17:10:40.153 17067 17151 I native  : I0000 00:00:1795088440.153360   17151 asset_manager_util.cc:61] Created global reference to asset manager.
+11-19 17:10:40.154 17067 17105 D TransportRuntime.JobInfoScheduler: Upload for context TransportContext(cct, DEFAULT, MSRodHRwczovL2ZpcmViYXNlbG9nZ2luZy5nb29nbGVhcGlzLmNvbS92MGNjL2xvZy9iYXRjaD9mb3JtYXQ9anNvbl9wcm90bzNc) is already scheduled. Returning...
+11-19 17:10:40.172 17067 17153 I native  : I0000 00:00:1795088440.171827   17153 resource_manager.cc:23] Number of optimal threads: 4
+11-19 17:10:40.173 17067 17153 I native  : I0000 00:00:1795088440.173098   17153 text_detector_thread_pool_context.cc:38] Compute manager max in flight region detector overwrite: 1
+11-19 17:10:40.173 17067 17152 I native  : I0000 00:00:1795088440.173301   17152 text_classifier.cc:32] Creating classifier TfliteTextClassifier
+11-19 17:10:40.174 17067 17153 I native  : I0000 00:00:1795088440.173961   17153 common_util.h:41] Resizing Thread Pool: ocr_det_0 to 3
+11-19 17:10:40.174 17067 17152 I native  : I0000 00:00:1795088440.174836   17152 common_util.h:41] Resizing Thread Pool: ocr_segm to 3
+11-19 17:10:40.176 17067 17153 I native  : I0000 00:00:1795088440.176853   17153 tflite_detector_client_with_shape_cache.cc:76] Interpreter threads: 4
+11-19 17:10:40.183 17067 17153 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:40.184 17067 17152 I native  : I0000 00:00:1795088440.184081   17152 tflite_lstm_client_base.cc:371] Resizing interpreter pool to 4
+11-19 17:10:40.187 17067 17153 I native  : I0000 00:00:1795088440.187790   17153 tflite_detector_client_with_shape_cache.cc:105] Caching size: 10
+11-19 17:10:40.188 17067 17152 I native  : I0000 00:00:1795088440.188372   17152 multi_pass_line_recognition_mutator.cc:342] Preloading recognizers.
+11-19 17:10:40.188 17067 17127 I native  : I0000 00:00:1795088440.188785   17127 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/conv_model.fb
+11-19 17:10:40.189 17067 17153 I native  : I0000 00:00:1795088440.189444   17153 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_splitting_custom_ops/model.tflite
+11-19 17:10:40.189 17067 17127 I native  : I0000 00:00:1795088440.189780   17127 tflite_model_pooled_runner.cc:636] Loading mlkit-google-ocr-models/gocr/gocr_models/line_recognition_legacy_mobile/Latn_ctc/optical/lstm_model.fb
+11-19 17:10:40.190 17067 17153 I native  : I0000 00:00:1795088440.190033   17153 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 1
+11-19 17:10:40.190 17067 17153 I native  : I0000 00:00:1795088440.190787   17153 tflite_model_pooled_runner.cc:625] Loading mlkit-google-ocr-models/gocr/layout/line_clustering_custom_ops/model.tflite
+11-19 17:10:40.191 17067 17153 I native  : I0000 00:00:1795088440.191443   17153 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 1
+11-19 17:10:40.194 17067 17127 I native  : I0000 00:00:1795088440.194450   17127 tflite_model_pooled_runner.cc:836] Resizing interpreter pool to 4
+11-19 17:10:40.198 17067 17127 I native  : I0000 00:00:1795088440.198311   17127 mobile_langid_v2.cc:58] MobileLangID V2 initialized.
+11-19 17:10:40.198 17067 17127 I native  : I0000 00:00:1795088440.198382   17127 multi_pass_line_recognition_mutator.cc:364] Finished preloading a recognizer for "Latn"
+11-19 17:10:40.198 17067 17152 I native  : I0000 00:00:1795088440.198474   17152 multi_pass_line_recognition_mutator.cc:398] Finished preloading recognizers.
+11-19 17:10:40.201 17067 17151 D PipelineManager: Start process bitmap
+11-19 17:10:40.201  3774  3774 I SystemUi--Keyguard: KeyguardUtils-->density is 0 sInitialDisplayDensity:480
+11-19 17:10:40.218 17067 17153 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:40.231 17067 17153 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:40.241 17067 17153 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:40.262 15907 16275 E msys    : E[N mns:DGWClient]_LogError(274)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+11-19 17:10:40.263 17067 17153 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:40.265 17067 17153 I tflite  : Replacing 44 out of 46 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for the whole graph.
+11-19 17:10:40.318 16846 16846 I Process : Sending signal. PID: 16846 SIG: 9
+11-19 17:10:40.354  1330  1330 I Zygote  : Process 16846 exited due to signal 9 (Killed)
+11-19 17:10:40.357  2326  3530 D ConnectivityService: releasing NetworkRequest [ REQUEST id=7219, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 1000 RequestorUid: 1000 RequestorPkg: com.heytap.mcs UnderlyingNetworks: Null] ] (release request)
+11-19 17:10:40.358  2326  2720 I libprocessgroup: Successfully killed process cgroup uid 1000 pid 16846 in 0ms
+11-19 17:10:40.361  3774  6832 I SeedlingSdk.SeedlingSdkInterface: (SeedingBg) 8 gainSeedlingManager no callback begin isInitialed:2,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:40.361  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Start gain seedling manager.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:40.361  3774  6832 I SeedlingSdk.PluginManager: (SeedingBg) gainSeedlingManager, entranceType:8, Seedling manager is already exist,step1.,[sdk:v1.1.36-8ce39c1,plugin:v16.54.0-3398aa3d]
+11-19 17:10:40.361  3774  6832 I SDP.SysUi.SeedlingManager:  sendKilledPid, entrance:status_bar[8,20][ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d] [SeedlingSdk|com.android.systemui|2.0.40-ebe132d]
+11-19 17:10:40.361  3774  6832 W SDP.SysUi.PidHelper:  sendKilledPidToUms error, pidInfo from entrance isEmpty, don't send to ums, from entrance, pidInfo:PidInfo(hostPidMap={com.oplus.phonemanager=[], com.oneplus.deskclock=[], net.oneplus.weather=[], com.coloros.assistantscreen=[], com.oneplus.membership=[]}, umsPidSet=[], extras=null)[ssdk:v1.1.36-8ce39c1,sdplugin:v16.54.0-3398aa3d]
+11-19 17:10:40.489  2326  3694 D SyncManagerExtImpl: isSyncValid: 
+11-19 17:10:40.520  4835  4854 W OplusExSystemServiceHelper: checkOplusExSystemService intent getComponent is null
+11-19 17:10:40.669 30414 17148 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+11-19 17:10:40.669 30414 17148 I adbd    : UsbFfs: connection terminated: monitor thread finished
+11-19 17:10:40.685 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 17:10:40.751  2326  3516 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+11-19 17:10:40.764  7178 17053 W yAF.TPLog.FrameworkUpdateListener: [dev.vignesh.cycleshop.isolated.test] removed. Stop sending intent
+11-19 17:10:40.779 17067 17151 D PipelineManager: OCR process succeeded via visionkit pipeline.
+11-19 17:10:40.813  4835 12445 I cn_CronetUrlRequestContext: destroyNativeStreamLocked android.net.http.internal.org.chromium.net.impl.CronetBidirectionalStream@e35661d
+11-19 17:10:40.815  4835 17179 E RemindersSync: NetworkError [T SyncAdapterThread-313:id=10302:priority=5:group=main] [CONTEXT service_id=18 ]
+11-19 17:10:40.815  4835 17179 E RemindersSync: kfjn: UNIMPLEMENTED: HTTP status code 404
+11-19 17:10:40.815  4835 17179 E RemindersSync: invalid content-type: text/html; charset=UTF-8
+11-19 17:10:40.815  4835 17179 E RemindersSync: headers: Metadata(:status=404,content-type=text/html; charset=UTF-8,referrer-policy=no-referrer,content-length=1613,date=Thu, 19 Nov 2026 11:40:41 GMT,alt-svc=h3=":443"; ma=2592000,h3-29=":443"; ma=2592000)
+11-19 17:10:40.815  4835 17179 E RemindersSync: DATA-----------------------------
+11-19 17:10:40.815  4835 17179 E RemindersSync: <!DOCTYPE html>
+11-19 17:10:40.815  4835 17179 E RemindersSync: <html lang=en>
+11-19 17:10:40.815  4835 17179 E RemindersSync:   <meta charset=utf-8>
+11-19 17:10:40.815  4835 17179 E RemindersSync:   <meta name=viewport content="initial-scale=1, minimum-scale=1, width=device-width">
+11-19 17:10:40.815  4835 17179 E RemindersSync:   <title>Error 404 (Not Found)!!1</title>
+11-19 17:10:40.815  4835 17179 E RemindersSync:   <style>
+11-19 17:10:40.815  4835 17179 E RemindersSync:     *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}
+11-19 17:10:40.815  4835 17179 E RemindersSync:   </style>
+11-19 17:10:40.815  4835 17179 E RemindersSync:   <a href=//www.google.com/><span id=logo aria-label=Google></span></a>
+11-19 17:10:40.815  4835 17179 E RemindersSync:   <p><b>404.</b> <ins>That’s an error.</ins>
+11-19 17:10:40.815  4835 17179 E RemindersSync:   <p>The requested URL <code>/caribou.tasks.service.TasksApiService/GetTaskHistory</code> was not found on this server.  <ins>That’s all we know.</ins>
+11-19 17:10:40.815  4835 17179 E RemindersSync: 
+11-19 17:10:40.815  4835 17179 E RemindersSync: 	at brdv.s(:com.google.android.gms@264231029@26.42.31 (190400-1005867181):37)
+11-19 17:10:40.815  4835 17179 E RemindersSync: 	at brdv.g(:com.google.android.gms@264231029@26.42.31 (190400-1005867181):87)
+11-19 17:10:40.815  4835 17179 E RemindersSync: 	at fwgp.i(:com.google.android.gms@264231029@26.42.31 (190400-1005867181):222)
+11-19 17:10:40.815  4835 17179 E RemindersSync: 	at fwgp.k(:com.google.android.gms@264231029@26.42.31 (190400-1005867181):390)
+11-19 17:10:40.815  4835 17179 E RemindersSync: 	at fwgp.b(:com.google.android.gms@264231029@26.42.31 (190400-1005867181):29)
+11-19 17:10:40.815  4835 17179 E RemindersSync: 	at brjh.onPerformSync(:com.google.android.gms@264231029@26.42.31 (190400-1005867181):25)
+11-19 17:10:40.815  4835 17179 E RemindersSync: 	at android.content.AbstractThreadedSyncAdapter$SyncThread.run(AbstractThreadedSyncAdapter.java:354)
+11-19 17:10:40.819  2326  3694 W SyncManager: failed sync operation JobId=63 ***/com.google u0 [com.google.android.gms.reminders] PERIODIC ExpectedIn=0s Reason=Periodic Retries=29, SyncResult: stats [ numIoExceptions: 1]
+11-19 17:10:40.837  4108  4364 D CommonScenarios-114-10408: transportLayerQosChange TransportLayerData{link_index=27, uid=10408, uplink_srtt=0, uplink_packets=0, uplink_retrans_packets=0, uplink_retrans_rate=0, downlink_srtt=0, downlink_packets=0, downlink_retrans_packets=0, downlink_retrans_rate=0, downlink_rate=0, uplink_udp_packets=0, downlink_udp_packets=0, uplink_tcp_rate=0, uplink_udp_rate=0, downlink_tcp_rate=0, downlink_udp_rate=0}
+11-19 17:10:40.838  4108  4364 D CommonScenarios-114-10408: ActiveState process message 2
+11-19 17:10:40.838  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE
+11-19 17:10:40.838  4108  4364 D CommonScenarios-114-10408: transport layer data is invalid
+11-19 17:10:40.838  4108  4364 D CommonScenarios-114-10408: ActiveState EVENT_NETWORK_KPI_CHANGE score is invalid
+11-19 17:10:40.907  2326  4105 I OplusHansManager : uid=10296, pkg=com.google.android.verifier can not transition from M to F. reason: AsyncBinder
+11-19 17:10:40.919  2326  4105 I OplusHansManager : uid=10423, pkg=com.spotify.music can not transition from M to F. reason: AsyncBinder
+11-19 17:10:40.925  2326  4105 I OplusHansManager : uid=10267, pkg=com.q4u.vewdeletedmessage can not transition from M to F. reason: AsyncBinder
+11-19 17:10:40.946 12863 13148 D AudioManagerExtImpl: getStreamVolume normal, volume index=6
+11-19 17:10:40.946  5495 19960 D OplusAtlasService: getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.facebook.katana
+11-19 17:10:41.016 17067 17086 I InvoiceParsingR2: Photo B: rows=29, valid quantities=22
+11-19 17:10:41.016 17067 17086 I TestRunner: finished: stryderPhotoReadsPrintedTotalsAndLeavesAmbiguousCellsUnresolved(dev.vignesh.cycleshop.ui.invoice.InvoiceRealOcrDeviceTest)

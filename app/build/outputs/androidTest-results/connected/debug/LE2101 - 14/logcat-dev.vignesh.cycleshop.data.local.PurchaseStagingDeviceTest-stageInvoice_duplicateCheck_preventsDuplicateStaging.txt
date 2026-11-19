@@ -1,0 +1,48 @@
+11-19 15:59:56.498 20445 20471 I TestRunner: started: stageInvoice_duplicateCheck_preventsDuplicateStaging(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)
+11-19 15:59:56.527  2326  3841 I Osense-PsiDetector: 5748,172,2244,5631,61,299,209,2199,5934,3681,1723,0,12,9923
+11-19 15:59:56.527  2326  3834 I Osense-BaseDecisionMaker: notifySceneToAthenaPolicy: SCENE_RES_MEM_PSI_NORMAL, bundle: Bundle[{memLevel=3}]
+11-19 15:59:56.551 20081 20081 D CloudConfig_stgyHelper: mspVersionCanSupport mspKitVersion : 52402
+11-19 15:59:56.555 20081 20081 D CloudConfig_stgyHelper: getSupportKitMode strategyEntity : StrategyEntity(sdkInterval=1800000, strategyMode=1, minSDKVersion=1000, minKitVersion=2014122, validReqPeriod=7200000, maxReqProduct=100, forceKitIfKit=false, backoff=120000, enable=true, defaultLimit=RateLimitConfig{maxCalls=1, timeWindowSeconds=7200, callIntervalSeconds=0}, productLimits={Push-Overseas=RateLimitConfig{maxCalls=1, timeWindowSeconds=7200, callIntervalSeconds=0}, compass_20158=RateLimitConfig{maxCalls=1, timeWindowSeconds=7200, callIntervalSeconds=0}, 50351=RateLimitConfig{maxCalls=1, timeWindowSeconds=7200, callIntervalSeconds=0}, compass_20123=RateLimitConfig{maxCalls=1, timeWindowSeconds=7200, callIntervalSeconds=0}, global-domain_1281=RateLimitConfig{maxCalls=1, timeWindowSeconds=7200, callIntervalSeconds=0}, compass_20142=RateLimitConfig{maxCalls=1, timeWindowSeconds=7200, callIntervalSeconds=0}})
+11-19 15:59:56.555 20081 20081 D CloudConfig_stgyHelper: getSupportKitMode localSdkVersion : 1224
+11-19 15:59:56.557   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 15:59:56.557   734   734 D lowmemorykiller: thrashing: 0% thrashing_limit: 30%
+11-19 15:59:56.557   734   734 E lowmemorykiller: calc_zone_watermarks pgskip_deltas_val: 0 pgskip_deltas[PGSKIP_IDX(i++)]: 0
+11-19 15:59:56.557   734   734 E lowmemorykiller: adj:1001 file_cache:1383622 free:43825
+11-19 15:59:56.557   734   734 E lowmemorykiller: device has enough memory 5885772Kib, and freeMemory 175592Kib, disable killing(limit_killing:1024000Kib)
+11-19 15:59:56.575  2326  3516 D WifiStaIfaceHidlImpl: getCachedScanData is not implemented by HIDL
+11-19 15:59:56.584  3774  4211 D WifiStatusTracker: mNetworkCallback onCapabilitiesChanged network:114 mPrimaryNetworkId:114
+11-19 15:59:56.587  3774  4211 D WifiStatusTracker: mNetworkCallback onCapabilitiesChanged network:114 mPrimaryNetworkId:114
+11-19 15:59:56.588  3774  4211 I SystemUi--Statusbar: NetworkController.WifiSignalController-->handleStatusUpdated state=3 enabled=true connected=true isDefaultNetwork=true rssi=-57 level=4 wifiStandard=5 statusLabel=null isDirty=false
+11-19 15:59:56.589  3774  4211 I SystemUi--Statusbar: NetworkController.WifiSignalController-->handleStatusUpdated state=3 enabled=true connected=true isDefaultNetwork=true rssi=-57 level=4 wifiStandard=5 statusLabel=null isDirty=false
+11-19 15:59:56.589  3774  4211 I SystemUi--Statusbar: NetworkController.WifiSignalController-->handleStatusUpdated state=3 enabled=true connected=true isDefaultNetwork=true rssi=-57 level=4 wifiStandard=5 statusLabel=null isDirty=false
+11-19 15:59:56.590  2326  3654 D SystemNetworkObserver: wifi network 114 nc changed, primary=true
+11-19 15:59:56.590  2326  3654 D SystemNetworkObserver: default network nc changed 114
+11-19 15:59:56.592  2326  4324 D OplusSlaNetworkManager: isPrimaryWifi:true network:114
+11-19 15:59:56.593  7068  7580 I ONet.Lan_LanConnectManager: (LanConnectivityReceiver.java:10)onRssiChanged, but do not need sync to remote!
+11-19 15:59:56.593 15850 15906 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+11-19 15:59:56.595 11535 11699 I CardConfig.RxNetworkMonitor: onNetworkStateChange, current:true, last:true
+11-19 15:59:56.595 12251 12321 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=8438Kbps LinkDnBandwidth>=79296Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.0.9, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ac, RSSI: -57, Link speed: 351Mbps, Tx Link speed: 351Mbps, Max Supported Tx Link speed: 866Mbps, Calculated Tx : 207Mbps, Rx Link speed: 351Mbps, Max Supported Rx Link speed: 866Mbps, Calculated Rx : 179Mbps, Frequency: 5180MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -57 UnderlyingNetworks: Null]
+11-19 15:59:56.597 17598 17687 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=8438Kbps LinkDnBandwidth>=79296Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.0.9, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 11ac, RSSI: -57, Link speed: 351Mbps, Tx Link speed: 351Mbps, Max Supported Tx Link speed: 866Mbps, Calculated Tx : 207Mbps, Rx Link speed: 351Mbps, Max Supported Rx Link speed: 866Mbps, Calculated Rx : 179Mbps, Frequency: 5180MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -57 UnderlyingNetworks: Null]
+11-19 15:59:56.601 25378 25399 I AIUnit-NetworkPublisher: onNetworkChanged [onCapabilitiesChanged, 114]
+11-19 15:59:56.602  2326  4112 I OplusHansManager : unfreeze uid: 10423 com.spotify.music pids: [31102, 31529] reason: AsyncBinder scene: LcdOn
+11-19 15:59:56.602  2326  4105 I OplusHansManager : uid=10423, pkg=com.spotify.music F exit(), F stay=0, reason=AsyncBinder
+11-19 15:59:56.604 12478 12587 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+11-19 15:59:56.607  2326  3530 D ConnectivityService: NetReassign [no changes] [c 0] [a 0] [i 1]
+11-19 15:59:56.607  4835  2752 I NearbyMediums: Wifi changed new SSID: <unknown ssid>
+11-19 15:59:56.607  4835  2752 I NearbyMediums: WifiLanConnectivityInfo is not changed, skip notify.
+11-19 15:59:56.608  8273  8334 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+11-19 15:59:56.609  8273  8324 I ebpt    : Connection state change: onCapabilitiesChanged, data connection: WIFI, manual connection eligibility: false, ntn roaming: false
+11-19 15:59:56.609  8273  8324 I ebpt    : New default data network: wifi
+11-19 15:59:56.611 20445 20476 I gnesh.cycleshop: hiddenapi: Accessing hidden method Landroid/database/sqlite/SQLiteDatabase;->getThreadSession()Landroid/database/sqlite/SQLiteSession; (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/sqlite/db/framework/FrameworkSQLiteDatabase; (domain=app, TargetSdkVersion=37) using reflection: allowed
+11-19 15:59:56.611 20445 20476 I gnesh.cycleshop: hiddenapi: Accessing hidden method Landroid/database/sqlite/SQLiteSession;->beginTransaction(ILandroid/database/sqlite/SQLiteTransactionListener;ILandroid/os/CancellationSignal;)V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/sqlite/db/framework/FrameworkSQLiteDatabase; (domain=app, TargetSdkVersion=37) using reflection: allowed
+11-19 15:59:56.613 25378 25399 D Track.TrackUpload: onCapabilitiesChanged is calling.
+11-19 15:59:56.615 25378 25394 I AIUnit-SystemFeatureCompat: isSaleMode false
+11-19 15:59:56.615 25378 25394 I AIUnit-LocalUnitStore: getLastRunAppRecord AppRecord(version=1405048, protocol=144)
+11-19 15:59:56.615 25378 25394 I AIUnit-UpdateUnitStore: check update interval fail, you need wait 110 minutes
+11-19 15:59:56.615 25378 25394 I AIUnit-Update.UnitConfigUpdater: updateUnitConfig notSkipConfigUpdate:false, overwrite:false
+11-19 15:59:56.617 25378 25396 W AIUnit-Update.UnitConfigUpdater: updateUnitConfig skip UpdateEvent(NETWORK) by running
+11-19 15:59:56.617 25378 25394 W AIUnit-Update.UnitConfigUpdater: updateUnitConfig no need download
+11-19 15:59:56.620 20445 20471 D CompatibilityChangeReporter: Compat change id reported: 247079863; UID 10406; state: ENABLED
+11-19 15:59:56.625 15907 16275 E msys    : E[N mns:DGWClient]_LogError(274)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+11-19 15:59:56.626 15907 16275 E msys    : E[N mns:DGWClient]_LogError(274)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+11-19 15:59:56.628 20445 20471 I TestRunner: finished: stageInvoice_duplicateCheck_preventsDuplicateStaging(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)

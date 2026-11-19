@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "dev.vignesh.cycleshop.app-mergeIsolatedResources-63:/values-v30/values-v30.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ramas\\.gradle\\caches\\9.6.0\\transforms\\985d89a7979d3d0d5037329b3e9110de\\transformed\\material3\\res\\values-v30\\values-v30.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "72",
+                        "endOffsets": "123"
+                    }
+                }
+            ]
+        }
+    ]
+}

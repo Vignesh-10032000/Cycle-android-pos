@@ -1,0 +1,4 @@
+11-19 17:10:39.235 17067 17086 I TestRunner: started: foreignKey_productDeleteRestricted_whenVariantsExist(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:39.254 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10267, pkgCmd = PKG_CMD_MAX
+11-19 17:10:39.258 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10281, pkgCmd = PKG_CMD_MAX
+11-19 17:10:39.288 17067 17086 I TestRunner: finished: foreignKey_productDeleteRestricted_whenVariantsExist(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

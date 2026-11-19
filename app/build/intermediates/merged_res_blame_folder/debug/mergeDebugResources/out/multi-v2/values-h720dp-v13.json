@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "dev.vignesh.cycleshop.app-mergeDebugResources-64:/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ramas\\.gradle\\caches\\9.6.0\\transforms\\e2dd11516b05ef979608583fdcca9503\\transformed\\appcompat-1.6.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}

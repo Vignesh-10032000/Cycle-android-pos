@@ -1,0 +1,3 @@
+11-19 17:10:38.614 17067 17086 I TestRunner: started: stockMovement_zeroDelta_rejectedWithoutDatabaseChange(dev.vignesh.cycleshop.data.local.VglDatabaseTest)
+11-19 17:10:38.638 30414 30455 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+11-19 17:10:38.660 17067 17086 I TestRunner: finished: stockMovement_zeroDelta_rejectedWithoutDatabaseChange(dev.vignesh.cycleshop.data.local.VglDatabaseTest)

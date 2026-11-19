@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-19T12:15:27.284Z" hostname="GOKILA2" time="0.038">
+  <properties/>
+  <testcase name="deleted row is absent and printed totals warn about the difference" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.033"/>
+  <testcase name="two tokens in a single quantity cell do not select a winner" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.001"/>
+  <testcase name="obscured amount and malformed tokens remain missing or flagged" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.001"/>
+  <testcase name="competing quantity column headings leave the grid unresolved" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.001"/>
+  <testcase name="mixed units are never presented as a reconciled stock quantity" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.001"/>
+  <testcase name="supplier headers alone never create line items or totals" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.0"/>
+  <testcase name="changed quantities and prices follow positioned cells even when OCR is shuffled" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.001"/>
+  <testcase name="unrecognized layouts do not use product dimensions or order numbers as evidence" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

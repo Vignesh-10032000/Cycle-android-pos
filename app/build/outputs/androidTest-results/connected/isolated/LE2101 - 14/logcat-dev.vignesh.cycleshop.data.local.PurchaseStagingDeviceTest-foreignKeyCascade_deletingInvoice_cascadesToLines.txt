@@ -1,0 +1,10 @@
+11-19 17:10:37.259 17067 17086 I TestRunner: started: foreignKeyCascade_deletingInvoice_cascadesToLines(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)
+11-19 17:10:37.261   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:37.262   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:37.266  2326  4105 I OplusHansManager : uid=10060, pkg=com.oneplus.backuprestore F enter(), M stay=3
+11-19 17:10:37.268  2326  4105 I OplusHansManager : freeze uid: 10060 com.oneplus.backuprestore pids: [1521] scene: LcdOn
+11-19 17:10:37.269 10270 10270 D IHansComunication: HANS sendMessageToKernel: threadId = 512749452464, netLinkSetup = 1, type = PKG, targetUid = 10060, pkgCmd = ADD_ONE_UID
+11-19 17:10:37.333 24051 24051 D NotificationCenterService: onDestroy: 
+11-19 17:10:37.363   734   734 D lowmemorykiller: medium pressure event polling check
+11-19 17:10:37.364   734   734 D lowmemorykiller: Ignoring medium pressure event; system is not in reclaim or compaction and no refaults
+11-19 17:10:37.444 17067 17086 I TestRunner: finished: foreignKeyCascade_deletingInvoice_cascadesToLines(dev.vignesh.cycleshop.data.local.PurchaseStagingDeviceTest)

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewSessionTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-11-19T12:15:27.267Z" hostname="GOKILA2" time="0.014">
+  <properties/>
+  <testcase name="exact suggestions do not select or verify a variant" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewSessionTest" time="0.006"/>
+  <testcase name="v2 stages representable corrections separately and requires fresh review" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewSessionTest" time="0.002"/>
+  <testcase name="immutable OCR collections and values survive correction and verification" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewSessionTest" time="0.001"/>
+  <testcase name="invalid mandatory fields and conversions block verification" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewSessionTest" time="0.002"/>
+  <testcase name="missing header rejected line and unavailable variant block one whole invoice approval" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewSessionTest" time="0.001"/>
+  <testcase name="v2 refuses to invent original quantity or silently discard a corrected unit" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewSessionTest" time="0.001"/>
+  <testcase name="all material edits invalidate the verified revision and reverting does not restore it" classname="dev.vignesh.cycleshop.ui.invoice.InvoiceReviewSessionTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,138 @@
+[
+  {
+    "id": "hero_black_branded",
+    "expectedProductName": "Hero Sprint Pro 27.5T",
+    "expectedSku": "VGL-HERO-SP275-BLK",
+    "plausibleSkus": [],
+    "response": {
+      "schema_version": 1,
+      "product_type": {"status":"OBSERVED","value":"BICYCLE","basis":"Complete bicycle visible."},
+      "brand": {"status":"OBSERVED","value":"Hero","basis":"HERO SPRINT PRO"},
+      "category": {"status":"OBSERVED","value":"MTB","basis":"Flat bars and knobby tyres."},
+      "likely_model": {"status":"OBSERVED","value":"Sprint Pro","basis":"HERO SPRINT PRO"},
+      "colour": {"status":"OBSERVED","value":"Matte Black / Neon","basis":"Black frame with neon trim."},
+      "sizes": [{"kind":"FRAME","attribute":{"status":"OBSERVED","value":"17 in","basis":"FRAME 17 in"}},{"kind":"WHEEL","attribute":{"status":"OBSERVED","value":"27.5T","basis":"WHEEL 27.5T"}}],
+      "markings": ["HERO SPRINT PRO","FRAME 17 in","WHEEL 27.5T","ALLOY 6061"],
+      "specifications": [{"kind":"FRAME_MATERIAL","value":"ALLOY 6061","marking":"ALLOY 6061"}]
+    }
+  },
+  {
+    "id": "hero_blue_branded",
+    "expectedProductName": "Hero Sprint Pro 27.5T",
+    "expectedSku": "VGL-HERO-SP275-BLU",
+    "plausibleSkus": [],
+    "response": {
+      "schema_version": 1,
+      "product_type": {"status":"OBSERVED","value":"BICYCLE","basis":"Complete bicycle visible."},
+      "brand": {"status":"OBSERVED","value":"Hero","basis":"HERO"},
+      "category": {"status":"UNCERTAIN","value":"MTB","basis":"Front suspension visible but other features are cropped."},
+      "likely_model": {"status":"OBSERVED","value":"Sprint Pro","basis":"SPRINT PRO"},
+      "colour": {"status":"OBSERVED","value":"Cobalt Blue","basis":"Blue painted frame."},
+      "sizes": [{"kind":"FRAME","attribute":{"status":"OBSERVED","value":"18 in","basis":"FRAME 18 in"}}],
+      "markings": ["HERO","SPRINT PRO","FRAME 18 in"],
+      "specifications": []
+    }
+  },
+  {
+    "id": "hero_unbranded_ambiguous",
+    "expectedProductName": "Hero Sprint Pro 27.5T",
+    "expectedSku": null,
+    "plausibleSkus": ["VGL-HERO-SP275-BLK","VGL-HERO-SP275-BLU"],
+    "response": {
+      "schema_version": 1,
+      "product_type": {"status":"OBSERVED","value":"BICYCLE","basis":"Complete bicycle visible."},
+      "brand": {"status":"UNKNOWN","value":null,"basis":"No legible brand."},
+      "category": {"status":"UNCERTAIN","value":"MTB","basis":"Knobby tyre and flat handlebar visible."},
+      "likely_model": {"status":"UNCERTAIN","value":null,"basis":"Frame silhouette alone does not distinguish models."},
+      "colour": {"status":"UNKNOWN","value":null,"basis":"Colour obscured."},
+      "sizes": [{"kind":"FRAME","attribute":{"status":"UNKNOWN","value":null,"basis":"Frame size sticker is out of view."}},{"kind":"WHEEL","attribute":{"status":"OBSERVED","value":"27.5T","basis":"WHEEL 27.5T"}}],
+      "markings": ["WHEEL 27.5T"],
+      "specifications": []
+    }
+  },
+  {
+    "id": "shimano_derailleur_marked",
+    "expectedProductName": "Shimano Tourney TX Rear Derailleur (RD-TX800)",
+    "expectedSku": "VGL-SHIM-RDTX800",
+    "plausibleSkus": [],
+    "response": {
+      "schema_version": 1,
+      "product_type": {"status":"OBSERVED","value":"SPARE_PART","basis":"Detached rear derailleur."},
+      "brand": {"status":"OBSERVED","value":"Shimano","basis":"SHIMANO TOURNEY"},
+      "category": {"status":"OBSERVED","value":"Rear derailleur","basis":"Jockey wheels and derailleur cage are visible."},
+      "likely_model": {"status":"OBSERVED","value":"RD-TX800","basis":"RD-TX800"},
+      "colour": {"status":"OBSERVED","value":"Black","basis":"Black component housing."},
+      "sizes": [],
+      "markings": ["SHIMANO TOURNEY","RD-TX800"],
+      "specifications": []
+    }
+  },
+  {
+    "id": "brake_shoe_unmarked",
+    "expectedProductName": "Shimano V-Brake Shoe & Pads (Pair)",
+    "expectedSku": null,
+    "plausibleSkus": ["VGL-SHIM-VB-PADS"],
+    "response": {
+      "schema_version": 1,
+      "product_type": {"status":"OBSERVED","value":"SPARE_PART","basis":"Loose brake shoe."},
+      "brand": {"status":"UNKNOWN","value":null,"basis":"No legible brand."},
+      "category": {"status":"UNCERTAIN","value":"V-brake shoe","basis":"Stud and curved pad are visible."},
+      "likely_model": {"status":"UNKNOWN","value":null,"basis":"No readable model marking."},
+      "colour": {"status":"OBSERVED","value":"Black","basis":"Black rubber pad."},
+      "sizes": [{"kind":"PART_DIMENSION","attribute":{"status":"UNCERTAIN","value":null,"basis":"No readable length marking."}}],
+      "markings": [],
+      "specifications": []
+    }
+  },
+  {
+    "id": "kmc_chain_brand_defect",
+    "expectedProductName": "KMC Z7 7-Speed Bicycle Chain",
+    "expectedSku": "VGL-KMC-Z7-116",
+    "plausibleSkus": [],
+    "response": {
+      "schema_version": 1,
+      "product_type": {"status":"OBSERVED","value":"SPARE_PART","basis":"Bicycle chain links visible."},
+      "brand": {"status":"OBSERVED","value":"KMC","basis":"KMC Z7"},
+      "category": {"status":"OBSERVED","value":"Chain","basis":"Interlocking roller chain links."},
+      "likely_model": {"status":"OBSERVED","value":"Z7","basis":"KMC Z7"},
+      "colour": {"status":"OBSERVED","value":"Grey / Brown","basis":"Grey outer plates and brown inner plates."},
+      "sizes": [],
+      "markings": ["KMC Z7","116 LINKS"],
+      "specifications": [{"kind":"LINK_COUNT","value":"116 LINKS","marking":"116 LINKS"}]
+    }
+  },
+  {
+    "id": "unlisted_bicycle_brand",
+    "expectedProductName": null,
+    "expectedSku": null,
+    "plausibleSkus": [],
+    "response": {
+      "schema_version": 1,
+      "product_type": {"status":"OBSERVED","value":"BICYCLE","basis":"Complete bicycle visible."},
+      "brand": {"status":"OBSERVED","value":"Testwheel","basis":"TESTWHEEL"},
+      "category": {"status":"UNCERTAIN","value":"City","basis":"Step-through frame."},
+      "likely_model": {"status":"UNKNOWN","value":null,"basis":"No readable model marking."},
+      "colour": {"status":"OBSERVED","value":"Red","basis":"Red painted frame."},
+      "sizes": [],
+      "markings": ["TESTWHEEL"],
+      "specifications": []
+    }
+  },
+  {
+    "id": "unlisted_accessory",
+    "expectedProductName": null,
+    "expectedSku": null,
+    "plausibleSkus": [],
+    "response": {
+      "schema_version": 1,
+      "product_type": {"status":"OBSERVED","value":"ACCESSORY","basis":"Clip-on bicycle light and mounting clip."},
+      "brand": {"status":"UNKNOWN","value":null,"basis":"No legible brand."},
+      "category": {"status":"OBSERVED","value":"Rear light","basis":"Red lens and mounting clip."},
+      "likely_model": {"status":"UNKNOWN","value":null,"basis":"No readable model marking."},
+      "colour": {"status":"OBSERVED","value":"Black / Red","basis":"Black body and red lens."},
+      "sizes": [{"kind":"ACCESSORY_DIMENSION","attribute":{"status":"OBSERVED","value":"40 mm","basis":"LENGTH 40 mm"}}],
+      "markings": ["LENGTH 40 mm"],
+      "specifications": []
+    }
+  }
+]

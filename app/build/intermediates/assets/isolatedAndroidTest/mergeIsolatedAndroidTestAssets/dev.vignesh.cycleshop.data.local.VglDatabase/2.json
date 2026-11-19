@@ -1,0 +1,776 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "2ab82dea9d1e8183d3a7af401445c015",
+    "entities": [
+      {
+        "tableName": "brands",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_brands_name",
+            "unique": true,
+            "columnNames": [
+              "name"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_brands_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ]
+      },
+      {
+        "tableName": "products",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `brand_id` INTEGER NOT NULL, `name` TEXT NOT NULL, `category` TEXT NOT NULL, `type` TEXT NOT NULL, `is_active` INTEGER NOT NULL DEFAULT 1, `created_at` INTEGER NOT NULL, FOREIGN KEY(`brand_id`) REFERENCES `brands`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brandId",
+            "columnName": "brand_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isActive",
+            "columnName": "is_active",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "1"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_products_brand_id",
+            "unique": false,
+            "columnNames": [
+              "brand_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_products_brand_id` ON `${TABLE_NAME}` (`brand_id`)"
+          },
+          {
+            "name": "index_products_name",
+            "unique": false,
+            "columnNames": [
+              "name"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_products_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "brands",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "brand_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "product_variants",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `product_id` INTEGER NOT NULL, `sku` TEXT NOT NULL, `supplier_code` TEXT, `size` TEXT, `color` TEXT, `mrp_paise` INTEGER NOT NULL, `cost_price_paise` INTEGER NOT NULL DEFAULT 0, `selling_price_paise` INTEGER NOT NULL, `stock_quantity` INTEGER NOT NULL DEFAULT 0, `specs_json` TEXT, `created_at` INTEGER NOT NULL, FOREIGN KEY(`product_id`) REFERENCES `products`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "productId",
+            "columnName": "product_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sku",
+            "columnName": "sku",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "supplierCode",
+            "columnName": "supplier_code",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "size",
+            "columnName": "size",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "color",
+            "columnName": "color",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "mrpPaise",
+            "columnName": "mrp_paise",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "costPricePaise",
+            "columnName": "cost_price_paise",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "sellingPricePaise",
+            "columnName": "selling_price_paise",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stockQuantity",
+            "columnName": "stock_quantity",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "specsJson",
+            "columnName": "specs_json",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_product_variants_product_id",
+            "unique": false,
+            "columnNames": [
+              "product_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_product_variants_product_id` ON `${TABLE_NAME}` (`product_id`)"
+          },
+          {
+            "name": "index_product_variants_sku",
+            "unique": true,
+            "columnNames": [
+              "sku"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_product_variants_sku` ON `${TABLE_NAME}` (`sku`)"
+          },
+          {
+            "name": "index_product_variants_supplier_code",
+            "unique": false,
+            "columnNames": [
+              "supplier_code"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_product_variants_supplier_code` ON `${TABLE_NAME}` (`supplier_code`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "products",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "product_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "stock_movements",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `variant_id` INTEGER NOT NULL, `delta` INTEGER NOT NULL, `movement_type` TEXT NOT NULL, `unit_price_paise` INTEGER, `reference_id` TEXT, `notes` TEXT, `created_at` INTEGER NOT NULL, FOREIGN KEY(`variant_id`) REFERENCES `product_variants`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "variantId",
+            "columnName": "variant_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "delta",
+            "columnName": "delta",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "movementType",
+            "columnName": "movement_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "unitPricePaise",
+            "columnName": "unit_price_paise",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "referenceId",
+            "columnName": "reference_id",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_stock_movements_variant_id",
+            "unique": false,
+            "columnNames": [
+              "variant_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_stock_movements_variant_id` ON `${TABLE_NAME}` (`variant_id`)"
+          },
+          {
+            "name": "index_stock_movements_movement_type",
+            "unique": false,
+            "columnNames": [
+              "movement_type"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_stock_movements_movement_type` ON `${TABLE_NAME}` (`movement_type`)"
+          },
+          {
+            "name": "index_stock_movements_created_at",
+            "unique": false,
+            "columnNames": [
+              "created_at"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_stock_movements_created_at` ON `${TABLE_NAME}` (`created_at`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "product_variants",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "variant_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "purchase_invoices",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `supplier_name` TEXT NOT NULL, `supplier_gstin` TEXT, `invoice_number` TEXT NOT NULL, `invoice_date` TEXT, `consignee_name` TEXT, `consignee_gstin` TEXT, `total_amount_paise` INTEGER, `total_quantity` REAL, `image_uri` TEXT, `raw_ocr_text` TEXT, `status` TEXT NOT NULL DEFAULT 'CONFIRMED_STAGED', `supporting_doc_ref` TEXT, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "supplierName",
+            "columnName": "supplier_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "supplierGstin",
+            "columnName": "supplier_gstin",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "invoiceNumber",
+            "columnName": "invoice_number",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "invoiceDate",
+            "columnName": "invoice_date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "consigneeName",
+            "columnName": "consignee_name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "consigneeGstin",
+            "columnName": "consignee_gstin",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "totalAmountPaise",
+            "columnName": "total_amount_paise",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "totalQuantity",
+            "columnName": "total_quantity",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "imageUri",
+            "columnName": "image_uri",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "rawOcrText",
+            "columnName": "raw_ocr_text",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "'CONFIRMED_STAGED'"
+          },
+          {
+            "fieldPath": "supportingDocRef",
+            "columnName": "supporting_doc_ref",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_purchase_invoices_supplier_name_invoice_number",
+            "unique": false,
+            "columnNames": [
+              "supplier_name",
+              "invoice_number"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_purchase_invoices_supplier_name_invoice_number` ON `${TABLE_NAME}` (`supplier_name`, `invoice_number`)"
+          },
+          {
+            "name": "index_purchase_invoices_supplier_gstin_invoice_number",
+            "unique": false,
+            "columnNames": [
+              "supplier_gstin",
+              "invoice_number"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_purchase_invoices_supplier_gstin_invoice_number` ON `${TABLE_NAME}` (`supplier_gstin`, `invoice_number`)"
+          },
+          {
+            "name": "index_purchase_invoices_status",
+            "unique": false,
+            "columnNames": [
+              "status"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_purchase_invoices_status` ON `${TABLE_NAME}` (`status`)"
+          },
+          {
+            "name": "index_purchase_invoices_created_at",
+            "unique": false,
+            "columnNames": [
+              "created_at"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_purchase_invoices_created_at` ON `${TABLE_NAME}` (`created_at`)"
+          }
+        ]
+      },
+      {
+        "tableName": "purchase_lines",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `invoice_id` INTEGER NOT NULL, `line_number` INTEGER NOT NULL, `variant_id` INTEGER, `supplier_item_code` TEXT, `raw_description` TEXT NOT NULL, `corrected_description` TEXT, `hsn_code` TEXT, `raw_quantity` REAL NOT NULL, `corrected_quantity` REAL, `raw_unit` TEXT NOT NULL, `inventory_unit` TEXT NOT NULL DEFAULT 'PIECE', `unit_conversion_factor` INTEGER NOT NULL DEFAULT 1, `effective_quantity_base` INTEGER NOT NULL, `raw_unit_price_paise` INTEGER, `corrected_unit_price_paise` INTEGER, `raw_line_amount_paise` INTEGER, `corrected_line_amount_paise` INTEGER, `gst_rate_percent` REAL, `review_status` TEXT NOT NULL DEFAULT 'PENDING_MATCH', `rejection_reason` TEXT, `created_at` INTEGER NOT NULL, FOREIGN KEY(`invoice_id`) REFERENCES `purchase_invoices`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`variant_id`) REFERENCES `product_variants`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "invoiceId",
+            "columnName": "invoice_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lineNumber",
+            "columnName": "line_number",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "variantId",
+            "columnName": "variant_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "supplierItemCode",
+            "columnName": "supplier_item_code",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "rawDescription",
+            "columnName": "raw_description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "correctedDescription",
+            "columnName": "corrected_description",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "hsnCode",
+            "columnName": "hsn_code",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "rawQuantity",
+            "columnName": "raw_quantity",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "correctedQuantity",
+            "columnName": "corrected_quantity",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "rawUnit",
+            "columnName": "raw_unit",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "inventoryUnit",
+            "columnName": "inventory_unit",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "'PIECE'"
+          },
+          {
+            "fieldPath": "unitConversionFactor",
+            "columnName": "unit_conversion_factor",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "1"
+          },
+          {
+            "fieldPath": "effectiveQuantityBase",
+            "columnName": "effective_quantity_base",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rawUnitPricePaise",
+            "columnName": "raw_unit_price_paise",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "correctedUnitPricePaise",
+            "columnName": "corrected_unit_price_paise",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "rawLineAmountPaise",
+            "columnName": "raw_line_amount_paise",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "correctedLineAmountPaise",
+            "columnName": "corrected_line_amount_paise",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "gstRatePercent",
+            "columnName": "gst_rate_percent",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "reviewStatus",
+            "columnName": "review_status",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "'PENDING_MATCH'"
+          },
+          {
+            "fieldPath": "rejectionReason",
+            "columnName": "rejection_reason",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_purchase_lines_invoice_id",
+            "unique": false,
+            "columnNames": [
+              "invoice_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_purchase_lines_invoice_id` ON `${TABLE_NAME}` (`invoice_id`)"
+          },
+          {
+            "name": "index_purchase_lines_variant_id",
+            "unique": false,
+            "columnNames": [
+              "variant_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_purchase_lines_variant_id` ON `${TABLE_NAME}` (`variant_id`)"
+          },
+          {
+            "name": "index_purchase_lines_review_status",
+            "unique": false,
+            "columnNames": [
+              "review_status"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_purchase_lines_review_status` ON `${TABLE_NAME}` (`review_status`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "purchase_invoices",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "invoice_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "product_variants",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "variant_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "supplier_product_mappings",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `supplier_identifier` TEXT NOT NULL, `supplier_item_code` TEXT, `supplier_desc_pattern` TEXT NOT NULL, `variant_id` INTEGER NOT NULL, `verified_by_owner` INTEGER NOT NULL DEFAULT 1, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, FOREIGN KEY(`variant_id`) REFERENCES `product_variants`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "supplierIdentifier",
+            "columnName": "supplier_identifier",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "supplierItemCode",
+            "columnName": "supplier_item_code",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "supplierDescPattern",
+            "columnName": "supplier_desc_pattern",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "variantId",
+            "columnName": "variant_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "verifiedByOwner",
+            "columnName": "verified_by_owner",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "1"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_supplier_product_mappings_supplier_identifier_supplier_item_code",
+            "unique": false,
+            "columnNames": [
+              "supplier_identifier",
+              "supplier_item_code"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_supplier_product_mappings_supplier_identifier_supplier_item_code` ON `${TABLE_NAME}` (`supplier_identifier`, `supplier_item_code`)"
+          },
+          {
+            "name": "index_supplier_product_mappings_variant_id",
+            "unique": false,
+            "columnNames": [
+              "variant_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_supplier_product_mappings_variant_id` ON `${TABLE_NAME}` (`variant_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "product_variants",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "variant_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2ab82dea9d1e8183d3a7af401445c015')"
+    ]
+  }
+}
