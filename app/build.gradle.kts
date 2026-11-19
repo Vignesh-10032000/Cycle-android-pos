@@ -18,16 +18,23 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "dev.vignesh.cycleshop.IsolatedTestRunner"
     }
 
     buildTypes {
+        create("isolated") {
+            initWith(getByName("debug"))
+            applicationIdSuffix = ".isolated"
+            matchingFallbacks += "debug"
+        }
         release {
             optimization {
                 enable = false
             }
         }
     }
+    // Connected tests may uninstall their target. Give that target its own data sandbox.
+    testBuildType = "isolated"
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -39,6 +46,11 @@ android {
     sourceSets {
         getByName("androidTest").assets.directories.add("$projectDir/schemas")
     }
+}
+
+// The isolated app runs local tests without the business app's Firebase project.
+tasks.matching { it.name == "processIsolatedGoogleServices" }.configureEach {
+    enabled = false
 }
 
 ksp {
@@ -73,6 +85,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    add("isolatedImplementation", libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     // ── Phase 3: CameraX ──────────────────────────────────────────────────────
