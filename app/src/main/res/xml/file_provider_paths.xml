@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     FileProvider paths configuration for VGL Cycle Shop.
+     Only app-private directories are exposed — never external storage.
+     Invoice images are stored in filesDir/invoices/ and are
+     accessible only to the app itself and to activities granted
+     a temporary URI permission for capture.
+-->
+<paths>
+    <!-- Internal app files directory: Context.getFilesDir() -->
+    <files-path
+        name="invoice_images"
+        path="invoices/" />
+    <!-- App cache directory (for temporary capture before move) -->
+    <cache-path
+        name="invoice_capture_cache"
+        path="invoices/" />
+</paths>

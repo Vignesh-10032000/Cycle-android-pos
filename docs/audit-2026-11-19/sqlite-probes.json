@@ -1,0 +1,46 @@
+{
+  "migration_sql_statements": 12,
+  "existing_rows_preserved": true,
+  "old_schema_entities_unchanged": true,
+  "migration_matches_exported_v2_pragmas": true,
+  "identical_supplier_invoice_rows_accepted": 2,
+  "invoice_indexes": [
+    [
+      0,
+      "index_purchase_invoices_created_at",
+      0,
+      "c",
+      0
+    ],
+    [
+      1,
+      "index_purchase_invoices_status",
+      0,
+      "c",
+      0
+    ],
+    [
+      2,
+      "index_purchase_invoices_supplier_gstin_invoice_number",
+      0,
+      "c",
+      0
+    ],
+    [
+      3,
+      "index_purchase_invoices_supplier_name_invoice_number",
+      0,
+      "c",
+      0
+    ]
+  ],
+  "quantity_correction_stale_base": [
+    2.0,
+    1440
+  ],
+  "null_code_verified_lookup": [
+    "FIRST",
+    0
+  ],
+  "stock_after_probe": 5
+}

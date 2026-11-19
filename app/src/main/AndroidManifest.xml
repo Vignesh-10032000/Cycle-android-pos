@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+         Phase 3: Camera + Photo Picker permissions.
+         CAMERA – required by CameraX to access the hardware sensor.
+         READ_MEDIA_IMAGES (API 33+) / READ_EXTERNAL_STORAGE (API < 33) –
+         Android Photo Picker handles its own access; these are required only
+         if the app needs to read the returned URI outside the picker session.
+         We use takePersistableUriPermission to avoid them in most cases.
+    -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- READ_MEDIA_IMAGES needed for content:// URIs on API 33+ fallback paths -->
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        android:minSdkVersion="33" />
+
+    <!-- CameraX requires at least one camera on the device -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <application
+        android:name=".VglApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+             FileProvider: exposes app-private invoice images captured by CameraX
+             to the camera Intent via a content:// URI, without exposing the
+             raw file path. Authority = packageName + ".fileprovider".
+             Supplier information is NEVER logged — only the URI is passed.
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

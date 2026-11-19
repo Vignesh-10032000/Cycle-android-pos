@@ -1,0 +1,40 @@
+Starting a Gradle Daemon, 1 incompatible and 12 stopped Daemons could not be reused, use --status for details
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugResources
+> Task :app:processDebugGoogleServices
+> Task :app:packageDebugResources
+> Task :app:processDebugNavigationResources
+> Task :app:parseDebugLocalResources
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugRFile
+> Task :app:javaPreCompileDebug
+> Task :app:compileDebugNavigationResources
+> Task :app:checkDebugAarMetadata
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:mergeDebugResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processDebugManifestForPackage
+> Task :app:processDebugResources
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///C:/Users/ramas/AndroidStudioProjects/class68/MyApplication2/app/src/main/java/dev/vignesh/cycleshop/ui/invoice/InvoiceScanScreen.kt:86:8 'interface ClipboardManager : Any' is deprecated. Use Clipboard instead, which supports suspend functions.
+w: file:///C:/Users/ramas/AndroidStudioProjects/class68/MyApplication2/app/src/main/java/dev/vignesh/cycleshop/ui/invoice/InvoiceScanScreen.kt:130:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///C:/Users/ramas/AndroidStudioProjects/class68/MyApplication2/app/src/main/java/dev/vignesh/cycleshop/ui/invoice/InvoiceScanScreen.kt:456:26 'val LocalLifecycleOwner: ProvidableCompositionLocal<LifecycleOwner>' is deprecated. Moved to lifecycle-runtime-compose library in androidx.lifecycle.compose package.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:testDebugUnitTest
+
+BUILD SUCCESSFUL in 1m 40s
+27 actionable tasks: 27 executed

@@ -1,0 +1,36 @@
+package dev.vignesh.cycleshop.data.local
+
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import dev.vignesh.cycleshop.data.local.dao.InventoryDao
+import dev.vignesh.cycleshop.data.local.entity.BrandEntity
+import dev.vignesh.cycleshop.data.local.entity.ProductEntity
+
+@Database(
+    entities = [BrandEntity::class, ProductEntity::class],
+    version = 1,
+    exportSchema = false
+)
+abstract class VglDatabase : RoomDatabase() {
+
+    abstract fun inventoryDao(): InventoryDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE: VglDatabase? = null
+
+        fun getDatabase(context: Context): VglDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    VglDatabase::class.java,
+                    "vgl_cycle_shop_database"
+                ).build()
+                INSTANCE = instance
+                instance
+            }
+        }
+    }
+}

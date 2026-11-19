@@ -1,0 +1,29 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Local tooling, build output, and private app setup.
+/.idea/
+/.kotlin/
+/.serena/
+/app/google-services.json
+*.jks
+*.keystore
+
+# Invoice photos and phone screenshots are backed up outside Git.
+/*.jpg
+/*.png
+/app/src/androidTest/assets/invoice_A.jpg
+/app/src/androidTest/assets/invoice_B.jpg

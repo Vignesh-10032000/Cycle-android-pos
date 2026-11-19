@@ -1,0 +1,90 @@
+{
+  "jvm_suites": [
+    {
+      "name": "dev.vignesh.cycleshop.data.local.EntityAndConverterTest",
+      "tests": "20",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-19T10:28:51.977Z"
+    },
+    {
+      "name": "dev.vignesh.cycleshop.ExampleUnitTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-19T10:28:51.816Z"
+    },
+    {
+      "name": "dev.vignesh.cycleshop.InventoryRepositoryTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-19T10:28:51.829Z"
+    },
+    {
+      "name": "dev.vignesh.cycleshop.ui.invoice.InvoiceDeduplicationEngineTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-19T10:28:52.005Z"
+    },
+    {
+      "name": "dev.vignesh.cycleshop.ui.invoice.InvoiceTableParserTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-19T10:28:52.021Z"
+    },
+    {
+      "name": "dev.vignesh.cycleshop.ui.invoice.OcrResultTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-19T10:28:52.098Z"
+    },
+    {
+      "name": "dev.vignesh.cycleshop.ui.invoice.ProductMatchingEngineTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-19T10:28:52.108Z"
+    },
+    {
+      "name": "dev.vignesh.cycleshop.ui.invoice.PurchaseValidationEngineTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-19T10:28:52.119Z"
+    },
+    {
+      "name": "dev.vignesh.cycleshop.ui.invoice.UnitConversionEngineTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-19T10:28:52.127Z"
+    }
+  ],
+  "jvm_total": 71,
+  "gradle_device_xml": {
+    "tests": "23",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.000",
+    "timestamp": "2026-11-19T10:30:00",
+    "hostname": "localhost"
+  },
+  "gradle_device_task_exit": 1,
+  "direct_device_runner": "OK (23 tests)",
+  "device": "OnePlus 9R LE2101 Android 14",
+  "pre_test_device_history_preservation": "NOT VERIFIED; original database unavailable after connected Gradle run"
+}

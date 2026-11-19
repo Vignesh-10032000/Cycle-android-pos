@@ -1,0 +1,14 @@
+CONVERSION [Set, 3.0, PIECE] => Success(rawUnit=Set, targetUnit=PIECE, conversionFactor=1, effectiveBaseQuantity=3, notes=3.0 Set = 3 PIECE)
+CONVERSION [PC, 3.0, GROSS] => Success(rawUnit=PC, targetUnit=GROSS, conversionFactor=1, effectiveBaseQuantity=3, notes=3.0 PC = 3 GROSS)
+CONVERSION [Pair, 3.0, GROSS] => Success(rawUnit=Pair, targetUnit=GROSS, conversionFactor=1, effectiveBaseQuantity=3, notes=3.0 Pairs = 3 Pieces (1 Pair = 2 Pieces))
+CONVERSION [Dozen, 3.0, SET] => Success(rawUnit=Dozen, targetUnit=PIECE, conversionFactor=12, effectiveBaseQuantity=36, notes=3.0 Dozen = 36 Pieces (1 Dozen = 12 Pieces))
+CONVERSION [PC, 0.5, PIECE] => Success(rawUnit=PC, targetUnit=PIECE, conversionFactor=1, effectiveBaseQuantity=0, notes=0.5 PC = 0 PIECE)
+CONVERSION [PC, NaN, PIECE] => Success(rawUnit=PC, targetUnit=PIECE, conversionFactor=1, effectiveBaseQuantity=0, notes=NaN PC = 0 PIECE)
+CONVERSION [Gross, Infinity, PIECE] => Success(rawUnit=Gross, targetUnit=PIECE, conversionFactor=144, effectiveBaseQuantity=2147483647, notes=Infinity Gross = 2147483647 Pieces (1 Gross = 144 Pieces))
+HEADER_ONLY STRYDER
+Invoice No: AUDIT-999 => rows=29, quantity=62.0, total=31277000, reconciled=true
+HEADER_ONLY M.STEEL
+Invoice No: AUDIT-888 => rows=11, quantity=126.0, total=1610000, reconciled=true
+VALIDATION NaN => LineValidationResult(lineNumber=1, isValid=true, reviewStatus=VERIFIED_MATCH, issues=[])
+VALIDATION Infinity => LineValidationResult(lineNumber=1, isValid=true, reviewStatus=VERIFIED_MATCH, issues=[])
+VALIDATION blank => LineValidationResult(lineNumber=1, isValid=false, reviewStatus=VERIFIED_MATCH, issues=[Line 1 has an empty product description.])

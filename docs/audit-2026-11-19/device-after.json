@@ -1,0 +1,12 @@
+{
+  "brands": 6,
+  "products": 8,
+  "product_variants": 9,
+  "stock_movements": 9,
+  "purchase_invoices": 0,
+  "purchase_lines": 0,
+  "supplier_product_mappings": 0,
+  "stock_total": 67,
+  "schema_version": 2,
+  "integrity_check": "ok"
+}
