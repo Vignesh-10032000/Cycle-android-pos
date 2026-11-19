@@ -15,12 +15,14 @@ googleGmsGoogleServices = "4.4.4"
 room = "2.8.5"
 ksp = "2.3.6"
 json = "20240303"
+gson = "2.11.0"
 camerax = "1.5.0"
 mlkitTextRecognition = "16.0.1"
 coil = "2.7.0"
 
 [libraries]
 org-json = { group = "org.json", name = "json", version.ref = "json" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

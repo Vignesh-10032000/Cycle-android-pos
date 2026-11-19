@@ -1,49 +1,27 @@
 package dev.vignesh.cycleshop.ui.invoice
 
 import android.net.Uri
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.ExpandLess
-import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Image
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Link
-import androidx.compose.material.icons.filled.LinkOff
-import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -54,607 +32,236 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import coil.request.ImageRequest
 import java.text.NumberFormat
 import java.util.Locale
 
-/**
- * Premium editable review screen for structured invoice parsing & local product matching.
- *
- * Displays:
- * - Original invoice photo thumbnail / preview
- * - Extracted metadata (Supplier, GSTIN, Inv No, Date)
- * - Reconciliation status banner (Quantities & Amounts)
- * - Extracted product table rows with editable fields
- * - Suggested Room inventory match candidates
- * - Discrepancy flags (missing HSN, math discrepancy, unlinked SKU)
- * - Safe image cleanup controls
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InvoiceReviewScreen(
-    invoice: ParsedInvoice,
+internal fun InvoiceReviewScreen(
+    review: InvoiceReviewSession,
+    catalog: List<ReviewVariant>,
     imageUri: Uri?,
+    saving: Boolean,
+    stagedInvoiceId: Long?,
     onNavigateBack: () -> Unit,
-    onSaveReviewed: (ParsedInvoice) -> Unit,
+    onEditHeader: (String, String) -> Unit,
+    onEditLine: (Int, (ReviewLine) -> ReviewLine) -> Unit,
+    onVerifyLine: (Int) -> Unit,
+    onApprove: () -> Unit,
+    onStage: () -> Unit,
     onDeleteImageAndExit: () -> Unit
 ) {
-    var editableInvoice by remember { mutableStateOf(invoice) }
-    var showImagePreview by remember { mutableStateOf(false) }
-    var showStageConfirmDialog by remember { mutableStateOf(false) }
+    val byId = remember(catalog) { catalog.associateBy { it.id } }
+    val activeIds = byId.keys
+    val verifiedCount = review.verifiedCount(activeIds)
+    val approved = review.isApproved(activeIds)
+    val editable = !saving && stagedInvoiceId == null
+    val storageIssues = remember(review) { review.v2StagingIssues() }
+    val displayedInvoice = remember(review) { review.reviewedInvoice() }
+    var showImage by remember { mutableStateOf(false) }
+    var showApprove by remember { mutableStateOf(false) }
+    var showHeaderEditor by remember { mutableStateOf(false) }
 
-    if (showStageConfirmDialog) {
-        val verifiedCount = editableInvoice.items.count { (it.selectedVariantId ?: it.bestCandidate?.variantId) != null }
-        val pendingCount = editableInvoice.items.size - verifiedCount
+    if (showApprove) {
         AlertDialog(
-            onDismissRequest = { showStageConfirmDialog = false },
-            title = {
-                Text(
-                    text = "Stage Purchase Invoice",
-                    fontWeight = FontWeight.Bold
-                )
-            },
-            text = {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(
-                        text = "Stage this supplier invoice into the purchase database for audit and review?",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    Surface(
-                        color = MaterialTheme.colorScheme.surfaceVariant,
-                        shape = RoundedCornerShape(8.dp),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                            Text("• Supplier: ${editableInvoice.supplierName ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
-                            Text("• Invoice #: ${editableInvoice.invoiceNumber ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
-                            Text("• Total Items: ${editableInvoice.items.size}", style = MaterialTheme.typography.bodySmall)
-                            Text("• Verified Matches: $verifiedCount", style = MaterialTheme.typography.bodySmall, color = Color(0xFF2E7D32), fontWeight = FontWeight.SemiBold)
-                            Text("• Pending Review: $pendingCount", style = MaterialTheme.typography.bodySmall, color = if (pendingCount > 0) Color(0xFFE65100) else Color.Unspecified)
-                        }
-                    }
-                    Text(
-                        text = "🔒 Safety Rule (Phase 3 Step 3A): Staging saves this invoice in the database with status CONFIRMED_STAGED. ZERO stock movements will be created and inventory ledger balances will NOT be changed until Step 3B owner confirmation.",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            },
+            onDismissRequest = { showApprove = false },
+            title = { Text("Approve invoice review?") },
+            text = { Text("All $verifiedCount lines have been verified in this session. Approval here leaves stock unchanged.") },
             confirmButton = {
-                Button(
-                    onClick = {
-                        showStageConfirmDialog = false
-                        onSaveReviewed(editableInvoice)
-                    }
-                ) {
-                    Text("Confirm Staging")
-                }
+                Button(enabled = editable && review.canApprove(activeIds), onClick = {
+                    showApprove = false
+                    onApprove()
+                }) { Text("Confirm approval") }
             },
-            dismissButton = {
-                OutlinedButton(onClick = { showStageConfirmDialog = false }) {
-                    Text("Cancel")
-                }
-            }
+            dismissButton = { TextButton(onClick = { showApprove = false }) { Text("Cancel") } }
         )
+    }
+    if (showHeaderEditor) {
+        HeaderEditor(review, onDismiss = { showHeaderEditor = false }) { supplier, number ->
+            onEditHeader(supplier, number)
+            showHeaderEditor = false
+        }
     }
 
     Scaffold(
-        modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars),
         topBar = {
             TopAppBar(
-                title = {
-                    Column {
-                        Text(
-                            text = "Invoice Review & Matching",
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
-                            text = "${editableInvoice.supplierName ?: "Supplier"} • ${editableInvoice.invoiceNumber?.let { "#$it" } ?: "No Inv #"}",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                },
+                title = { Text("Review invoice") },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back to scan")
                     }
                 },
                 actions = {
                     if (imageUri != null) {
-                        IconButton(onClick = { showImagePreview = !showImagePreview }) {
-                            Icon(
-                                imageVector = Icons.Default.Image,
-                                contentDescription = "Toggle Photo Preview",
-                                tint = if (showImagePreview) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
-                            )
+                        IconButton(onClick = { showImage = !showImage }) {
+                            Icon(Icons.Default.Image, contentDescription = "Toggle invoice photo")
                         }
                     }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.surface
-                )
+                    IconButton(enabled = editable, onClick = onDeleteImageAndExit) {
+                        Icon(Icons.Default.Delete, contentDescription = "Discard scan")
+                    }
+                }
             )
         },
         bottomBar = {
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .windowInsetsPadding(WindowInsets.navigationBars),
-                shadowElevation = 8.dp,
-                color = MaterialTheme.colorScheme.surface
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    OutlinedButton(
-                        onClick = onDeleteImageAndExit,
-                        modifier = Modifier.weight(1f),
-                        colors = ButtonDefaults.outlinedButtonColors(
-                            contentColor = MaterialTheme.colorScheme.error
-                        )
-                    ) {
-                        Icon(imageVector = Icons.Default.Delete, contentDescription = null, modifier = Modifier.size(16.dp))
-                        Spacer(Modifier.width(6.dp))
-                        Text("Discard & Delete")
-                    }
-
-                    Button(
-                        onClick = { showStageConfirmDialog = true },
-                        modifier = Modifier.weight(1.4f),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.primary
-                        )
-                    ) {
-                        Icon(imageVector = Icons.Default.CheckCircle, contentDescription = null, modifier = Modifier.size(16.dp))
-                        Spacer(Modifier.width(6.dp))
-                        Text("Stage Invoice (No Stock)")
+            Surface(tonalElevation = 3.dp) {
+                Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text("$verifiedCount / ${review.lines.size} lines verified", fontWeight = FontWeight.SemiBold)
+                    if (stagedInvoiceId != null) {
+                        Text("Invoice staged for review. Stock is unchanged.")
+                    } else if (approved) {
+                        Text("Approved in this session. Verification must be repeated after reopening.")
+                        if (storageIssues.isNotEmpty()) {
+                            Text("This review cannot be saved with the current database format.", color = MaterialTheme.colorScheme.error)
+                        }
+                        Button(onClick = onStage, enabled = !saving && storageIssues.isEmpty(), modifier = Modifier.fillMaxWidth()) {
+                            Text(if (saving) "Saving…" else "Save staged invoice")
+                        }
+                    } else {
+                        if (!review.headerComplete) Text("Enter the supplier and invoice number.", style = MaterialTheme.typography.bodySmall)
+                        Button(
+                            enabled = review.canApprove(activeIds) && editable,
+                            onClick = { showApprove = true },
+                            modifier = Modifier.fillMaxWidth().testTag("approve-invoice")
+                        ) { Text("Approve review") }
                     }
                 }
             }
         }
-    ) { paddingValues ->
+    ) { padding ->
         LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
+            Modifier.fillMaxSize().padding(padding).testTag("invoice-review-list"),
             contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Optional expanded image preview
-            if (showImagePreview && imageUri != null) {
-                item {
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(260.dp),
-                        shape = RoundedCornerShape(12.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color.Black)
-                    ) {
-                        AsyncImage(
-                            model = ImageRequest.Builder(LocalContext.current)
-                                .data(imageUri)
-                                .crossfade(true)
-                                .build(),
-                            contentDescription = "Invoice Photo",
-                            contentScale = ContentScale.Fit,
-                            modifier = Modifier.fillMaxSize()
-                        )
+            if (showImage && imageUri != null) {
+                item { AsyncImage(imageUri, "Original invoice photo", Modifier.fillMaxWidth().height(280.dp)) }
+            }
+            item {
+                Card(Modifier.fillMaxWidth()) {
+                    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(review.supplierName.ifBlank { "Supplier missing" }, style = MaterialTheme.typography.titleMedium)
+                        Text("Invoice number: ${review.invoiceNumber.ifBlank { "Missing" }}")
+                        if (review.supplierName != review.originalInvoice.supplierName.orEmpty() ||
+                            review.invoiceNumber != review.originalInvoice.invoiceNumber.orEmpty()) {
+                            Text("OCR header: ${review.originalInvoice.supplierName ?: "Missing"} / ${review.originalInvoice.invoiceNumber ?: "Missing"}")
+                        }
+                        review.originalInvoice.supplierGstin?.let { Text("GSTIN: $it") }
+                        review.originalInvoice.invoiceDate?.let { Text("Date: $it") }
+                        TextButton(enabled = editable, onClick = { showHeaderEditor = true }) { Text("Edit invoice details") }
                     }
                 }
             }
-
-            // Document Header Summary Card
             item {
-                InvoiceHeaderCard(editableInvoice)
-            }
-
-            // Totals & Reconciliation Status Banner
-            item {
-                ReconciliationBanner(editableInvoice)
-            }
-
-            // Section Title
-            item {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Extracted Line Items (${editableInvoice.items.size})",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(
-                        text = "Match Rate: ${editableInvoice.matchRatePercent}%",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = if (editableInvoice.matchRatePercent > 50) Color(0xFF2E7D32) else Color(0xFFE65100),
-                        fontWeight = FontWeight.SemiBold
-                    )
+                val difference = displayedInvoice.quantityReconciliation == Reconciliation.DIFFERENCE ||
+                    displayedInvoice.taxableReconciliation == Reconciliation.DIFFERENCE
+                val units = displayedInvoice.quantitiesByUnit.entries.joinToString(" + ") { (unit, qty) ->
+                    "${qty.stripTrailingZeros().toPlainString()} ${unit.ifBlank { "(unit missing)" }}"
+                }.ifBlank { "Unavailable" }
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text("Line quantities: $units")
+                    Text("Printed quantity: ${displayedInvoice.totalQuantityExtracted ?: "Unavailable"}")
+                    Text("Printed taxable total: ${displayedInvoice.totalAmountExtractedPaise?.let(::formatPaise) ?: "Unavailable"}")
+                    if (difference) Text("Line values differ from the printed totals.", color = MaterialTheme.colorScheme.error)
+                    if (approved) storageIssues.forEach { Text(it, color = MaterialTheme.colorScheme.error) }
                 }
             }
-
-            // Editable Line Items
-            itemsIndexed(editableInvoice.items) { index, item ->
-                InvoiceItemCard(
-                    item = item,
-                    onItemUpdated = { updatedItem ->
-                        val updatedList = editableInvoice.items.toMutableList()
-                        updatedList[index] = updatedItem
-                        editableInvoice = editableInvoice.copy(items = updatedList)
-                    }
-                )
+            itemsIndexed(review.lines, key = { index, _ -> index }) { index, line ->
+                ReviewLineCard(index, line, byId, editable,
+                    onEdit = { change -> onEditLine(index, change) },
+                    onVerify = { onVerifyLine(index) })
             }
         }
     }
 }
 
 @Composable
-private fun InvoiceHeaderCard(invoice: ParsedInvoice) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
-    ) {
-        Column(modifier = Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = invoice.supplierName ?: "Unknown Supplier",
-                    style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Surface(
-                    shape = RoundedCornerShape(4.dp),
-                    color = MaterialTheme.colorScheme.primaryContainer
-                ) {
-                    Text(
-                        text = invoice.layoutType.name.replace("_", " "),
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                    )
-                }
-            }
-
-            invoice.supplierGstin?.let { gstin ->
-                Text(
-                    text = "GSTIN: $gstin",
-                    style = MaterialTheme.typography.bodySmall,
-                    fontFamily = FontFamily.Monospace,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                Text(
-                    text = "Invoice: ${invoice.invoiceNumber ?: "N/A"}",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Text(
-                    text = "Date: ${invoice.invoiceDate ?: "N/A"}",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-
-            invoice.consigneeName?.let { consignee ->
-                Text(
-                    text = "Consignee: $consignee",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun ReconciliationBanner(invoice: ParsedInvoice) {
-    val differences = invoice.quantityReconciliation == Reconciliation.DIFFERENCE ||
-        invoice.taxableReconciliation == Reconciliation.DIFFERENCE ||
-        invoice.items.any { it.amountReconciliation == Reconciliation.DIFFERENCE }
-    val isReconciled = !differences && invoice.quantityReconciliation == Reconciliation.MATCH &&
-        invoice.taxableReconciliation == Reconciliation.MATCH
-    val units = invoice.quantitiesByUnit.entries.joinToString(" + ") { (unit, qty) ->
-        "${qty.stripTrailingZeros().toPlainString()} ${unit.ifBlank { "(unit missing)" }}"
-    }.ifBlank { "Unavailable" }
-
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = if (isReconciled) Color(0xFFE8F5E9) else Color(0xFFFFF3E0)
-        )
-    ) {
-        Row(
-            modifier = Modifier.padding(14.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-            Icon(
-                imageVector = if (isReconciled) Icons.Default.CheckCircle else Icons.Default.Warning,
-                contentDescription = null,
-                tint = if (isReconciled) Color(0xFF2E7D32) else Color(0xFFE65100),
-                modifier = Modifier.size(24.dp)
-            )
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = when {
-                        differences -> "Invoice totals need review"
-                        isReconciled -> "Invoice totals match"
-                        else -> "Reconciliation incomplete"
-                    },
-                    style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.Bold,
-                    color = if (isReconciled) Color(0xFF1B5E20) else Color(0xFFBF360C)
-                )
-                Text(
-                    text = "Read quantities: $units\nPrinted quantity total: ${invoice.totalQuantityExtracted ?: "Unavailable"}\nPrinted taxable total: ${invoice.totalAmountExtractedPaise?.let(::formatPaise) ?: "Unavailable"}",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = if (isReconciled) Color(0xFF2E7D32) else Color(0xFFE65100)
-                )
-            }
-        }
-    }
-}
-
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-private fun InvoiceItemCard(
-    item: ParsedInvoiceItem,
-    onItemUpdated: (ParsedInvoiceItem) -> Unit
+private fun ReviewLineCard(
+    index: Int,
+    line: ReviewLine,
+    catalog: Map<Long, ReviewVariant>,
+    editable: Boolean,
+    onEdit: ((ReviewLine) -> ReviewLine) -> Unit,
+    onVerify: () -> Unit
 ) {
-    var isEditing by remember { mutableStateOf(false) }
-    var editedDescription by remember { mutableStateOf(item.description) }
-    var editedQty by remember { mutableStateOf(InvoiceNumbers.quantityDecimal(item.quantity)?.toPlainString().orEmpty()) }
-    var editedRate by remember { mutableStateOf(item.unitRatePaise?.let { InvoiceNumbers.decimalRupees(it).toPlainString() }.orEmpty()) }
-    var showAllCandidates by remember { mutableStateOf(false) }
+    val lineTag = "line-$index"
+    val status = line.status(catalog.keys)
+    val selected = catalog[line.values.variantId]
+    val issues = line.issues(catalog.keys)
+    val suggestion = line.evidence.suggestedCandidates.firstOrNull()
+    var editing by remember { mutableStateOf(false) }
+    var choosing by remember { mutableStateOf(false) }
+    var showEvidence by remember { mutableStateOf(false) }
 
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
-    ) {
-        Column(modifier = Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            // Header Row: Line # and Actions
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Surface(
-                    shape = RoundedCornerShape(4.dp),
-                    color = MaterialTheme.colorScheme.secondaryContainer
-                ) {
-                    Text(
-                        text = "#${item.lineNumber.toString().padStart(2, '0')}",
-                        style = MaterialTheme.typography.labelSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSecondaryContainer,
-                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                    )
+    if (editing) {
+        LineEditor(line.values, onDismiss = { editing = false }) { values ->
+            onEdit { it.edit(values.copy(variantId = it.values.variantId)) }
+            editing = false
+        }
+    }
+    if (choosing) {
+        VariantPicker(catalog, line.evidence.suggestedCandidates, onDismiss = { choosing = false }) { variant ->
+            onEdit { it.edit(it.values.copy(variantId = variant.id)) }
+            choosing = false
+        }
+    }
+
+    Card(Modifier.fillMaxWidth().testTag(lineTag)) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text("Line ${line.evidence.lineNumber} · ${status.label}", style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.testTag("$lineTag-status"))
+            Text("${line.values.description.ifBlank { "Description missing" }}", fontWeight = FontWeight.SemiBold)
+            Text("Current: ${numericValues(line.values)}", modifier = Modifier.testTag("$lineTag-current"))
+            Text("OCR: ${line.original.description.ifBlank { "Description missing" }}")
+            Text(numericValues(line.original), modifier = Modifier.testTag("$lineTag-original"))
+            if (line.evidence.qualityFlags.any { it.value != FieldQuality.EXACT }) {
+                val observedIssues = line.evidence.qualityFlags.filterValues { it != FieldQuality.EXACT }.keys
+                    .joinToString { fieldLabels[it] ?: it }
+                Text("Uncertain OCR: $observedIssues", style = MaterialTheme.typography.bodySmall)
+            }
+            if (line.asParsedItem().amountReconciliation == Reconciliation.DIFFERENCE) {
+                Text("Quantity × rate differs from the line amount.", color = MaterialTheme.colorScheme.error)
+            }
+            TextButton(onClick = { showEvidence = !showEvidence }) {
+                Text(if (showEvidence) "Hide OCR evidence" else "Show OCR evidence")
+            }
+            if (showEvidence) {
+                Text(line.evidence.rawLines.joinToString(" ").ifBlank { "No OCR text for this line." })
+                line.evidence.boundingBox?.let { Text("Image region: ${it.left}, ${it.top} to ${it.right}, ${it.bottom}") }
+            }
+            HorizontalDivider()
+            suggestion?.let { Text("Suggested: ${it.productName} · ${it.variantSku}", style = MaterialTheme.typography.bodySmall) }
+            Text(selected?.let { "Selected: ${it.name} · ${it.sku}" }
+                ?: if (line.values.variantId != null) "Selected variant unavailable" else "No variant selected")
+            issues.forEach { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedButton(enabled = editable, onClick = { editing = true }, modifier = Modifier.testTag("$lineTag-edit")) {
+                    Text("Edit values")
                 }
-
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    if (item.isUserEdited) {
-                        Surface(
-                            shape = RoundedCornerShape(4.dp),
-                            color = Color(0xFFEDE7F6)
-                        ) {
-                            Text(
-                                text = "Edited",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = Color(0xFF512DA8),
-                                modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp)
-                            )
-                        }
-                    }
-
-                    IconButton(
-                        onClick = { isEditing = !isEditing },
-                        modifier = Modifier.size(28.dp)
-                    ) {
-                        Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit Item", modifier = Modifier.size(16.dp))
-                    }
+                OutlinedButton(enabled = editable && catalog.isNotEmpty(), onClick = { choosing = true },
+                    modifier = Modifier.testTag("$lineTag-select")) {
+                    Text("Choose variant")
                 }
             }
-
-            // Description: View mode vs Edit mode
-            if (isEditing) {
-                val quantity = InvoiceNumbers.quantity(editedQty)
-                val rate = InvoiceNumbers.paise(editedRate)
-                OutlinedTextField(
-                    value = editedDescription,
-                    onValueChange = { editedDescription = it },
-                    label = { Text("Product Description") },
-                    modifier = Modifier.fillMaxWidth()
-                )
-
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedTextField(
-                        value = editedQty,
-                        onValueChange = { editedQty = it },
-                        label = { Text("Qty") },
-                        isError = editedQty.isNotBlank() && quantity == null,
-                        modifier = Modifier.weight(1f)
-                    )
-                    OutlinedTextField(
-                        value = editedRate,
-                        onValueChange = { editedRate = it },
-                        label = { Text("Rate (₹)") },
-                        isError = editedRate.isNotBlank() && rate == null,
-                        modifier = Modifier.weight(1f)
-                    )
-                }
-
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    Button(
-                        enabled = (editedQty.isBlank() || quantity != null) &&
-                            (editedRate.isBlank() || rate != null),
-                        onClick = {
-                            onItemUpdated(
-                                item.copy(
-                                    description = editedDescription,
-                                    quantity = quantity,
-                                    unitRatePaise = rate,
-                                    isUserEdited = true
-                                )
-                            )
-                            isEditing = false
-                        }
-                    ) {
-                        Text("Apply")
-                    }
-                }
-            } else {
-                Text(
-                    text = item.description,
-                    style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            }
-
-            // Column Metrics Row (Qty, Rate, HSN, Tax, Amount)
-            FlowRow(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                MetricChip(label = "Qty", value = "${InvoiceNumbers.quantityDecimal(item.quantity)?.stripTrailingZeros()?.toPlainString() ?: "N/A"} ${item.unit ?: ""}")
-                item.unitRatePaise?.let { rate ->
-                    MetricChip(label = "Rate", value = formatPaise(rate))
-                }
-                item.hsnCode?.let { hsn ->
-                    MetricChip(label = "HSN", value = hsn)
-                }
-                item.gstRatePercent?.let { gst ->
-                    MetricChip(label = "GST", value = "${gst}%")
-                }
-                item.lineAmountPaise?.let { amount ->
-                    MetricChip(label = "Total", value = formatPaise(amount), isPrimary = true)
-                }
-            }
-
-            if (item.amountReconciliation == Reconciliation.DIFFERENCE) {
-                Text("Quantity × rate differs from the printed line amount.", color = MaterialTheme.colorScheme.error)
-            }
-            val unreadable = listOf("quantity" to "quantity", "unitRate" to "rate", "lineAmount" to "line amount")
-                .filter { (field, _) -> item.qualityFlags[field]?.let { it != FieldQuality.EXACT } == true }
-                .joinToString { it.second }
-            if (unreadable.isNotEmpty()) {
-                Text("Check OCR reading for $unreadable.", color = MaterialTheme.colorScheme.error)
-            }
-            if (item.quantity != null) {
-                val unitIssue = when (val conversion = UnitConversionEngine.convert(item.unit, item.quantity)) {
-                    is UnitConversionResult.RequiresReview -> conversion.warningMessage
-                    is UnitConversionResult.Invalid -> conversion.errorMessage
-                    is UnitConversionResult.Success -> null
-                }
-                unitIssue?.let { Text(it, color = MaterialTheme.colorScheme.error) }
-            }
-
-            HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
-
-            // Room Product Match Section
-            val bestCandidate = item.bestCandidate
-            if (bestCandidate != null) {
-                Surface(
-                    shape = RoundedCornerShape(8.dp),
-                    color = when (item.matchConfidence) {
-                        MatchConfidence.EXACT_SKU -> Color(0xFFE8F5E9)
-                        MatchConfidence.HIGH_SIMILARITY -> Color(0xFFE3F2FD)
-                        else -> Color(0xFFFFF8E1)
-                    },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Column(modifier = Modifier.padding(10.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                                Icon(
-                                    imageVector = Icons.Default.Link,
-                                    contentDescription = null,
-                                    tint = if (item.matchConfidence == MatchConfidence.EXACT_SKU) Color(0xFF2E7D32) else Color(0xFF1565C0),
-                                    modifier = Modifier.size(16.dp)
-                                )
-                                Text(
-                                    text = "Catalog Match",
-                                    style = MaterialTheme.typography.labelSmall,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            }
-                            Text(
-                                text = "${(bestCandidate.confidenceScore * 100).toInt()}% Match",
-                                style = MaterialTheme.typography.labelSmall,
-                                fontWeight = FontWeight.Bold,
-                                color = if (bestCandidate.confidenceScore >= 0.85f) Color(0xFF2E7D32) else Color(0xFFE65100)
-                            )
-                        }
-
-                        Text(
-                            text = "${bestCandidate.brandName} ${bestCandidate.productName}",
-                            style = MaterialTheme.typography.bodySmall,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                        Text(
-                            text = "SKU: ${bestCandidate.variantSku} • ${bestCandidate.variantSize ?: "Free Size"} • ${bestCandidate.variantColor ?: "Standard"}",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-            } else {
-                Surface(
-                    shape = RoundedCornerShape(8.dp),
-                    color = Color(0xFFFFF3E0),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Row(
-                        modifier = Modifier.padding(8.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        Icon(imageVector = Icons.Default.LinkOff, contentDescription = null, tint = Color(0xFFE65100), modifier = Modifier.size(16.dp))
-                        Text(
-                            text = "Unlinked: No existing SKU in local database",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = Color(0xFFBF360C)
-                        )
-                    }
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(enabled = editable && !line.rejected && issues.isEmpty() && status != OwnerReviewStatus.OWNER_VERIFIED,
+                    onClick = onVerify, modifier = Modifier.testTag("$lineTag-verify")) { Text("Verify line") }
+                TextButton(enabled = editable, onClick = { onEdit { it.setRejected(!it.rejected) } },
+                    modifier = Modifier.testTag("$lineTag-reject")) {
+                    Text(if (line.rejected) "Reopen line" else "Reject line")
                 }
             }
         }
@@ -662,33 +269,108 @@ private fun InvoiceItemCard(
 }
 
 @Composable
-private fun MetricChip(label: String, value: String, isPrimary: Boolean = false) {
-    Surface(
-        shape = RoundedCornerShape(4.dp),
-        color = if (isPrimary) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant
-    ) {
-        Row(
-            modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            Text(
-                text = "$label:",
-                style = MaterialTheme.typography.labelSmall,
-                color = if (isPrimary) MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
-            )
-            Text(
-                text = value,
-                style = MaterialTheme.typography.labelSmall,
-                fontWeight = FontWeight.Bold,
-                color = if (isPrimary) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-    }
+private fun LineEditor(original: ReviewValues, onDismiss: () -> Unit, onApply: (ReviewValues) -> Unit) {
+    var description by remember { mutableStateOf(original.description) }
+    var quantity by remember { mutableStateOf(quantityText(original.quantity).orEmpty()) }
+    var unit by remember { mutableStateOf(original.unit.orEmpty()) }
+    var rate by remember { mutableStateOf(decimalText(original.ratePaise)) }
+    var amount by remember { mutableStateOf(decimalText(original.amountPaise)) }
+    val parsedQuantity = InvoiceNumbers.quantity(quantity)
+    val parsedRate = InvoiceNumbers.paise(rate)
+    val parsedAmount = InvoiceNumbers.paise(amount, allowZero = true)
+    val invalidQuantity = quantity.isNotBlank() && parsedQuantity == null
+    val invalidRate = rate.isNotBlank() && parsedRate == null
+    val invalidAmount = amount.isNotBlank() && parsedAmount == null
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Correct line values") },
+        text = {
+            Column(Modifier.heightIn(max = 420.dp).verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedTextField(description, { description = it }, label = { Text("Description") })
+                OutlinedTextField(quantity, { quantity = it }, label = { Text("Quantity") }, isError = invalidQuantity,
+                    modifier = Modifier.testTag("edit-quantity"))
+                OutlinedTextField(unit, { unit = it }, label = { Text("Invoice unit") },
+                    modifier = Modifier.testTag("edit-unit"))
+                OutlinedTextField(rate, { rate = it }, label = { Text("Rate (₹)") }, isError = invalidRate,
+                    modifier = Modifier.testTag("edit-rate"))
+                OutlinedTextField(amount, { amount = it }, label = { Text("Line amount (₹)") }, isError = invalidAmount,
+                    modifier = Modifier.testTag("edit-amount"))
+            }
+        },
+        confirmButton = {
+            Button(enabled = !invalidQuantity && !invalidRate && !invalidAmount, onClick = {
+                onApply(ReviewValues(description.trim(), parsedQuantity, unit.trim().takeIf(String::isNotBlank),
+                    parsedRate, parsedAmount, original.variantId))
+            }) { Text("Apply changes") }
+        },
+        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
+    )
 }
 
-private fun formatPaise(paise: Long): String {
-    val rupees = InvoiceNumbers.decimalRupees(paise)
-    val formatter = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("en-IN"))
-    return formatter.format(rupees).replace("₹", "₹ ")
+@Composable
+private fun HeaderEditor(review: InvoiceReviewSession, onDismiss: () -> Unit, onApply: (String, String) -> Unit) {
+    var supplier by remember { mutableStateOf(review.supplierName) }
+    var number by remember { mutableStateOf(review.invoiceNumber) }
+    AlertDialog(
+        onDismissRequest = onDismiss, title = { Text("Invoice details") },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedTextField(supplier, { supplier = it }, label = { Text("Supplier") }, singleLine = true)
+                OutlinedTextField(number, { number = it }, label = { Text("Invoice number") }, singleLine = true)
+            }
+        },
+        confirmButton = { Button(onClick = { onApply(supplier.trim(), number.trim()) }) { Text("Apply details") } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
+    )
 }
+
+@Composable
+private fun VariantPicker(
+    catalog: Map<Long, ReviewVariant>,
+    suggestions: List<ProductMatchCandidate>,
+    onDismiss: () -> Unit,
+    onChoose: (ReviewVariant) -> Unit
+) {
+    val rank = remember(suggestions) { suggestions.mapIndexed { index, candidate -> candidate.variantId to index }.toMap() }
+    var query by remember { mutableStateOf("") }
+    val results = remember(catalog, query, rank) {
+        val search = query.trim()
+        catalog.values.filter { it.name.contains(search, ignoreCase = true) || it.sku.contains(search, ignoreCase = true) }
+            .sortedWith(compareBy({ rank[it.id] ?: Int.MAX_VALUE }, { it.name }, { it.sku }))
+    }
+    AlertDialog(
+        onDismissRequest = onDismiss, title = { Text("Choose a catalog variant") },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedTextField(query, { query = it }, label = { Text("Search by product or SKU") }, singleLine = true)
+                LazyColumn(Modifier.heightIn(max = 300.dp)) {
+                    items(results, key = { it.id }) { variant ->
+                        TextButton(onClick = { onChoose(variant) }, modifier = Modifier.fillMaxWidth().testTag("variant-${variant.id}")) {
+                            Text("${variant.name} · ${variant.sku}${if (variant.id in rank) " (suggested)" else ""}")
+                        }
+                    }
+                }
+                if (results.isEmpty()) Text("No matching active variants.")
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
+    )
+}
+
+private val fieldLabels = mapOf("itemCode" to "item code", "hsnCode" to "HSN", "unitRate" to "rate",
+    "lineAmount" to "line amount", "taxRate" to "tax rate")
+
+private fun numericValues(values: ReviewValues): String =
+    "Qty ${quantityText(values.quantity) ?: "Missing"} ${values.unit ?: "(unit missing)"} · " +
+        "Rate ${values.ratePaise?.let(::formatPaise) ?: "Missing"} · " +
+        "Amount ${values.amountPaise?.let(::formatPaise) ?: "Missing"}"
+
+private fun quantityText(quantity: Double?): String? =
+    InvoiceNumbers.quantityDecimal(quantity)?.stripTrailingZeros()?.toPlainString()
+
+private fun decimalText(paise: Long?): String =
+    paise?.let { InvoiceNumbers.decimalRupees(it).toPlainString() }.orEmpty()
+
+private fun formatPaise(paise: Long): String =
+    NumberFormat.getCurrencyInstance(Locale.forLanguageTag("en-IN")).format(InvoiceNumbers.decimalRupees(paise))

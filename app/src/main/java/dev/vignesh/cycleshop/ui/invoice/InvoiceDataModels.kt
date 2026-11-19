@@ -76,13 +76,8 @@ data class ParsedInvoiceItem(
     val rawLines: List<String> = emptyList(),
     val boundingBox: OcrBoundingBox? = null,
     val qualityFlags: Map<String, FieldQuality> = emptyMap(),
-    val suggestedCandidates: List<ProductMatchCandidate> = emptyList(),
-    val selectedVariantId: Long? = null,  // User-selected or auto-selected variant
-    val isUserEdited: Boolean = false
+    val suggestedCandidates: List<ProductMatchCandidate> = emptyList()
 ) {
-    val bestCandidate: ProductMatchCandidate?
-        get() = suggestedCandidates.firstOrNull()
-
     val matchConfidence: MatchConfidence
         get() = when {
             suggestedCandidates.isEmpty() -> MatchConfidence.UNMATCHED

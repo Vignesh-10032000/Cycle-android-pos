@@ -45,6 +45,7 @@ android {
 
     sourceSets {
         getByName("androidTest").assets.directories.add("$projectDir/schemas")
+        getByName("isolated").assets.directories.add("$projectDir/src/test/resources")
     }
 }
 
@@ -70,6 +71,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.firebase.ai)
+    implementation(libs.gson)
 
     // Room 2.8.5 persistence & KSP annotation processor
     implementation(libs.androidx.room.runtime)

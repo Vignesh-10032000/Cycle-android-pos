@@ -132,10 +132,7 @@ class ProductMatchingEngine {
     ): ParsedInvoice {
         val updatedItems = invoice.items.map { item ->
             val candidates = matchItem(item, productsWithVariants, brands)
-            item.copy(
-                suggestedCandidates = candidates,
-                selectedVariantId = candidates.firstOrNull { it.confidenceScore >= 0.85f }?.variantId
-            )
+            item.copy(suggestedCandidates = candidates)
         }
         return invoice.copy(items = updatedItems)
     }

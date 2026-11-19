@@ -16,6 +16,8 @@ import dev.vignesh.cycleshop.ui.inventory.InventoryViewModel
 import dev.vignesh.cycleshop.ui.inventory.InventoryViewModelFactory
 import dev.vignesh.cycleshop.ui.invoice.InvoiceScanScreen
 import dev.vignesh.cycleshop.ui.placeholders.PlaceholderScreen
+import dev.vignesh.cycleshop.ui.recognition.RecognitionPhotoKind
+import dev.vignesh.cycleshop.ui.recognition.RecognitionPhotoScreen
 
 @Composable
 fun VglNavGraph(
@@ -49,17 +51,15 @@ fun VglNavGraph(
         }
         
         composable(VglDestination.BicycleScan.route) {
-            PlaceholderScreen(
-                title = "Scan Bicycle",
-                phaseDescription = "Phase 4: Gemini Multimodal Vision AI for detecting bicycle branding, model, category, and specifications.",
+            RecognitionPhotoScreen(
+                kind = RecognitionPhotoKind.BICYCLE,
                 onBack = { navController.popBackStack() }
             )
         }
         
         composable(VglDestination.SparePartScan.route) {
-            PlaceholderScreen(
-                title = "Scan Spare Part",
-                phaseDescription = "Phase 4: Vision AI for spare part category classification and inventory stock verification.",
+            RecognitionPhotoScreen(
+                kind = RecognitionPhotoKind.SPARE_PART,
                 onBack = { navController.popBackStack() }
             )
         }

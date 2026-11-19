@@ -20,6 +20,11 @@ import dev.vignesh.cycleshop.data.local.model.PurchaseInvoiceStatus
 import dev.vignesh.cycleshop.data.local.seed.DatabaseSeeder
 import dev.vignesh.cycleshop.data.repository.PurchaseRepository
 import dev.vignesh.cycleshop.ui.invoice.DeduplicationResult
+import dev.vignesh.cycleshop.ui.invoice.InvoiceLayoutType
+import dev.vignesh.cycleshop.ui.invoice.InvoiceReviewSession
+import dev.vignesh.cycleshop.ui.invoice.ParsedInvoice
+import dev.vignesh.cycleshop.ui.invoice.ParsedInvoiceItem
+import dev.vignesh.cycleshop.ui.invoice.stageReviewedInvoiceV2
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -122,17 +127,17 @@ class PurchaseStagingDeviceTest {
         val stagedId = result.getOrThrow()
         assertTrue("Staged invoice ID must be positive", stagedId > 0)
 
-        // 1. Verify invoice was persisted with status CONFIRMED_STAGED
+        // v2 cannot represent a verification receipt, even if a caller supplies the legacy status.
         val fetched = purchaseDao.getInvoiceById(stagedId)
         assertNotNull(fetched)
         assertEquals("STRYDER CYCLE PRIVATE LIMITED", fetched?.supplierName)
-        assertEquals(PurchaseInvoiceStatus.CONFIRMED_STAGED, fetched?.status)
+        assertEquals(PurchaseInvoiceStatus.NEEDS_REVIEW, fetched?.status)
 
         // 2. Verify lines are linked with invoiceId
         val lines = purchaseDao.getLinesForInvoice(stagedId).first()
         assertEquals(1, lines.size)
         assertEquals(stagedId, lines[0].invoiceId)
-        assertEquals(LineReviewStatus.VERIFIED_MATCH, lines[0].reviewStatus)
+        assertEquals(LineReviewStatus.PENDING_MATCH, lines[0].reviewStatus)
 
         // 3. CRITICAL BOUNDARY CHECK: Stock movements and catalog stock counts are UNTOUCHED!
         val postStockCount = inventoryDao.getTotalStockCount().first()
@@ -142,6 +147,47 @@ class PurchaseStagingDeviceTest {
         assertEquals("Inventory total stock count must NOT change upon staging", initialStockCount, postStockCount)
         assertEquals("Stock movement ledger count must NOT change upon staging", initialMovementCount, postMovementCount)
         assertEquals("Variant stock quantity must remain identical", variant.stockQuantity, postVariant?.stockQuantity)
+    }
+
+    @Test
+    fun currentCatalogIsRecheckedBeforeStagingAndOriginalFieldsSurvive(): Unit = runBlocking {
+        val variant = requireNotNull(productDao.getVariantBySku("VGL-HERO-SP275-BLK"))
+        val product = requireNotNull(productDao.getProductById(variant.productId))
+        val startStock = inventoryDao.getTotalStockCount().first()
+        val startLedger = inventoryDao.getRecentMovements(100).first()
+        val parsed = ParsedInvoice(
+            "Synthetic Supplier", "R3-01", null, null, null, null,
+            listOf(ParsedInvoiceItem(1, description = "OCR tube", quantity = 2.0, unit = "PC",
+                unitRatePaise = 100, lineAmountPaise = 200)),
+            2.0, 200, InvoiceLayoutType.GENERIC_GST, "OCR tube 2 PC"
+        )
+        val active = setOf(variant.id)
+        val review = InvoiceReviewSession.from(parsed).updateLine(0) {
+            it.edit(it.values.copy(description = "Inner tube", quantity = 3.0, ratePaise = 120L,
+                amountPaise = 360L, variantId = variant.id)).verify(active, 100)
+        }.approve(active, 200)
+
+        productDao.updateProduct(product.copy(isActive = false))
+        assertTrue(runCatching { stageReviewedInvoiceV2(db, repository, review, "fixture:photo") }.isFailure)
+        assertTrue(repository.allStagedInvoices.first().isEmpty())
+        productDao.updateProduct(product)
+        val savedId = stageReviewedInvoiceV2(db, repository, review, "fixture:photo")
+        val saved = requireNotNull(PurchaseRepository(purchaseDao).getInvoiceWithLines(savedId).first())
+        val line = saved.lines.single()
+        assertEquals(PurchaseInvoiceStatus.NEEDS_REVIEW, saved.invoice.status)
+        assertEquals(LineReviewStatus.PENDING_MATCH, line.reviewStatus)
+        assertEquals("OCR tube 2 PC", saved.invoice.rawOcrText)
+        assertEquals("OCR tube", line.rawDescription)
+        assertEquals("Inner tube", line.correctedDescription)
+        assertEquals(2.0, line.rawQuantity, 0.0)
+        assertEquals(3.0, line.correctedQuantity!!, 0.0)
+        assertEquals(100L, line.rawUnitPricePaise)
+        assertEquals(120L, line.correctedUnitPricePaise)
+        assertEquals(200L, line.rawLineAmountPaise)
+        assertEquals(360L, line.correctedLineAmountPaise)
+        assertTrue(purchaseDao.getAllVerifiedMappings().first().isEmpty())
+        assertEquals(startStock, inventoryDao.getTotalStockCount().first())
+        assertEquals(startLedger, inventoryDao.getRecentMovements(100).first())
     }
 
     @Test

@@ -20,7 +20,7 @@ import java.math.BigDecimal
 class InvoiceRealOcrDeviceTest {
     @Test
     fun mSteelPhotoReadsBothInvoiceUnits() = runBlocking {
-        val parsed = parsePhoto("A")
+        val parsed = parseInvoicePhoto("A")
         assertEquals(InvoiceLayoutType.MSTEEL_MBW, parsed.layoutType)
         assertEquals("466", parsed.invoiceNumber)
         assertQuantities("A", parsed, minimumReads = 11)
@@ -35,7 +35,7 @@ class InvoiceRealOcrDeviceTest {
 
     @Test
     fun stryderPhotoReadsPrintedTotalsAndLeavesAmbiguousCellsUnresolved() = runBlocking {
-        val parsed = parsePhoto("B")
+        val parsed = parseInvoicePhoto("B")
         assertEquals(InvoiceLayoutType.BICYCLE_SUPPLIER, parsed.layoutType)
         assertQuantities("B", parsed, minimumReads = 22)
         assertEquals(62.0, parsed.totalQuantityExtracted!!, 0.0)
@@ -46,21 +46,6 @@ class InvoiceRealOcrDeviceTest {
         // The photo is cropped over the invoice number. A sales order number is a different field.
         assertNull(parsed.invoiceNumber)
         assertEquals(Reconciliation.UNAVAILABLE, parsed.quantityReconciliation)
-    }
-
-    private suspend fun parsePhoto(name: String): ParsedInvoice {
-        val assets = InstrumentationRegistry.getInstrumentation().context.assets
-        val bitmap = assets.open("invoice_$name.jpg").use {
-            requireNotNull(BitmapFactory.decodeStream(it))
-        }
-        val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
-        return try {
-            val text = recognizer.process(InputImage.fromBitmap(bitmap, 0)).await()
-            InvoiceTableParser().parse(text.toInvoiceOcrResult(bitmap.width, bitmap.height, 0))
-        } finally {
-            recognizer.close()
-            bitmap.recycle()
-        }
     }
 
     private fun assertQuantities(name: String, parsed: ParsedInvoice, minimumReads: Int) {
@@ -79,5 +64,20 @@ class InvoiceRealOcrDeviceTest {
         }
         assertTrue("Read $reads of ${expected.size} quantities", reads >= minimumReads)
         Log.i("InvoiceParsingR2", "Photo $name: rows=${parsed.items.size}, valid quantities=$reads")
+    }
+}
+
+internal suspend fun parseInvoicePhoto(name: String): ParsedInvoice {
+    val assets = InstrumentationRegistry.getInstrumentation().context.assets
+    val bitmap = assets.open("invoice_$name.jpg").use {
+        requireNotNull(BitmapFactory.decodeStream(it))
+    }
+    val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+    return try {
+        val text = recognizer.process(InputImage.fromBitmap(bitmap, 0)).await()
+        InvoiceTableParser().parse(text.toInvoiceOcrResult(bitmap.width, bitmap.height, 0))
+    } finally {
+        recognizer.close()
+        bitmap.recycle()
     }
 }

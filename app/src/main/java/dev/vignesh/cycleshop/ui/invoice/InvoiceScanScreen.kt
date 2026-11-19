@@ -1,19 +1,9 @@
 package dev.vignesh.cycleshop.ui.invoice
 
-import android.Manifest
 import android.content.ContentValues
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.ImageCaptureException
-import androidx.camera.core.Preview
-import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.view.PreviewView
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -29,16 +19,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.windowInsetsBottomHeight
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -86,21 +71,21 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import dev.vignesh.cycleshop.ui.photo.PhotoCamera
+import dev.vignesh.cycleshop.ui.photo.rememberCameraPermission
+import dev.vignesh.cycleshop.ui.photo.rememberImagePicker
 import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
-import java.util.concurrent.Executors
+import java.io.File
 
 // ── Entry point ───────────────────────────────────────────────────────────────
 
@@ -128,30 +113,25 @@ fun InvoiceScanScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val clipboard = LocalClipboardManager.current
+    var showReviewScreen by remember((state as? InvoiceScanState.Success)?.imageUri) { mutableStateOf(true) }
+    val showScanToolbar = state !is InvoiceScanState.Success || !showReviewScreen
+    val showReviewError: (String) -> Unit = { message ->
+        scope.launch { snackbarHostState.showSnackbar(message) }
+    }
 
-    // ── Camera permission launcher ────────────────────────────────────────────
-    val cameraPermissionLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.RequestPermission()
-    ) { granted ->
+    val openCamera = rememberCameraPermission { granted ->
         if (granted) {
-            val file = viewModel.allocateCaptureFile(context)
-            viewModel.onCameraReady(file.absolutePath)
+            viewModel.onCameraReady(viewModel.allocateCaptureFile(context).absolutePath)
         } else {
             viewModel.onPermissionDenied()
         }
     }
-
-    // ── Photo Picker launcher ─────────────────────────────────────────────────
-    val photoPickerLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.PickVisualMedia()
-    ) { uri ->
-        uri?.let { viewModel.onPhotoPickerResult(context, it) }
-    }
+    val pickPhoto = rememberImagePicker { viewModel.onPhotoPickerResult(context, it) }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
-            TopAppBar(
+            if (showScanToolbar) TopAppBar(
                 title = {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -188,40 +168,36 @@ fun InvoiceScanScreen(
             AnimatedContent(
                 targetState = state,
                 transitionSpec = { fadeIn(tween(300)) togetherWith fadeOut(tween(200)) },
+                contentKey = { it::class },
                 label = "invoice-scan-state"
             ) { currentState ->
                 when (currentState) {
-                    is InvoiceScanState.Idle -> IdlePanel(
-                        onOpenCamera = {
-                            cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
-                        },
-                        onPickPhoto = {
-                            photoPickerLauncher.launch(
-                                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                            )
-                        }
-                    )
+                    is InvoiceScanState.Idle -> IdlePanel(onOpenCamera = openCamera, onPickPhoto = pickPhoto)
 
                     is InvoiceScanState.PermissionDenied -> PermissionDeniedPanel(
-                        onRetry = {
-                            cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
-                        },
-                        onPickPhoto = {
-                            photoPickerLauncher.launch(
-                                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                            )
-                        }
+                        onRetry = openCamera,
+                        onPickPhoto = pickPhoto
                     )
 
-                    is InvoiceScanState.Previewing -> CameraPreviewPanel(
-                        captureFilePath = currentState.captureFilePath,
-                        onCaptureDone = { uri -> viewModel.onCaptureSuccess(context, uri) },
-                        onCaptureFailed = { reason -> viewModel.onCaptureFailed(reason) },
-                        onPickPhoto = {
-                            photoPickerLauncher.launch(
-                                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                            )
-                        }
+                    is InvoiceScanState.Previewing -> PhotoCamera(
+                        modifier = Modifier.fillMaxSize(),
+                        instruction = "Position the invoice within view and tap Capture",
+                        shutterLabel = "Capture invoice",
+                        createCaptureFile = { File(currentState.captureFilePath) },
+                        onPhoto = { file ->
+                            if (viewModel.state.value == currentState) {
+                                val uri = FileProvider.getUriForFile(
+                                    context, "${context.packageName}.fileprovider", file
+                                )
+                                viewModel.onCaptureSuccess(context, uri)
+                            } else {
+                                file.delete()
+                            }
+                        },
+                        onError = { reason ->
+                            if (viewModel.state.value == currentState) viewModel.onCaptureFailed(reason)
+                        },
+                        onPickPhoto = pickPhoto
                     )
 
                     is InvoiceScanState.CapturePending -> ProcessingPanel(imageUri = null)
@@ -229,33 +205,21 @@ fun InvoiceScanScreen(
                     is InvoiceScanState.Processing -> ProcessingPanel(imageUri = currentState.imageUri)
 
                     is InvoiceScanState.Success -> {
-                        var showReviewScreen by remember { mutableStateOf(currentState.parsedInvoice != null) }
-                        if (showReviewScreen && currentState.parsedInvoice != null) {
+                        if (showReviewScreen) {
                             InvoiceReviewScreen(
-                                invoice = currentState.parsedInvoice,
+                                review = currentState.review,
+                                catalog = currentState.catalog,
                                 imageUri = currentState.imageUri,
-                                onNavigateBack = { showReviewScreen = false },
-                                onSaveReviewed = { updated ->
-                                    viewModel.updateParsedInvoice(updated)
-                                    viewModel.stageInvoiceToDatabase(
-                                        context = context,
-                                        invoice = updated,
-                                        imageUri = currentState.imageUri
-                                    ) { result ->
-                                        scope.launch {
-                                            result.fold(
-                                                onSuccess = { invoiceId ->
-                                                    snackbarHostState.showSnackbar(
-                                                        "Invoice staged successfully (ID: #$invoiceId, Status: CONFIRMED_STAGED. Zero stock modified)."
-                                                    )
-                                                },
-                                                onFailure = { err ->
-                                                    snackbarHostState.showSnackbar(
-                                                        "Staging failed: ${err.message ?: "Unknown error"}"
-                                                    )
-                                                }
-                                            )
-                                        }
+                                saving = currentState.saving,
+                                stagedInvoiceId = currentState.stagedInvoiceId,
+                                onNavigateBack = { if (!currentState.saving) showReviewScreen = false },
+                                onEditHeader = { supplier, number -> viewModel.editReview { it.editHeader(supplier, number) } },
+                                onEditLine = viewModel::editLine,
+                                onVerifyLine = { viewModel.verifyLine(context, it, showReviewError) },
+                                onApprove = { viewModel.approveReview(context, showReviewError) },
+                                onStage = {
+                                    viewModel.stageInvoiceToDatabase(context) { result ->
+                                        result.onFailure { showReviewError(it.message ?: "Could not stage invoice.") }
                                     }
                                 },
                                 onDeleteImageAndExit = {
@@ -267,7 +231,7 @@ fun InvoiceScanScreen(
                             OcrResultPanel(
                                 imageUri = currentState.imageUri,
                                 result = currentState.result,
-                                parsedInvoice = currentState.parsedInvoice,
+                                parsedInvoice = currentState.review.originalInvoice,
                                 onOpenReview = { showReviewScreen = true },
                                 onCopy = { text ->
                                     clipboard.setText(AnnotatedString(text))
@@ -415,160 +379,6 @@ private fun PermissionDeniedPanel(
             Icon(Icons.Default.AddPhotoAlternate, contentDescription = null)
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
             Text("Use Gallery Instead")
-        }
-    }
-}
-
-// ── Camera preview panel ───────────────────────────────────────────────────────
-
-/**
- * Live CameraX viewfinder with shutter and gallery shortcut.
- *
- * ### CameraX Lifecycle integration
- * [ProcessCameraProvider.getInstance] returns a ListenableFuture; we obtain
- * a callback via [addListener] on the main executor. Inside the callback we
- * call [ProcessCameraProvider.bindToLifecycle], passing:
- * - The [LocalLifecycleOwner] from the Compose tree (the host Activity)
- * - [CameraSelector.DEFAULT_BACK_CAMERA]
- * - A [Preview] use-case wired to [PreviewView]
- * - An [ImageCapture] use-case for still capture
- *
- * CameraX automatically:
- * - Starts the preview when the owner reaches STARTED
- * - Pauses when owner goes to STOPPED
- * - Releases the sensor when owner goes to DESTROYED
- * No manual lifecycle callbacks are needed.
- *
- * ### Image Capture
- * [ImageCapture.takePicture] with [ImageCapture.OutputFileOptions.Builder(File)]
- * writes directly to the pre-allocated file. The [ImageCaptureCaptureCallback]
- * provides the saved URI. We then post this URI to the ViewModel which
- * begins OCR.
- */
-@Composable
-private fun CameraPreviewPanel(
-    captureFilePath: String,
-    onCaptureDone: (Uri) -> Unit,
-    onCaptureFailed: (String) -> Unit,
-    onPickPhoto: () -> Unit
-) {
-    val context = LocalContext.current
-    val lifecycleOwner = LocalLifecycleOwner.current
-    var imageCapture: ImageCapture? by remember { mutableStateOf(null) }
-    val cameraExecutor = remember { Executors.newSingleThreadExecutor() }
-
-    Box(modifier = Modifier.fillMaxSize()) {
-        // ── CameraX PreviewView ────────────────────────────────────────────
-        AndroidView(
-            factory = { ctx ->
-                PreviewView(ctx).also { previewView ->
-                    val cameraProviderFuture = ProcessCameraProvider.getInstance(ctx)
-                    cameraProviderFuture.addListener({
-                        val provider = cameraProviderFuture.get()
-
-                        val preview = Preview.Builder().build().also {
-                            it.surfaceProvider = previewView.surfaceProvider
-                        }
-
-                        val capture = ImageCapture.Builder()
-                            .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-                            // Target rotation matches the display rotation at bind time.
-                            // CameraX will embed correct EXIF orientation in the JPEG.
-                            .build()
-                        imageCapture = capture
-
-                        try {
-                            provider.unbindAll()
-                            provider.bindToLifecycle(
-                                lifecycleOwner,
-                                CameraSelector.DEFAULT_BACK_CAMERA,
-                                preview,
-                                capture
-                            )
-                        } catch (e: Exception) {
-                            onCaptureFailed(e.javaClass.simpleName)
-                        }
-                    }, ContextCompat.getMainExecutor(ctx))
-                }
-            },
-            modifier = Modifier.fillMaxSize()
-        )
-
-        // ── Bottom controls overlay ────────────────────────────────────────
-        Column(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .background(
-                    color = Color.Black.copy(alpha = 0.55f),
-                    shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
-                )
-                .padding(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Text(
-                text = "Position the invoice within view and tap Capture",
-                style = MaterialTheme.typography.labelMedium,
-                color = Color.White.copy(alpha = 0.8f),
-                textAlign = TextAlign.Center
-            )
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(32.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                // Gallery shortcut
-                FilledTonalButton(onClick = onPickPhoto) {
-                    Icon(Icons.Default.AddPhotoAlternate, contentDescription = "Gallery")
-                    Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text("Gallery")
-                }
-
-                // Shutter button
-                Surface(
-                    modifier = Modifier.size(72.dp),
-                    shape = CircleShape,
-                    color = MaterialTheme.colorScheme.primary,
-                    onClick = {
-                        val capture = imageCapture ?: return@Surface
-                        val captureFile = java.io.File(captureFilePath)
-                        val outputOptions = ImageCapture.OutputFileOptions
-                            .Builder(captureFile)
-                            .build()
-
-                        capture.takePicture(
-                            outputOptions,
-                            cameraExecutor,
-                            object : ImageCapture.OnImageSavedCallback {
-                                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                                    // Build a FileProvider URI — never expose raw file paths
-                                    val uri = FileProvider.getUriForFile(
-                                        context,
-                                        "${context.packageName}.fileprovider",
-                                        captureFile
-                                    )
-                                    onCaptureDone(uri)
-                                }
-
-                                override fun onError(exc: ImageCaptureException) {
-                                    onCaptureFailed(exc.javaClass.simpleName)
-                                }
-                            }
-                        )
-                    }
-                ) {
-                    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                        Icon(
-                            Icons.Default.Camera,
-                            contentDescription = "Capture invoice",
-                            tint = MaterialTheme.colorScheme.onPrimary,
-                            modifier = Modifier.size(32.dp)
-                        )
-                    }
-                }
-            }
-
-            Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.navigationBars))
         }
     }
 }

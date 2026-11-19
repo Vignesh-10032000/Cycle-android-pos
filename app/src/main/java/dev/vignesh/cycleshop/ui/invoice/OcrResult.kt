@@ -1,6 +1,7 @@
 package dev.vignesh.cycleshop.ui.invoice
 
 import android.graphics.Rect
+import java.util.Collections
 
 /**
  * Pure Kotlin representation of an axis-aligned bounding rectangle on the source image.
@@ -104,3 +105,14 @@ data class OcrResult(
     /** True when at least one character was recognized. */
     val hasContent: Boolean get() = rawText.isNotBlank()
 }
+
+internal fun OcrResult.immutableSnapshot(): OcrResult = copy(
+    blocks = Collections.unmodifiableList(blocks.map { block ->
+        block.copy(lines = Collections.unmodifiableList(block.lines.map { line ->
+            line.copy(
+                elements = Collections.unmodifiableList(line.elements.toList()),
+                words = Collections.unmodifiableList(line.words.toList())
+            )
+        }))
+    })
+)

@@ -6,6 +6,8 @@ import androidx.camera.core.ImageCapture
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.room.withTransaction
+import dev.vignesh.cycleshop.VglApplication
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
@@ -15,14 +17,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import dev.vignesh.cycleshop.data.local.entity.PurchaseInvoiceEntity
-import dev.vignesh.cycleshop.data.local.entity.PurchaseLineEntity
-import dev.vignesh.cycleshop.data.local.entity.SupplierProductMappingEntity
-import dev.vignesh.cycleshop.data.local.model.InventoryUnit
-import dev.vignesh.cycleshop.data.local.model.LineReviewStatus
-import dev.vignesh.cycleshop.data.local.model.PurchaseInvoiceStatus
-import dev.vignesh.cycleshop.data.repository.PurchaseRepository
 import java.io.File
+import kotlin.coroutines.cancellation.CancellationException
 import kotlin.system.measureTimeMillis
 
 /**
@@ -65,12 +61,15 @@ sealed class InvoiceScanState {
      * OCR completed successfully.
      * [imageUri] is the app-private file URI for the preview.
      * [result] contains the full recognition output.
-     * [parsedInvoice] contains the structured extracted table and Room catalog matches.
+     * [review] contains the extracted evidence and current owner review.
      */
-    data class Success(
+    internal data class Success(
         val imageUri: Uri,
         val result: OcrResult,
-        val parsedInvoice: ParsedInvoice? = null
+        val review: InvoiceReviewSession,
+        val catalog: List<ReviewVariant>,
+        val saving: Boolean = false,
+        val stagedInvoiceId: Long? = null
     ) : InvoiceScanState()
 
     /**
@@ -215,27 +214,22 @@ class InvoiceScanViewModel : ViewModel() {
                 val tableParser = InvoiceTableParser()
                 val parsed = tableParser.parse(finalOcrResult)
 
-                // Step 3: Match extracted lines against local Room catalog
-                val matchedInvoice = try {
-                    val app = context.applicationContext as? dev.vignesh.cycleshop.VglApplication
-                    val db = app?.database
-                    if (db != null) {
-                        val products = db.productDao().getActiveProductsWithVariants().first()
-                        val brands = db.productDao().getAllBrands().first()
-                        ProductMatchingEngine().matchInvoice(parsed, products, brands)
-                    } else {
-                        parsed
-                    }
-                } catch (_: Exception) {
-                    parsed
+                val app = context.applicationContext as VglApplication
+                val products = app.database.productDao().getActiveProductsWithVariants().first()
+                val brands = app.database.productDao().getAllBrands().first()
+                val matchedInvoice = ProductMatchingEngine().matchInvoice(parsed, products, brands)
+                val catalog = products.flatMap { product ->
+                    product.variants.map { ReviewVariant(it.id, product.product.name, it.sku) }
                 }
-
-                _state.value = InvoiceScanState.Success(
-                    imageUri = imageUri,
-                    result = finalOcrResult,
-                    parsedInvoice = matchedInvoice
-                )
+                if (_state.value == InvoiceScanState.Processing(imageUri)) {
+                    _state.value = InvoiceScanState.Success(
+                        imageUri, finalOcrResult.immutableSnapshot(), InvoiceReviewSession.from(matchedInvoice), catalog
+                    )
+                }
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
+                if (_state.value != InvoiceScanState.Processing(imageUri)) return@launch
                 // Map exception type to a user-safe message.
                 // We deliberately do NOT log e.message, as it may contain file
                 // path segments that could reveal invoice storage structure.
@@ -257,168 +251,93 @@ class InvoiceScanViewModel : ViewModel() {
         }
     }
 
-    /**
-     * Updates the current parsed invoice with user manual corrections.
-     */
-    fun updateParsedInvoice(updated: ParsedInvoice) {
-        val curr = _state.value
-        if (curr is InvoiceScanState.Success) {
-            _state.value = curr.copy(parsedInvoice = updated)
+    internal fun editLine(index: Int, change: (ReviewLine) -> ReviewLine) =
+        editReview { it.updateLine(index, change) }
+
+    internal fun editReview(change: (InvoiceReviewSession) -> InvoiceReviewSession) {
+        val current = _state.value as? InvoiceScanState.Success ?: return
+        if (current.saving || current.stagedInvoiceId != null) return
+        _state.value = current.copy(review = change(current.review))
+    }
+
+    internal fun verifyLine(context: Context, index: Int, onError: (String) -> Unit) {
+        val current = _state.value as? InvoiceScanState.Success ?: return
+        val selected = current.review.lines.getOrNull(index)?.values?.variantId ?: return
+        runReviewCheck(context, current, setOf(selected), onError) { active ->
+            current.review.updateLine(index) { it.verify(active, System.currentTimeMillis()) }
         }
     }
 
-    /**
-     * Safely deletes the current temporary invoice capture image and resets state.
-     */
+    internal fun approveReview(context: Context, onError: (String) -> Unit) {
+        val current = _state.value as? InvoiceScanState.Success ?: return
+        runReviewCheck(context, current, current.review.selectedVariants(), onError) { active ->
+            current.review.approve(active, System.currentTimeMillis())
+        }
+    }
+
+    private fun runReviewCheck(
+        context: Context,
+        current: InvoiceScanState.Success,
+        variants: Set<Long>,
+        onError: (String) -> Unit,
+        action: (Set<Long>) -> InvoiceReviewSession
+    ) {
+        if (current.saving || current.stagedInvoiceId != null) return
+        viewModelScope.launch {
+            try {
+                val app = context.applicationContext as VglApplication
+                val active = app.database.withTransaction {
+                    app.database.productDao().activeReviewVariantIds(variants)
+                }
+                if (_state.value !== current) return@launch
+                _state.value = current.copy(
+                    review = action(active),
+                    catalog = current.catalog.filter { it.id !in variants || it.id in active }
+                )
+                if (active != variants) onError("A selected catalog variant is no longer active.")
+            } catch (e: CancellationException) {
+                throw e
+            } catch (_: Exception) {
+                onError("Could not check the current catalog. Try again.")
+            }
+        }
+    }
+
     fun deleteCurrentImage(context: Context) {
-        val curr = _state.value
-        val uri = when (curr) {
-            is InvoiceScanState.Success -> curr.imageUri
-            is InvoiceScanState.Error -> curr.imageUri
+        val current = _state.value
+        val uri = when (current) {
+            is InvoiceScanState.Success -> {
+                if (current.saving || current.stagedInvoiceId != null) return
+                current.imageUri
+            }
+            is InvoiceScanState.Error -> current.imageUri
             else -> null
         }
         InvoiceStorageManager.deleteInvoiceImage(context, uri)
         _state.value = InvoiceScanState.Idle
     }
 
-    /**
-     * Stages the parsed and reviewed invoice in Room database as CONFIRMED_STAGED.
-     * Strict boundary: NO stock movements or inventory ledger updates are made in this step.
-     */
-    fun stageInvoiceToDatabase(
-        context: Context,
-        invoice: ParsedInvoice,
-        imageUri: Uri?,
-        onResult: (Result<Long>) -> Unit
-    ) {
+    internal fun stageInvoiceToDatabase(context: Context, onResult: (Result<Long>) -> Unit) {
+        val current = _state.value as? InvoiceScanState.Success ?: return
+        if (current.saving || current.stagedInvoiceId != null) return
+        val saving = current.copy(saving = true)
+        _state.value = saving
         viewModelScope.launch {
+            var stageId: Long? = null
             try {
-                val app = context.applicationContext as? dev.vignesh.cycleshop.VglApplication
-                val purchaseRepo = app?.purchaseRepository
-                    ?: dev.vignesh.cycleshop.data.repository.PurchaseRepository(
-                        dev.vignesh.cycleshop.data.local.VglDatabase.getInstance(context).purchaseDao()
-                    )
-
-                // 1. Validation check
-                // v2 has no variant stock-unit field. The current staging target is provisional.
-                val stagingUnit = InventoryUnit.PIECE
-                val conversions = invoice.items.map { UnitConversionEngine.convert(it.unit, it.quantity, stagingUnit) }
-                val lineValidationResults = invoice.items.mapIndexed { index, item ->
-                    val variantId = item.selectedVariantId ?: item.bestCandidate?.variantId
-                    PurchaseValidationEngine.validateLine(
-                        lineNumber = item.lineNumber,
-                        description = item.description,
-                        variantId = variantId,
-                        quantity = item.quantity,
-                        unitRatePaise = item.unitRatePaise,
-                        qualityFlags = item.qualityFlags,
-                        lineAmountPaise = item.lineAmountPaise,
-                        conversion = conversions[index]
-                    )
-                }
-
-                val validationSummary = PurchaseValidationEngine.validateInvoice(
-                    supplierName = invoice.supplierName,
-                    invoiceNumber = invoice.invoiceNumber,
-                    lineResults = lineValidationResults
+                val app = context.applicationContext as VglApplication
+                stageId = stageReviewedInvoiceV2(
+                    app.database, app.purchaseRepository, current.review, current.imageUri.toString()
                 )
-
-                if (!validationSummary.canStage) {
-                    val issuesJoined = (validationSummary.globalIssues +
-                        lineValidationResults.filterNot { it.isValid }.flatMap { it.issues }).joinToString("\n")
-                    onResult(Result.failure(IllegalArgumentException("Cannot stage invoice: $issuesJoined")))
-                    return@launch
-                }
-
-                // 2. Check duplicate
-                val duplicateCheck = purchaseRepo.checkDuplicate(
-                    supplierName = invoice.supplierName ?: "Unknown Supplier",
-                    supplierGstin = invoice.supplierGstin,
-                    invoiceNumber = invoice.invoiceNumber ?: "UNKNOWN",
-                    supportingDocRef = null
-                )
-
-                if (duplicateCheck is DeduplicationResult.ExactDuplicate) {
-                    onResult(Result.failure(IllegalStateException(duplicateCheck.message)))
-                    return@launch
-                }
-
-                // 3. Build PurchaseInvoiceEntity
-                val invoiceEntity = PurchaseInvoiceEntity(
-                    supplierName = invoice.supplierName ?: "Unknown Supplier",
-                    supplierGstin = invoice.supplierGstin,
-                    invoiceNumber = invoice.invoiceNumber ?: "UNKNOWN",
-                    invoiceDate = invoice.invoiceDate,
-                    consigneeName = invoice.consigneeName,
-                    consigneeGstin = invoice.consigneeGstin,
-                    totalAmountPaise = invoice.totalAmountExtractedPaise,
-                    totalQuantity = invoice.totalQuantityExtracted,
-                    imageUri = imageUri?.toString(),
-                    rawOcrText = invoice.rawText,
-                    status = PurchaseInvoiceStatus.CONFIRMED_STAGED,
-                    supportingDocRef = null,
-                    createdAt = System.currentTimeMillis(),
-                    updatedAt = System.currentTimeMillis()
-                )
-
-                // 4. Build PurchaseLineEntity list
-                val lineEntities = invoice.items.mapIndexed { idx, item ->
-                    val lineValidation = lineValidationResults[idx]
-                    val variantId = item.selectedVariantId ?: item.bestCandidate?.variantId
-                    val conversion = conversions[idx] as? UnitConversionResult.Success
-
-                    PurchaseLineEntity(
-                        invoiceId = 0, // Assigned inside DAO transaction
-                        lineNumber = item.lineNumber,
-                        variantId = variantId,
-                        supplierItemCode = item.itemCode,
-                        rawDescription = item.description,
-                        correctedDescription = item.description,
-                        hsnCode = item.hsnCode,
-                        rawQuantity = requireNotNull(item.quantity),
-                        correctedQuantity = item.quantity,
-                        rawUnit = item.unit.orEmpty(),
-                        inventoryUnit = conversion?.targetUnit ?: stagingUnit,
-                        // v2 requires integers. Zero records an unresolved conversion in a staged row.
-                        unitConversionFactor = conversion?.conversionFactor ?: 0,
-                        effectiveQuantityBase = conversion?.effectiveBaseQuantity ?: 0,
-                        rawUnitPricePaise = item.unitRatePaise,
-                        correctedUnitPricePaise = item.unitRatePaise,
-                        rawLineAmountPaise = item.lineAmountPaise,
-                        correctedLineAmountPaise = item.lineAmountPaise,
-                        gstRatePercent = item.gstRatePercent,
-                        reviewStatus = lineValidation.reviewStatus,
-                        rejectionReason = if (lineValidation.issues.isNotEmpty()) lineValidation.issues.joinToString(", ") else null,
-                        createdAt = System.currentTimeMillis()
-                    )
-                }
-
-                // 5. Build verified supplier mappings for items that have verified variantId
-                val verifiedMappings = invoice.items.mapNotNull { item ->
-                    val variantId = item.selectedVariantId ?: item.bestCandidate?.takeIf { it.confidenceScore >= 0.75f }?.variantId
-                    if (variantId != null) {
-                        SupplierProductMappingEntity(
-                            supplierIdentifier = invoice.supplierGstin ?: invoice.supplierName ?: "UNKNOWN",
-                            supplierItemCode = item.itemCode,
-                            supplierDescPattern = item.description.trim(),
-                            variantId = variantId,
-                            verifiedByOwner = true,
-                            createdAt = System.currentTimeMillis(),
-                            updatedAt = System.currentTimeMillis()
-                        )
-                    } else null
-                }
-
-                // 6. Stage to database
-                val stagedResult = purchaseRepo.stageInvoice(
-                    invoice = invoiceEntity,
-                    lines = lineEntities,
-                    verifiedMappings = verifiedMappings
-                )
-
-                onResult(stagedResult)
+                onResult(Result.success(stageId))
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
                 onResult(Result.failure(e))
+            } finally {
+                if (_state.value === saving) {
+                    _state.value = current.copy(stagedInvoiceId = stageId)
+                }
             }
         }
     }

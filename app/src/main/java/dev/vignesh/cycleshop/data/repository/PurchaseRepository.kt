@@ -11,6 +11,8 @@ import dev.vignesh.cycleshop.ui.invoice.DeduplicationResult
 import dev.vignesh.cycleshop.ui.invoice.InvoiceDeduplicationEngine
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+import kotlin.coroutines.cancellation.CancellationException
 
 /**
  * Repository coordinating purchase invoice staging, deduplication, and supplier mappings.
@@ -26,8 +28,9 @@ class PurchaseRepository(
     val allStagedInvoices: Flow<List<PurchaseInvoiceWithLines>> =
         purchaseDao.getAllInvoicesWithLines()
 
-    val pendingReviewInvoices: Flow<List<PurchaseInvoiceWithLines>> =
-        purchaseDao.getInvoicesByStatus(PurchaseInvoiceStatus.CONFIRMED_STAGED)
+    val pendingReviewInvoices: Flow<List<PurchaseInvoiceWithLines>> = allStagedInvoices.map { invoices ->
+        invoices.filter { it.invoice.status in setOf(PurchaseInvoiceStatus.NEEDS_REVIEW, PurchaseInvoiceStatus.CONFIRMED_STAGED) }
+    }
 
     fun getInvoiceWithLines(invoiceId: Long): Flow<PurchaseInvoiceWithLines?> =
         purchaseDao.getInvoiceWithLines(invoiceId)
@@ -73,11 +76,14 @@ class PurchaseRepository(
             }
 
             val stagedId = purchaseDao.stageInvoiceWithLines(
-                invoice = invoice.copy(status = PurchaseInvoiceStatus.CONFIRMED_STAGED),
-                lines = lines,
+                invoice = invoice.copy(status = PurchaseInvoiceStatus.NEEDS_REVIEW),
+                // A v2 row cannot prove a current owner verification receipt.
+                lines = lines.map { it.copy(reviewStatus = it.reviewStatus.forV2Storage()) },
                 verifiedMappings = verifiedMappings
             )
             Result.success(stagedId)
+        } catch (e: CancellationException) {
+            throw e
         } catch (e: Exception) {
             Result.failure(e)
         }
@@ -90,7 +96,7 @@ class PurchaseRepository(
         correctedQty: Double? = null,
         correctedPricePaise: Long? = null
     ) {
-        purchaseDao.updateLineDetails(lineId, variantId, status, correctedQty, correctedPricePaise)
+        purchaseDao.updateLineDetails(lineId, variantId, status.forV2Storage(), correctedQty, correctedPricePaise)
     }
 
     suspend fun deleteStagedInvoice(invoiceId: Long) {
@@ -108,3 +114,6 @@ class PurchaseRepository(
         return purchaseDao.insertOrUpdateSupplierMapping(mapping)
     }
 }
+
+private fun LineReviewStatus.forV2Storage(): LineReviewStatus =
+    if (this == LineReviewStatus.VERIFIED_MATCH) LineReviewStatus.PENDING_MATCH else this
